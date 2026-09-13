@@ -248,10 +248,7 @@ suministro en categoría tarifaria con cargo por potencia.
 
 #### 1.2.2.4. Lean UX Canvas
 
-`<Insertar imagen del Lean UX Canvas elaborado por el equipo, con los ocho cuadrantes:
-1. Business Problem · 2. Business Outcomes · 3. Users · 4. User Outcomes & Benefits ·
-5. Solutions · 6. Hypotheses · 7. What's the most important thing we need to learn first? ·
-8. What's the least amount of work we need to do to learn the next most important thing?>`
+![uxCanva](assets/uxCanva.png)
 
 | Cuadrante | Contenido |
 | :-- | :-- |
