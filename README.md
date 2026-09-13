@@ -1264,25 +1264,25 @@ existen se resuelven por interfaces declaradas en el dominio del consumidor:
 ### 4.9.1. Class Diagrams
 
 #Alerts
-![alerts](assets/alerts.png)
+![alerts](assets/alertsCL.png)
 
 #Analytics
-![analytics](assets/analytics.png)
+![analytics](assets/analyticsCL.png)
 
 #Energy
-![energy](assets/energy.png)
+![energy](assets/energyCL.png)
 
 #iam
-![iam](assets/iam.png)
+![iam](assets/iamCL.png)
 
 #organizatoins
-![organizations](assets/organizations.png)
+![organizations](assets/organizationsCL.png)
 
 #payments
-![payments](assets/payments.png)
+![payments](assets/paymentsCL.png)
 
 #subscriptions
-![subscriptions](assets/subscriptions.png)
+![subscriptions](assets/subscriptionsCL.png)
 
 ### 4.9.2. Class Dictionary
 
