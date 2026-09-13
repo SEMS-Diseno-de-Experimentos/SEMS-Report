@@ -1378,7 +1378,6 @@ existen se resuelven por interfaces declaradas en el dominio del consumidor:
 ### 4.10.1. Relational Database Diagram
 
 
-
 Una única base **PostgreSQL** para todo el monolito. El aislamiento entre módulos se consigue por
 prefijo de tabla: cada módulo solo escribe sobre las suyas, y las relaciones entre módulos se
 guardan como identificadores sin restricción de clave foránea cruzada, para que la frontera sea
@@ -1397,6 +1396,36 @@ real y no solo una convención.
 | `sb_` (3) | `sb_subscription_plans`, `sb_plan_features`, `sb_subscriptions` |
 | `pm_` (4) | `pm_payments`, `pm_payment_methods`, `pm_invoices`, `pm_webhook_events` |
 
+**IAM
+![IAM](assets/iam.png)
+
+
+**Organizations
+![ORG](assets/organizations.png)
+
+
+**Devices
+![Devices](assets/devices.png)
+
+
+**Energy
+![Energy](assets/energy.png)
+
+
+**Analytics
+![Analytics](assets/analytics.png)
+
+
+**Alerts
+![Alerts](assets/alerts.png)
+
+
+**Subscriptions
+![Subscriptions](assets/subscriptions.png)
+
+
+**Payments
+![Payments](assets/payments.png)
 **Restricciones de unicidad relevantes**
 
 | Tabla | Restricción | Por qué |
