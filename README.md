@@ -1203,7 +1203,7 @@ prefijadas, comunicándose entre sí por puertos explícitos y por eventos de do
 
 ### 4.8.1. Software Architecture Context Diagram
 
-> `<Insertar el diagrama de contexto C4 elaborado en Structurizr.>`
+![Context](assets/Context.png)
 
 | Elemento | Tipo | Descripción |
 | :-- | :-- | :-- |
@@ -1217,7 +1217,7 @@ prefijadas, comunicándose entre sí por puertos explícitos y por eventos de do
 
 ### 4.8.2. Software Architecture Container Diagrams
 
-> `<Insertar el diagrama de contenedores C4.>`
+![Container](assets/Container.png)
 
 | Contenedor | Tecnología | Responsabilidad |
 | :-- | :-- | :-- |
@@ -1228,7 +1228,7 @@ prefijadas, comunicándose entre sí por puertos explícitos y por eventos de do
 
 ### 4.8.3. Software Architecture Components Diagrams
 
-> `<Insertar los diagramas de componentes C4 de los módulos principales.>`
+![Components](assets/Components.png)
 
 Los ocho módulos del monolito y su prefijo de tablas:
 
@@ -1263,7 +1263,26 @@ existen se resuelven por interfaces declaradas en el dominio del consumidor:
 
 ### 4.9.1. Class Diagrams
 
-> `<Insertar los diagramas de clases elaborados en LucidChart, uno por módulo.>`
+#Alerts
+![alerts](assets/alerts.png)
+
+#Analytics
+![analytics](assets/analytics.png)
+
+#Energy
+![energy](assets/energy.png)
+
+#iam
+![iam](assets/iam.png)
+
+#organizatoins
+![organizations](assets/organizations.png)
+
+#payments
+![payments](assets/payments.png)
+
+#subscriptions
+![subscriptions](assets/subscriptions.png)
 
 ### 4.9.2. Class Dictionary
 
@@ -1358,7 +1377,7 @@ existen se resuelven por interfaces declaradas en el dominio del consumidor:
 
 ### 4.10.1. Relational Database Diagram
 
-> `<Insertar el diagrama entidad-relación elaborado en LucidChart o Vertabelo.>`
+
 
 Una única base **PostgreSQL** para todo el monolito. El aislamiento entre módulos se consigue por
 prefijo de tabla: cada módulo solo escribe sobre las suyas, y las relaciones entre módulos se
