@@ -677,7 +677,6 @@ de su establecimiento **sin** la solución.
 *Nota.* El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (pain points) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (happy moments) y áreas sobre las que no se tiene información (blank areas), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
 
 
-<!-- CH2_INSERT -->
 ## 2.4. Ubiquitous Language
 
 Lenguaje común del dominio, compartido entre el equipo técnico y los expertos del negocio. Los
@@ -1415,7 +1414,6 @@ User Flow:
 <img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de implementación de sugerencias de IA en alta fidelidad </p>
 
-<!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
 ### 4.5.1. Android Mobile Applications Prototyping
