@@ -1243,6 +1243,23 @@ Desde el dashboard, el usuario visualiza notificaciones pendientes y navega a la
 
 Task Flow:
 <p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para configuración de tarifas y metas </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de actualización de metas y tarifas </p>
+
+Descripción del flujo:
+El usuario ingresa a "Mi Organización", donde visualiza los parámetros actuales de la sede. Modifica el campo de "Meta global (kWh/mes)" y luego actualiza el "Costo por kWh" en la sección de tarifa energética. Guarda ambos valores, los cuales recalcularán inmediatamente las proyecciones y costos estimados en todo el sistema.
+
+* User Goal: Como coordinador de cadena, quiero generar un reporte energético mensual descargable, para presentarlo a gerencia y justificar los gastos de electricidad.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para generación de reportes </p>
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
