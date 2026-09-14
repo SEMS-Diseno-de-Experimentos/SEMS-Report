@@ -465,6 +465,59 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 17. ¿Desde qué dispositivo revisaría esta información: computadora de oficina, teléfono, ambos?
 18. ¿Qué herramientas digitales usa hoy para gestionar la operación de los locales?
 19. ¿Cómo prefiere recibir una alerta urgente: correo, mensajería, notificación en la aplicación?
+
+#### Entrevista — Segmento #2: Propietarios y administradores de establecimientos independientes
+
+**Bloque A. Perfil y contexto**
+
+1. ¿Podría contarnos qué tipo de negocio tiene, hace cuánto y qué superficie aproximada ocupa?
+2. ¿Cuál es su rol en el día a día del local?
+3. ¿Cuántas personas trabajan en el local y quién se ocupa de temas como el mantenimiento o los servicios?
+
+**Bloque B. Situación actual del costo energético**
+
+4. ¿Cuánto representa el recibo de luz dentro de sus gastos fijos mensuales?
+5. ¿Cómo revisa su recibo? ¿Mira solo el total o entra en el detalle?
+6. ¿Ha notado variaciones entre meses que no supiera explicar? ¿Qué hizo?
+7. ¿Sabe qué potencia tiene contratada para su local? ¿Sabe qué pasa si la supera?
+8. ¿Alguna vez le han ofrecido una revisión o auditoría eléctrica? ¿Qué resultado tuvo?
+
+**Bloque C. Operación y equipos**
+
+9. ¿Qué equipos de su local funcionan las 24 horas y cuáles solo durante la atención?
+10. ¿En qué momento del día siente que el local consume más?
+11. Si tuviera que reducir consumo mañana, ¿sabría por dónde empezar?
+
+**Bloque D. Solución y adopción**
+
+12. Si recibiera un aviso en el momento en que su local se acerca a un consumo que le va a costar caro, ¿qué haría?
+13. ¿Qué información le gustaría ver para saber en qué parte del local se le está yendo la energía?
+14. ¿Cuánto estaría dispuesto a pagar mensualmente por una herramienta que le ahorre una parte de su recibo? ¿Qué ahorro tendría que demostrarle para que valga la pena?
+15. ¿Qué tan dispuesto estaría a que le instalen un equipo de medición en su tablero eléctrico? ¿Qué le preocuparía de eso?
+16. ¿Qué le haría abandonar una herramienta así después de probarla?
+
+**Bloque E. Perfil digital**
+
+17. ¿Qué dispositivo usa habitualmente para temas del negocio?
+18. ¿Usa alguna aplicación para llevar cuentas, inventario o ventas? ¿Cuál y por qué esa?
+19. ¿Cómo prefiere que le llegue un aviso urgente del local?
+
+### 2.2.2. Registro de entrevistas
+
+> **Pendiente de ejecución por el equipo.** Esta sección se completa con las entrevistas reales.
+> Por cada entrevista se debe registrar: nombres y apellidos, edad, distrito, cargo, un screenshot
+> del cuadro de video, el URL del video subido a Microsoft Stream con el *timing* de inicio y la
+> duración, y un resumen descriptivo de las principales respuestas.
+>
+> **El resumen debe incluir todas las características objetivas y subjetivas** (personalidad,
+> marcas e influencias, tecnología, canales de interacción, navegador y dispositivos), porque cada
+> característica de los arquetipos de la sección 2.3 debe poder rastrearse hasta un dato recogido
+> aquí.
+
+#### Segmento #1 — Entrevista 1
+
+| Campo | Dato |
+| :-- | :-- |
 <!-- CH2_INSERT -->
 ## 2.4. Ubiquitous Language
 
