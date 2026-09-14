@@ -1192,6 +1192,23 @@ En esta sección se presentan los wireframes de fidelidad media para la aplicaci
   <img src="assets/chapter4/wireframes/Screenshot_6.png" alt="wireframe 6" width="700"><br>
   Nota: Wireframe de Reportes, Suscripción y Organización
 </p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_7.png" alt="wireframe 7" width="500"><br>
+  Nota: Wireframe de Configuración y Perfil
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_8.png" alt="wireframe 8" width="500"><br>
+  Nota: Wireframe de detalle de consumos
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_9.png" alt="wireframe 9" width="300"><br>
+  Nota: Wireframe de menús modales
+</p>
+
+### 4.4.2. Mobile Applications Wireflow Diagrams
+
+**Segmento 1: Responsable de Operaciones de Cadena**
+
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
