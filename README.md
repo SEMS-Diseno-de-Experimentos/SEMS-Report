@@ -571,6 +571,59 @@ los arquetipos. Cada porcentaje debe poder verificarse contra los resúmenes de 
 | Puede atribuir consumo a una zona | `<...>` | `<X %>` | `<...>` |
 | Frustración más mencionada | `<...>` | `<X %>` | `<...>` |
 | Disposición a pagar una suscripción | `<...>` | `<X %>` | `<...>` |
+
+## 2.3. Needfinding
+
+> Los artefactos de esta sección **derivan de las entrevistas** y deben elaborarse una vez
+> registradas y analizadas. Se incluye aquí la estructura y las herramientas indicadas por el
+> enunciado. Construirlos antes de entrevistar invalidaría el proceso: los arquetipos dejarían de
+> representar a personas reales y pasarían a ser suposiciones del equipo.
+
+### 2.3.1. User Personas
+
+Elaborados en **UXPressia**, uno por segmento objetivo. Cada User Persona debe incluir datos
+demográficos, rasgos de personalidad, motivaciones, frustraciones, objetivos, marcas e
+influencias, canales digitales y dispositivos, **todos derivados del análisis de la sección 2.2.3**.
+
+**User Persona — Segmento #1: Responsable de operaciones de cadena**
+
+`<Insertar imagen del User Persona elaborado en UXPressia>`
+
+`<Párrafo explicativo del arquetipo, indicando de qué hallazgos de las entrevistas proviene cada
+característica.>`
+
+**User Persona — Segmento #2: Propietario de establecimiento independiente**
+
+`<Insertar imagen del User Persona elaborado en UXPressia>`
+
+`<Párrafo explicativo.>`
+
+### 2.3.2. User Task Matrix
+
+Matriz de tareas por User Persona, indicando frecuencia e importancia de cada tarea.
+
+| Tarea | Persona #1 — Frecuencia | Persona #1 — Importancia | Persona #2 — Frecuencia | Persona #2 — Importancia |
+| :-- | :-- | :-- | :-- | :-- |
+| Revisar el consumo y gasto diario | Media | Alta | Alta | Alta |
+| Identificar la causa de una variación en el recibo | Media | Alta | Baja | Alta |
+| Atender una alerta de demanda o consumo | Alta | Alta | Alta | Alta |
+| Comparar el desempeño energético entre locales | Alta | Alta | Baja | Baja |
+| Configurar umbrales y avisos de potencia | Baja | Alta | Baja | Alta |
+| Gestionar accesos al personal del local | Media | Alta | Baja | Media |
+| Descargar reportes consolidados para gerencia | Media | Alta | Baja | Baja |
+
+**Análisis de la Matriz de Tareas (User Task Matrix)**
+Ambos perfiles coinciden en la alta importancia de tareas enfocadas en el ahorro y resolución de alertas (revisar consumo diario y atender alertas de demanda), siendo estos los flujos críticos del negocio. Sin embargo, existen diferencias clave en la frecuencia de ciertas actividades operativas debido a su naturaleza y escala de operación. El **Persona #1 (Responsable de Operaciones de Cadena)** realiza con alta frecuencia tareas de análisis comparativo entre sedes y descarga de reportes para gerencia, ya que su rol exige la justificación de gastos corporativos. Por otro lado, el **Persona #2 (Propietario Independiente)** le da poca importancia y frecuencia a comparar locales y descargar reportes corporativos, pero revisa con altísima frecuencia su consumo diario, dado que está altamente preocupado por el día a día y el impacto en su bolsillo.
+
+### 2.3.3. User Journey Mapping
+
+El *User Journey Map* recorre la experiencia completa de cada User Persona a lo largo de un ciclo
+de facturación, desde que empieza el mes hasta que recibe el recibo. A diferencia del *As-Is
+Scenario Map*, que describe la secuencia de acciones, el *Journey Map* añade la dimensión
+emocional y el nivel de conocimiento que la persona tiene en cada fase, que es lo que explica por
+qué el problema persiste.
+
+> `<Insertar los User Journey Maps elaborados en UXPressia, uno por cada User Persona.>`
 <!-- CH2_INSERT -->
 ## 2.4. Ubiquitous Language
 
