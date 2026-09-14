@@ -1761,21 +1761,18 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 - Llamados a la acción por segmento que redirigen a las vistas correspondientes de la aplicación web.
 - Sección de Términos y Condiciones con la política de privacidad y el acuerdo de nivel de servicio.
 
-> `<Insertar capturas del Landing Page desplegado, en escritorio y en móvil, y en ambos idiomas.>`
+![landingDeploy](assets/landingDeploy.png)
 
 ### 5.2.3. Implemented Frontend-Web Application Evidence
 
 | Dato | Valor |
 | :-- | :-- |
 | Repositorio | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Web-Application> |
-| Desplegado en | `<URL de Vercel>` |
+| Desplegado en | <https://sems-web-application-fyld.vercel.app/> |
 | Tecnología | Vue 3, Vite, PrimeVue con *preset* Material, Pinia, TanStack Query |
 
-**Vistas implementadas:** autenticación (inicio de sesión, registro, verificación, recuperación),
-resumen, dispositivos, monitoreo, analítica, alertas, reportes, suscripción y pagos, y
-configuración.
+![WebDeploy](assets/webDeploy.png)
 
-> `<Insertar capturas de las vistas principales de la aplicación web.>`
 
 ### 5.2.4. Implemented Native-Mobile Application Evidence
 
@@ -1786,7 +1783,7 @@ configuración.
 | Dato | Valor |
 | :-- | :-- |
 | Repositorio | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Backend> |
-| Desplegado en | `<URL del servicio>` |
+| Desplegado en | <https://sems-backend-diseno.onrender.com/swagger>  |
 | Tecnología | ASP.NET Core 8, C#, Entity Framework Core, PostgreSQL |
 | Endpoints | 111 |
 | Módulos | 8 |
@@ -1820,7 +1817,7 @@ configuración.
 - Los datos de la tarjeta nunca llegan al servidor: se introducen en la página de la pasarela y la
   aplicación solo recibe un identificador del medio de pago.
 
-> `<Insertar capturas de peticiones y respuestas contra la API desplegada.>`
+![BackDeploy](assets/backDeploy.png)
 
 ### 5.2.6. RESTful API Documentation
 
