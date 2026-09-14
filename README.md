@@ -1295,6 +1295,23 @@ Task Flow:
 <br> Nota: Diagrama de Task Flow de revisión de consumo diario </p>
 
 Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de consulta rápida de resumen </p>
+
+Descripción del flujo:
+Al iniciar sesión, el usuario aterriza directamente en el Dashboard Principal. Allí visualiza su consumo actual en soles (S/) y kilovatios-hora (kWh), además de un gráfico de barras con la tendencia de los últimos 14 días. Para más detalle, entra a "Monitoreo de Energía" donde ve un desglose simplificado por dispositivo activo.
+
+* User Goal: Como dueño de local, quiero aplicar sugerencias automáticas de la IA, para reducir mi factura de luz sin tener que analizar gráficos complejos.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para aplicación de recomendaciones de ahorro </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/wireflow.png" width="700"> 
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
