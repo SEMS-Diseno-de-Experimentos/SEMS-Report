@@ -413,6 +413,58 @@ con refrigeración continua, donde el problema del pico de demanda es más agudo
 demostrar. La táctica es construir el caso de negocio con un local piloto y usar sus cifras
 reales como argumento de venta ante cadenas del mismo rubro.
 
+## 2.2. Entrevistas
+
+### 2.2.1. Diseño de entrevistas
+
+Las entrevistas buscan validar las hipótesis del *Lean UX Process* y recoger la información
+necesaria para construir los arquetipos: características demográficas, contexto operativo del
+local, comportamiento frente al recibo, canales digitales de interacción y disposición a adoptar
+la solución.
+
+Se realizarán entre **3 y 5 entrevistas por segmento**, registradas en video. Cada entrevista se
+inicia explicando el propósito de la investigación y solicitando consentimiento para la grabación.
+
+> **Nota metodológica.** Las preguntas están formuladas de manera abierta y evitan sugerir la
+> respuesta. En particular, las preguntas sobre el cargo por potencia se plantean **sin nombrarlo**
+> al inicio (preguntas 6 y 7 del segmento 1), para comprobar si el entrevistado lo identifica por
+> sí mismo. Si se le explica primero, la respuesta pierde valor como evidencia.
+
+#### Entrevista — Segmento #1: Responsables de operaciones y mantenimiento de cadenas de retail
+
+**Bloque A. Perfil y contexto**
+
+1. ¿Podría contarnos su cargo, cuánto tiempo lleva en él y cuántos locales están bajo su responsabilidad?
+2. ¿Qué tipo de establecimientos son y qué superficie aproximada tienen?
+3. ¿Quién decide en su organización una inversión en equipamiento o software para los locales, y qué necesita usted para sustentarla?
+
+**Bloque B. Situación actual del costo energético**
+
+4. ¿Qué lugar ocupa el costo eléctrico dentro de los costos operativos que usted gestiona?
+5. ¿Cómo se entera hoy de cuánto consumió cada local y con qué frecuencia lo revisa?
+6. Cuando el recibo de un local sube respecto del mes anterior, ¿cómo averigua a qué se debió?
+7. ¿Qué conceptos aparecen en el recibo de sus locales? ¿Cuál de ellos le resulta más difícil de explicar o de controlar?
+8. ¿Ha tenido alguna vez un recibo que le sorprendiera? ¿Qué hizo al respecto?
+
+**Bloque C. Operación y equipos**
+
+9. ¿Qué equipos considera que consumen más en sus locales y en qué momento del día?
+10. ¿Existe algún procedimiento cuando se produce un corte y los equipos vuelven a arrancar todos a la vez?
+11. ¿Puede identificar qué zona de un local (sala de ventas, cámaras, almacén, oficinas) consume más? ¿Cómo lo sabría?
+12. ¿Tiene forma de comparar el desempeño energético entre locales similares de la cadena?
+
+**Bloque D. Solución y adopción**
+
+13. Si pudiera recibir un aviso mientras el consumo de un local se está disparando, ¿qué haría con ese aviso? ¿Quién debería recibirlo?
+14. ¿Quién en cada local debería poder ver esta información y quién debería poder modificar la configuración?
+15. ¿Qué tendría que demostrarle una herramienta de este tipo para que usted la lleve a su gerencia?
+16. ¿Qué le haría desconfiar o abandonar una herramienta así?
+
+**Bloque E. Perfil digital**
+
+17. ¿Desde qué dispositivo revisaría esta información: computadora de oficina, teléfono, ambos?
+18. ¿Qué herramientas digitales usa hoy para gestionar la operación de los locales?
+19. ¿Cómo prefiere recibir una alerta urgente: correo, mensajería, notificación en la aplicación?
 <!-- CH2_INSERT -->
 ## 2.4. Ubiquitous Language
 
