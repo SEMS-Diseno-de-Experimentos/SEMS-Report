@@ -624,6 +624,59 @@ emocional y el nivel de conocimiento que la persona tiene en cada fase, que es l
 qué el problema persiste.
 
 > `<Insertar los User Journey Maps elaborados en UXPressia, uno por cada User Persona.>`
+
+**User Journey Map — User Persona #1 (responsable de operaciones de cadena)**
+
+| Fase | Acción | Punto de contacto | Qué piensa | Emoción | Oportunidad |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| Inicio del mes | Recibe el presupuesto energético del trimestre | Hoja de cálculo interna | «Tengo que cerrar por debajo de lo presupuestado» | Confianza | Fijar un objetivo por local y medirlo desde el día 1 |
+| Operación diaria | Delega la operación en cada jefe de tienda | Llamadas y mensajería | «Confío en que avisen si algo pasa» | Neutral | Dar a cada sede su propia vista con permisos acotados |
+| Ocurre el pico | Nadie lo percibe: la operación continúa con normalidad | Ninguno | — | Ignorancia | **Alerta con margen antes de superar la potencia contratada** |
+| Llega el recibo | Detecta un cargo por potencia superior al previsto | Recibo de la distribuidora | «¿De dónde salió esto?» | Frustración | Desglose por local y por zona del periodo facturado |
+| Investigación | Pide explicaciones a la sede y no obtiene evidencia | Correo, reuniones | «Nadie sabe qué pasó» | Impotencia | Historial de demanda con marca temporal del pico |
+| Cierre | Justifica la desviación ante gerencia sin causa raíz | Informe mensual | «El mes que viene puede repetirse» | Resignación | Comparación entre locales para aislar la sede desviada |
+
+**User Journey Map — User Persona #2 (propietario de establecimiento independiente)**
+
+| Fase | Acción | Punto de contacto | Qué piensa | Emoción | Oportunidad |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| Inicio del mes | Opera el local sin ninguna referencia de consumo | Local | «La luz es lo que es» | Indiferencia | Panel simple con el consumo del día en soles |
+| Operación diaria | Enciende todo al abrir y apaga al cerrar | Tablero eléctrico | «Siempre lo hemos hecho así» | Rutina | Señalar el arranque simultáneo como causa de pico |
+| Ocurre el pico | No lo percibe | Ninguno | — | Ignorancia | **Aviso inmediato en el móvil con qué hacer** |
+| Llega el recibo | Ve un importe mayor sin explicación | Recibo | «¿Por qué subió si trabajé igual?» | Ansiedad | Comparación contra los tres meses anteriores |
+| Reacción | Apaga equipos al azar para ahorrar | Local | «Algo tengo que hacer» | Angustia | Recomendación concreta priorizada por impacto |
+| Cierre | Asume el costo como inevitable | — | «Es parte del negocio» | Resignación | Evidencia del ahorro conseguido mes a mes |
+
+### 2.3.4. Empathy Mapping
+
+Elaborados en **UXPressia**, uno por User Persona, con los cuadrantes *Thinks and Feels*, *Sees*,
+*Says and Does*, *Hears*, *Pains* y *Gains*.
+
+`<Insertar imagen del Empathy Map del User Persona #1 y su explicación>`
+
+`<Insertar imagen del Empathy Map del User Persona #2 y su explicación>`
+
+### 2.3.5. As-is Scenario Mapping
+
+Elaborados en **Lucidchart**, uno por User Persona, con las filas *Phases*, *Doing*,
+*Thinking* y *Feeling*, describiendo cómo el usuario afronta hoy la gestión del costo energético
+de su establecimiento **sin** la solución.
+
+**Figura 1**
+*As-Is Scenario Map para el Responsable de Operaciones de Cadena*
+
+![As-Is Scenario Map - Responsable de Operaciones de Cadena](assets/chapter2/segmento1.png)
+
+*Nota.* El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (pain points), así como la confianza que siente al delegar las tareas operativas (happy moments). También se identifican áreas por descubrir (blank areas), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
+
+**Figura 2**
+*As-Is Scenario Map para el Propietario de Establecimiento Independiente*
+
+![As-Is Scenario Map - Propietario de Establecimiento Independiente](assets/chapter2/segmento2.png)
+
+*Nota.* El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (pain points) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (happy moments) y áreas sobre las que no se tiene información (blank areas), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
+
+
 <!-- CH2_INSERT -->
 ## 2.4. Ubiquitous Language
 
