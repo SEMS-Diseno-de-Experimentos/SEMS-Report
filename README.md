@@ -1380,6 +1380,23 @@ User Flow:
 * User Goal: Como coordinador de cadena, quiero configurar el costo por kWh y la meta global de consumo, para que el sistema me notifique si estoy por exceder el presupuesto del mes.
 
 User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de actualización de metas y tarifas en alta fidelidad </p>
+
+* User Goal: Como coordinador de cadena, quiero generar un reporte energético mensual descargable, para presentarlo a gerencia y justificar los gastos de electricidad.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de exportación de reportes PDF en alta fidelidad </p>
+
+
+**Segmento 2: Propietario de Establecimiento Independiente**
+
+* User Goal: Como dueño de local, quiero iniciar sesión de forma segura y poder recuperar mi cuenta si olvido la contraseña, para no perder el acceso a los datos de mi negocio.
+
+User Flow:
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
