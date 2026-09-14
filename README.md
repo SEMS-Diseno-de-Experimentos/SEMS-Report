@@ -1260,6 +1260,23 @@ Task Flow:
 <p align="center"> 
 <img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow para generación de reportes </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de exportación de reportes PDF </p>
+
+Descripción del flujo:
+El usuario se dirige a la sección de "Reportes PDF". Selecciona el rango de tiempo deseado (por ejemplo, "Mes Pasado") a través del menú desplegable y presiona "Descargar PDF". El sistema procesa la información de todos los dispositivos y genera un documento con las métricas consolidadas, listo para ser guardado o compartido.
+
+
+**Segmento 2: Propietario de Establecimiento Independiente**
+
+* User Goal: Como dueño de local, quiero iniciar sesión de forma segura y poder recuperar mi cuenta si olvido la contraseña, para no perder el acceso a los datos de mi negocio.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/taskflow.png" width="300">
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
