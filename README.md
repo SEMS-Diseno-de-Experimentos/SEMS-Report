@@ -1277,6 +1277,24 @@ El usuario se dirige a la sección de "Reportes PDF". Selecciona el rango de tie
 Task Flow:
 <p align="center"> 
 <img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow de inicio de sesión y recuperación </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de autenticación de usuario </p>
+
+Descripción del flujo:
+El propietario abre la app e intenta iniciar sesión, pero al fallar las credenciales selecciona "¿Olvidaste tu contraseña?". Ingresa su correo electrónico y el sistema le envía un enlace de recuperación. Tras restablecer sus credenciales, accede exitosamente al Dashboard.
+
+* User Goal: Como dueño de local, quiero revisar el resumen rápido de mi consumo actual, para saber de un vistazo cuánto he gastado hasta el momento en el mes.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow de revisión de consumo diario </p>
+
+Wireflow:
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
