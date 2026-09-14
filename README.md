@@ -1158,6 +1158,23 @@ En navegador móvil las columnas colapsan a una sola y la navegación pasa al me
 
 ![LandingMock](assets/landingMockup.png)
 
+## 4.4. Mobile Applications UX/UI Design
+
+En esta sección se presenta la propuesta de diseño UX/UI de la aplicación móvil de SEMS, describiendo la estructura visual, los elementos de interfaz y los patrones de interacción que orientan la experiencia del usuario tanto para coordinadores de cadenas como para propietarios independientes.
+
+El diseño está enfocado en facilitar el monitoreo de energía y la gestión de alertas, priorizando una interacción clara, rápida y consistente. Asimismo, se mantiene la coherencia con los Style Guidelines y la Information Architecture establecidos.
+
+### 4.4.1. Mobile Applications Wireframes
+
+En esta sección se presentan los wireframes de fidelidad media para la aplicación móvil de SEMS, diseñada específicamente para los roles de Administrador de cadena (Segmento 1) y Propietario independiente (Segmento 2). La propuesta visual y funcional responde directamente a estándares de usabilidad móvil, estructuración de datos y accesibilidad.
+
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_1.png" alt="wireframe 1" width="300"><br>
+  Nota: Wireframe de Inicio de Sesión
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_2.png" alt="wireframe 2" width="300"><br>
+  Nota: Wireframe de Recuperación y Registro
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
