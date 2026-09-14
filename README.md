@@ -38,13 +38,13 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-| Integrante | Código | Carrera | Perfil |
-| :-- | :-- | :-- | :-- |
-| `<Apellidos, Nombres>` **(Team Leader)** | `<Código>` | Ingeniería de Software | `<Foto. Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
-| `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Foto. Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
-| `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Foto. Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
-| `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Foto. Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
-| `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Foto. Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+| Foto | Integrante | Código | Carrera | Perfil |
+| :--: | :-- | :-- | :-- | :-- |
+| `<Foto>` | `<Apellidos, Nombres>` **(Team Leader)** | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+| <img src="SEMS-Report/assets/ProfileWinnieMerino.jpg" alt="Winnie Merino" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
+| `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+| `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+| `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
 
 ## 1.2. Solution Profile
 
@@ -102,7 +102,7 @@ con cargo por potencia y hora punta, pero sin un área de energía que la admini
 entre la complejidad de la tarifa y la capacidad instalada del cliente es el espacio que ocupa SEMS.
 
 El problema operativo es concreto. La demanda máxima que fija el cargo por potencia del mes se
-determina por el **pico más alto registrado**, aunque ese pico haya durado quince minutos. En un
+determina por el pico más alto registrado, aunque ese pico haya durado quince minutos. En un
 supermercado, el arranque simultáneo de los compresores de las cámaras frigoríficas tras un
 corte, una jornada de alta afluencia o la puesta en marcha del aire acondicionado a primera hora
 bastan para producirlo. El administrador del local no dispone de ninguna señal en el momento en
@@ -111,7 +111,7 @@ está aplicado a todo el periodo.
 
 A esa ceguera se añade una segunda: el recibo llega agregado por suministro. No indica qué zona
 del local ni qué equipo originó el consumo, de modo que aunque el responsable quiera actuar, no
-sabe **dónde** actuar. En una cadena con varias sedes el problema se multiplica, porque tampoco
+sabe dónde actuar. En una cadena con varias sedes el problema se multiplica, porque tampoco
 existe forma sencilla de comparar el desempeño energético entre locales de tamaño y tipo
 similares.
 
