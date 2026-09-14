@@ -1312,6 +1312,23 @@ Task Flow:
 Wireflow:
 <p align="center"> 
 <img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de implementación de sugerencias de IA </p>
+
+Descripción del flujo:
+El usuario ingresa a "Analíticas" y revisa la sección "Recomendaciones de IA". Identifica una sugerencia útil (ej. "Apaga el Aire Acondicionado a las 3 AM" que promete un ahorro de S/ 35.50). Selecciona aplicar recomendación, y la IA ajusta automáticamente el cronograma del enchufe inteligente. El estado de la recomendación cambia a "Aplicada", reflejando un impacto positivo en la proyección de su factura mensual.
+
+
+### 4.4.3. Mobile Applications Mock-ups
+
+Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación móvil de SEMS, diseñada para ofrecer una experiencia fluida e intuitiva tanto para los administradores corporativos como para los dueños de locales independientes. El diseño aplica la identidad visual completa del proyecto: modo oscuro predeterminado por eficiencia energética (OLED), paleta con acentos azules, e indicadores claros en verde/rojo para estados financieros y de alerta.
+
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_1.png" alt="mockup 1" width="500"><br>
+  Nota: Mockup de Inicio de Sesión
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_2.png" alt="mockup 2" width="500"><br>
+  Nota: Mockup de Recuperación y Registro
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
