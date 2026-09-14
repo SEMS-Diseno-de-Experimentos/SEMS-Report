@@ -1108,8 +1108,7 @@ hay token válido.
 
 ### 4.3.1. Landing Page Wireframe
 
-> `<Insertar los wireframes del Landing Page para Desktop Web Browser y Mobile Web Browser,
-> elaborados en Figma o LucidChart.>`
+![Landing](assets/landingWireframe.png) 
 
 Estructura de bloques, de arriba abajo:
 
@@ -1129,17 +1128,17 @@ En navegador móvil las columnas colapsan a una sola y la navegación pasa al me
 
 ### 4.3.2. Landing Page Mock-up
 
-> `<Insertar los mock-ups del Landing Page en sus versiones de escritorio y móvil.>`
+![LandingMock](assets/landingMockup.png)
 
 ## 4.4. Mobile Applications UX/UI Design
 
 ### 4.4.1. Mobile Applications Wireframes
 
-> `<Insertar los wireframes de la aplicación móvil.>`
+
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
 
-> `<Insertar los wireflow diagrams de la aplicación móvil.>`
+
 
 ### 4.4.3. Mobile Applications Mock-ups
 
@@ -1163,7 +1162,49 @@ En navegador móvil las columnas colapsan a una sola y la navegación pasa al me
 
 ### 4.6.1. Web Applications Wireframes
 
-> `<Insertar los wireframes de la aplicación web.>`
+![Login](assets/WireLogin.png)
+
+
+![Login](assets/WireCreate.png)
+
+
+![Login](assets/WireRestore.png)
+
+
+![Login](assets/WireChange.png)
+
+
+![Login](assets/WireVerify.png)
+
+
+![Login](assets/WireDashboard.png)
+
+
+![Login](assets/WireDevices.png)
+
+
+![Login](assets/WireMonitor.png)
+
+
+![Login](assets/WireAnalytics.png)
+
+
+![Login](assets/WireAelrts.png)
+
+
+![Login](assets/WireReports.png)
+
+
+![Login](assets/WireSubs.png)
+
+
+![Login](assets/WireLocals.png)
+
+
+![Login](assets/WireConfig.png)
+
+
+![Login](assets/WireNotFound.png)
 
 Distribución común a todas las vistas autenticadas: barra lateral fija a la izquierda con la
 navegación, barra superior con el título de la vista y los controles de cuenta, y área de
@@ -1171,7 +1212,16 @@ contenido con una rejilla de tarjetas.
 
 ### 4.6.2. Web Applications Wireflow Diagrams
 
-> `<Insertar los wireflow diagrams de la aplicación web.>`
+![WireFlow1](assets/Wireflow1.png)
+
+![WireFlow2](assets/Wireflow2.png)
+
+![WireFlow3](assets/Wireflow3.png)
+
+![WireFlow4](assets/Wireflow4.png)
+
+![WireFlow5](assets/Wireflow5.png)
+
 
 Flujos que deben representarse:
 
@@ -1182,15 +1232,66 @@ Flujos que deben representarse:
 
 ### 4.6.3. Web Applications Mock-ups
 
-> `<Insertar los mock-ups de la aplicación web.>`
+![MockWeb](assets/MockLogin.png)
+
+
+![MockWeb](assets/MockCreate.png)
+
+
+![MockWeb](assets/MockRestore.png)
+
+
+![MockWeb](assets/MockChange.png)
+
+
+![MockWeb](assets/MockVerify.png)
+
+
+![MockWeb](assets/MockDashboard.png)
+
+
+![MockWeb](assets/MockDevices.png)
+
+
+![MockWeb](assets/MockMonitor.png)
+
+
+![MockWeb](assets/MockAnalytics.png)
+
+
+![MockWeb](assets/MockAlerts.png)
+
+
+![MockWeb](assets/MockReports.png)
+
+
+![MockWeb](assets/MockSubs.png)
+
+
+![MockWeb](assets/MockLocals.png)
+
+
+![MockWeb](assets/MockConfig.png)
+
+
+![MockWeb](assets/MockNotFound.png)
 
 ### 4.6.4. Web Applications User Flow Diagrams
 
-> `<Insertar los user flow diagrams de la aplicación web.>`
+![UserFlows](assets/UserFlow1.png)
+
+
+![UserFlows](assets/UserFlow2.png)
+
+
+![UserFlows](assets/UserFlow3.png)
+
+
+![UserFlows](assets/UserFlow4.png)
 
 ## 4.7. Web Applications Prototyping
 
-> `<Enlace al prototipo navegable de la aplicación web.>`
+https://www.figma.com/design/O4iOfbaAggqazFr6Y5aNeR/SEMS-%E2%80%94-UI-UX-Design--4.3-%C2%B7-4.6-%C2%B7-4.7-?node-id=4-8&t=bT9hE9gbEQIG2Cls-1 
 
 ## 4.8. Domain-Driven Software Architecture
 
