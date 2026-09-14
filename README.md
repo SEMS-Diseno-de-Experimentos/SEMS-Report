@@ -1346,6 +1346,23 @@ Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación 
   <img src="assets/chapter4/mockups/Screenshot_6.png" alt="mockup 6" width="900"><br>
   Nota: Mockup de Reportes, Suscripción y Organización
 </p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_7.png" alt="mockup 7" width="500"><br>
+  Nota: Mockup de Configuración y Perfil
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_8.png" alt="mockup 8" width="500"><br>
+  Nota: Mockup de detalle de consumos
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_9.png" alt="mockup 9" width="300"><br>
+  Nota: Mockup de menús modales
+</p>
+
+### 4.4.4. Mobile Applications User Flow Diagrams
+
+**Segmento 1: Responsable de Operaciones de Cadena**
+
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
