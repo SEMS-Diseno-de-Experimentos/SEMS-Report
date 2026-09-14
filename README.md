@@ -1209,6 +1209,23 @@ En esta sección se presentan los wireframes de fidelidad media para la aplicaci
 
 **Segmento 1: Responsable de Operaciones de Cadena**
 
+* User Goal: Como coordinador de cadena, quiero registrar un nuevo medidor inteligente escaneándolo con la cámara, para asignar en qué área del local está instalado y comenzar a monitorearlo.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para vincular nuevos medidores </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow para el registro de nuevos dispositivos </p>
+
+Descripción del flujo:
+El usuario ingresa a la sección de "Mis Dispositivos" desde el menú lateral, selecciona la opción para agregar un nuevo equipo ("Vincular Dispositivo") y utiliza la cámara para escanear el código QR del medidor inteligente. Una vez detectado, asigna el tipo de dispositivo y la zona. Al confirmar, el dispositivo queda activo y vinculado a su red para comenzar la transmisión de datos.
+
+* User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
+
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
