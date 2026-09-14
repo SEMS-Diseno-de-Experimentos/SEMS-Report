@@ -518,6 +518,59 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 
 | Campo | Dato |
 | :-- | :-- |
+| Nombres y apellidos | Fabrizzio Estefano Varela Tapia |
+| Edad | 24 años |
+| Distrito | Lima (Santa Paula 375, Lima) |
+| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets) |
+| Número de locales a cargo | 3 locales |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQB5nwCliWL5S6uU__Jhf6JZAWlwk4Z6HWyNSsf2NyK_DOo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OrbLbV) |
+| Timing de inicio | 00:00 |
+| Duración | 08:11 |
+| Screenshot | ![Captura Entrevista Fabrizzio](assets/chapter2/entrevistaSegment1-Disenio.png) |
+
+**Resumen de la entrevista**
+
+Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona la operación de forma reactiva, enterándose del costo eléctrico solo al llegar el recibo mensual, lo que representa su segundo mayor gasto después del alquiler. Su mayor frustración es el cargo por potencia, ya que al carecer de medidores por zonas (como frigoríficos) no puede detectar ineficiencias ni sustentar excesos tarifarios ante la gerencia. Indica gran disposición a usar una solución que envíe alertas de demanda con margen a su celular, siempre que esto logre evitar penalidades tarifarias (retorno de inversión) y permita dar accesos acotados a los jefes de cada tienda. A nivel tecnológico, usa ERP corporativo en su laptop, pero depende intensamente de WhatsApp y notificaciones *push* en su smartphone para emergencias.
+
+#### Segmento #2 — Entrevista 1
+
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Jasmin Adriana Urrutia Peña |
+| Edad | 25 años |
+| Distrito | Santiago de Surco (Monterrico, Lima) |
+| Cargo / tipo de establecimiento | Propietario y administrador (Cafetería de especialidad) |
+| Número de locales a cargo | 1 local |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
+| Timing de inicio | 00:00 |
+| Duración | 08:08 |
+| Screenshot | ![Captura Entrevista Segmento 2](assets/chapter2/entrevistaSegment2-Disenio.png) |
+
+**Resumen de la entrevista**
+
+El entrevistado es propietario y administrador de una cafetería de especialidad de 80 m² y gestiona todas las operaciones diarias de manera empírica. El costo de energía representa una parte significativa de sus gastos fijos (20%). Sin embargo, no revisa el detalle de su recibo, ignorando conceptos técnicos como el cargo por potencia y la tarifa comercial. Suele encender los equipos de manera rutinaria, generando picos de consumo por las tardes (hora punta) al activar luces y aire acondicionado simultáneamente por la afluencia de clientes. Ante un recibo inexplicable en campaña pasada, su única acción fue apagar equipos al azar sin conocer realmente cuáles consumían más. Estaría dispuesto a pagar una herramienta mensual si se le demuestra un ahorro tangible en el recibo, y ve con gran interés recibir avisos de exceso de consumo en tiempo real mediante notificaciones *push* en su smartphone, el cual es su principal herramienta de gestión, junto con apps bancarias.
+
+### 2.2.3. Análisis de entrevistas
+
+> **Pendiente de ejecución por el equipo.** Se completa una vez registradas las entrevistas.
+
+El análisis se realiza **por segmento**, identificando con sustento estadístico (porcentajes) las
+características objetivas y subjetivas más comunes, que son las que sostienen la construcción de
+los arquetipos. Cada porcentaje debe poder verificarse contra los resúmenes de la sección 2.2.2.
+
+**Estructura del análisis por segmento**
+
+| Característica | Hallazgo | Porcentaje | Entrevistas que lo sustentan |
+| :-- | :-- | :-- | :-- |
+| Rango de edad predominante | `<...>` | `<X %>` | `<E1, E2, E4>` |
+| Dispositivo principal de consulta | `<...>` | `<X %>` | `<...>` |
+| Canal preferido para alertas | `<...>` | `<X %>` | `<...>` |
+| Conoce su potencia contratada | `<...>` | `<X %>` | `<...>` |
+| Identifica el cargo por potencia sin ayuda | `<...>` | `<X %>` | `<...>` |
+| Ha tenido un recibo inexplicable | `<...>` | `<X %>` | `<...>` |
+| Puede atribuir consumo a una zona | `<...>` | `<X %>` | `<...>` |
+| Frustración más mencionada | `<...>` | `<X %>` | `<...>` |
+| Disposición a pagar una suscripción | `<...>` | `<X %>` | `<...>` |
 <!-- CH2_INSERT -->
 ## 2.4. Ubiquitous Language
 
