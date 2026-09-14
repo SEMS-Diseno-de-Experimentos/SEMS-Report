@@ -1329,6 +1329,23 @@ Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación 
 <p align="center">
   <img src="assets/chapter4/mockups/Screenshot_2.png" alt="mockup 2" width="500"><br>
   Nota: Mockup de Recuperación y Registro
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_3.png" alt="mockup 3" width="900"><br>
+  Nota: Mockup del Dashboard y Mis Dispositivos
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_4.png" alt="mockup 4" width="900"><br>
+  Nota: Mockup de Monitoreo y Escaneo de Medidores
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_5.png" alt="mockup 5" width="900"><br>
+  Nota: Mockup de Analíticas y Recomendaciones
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_6.png" alt="mockup 6" width="900"><br>
+  Nota: Mockup de Reportes, Suscripción y Organización
+</p>
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
