@@ -1397,6 +1397,24 @@ User Flow:
 * User Goal: Como dueño de local, quiero iniciar sesión de forma segura y poder recuperar mi cuenta si olvido la contraseña, para no perder el acceso a los datos de mi negocio.
 
 User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de autenticación de usuario en alta fidelidad </p>
+
+* User Goal: Como dueño de local, quiero revisar el resumen rápido de mi consumo actual, para saber de un vistazo cuánto he gastado hasta el momento en el mes.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de consulta rápida de resumen en alta fidelidad </p>
+
+* User Goal: Como dueño de local, quiero aplicar sugerencias automáticas de la IA, para reducir mi factura de luz sin tener que analizar gráficos complejos.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de implementación de sugerencias de IA en alta fidelidad </p>
+
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
