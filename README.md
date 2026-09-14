@@ -1363,6 +1363,23 @@ Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación 
 
 **Segmento 1: Responsable de Operaciones de Cadena**
 
+* User Goal: Como coordinador de cadena, quiero registrar un nuevo medidor inteligente escaneándolo con la cámara, para asignar en qué área del local está instalado y comenzar a monitorearlo.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow para el registro de nuevos dispositivos en alta fidelidad </p>
+
+* User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de resolución de alertas en alta fidelidad </p>
+
+* User Goal: Como coordinador de cadena, quiero configurar el costo por kWh y la meta global de consumo, para que el sistema me notifique si estoy por exceder el presupuesto del mes.
+
+User Flow:
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
