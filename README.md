@@ -1175,6 +1175,23 @@ En esta sección se presentan los wireframes de fidelidad media para la aplicaci
 <p align="center">
   <img src="assets/chapter4/wireframes/Screenshot_2.png" alt="wireframe 2" width="300"><br>
   Nota: Wireframe de Recuperación y Registro
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_3.png" alt="wireframe 3" width="700"><br>
+  Nota: Wireframe del Dashboard y Mis Dispositivos
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_4.png" alt="wireframe 4" width="700"><br>
+  Nota: Wireframe de Monitoreo y Escaneo de Medidores
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_5.png" alt="wireframe 5" width="700"><br>
+  Nota: Wireframe de Analíticas y Recomendaciones
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_6.png" alt="wireframe 6" width="700"><br>
+  Nota: Wireframe de Reportes, Suscripción y Organización
+</p>
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
