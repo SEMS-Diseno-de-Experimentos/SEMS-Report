@@ -1226,6 +1226,23 @@ El usuario ingresa a la sección de "Mis Dispositivos" desde el menú lateral, s
 
 * User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
 
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para atención de alertas de consumo </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de resolución de alertas </p>
+
+Descripción del flujo:
+Desde el dashboard, el usuario visualiza notificaciones pendientes y navega a la vista de "Alertas". Allí filtra las activas, selecciona una alerta crítica de sobreconsumo (Cargo por Potencia), lee los detalles del incidente y presiona "Reconocer". Posteriormente, tras coordinar la reducción de carga, marca la alerta como "Resuelta", manteniendo un historial limpio.
+
+* User Goal: Como coordinador de cadena, quiero configurar el costo por kWh y la meta global de consumo, para que el sistema me notifique si estoy por exceder el presupuesto del mes.
+
+Task Flow:
+<p align="center"> 
 <!-- CH4_INSERT -->
 ## 4.5. Mobile Applications Prototyping
 
