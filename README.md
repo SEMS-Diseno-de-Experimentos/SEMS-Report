@@ -677,20 +677,19 @@ Elaborados en **Lucidchart**, uno por User Persona, con las filas *Phases*, *Doi
 *Thinking* y *Feeling*, describiendo cómo el usuario afronta hoy la gestión del costo energético
 de su establecimiento **sin** la solución.
 
-**Figura 1**
-*As-Is Scenario Map para el Responsable de Operaciones de Cadena*
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-![As-Is Scenario Map - Responsable de Operaciones de Cadena](assets/chapter2/segmento1.png)
+*Figura 10 (As-Is Scenario Map 1)*
+<img src="assets/images/figures/10-as-is-scenario-map-1.png" alt="As Is Scenario Map 1" style="width: 100vw;">
 
-*Nota.* El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (pain points), así como la confianza que siente al delegar las tareas operativas (happy moments). También se identifican áreas por descubrir (blank areas), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
+> **Nota.** El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (**pain points**), así como la confianza que siente al delegar las tareas operativas (**happy moments**). También se identifican áreas por descubrir (**blank areas**), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
 
-**Figura 2**
-*As-Is Scenario Map para el Propietario de Establecimiento Independiente*
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-![As-Is Scenario Map - Propietario de Establecimiento Independiente](assets/chapter2/segmento2.png)
+*Figura 11 (As-Is Scenario Map 2)*
+<img src="assets/images/figures/11-as-is-scenario-map-2.png" alt="As Is Scenario Map 2" style="width: 100vw;">
 
-*Nota.* El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (pain points) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (happy moments) y áreas sobre las que no se tiene información (blank areas), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
-
+> **Nota.** El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (**pain points**) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (**happy moments**) y áreas sobre las que no se tiene información (**blank areas**), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
 
 ## 2.4. Ubiquitous Language
 
