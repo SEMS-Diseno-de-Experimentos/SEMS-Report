@@ -617,34 +617,33 @@ Elaborados en **UXPressia**, uno por segmento objetivo. Cada User Persona debe i
 demográficos, rasgos de personalidad, motivaciones, frustraciones, objetivos, marcas e
 influencias, canales digitales y dispositivos, **todos derivados del análisis de la sección 2.2.3**.
 
-**User Persona — Segmento #1: Responsable de operaciones de cadena**
+**User Persona — Segmento #1: Responsables de operaciones y mantenimiento de cadenas de retail**
 
 *Figura 2 (User Persona 1)*  
 <img src="assets/images/figures/02-user-persona-1.png" alt="User Persona Renzo" style="width: 100vw;">
 
 > El arquetipo de Renzo Varela se construyó a partir de la entrevista a Fabrizzio, coordinador de tres minimarkets. Se caracteriza por priorizar el control, la prevención de sobrecostos y la reacción rápida ante incidencias, a partir de su necesidad de anticipar excesos de consumo, recibir alertas móviles y conocer el consumo por local o zona.
 
-**User Persona — Segmento #2: Propietario de establecimiento independiente**
+**User Persona — Segmento #2: Propietarios y administradores de establecimientos independientes**
 
 *Figura 3 (User Persona 2)*  
 <img src="assets/images/figures/03-user-persona-2.png" alt="User Persona Valeria" style="width: 100vw;">
 
 > El arquetipo de Valeria Mendoza se construyó a partir de la entrevista a Jasmin, propietaria y administradora de una cafetería de especialidad. Se caracteriza por priorizar el ahorro, la simplicidad y la toma rápida de decisiones, a partir de su necesidad de identificar qué equipos consumen más energía, evitar picos de consumo y recibir alertas claras desde su smartphone.
 
-
 ### 2.3.2. User Task Matrix
 
 Matriz de tareas por User Persona, indicando frecuencia e importancia de cada tarea.
 
-| Tarea | Persona #1 — Frecuencia | Persona #1 — Importancia | Persona #2 — Frecuencia | Persona #2 — Importancia |
-| :-- | :-- | :-- | :-- | :-- |
-| Revisar el consumo y gasto diario | Media | Alta | Alta | Alta |
-| Identificar la causa de una variación en el recibo | Media | Alta | Baja | Alta |
-| Atender una alerta de demanda o consumo | Alta | Alta | Alta | Alta |
-| Comparar el desempeño energético entre locales | Alta | Alta | Baja | Baja |
-| Configurar umbrales y avisos de potencia | Baja | Alta | Baja | Alta |
-| Gestionar accesos al personal del local | Media | Alta | Baja | Media |
-| Descargar reportes consolidados para gerencia | Media | Alta | Baja | Baja |
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
+
+*Figura 4 (User Task Matrix 1)*
+<img src="assets/images/figures/04-u-task-matrix-1.png" alt="User Task Matrix 1" style="width: 100vw;">
+
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
+
+*Figura 5 (User Task Matrix 2)*
+<img src="/assets/images/figures/05-u-task-matrix-2.png" alt="User Task Matrix 2" style="width: 100vw;">
 
 **Análisis de la Matriz de Tareas (User Task Matrix)**
 Ambos perfiles coinciden en la alta importancia de tareas enfocadas en el ahorro y resolución de alertas (revisar consumo diario y atender alertas de demanda), siendo estos los flujos críticos del negocio. Sin embargo, existen diferencias clave en la frecuencia de ciertas actividades operativas debido a su naturaleza y escala de operación. El **Persona #1 (Responsable de Operaciones de Cadena)** realiza con alta frecuencia tareas de análisis comparativo entre sedes y descarga de reportes para gerencia, ya que su rol exige la justificación de gastos corporativos. Por otro lado, el **Persona #2 (Propietario Independiente)** le da poca importancia y frecuencia a comparar locales y descargar reportes corporativos, pero revisa con altísima frecuencia su consumo diario, dado que está altamente preocupado por el día a día y el impacto en su bolsillo.
