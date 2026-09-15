@@ -661,9 +661,15 @@ qué el problema persiste.
 Elaborados en **UXPressia**, uno por User Persona, con los cuadrantes *Thinks and Feels*, *Sees*,
 *Says and Does*, *Hears*, *Pains* y *Gains*.
 
-`<Insertar imagen del Empathy Map del User Persona #1 y su explicación>`
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-`<Insertar imagen del Empathy Map del User Persona #2 y su explicación>`
+*Figura 8 (Empathy Map 1)*
+<img src="assets/images/figures/08-empathy-map-1.png" alt="Empathy Map 1" style="width: 100vw;">
+
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
+
+*Figura 9 (Empathy Map 2)*
+<img src="assets/images/figures/09-empathy-map-2.png" alt="Empathy Map 2" style="width: 100vw;">
 
 ### 2.3.5. As-is Scenario Mapping
 
