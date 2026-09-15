@@ -34,7 +34,7 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 
 **Logo de la Startup**
 
-`<Insertar imagen del logo de Energix>`
+<img src="assets/LogoEnergix.png" alt="Startup Logo" width="300">
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
