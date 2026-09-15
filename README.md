@@ -518,6 +518,25 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 
 | Campo | Dato |
 | :-- | :-- |
+| Nombres y apellidos | Fabrizzio Estefano Varela Tapia |
+| Edad | 24 años |
+| Distrito | Lima (Santa Paula 375, Lima) |
+| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets) |
+| Número de locales a cargo | 3 locales |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQB5nwCliWL5S6uU__Jhf6JZAWlwk4Z6HWyNSsf2NyK_DOo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OrbLbV) |
+| Timing de inicio | 00:00 |
+| Duración | 08:11 |
+| Screenshot | ![Captura Entrevista Fabrizzio](assets/chapter2/entrevistaSegment1-Disenio.png) |
+
+**Resumen de la entrevista**
+
+Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona la operación de forma reactiva, enterándose del costo eléctrico solo al llegar el recibo mensual, lo que representa su segundo mayor gasto después del alquiler. Su mayor frustración es el cargo por potencia, ya que al carecer de medidores por zonas (como frigoríficos) no puede detectar ineficiencias ni sustentar excesos tarifarios ante la gerencia. Indica gran disposición a usar una solución que envíe alertas de demanda con margen a su celular, siempre que esto logre evitar penalidades tarifarias (retorno de inversión) y permita dar accesos acotados a los jefes de cada tienda. A nivel tecnológico, usa ERP corporativo en su laptop, pero depende intensamente de WhatsApp y notificaciones *push* en su smartphone para emergencias.
+
+
+#### Segmento #1 — Entrevista 2 (Plantilla)
+
+| Campo | Dato |
+| :-- | :-- |
 | Nombres y apellidos | `<...>` |
 | Edad | `<...>` |
 | Distrito | `<...>` |
@@ -530,8 +549,46 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 
 **Resumen de la entrevista**
 
-`<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo
-características objetivas y subjetivas.>`
+`<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
+
+> Repetir esta ficha para cada entrevista: **3 a 5 por segmento**.
+
+#### Segmento #2 — Entrevista 1
+
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Jasmin Adriana Urrutia Peña |
+| Edad | 25 años |
+| Distrito | Santiago de Surco (Monterrico, Lima) |
+| Cargo / tipo de establecimiento | Propietario y administrador (Cafetería de especialidad) |
+| Número de locales a cargo | 1 local |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
+| Timing de inicio | 00:00 |
+| Duración | 08:08 |
+| Screenshot | ![Captura Entrevista Segmento 2](assets/chapter2/entrevistaSegment2-Disenio.png) |
+
+**Resumen de la entrevista**
+
+El entrevistado es propietario y administrador de una cafetería de especialidad de 80 m² y gestiona todas las operaciones diarias de manera empírica. El costo de energía representa una parte significativa de sus gastos fijos (20%). Sin embargo, no revisa el detalle de su recibo, ignorando conceptos técnicos como el cargo por potencia y la tarifa comercial. Suele encender los equipos de manera rutinaria, generando picos de consumo por las tardes (hora punta) al activar luces y aire acondicionado simultáneamente por la afluencia de clientes. Ante un recibo inexplicable en campaña pasada, su única acción fue apagar equipos al azar sin conocer realmente cuáles consumían más. Estaría dispuesto a pagar una herramienta mensual si se le demuestra un ahorro tangible en el recibo, y ve con gran interés recibir avisos de exceso de consumo en tiempo real mediante notificaciones *push* en su smartphone, el cual es su principal herramienta de gestión, junto con apps bancarias.
+
+
+#### Segmento #2 — Entrevista 2 (Plantilla)
+
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | `<...>` |
+| Edad | `<...>` |
+| Distrito | `<...>` |
+| Cargo / tipo de establecimiento | `<...>` |
+| Número de locales a cargo | `<...>` |
+| URL del video | `<...>` |
+| Timing de inicio | `<mm:ss>` |
+| Duración | `<mm:ss>` |
+| Screenshot | `<Insertar captura del cuadro de video>` |
+
+**Resumen de la entrevista**
+
+`<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
 
 > Repetir esta ficha para cada entrevista: **3 a 5 por segmento**.
 
@@ -589,15 +646,16 @@ Matriz de tareas por User Persona, indicando frecuencia e importancia de cada ta
 
 | Tarea | Persona #1 — Frecuencia | Persona #1 — Importancia | Persona #2 — Frecuencia | Persona #2 — Importancia |
 | :-- | :-- | :-- | :-- | :-- |
-| Revisar el consumo del día | `<Alta/Media/Baja>` | `<Alta/Media/Baja>` | `<...>` | `<...>` |
-| Revisar el recibo mensual | | | | |
-| Identificar la causa de una variación en el recibo | | | | |
-| Atender un aviso de consumo anómalo | | | | |
-| Comparar el desempeño entre locales | | | | |
-| Configurar umbrales y avisos | | | | |
-| Dar acceso a personal del local | | | | |
-| Registrar un equipo o medidor nuevo | | | | |
-| Descargar un reporte para la gerencia | | | | |
+| Revisar el consumo y gasto diario | Media | Alta | Alta | Alta |
+| Identificar la causa de una variación en el recibo | Media | Alta | Baja | Alta |
+| Atender una alerta de demanda o consumo | Alta | Alta | Alta | Alta |
+| Comparar el desempeño energético entre locales | Alta | Alta | Baja | Baja |
+| Configurar umbrales y avisos de potencia | Baja | Alta | Baja | Alta |
+| Gestionar accesos al personal del local | Media | Alta | Baja | Media |
+| Descargar reportes consolidados para gerencia | Media | Alta | Baja | Baja |
+
+**Análisis de la Matriz de Tareas (User Task Matrix)**
+Ambos perfiles coinciden en la alta importancia de tareas enfocadas en el ahorro y resolución de alertas (revisar consumo diario y atender alertas de demanda), siendo estos los flujos críticos del negocio. Sin embargo, existen diferencias clave en la frecuencia de ciertas actividades operativas debido a su naturaleza y escala de operación. El **Persona #1 (Responsable de Operaciones de Cadena)** realiza con alta frecuencia tareas de análisis comparativo entre sedes y descarga de reportes para gerencia, ya que su rol exige la justificación de gastos corporativos. Por otro lado, el **Persona #2 (Propietario Independiente)** le da poca importancia y frecuencia a comparar locales y descargar reportes corporativos, pero revisa con altísima frecuencia su consumo diario, dado que está altamente preocupado por el día a día y el impacto en su bolsillo.
 
 ### 2.3.3. User Journey Mapping
 
@@ -642,13 +700,24 @@ Elaborados en **UXPressia**, uno por User Persona, con los cuadrantes *Thinks an
 
 ### 2.3.5. As-is Scenario Mapping
 
-Elaborados en **LucidChart o Miro**, uno por User Persona, con las filas *Phases*, *Doing*,
+Elaborados en **Lucidchart**, uno por User Persona, con las filas *Phases*, *Doing*,
 *Thinking* y *Feeling*, describiendo cómo el usuario afronta hoy la gestión del costo energético
 de su establecimiento **sin** la solución.
 
-`<Insertar imagen del As-is Scenario Map del User Persona #1 y su explicación>`
+**Figura 1**
+*As-Is Scenario Map para el Responsable de Operaciones de Cadena*
 
-`<Insertar imagen del As-is Scenario Map del User Persona #2 y su explicación>`
+![As-Is Scenario Map - Responsable de Operaciones de Cadena](assets/chapter2/segmento1.png)
+
+*Nota.* El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (pain points), así como la confianza que siente al delegar las tareas operativas (happy moments). También se identifican áreas por descubrir (blank areas), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
+
+**Figura 2**
+*As-Is Scenario Map para el Propietario de Establecimiento Independiente*
+
+![As-Is Scenario Map - Propietario de Establecimiento Independiente](assets/chapter2/segmento2.png)
+
+*Nota.* El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (pain points) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (happy moments) y áreas sobre las que no se tiene información (blank areas), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
+
 
 ## 2.4. Ubiquitous Language
 
@@ -1132,21 +1201,260 @@ En navegador móvil las columnas colapsan a una sola y la navegación pasa al me
 
 ## 4.4. Mobile Applications UX/UI Design
 
+En esta sección se presenta la propuesta de diseño UX/UI de la aplicación móvil de SEMS, describiendo la estructura visual, los elementos de interfaz y los patrones de interacción que orientan la experiencia del usuario tanto para coordinadores de cadenas como para propietarios independientes.
+
+El diseño está enfocado en facilitar el monitoreo de energía y la gestión de alertas, priorizando una interacción clara, rápida y consistente. Asimismo, se mantiene la coherencia con los Style Guidelines y la Information Architecture establecidos.
+
 ### 4.4.1. Mobile Applications Wireframes
 
+En esta sección se presentan los wireframes de fidelidad media para la aplicación móvil de SEMS, diseñada específicamente para los roles de Administrador de cadena (Segmento 1) y Propietario independiente (Segmento 2). La propuesta visual y funcional responde directamente a estándares de usabilidad móvil, estructuración de datos y accesibilidad.
 
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_1.png" alt="wireframe 1" width="300"><br>
+  Nota: Wireframe de Inicio de Sesión
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_2.png" alt="wireframe 2" width="300"><br>
+  Nota: Wireframe de Recuperación y Registro
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_3.png" alt="wireframe 3" width="700"><br>
+  Nota: Wireframe del Dashboard y Mis Dispositivos
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_4.png" alt="wireframe 4" width="700"><br>
+  Nota: Wireframe de Monitoreo y Escaneo de Medidores
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_5.png" alt="wireframe 5" width="700"><br>
+  Nota: Wireframe de Analíticas y Recomendaciones
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_6.png" alt="wireframe 6" width="700"><br>
+  Nota: Wireframe de Reportes, Suscripción y Organización
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_7.png" alt="wireframe 7" width="500"><br>
+  Nota: Wireframe de Configuración y Perfil
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_8.png" alt="wireframe 8" width="500"><br>
+  Nota: Wireframe de detalle de consumos
+</p>
+<p align="center">
+  <img src="assets/chapter4/wireframes/Screenshot_9.png" alt="wireframe 9" width="300"><br>
+  Nota: Wireframe de menús modales
+</p>
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
 
+**Segmento 1: Responsable de Operaciones de Cadena**
+
+* User Goal: Como coordinador de cadena, quiero registrar un nuevo medidor inteligente escaneándolo con la cámara, para asignar en qué área del local está instalado y comenzar a monitorearlo.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para vincular nuevos medidores </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow para el registro de nuevos dispositivos </p>
+
+Descripción del flujo:
+El usuario ingresa a la sección de "Mis Dispositivos" desde el menú lateral, selecciona la opción para agregar un nuevo equipo ("Vincular Dispositivo") y utiliza la cámara para escanear el código QR del medidor inteligente. Una vez detectado, asigna el tipo de dispositivo y la zona. Al confirmar, el dispositivo queda activo y vinculado a su red para comenzar la transmisión de datos.
+
+* User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para atención de alertas de consumo </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de resolución de alertas </p>
+
+Descripción del flujo:
+Desde el dashboard, el usuario visualiza notificaciones pendientes y navega a la vista de "Alertas". Allí filtra las activas, selecciona una alerta crítica de sobreconsumo (Cargo por Potencia), lee los detalles del incidente y presiona "Reconocer". Posteriormente, tras coordinar la reducción de carga, marca la alerta como "Resuelta", manteniendo un historial limpio.
+
+* User Goal: Como coordinador de cadena, quiero configurar el costo por kWh y la meta global de consumo, para que el sistema me notifique si estoy por exceder el presupuesto del mes.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para configuración de tarifas y metas </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de actualización de metas y tarifas </p>
+
+Descripción del flujo:
+El usuario ingresa a "Mi Organización", donde visualiza los parámetros actuales de la sede. Modifica el campo de "Meta global (kWh/mes)" y luego actualiza el "Costo por kWh" en la sección de tarifa energética. Guarda ambos valores, los cuales recalcularán inmediatamente las proyecciones y costos estimados en todo el sistema.
+
+* User Goal: Como coordinador de cadena, quiero generar un reporte energético mensual descargable, para presentarlo a gerencia y justificar los gastos de electricidad.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para generación de reportes </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de exportación de reportes PDF </p>
+
+Descripción del flujo:
+El usuario se dirige a la sección de "Reportes PDF". Selecciona el rango de tiempo deseado (por ejemplo, "Mes Pasado") a través del menú desplegable y presiona "Descargar PDF". El sistema procesa la información de todos los dispositivos y genera un documento con las métricas consolidadas, listo para ser guardado o compartido.
+
+
+**Segmento 2: Propietario de Establecimiento Independiente**
+
+* User Goal: Como dueño de local, quiero iniciar sesión de forma segura y poder recuperar mi cuenta si olvido la contraseña, para no perder el acceso a los datos de mi negocio.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow de inicio de sesión y recuperación </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de autenticación de usuario </p>
+
+Descripción del flujo:
+El propietario abre la app e intenta iniciar sesión, pero al fallar las credenciales selecciona "¿Olvidaste tu contraseña?". Ingresa su correo electrónico y el sistema le envía un enlace de recuperación. Tras restablecer sus credenciales, accede exitosamente al Dashboard.
+
+* User Goal: Como dueño de local, quiero revisar el resumen rápido de mi consumo actual, para saber de un vistazo cuánto he gastado hasta el momento en el mes.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow de revisión de consumo diario </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de consulta rápida de resumen </p>
+
+Descripción del flujo:
+Al iniciar sesión, el usuario aterriza directamente en el Dashboard Principal. Allí visualiza su consumo actual en soles (S/) y kilovatios-hora (kWh), además de un gráfico de barras con la tendencia de los últimos 14 días. Para más detalle, entra a "Monitoreo de Energía" donde ve un desglose simplificado por dispositivo activo.
+
+* User Goal: Como dueño de local, quiero aplicar sugerencias automáticas de la IA, para reducir mi factura de luz sin tener que analizar gráficos complejos.
+
+Task Flow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/taskflow.png" width="300">
+<br> Nota: Diagrama de Task Flow para aplicación de recomendaciones de ahorro </p>
+
+Wireflow:
+<p align="center"> 
+<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/wireflow.png" width="700"> 
+<br> Nota: Diagrama de Wireflow de implementación de sugerencias de IA </p>
+
+Descripción del flujo:
+El usuario ingresa a "Analíticas" y revisa la sección "Recomendaciones de IA". Identifica una sugerencia útil (ej. "Apaga el Aire Acondicionado a las 3 AM" que promete un ahorro de S/ 35.50). Selecciona aplicar recomendación, y la IA ajusta automáticamente el cronograma del enchufe inteligente. El estado de la recomendación cambia a "Aplicada", reflejando un impacto positivo en la proyección de su factura mensual.
 
 
 ### 4.4.3. Mobile Applications Mock-ups
 
-> `<Insertar los mock-ups de la aplicación móvil.>`
+Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación móvil de SEMS, diseñada para ofrecer una experiencia fluida e intuitiva tanto para los administradores corporativos como para los dueños de locales independientes. El diseño aplica la identidad visual completa del proyecto: modo oscuro predeterminado por eficiencia energética (OLED), paleta con acentos azules, e indicadores claros en verde/rojo para estados financieros y de alerta.
+
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_1.png" alt="mockup 1" width="500"><br>
+  Nota: Mockup de Inicio de Sesión
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_2.png" alt="mockup 2" width="500"><br>
+  Nota: Mockup de Recuperación y Registro
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_3.png" alt="mockup 3" width="900"><br>
+  Nota: Mockup del Dashboard y Mis Dispositivos
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_4.png" alt="mockup 4" width="900"><br>
+  Nota: Mockup de Monitoreo y Escaneo de Medidores
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_5.png" alt="mockup 5" width="900"><br>
+  Nota: Mockup de Analíticas y Recomendaciones
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_6.png" alt="mockup 6" width="900"><br>
+  Nota: Mockup de Reportes, Suscripción y Organización
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_7.png" alt="mockup 7" width="500"><br>
+  Nota: Mockup de Configuración y Perfil
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_8.png" alt="mockup 8" width="500"><br>
+  Nota: Mockup de detalle de consumos
+</p>
+<p align="center">
+  <img src="assets/chapter4/mockups/Screenshot_9.png" alt="mockup 9" width="300"><br>
+  Nota: Mockup de menús modales
+</p>
 
 ### 4.4.4. Mobile Applications User Flow Diagrams
 
-> `<Insertar los user flow diagrams de la aplicación móvil.>`
+**Segmento 1: Responsable de Operaciones de Cadena**
+
+* User Goal: Como coordinador de cadena, quiero registrar un nuevo medidor inteligente escaneándolo con la cámara, para asignar en qué área del local está instalado y comenzar a monitorearlo.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow para el registro de nuevos dispositivos en alta fidelidad </p>
+
+* User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de resolución de alertas en alta fidelidad </p>
+
+* User Goal: Como coordinador de cadena, quiero configurar el costo por kWh y la meta global de consumo, para que el sistema me notifique si estoy por exceder el presupuesto del mes.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de actualización de metas y tarifas en alta fidelidad </p>
+
+* User Goal: Como coordinador de cadena, quiero generar un reporte energético mensual descargable, para presentarlo a gerencia y justificar los gastos de electricidad.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de exportación de reportes PDF en alta fidelidad </p>
+
+
+**Segmento 2: Propietario de Establecimiento Independiente**
+
+* User Goal: Como dueño de local, quiero iniciar sesión de forma segura y poder recuperar mi cuenta si olvido la contraseña, para no perder el acceso a los datos de mi negocio.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de autenticación de usuario en alta fidelidad </p>
+
+* User Goal: Como dueño de local, quiero revisar el resumen rápido de mi consumo actual, para saber de un vistazo cuánto he gastado hasta el momento en el mes.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de consulta rápida de resumen en alta fidelidad </p>
+
+* User Goal: Como dueño de local, quiero aplicar sugerencias automáticas de la IA, para reducir mi factura de luz sin tener que analizar gráficos complejos.
+
+User Flow:
+<p align="center"> 
+<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/userflow.png" width="700"> 
+<br> Nota: Diagrama de User Flow de implementación de sugerencias de IA en alta fidelidad </p>
 
 ## 4.5. Mobile Applications Prototyping
 
@@ -1761,21 +2069,18 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 - Llamados a la acción por segmento que redirigen a las vistas correspondientes de la aplicación web.
 - Sección de Términos y Condiciones con la política de privacidad y el acuerdo de nivel de servicio.
 
-> `<Insertar capturas del Landing Page desplegado, en escritorio y en móvil, y en ambos idiomas.>`
+![landingDeploy](assets/landingDeploy.png)
 
 ### 5.2.3. Implemented Frontend-Web Application Evidence
 
 | Dato | Valor |
 | :-- | :-- |
 | Repositorio | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Web-Application> |
-| Desplegado en | `<URL de Vercel>` |
+| Desplegado en | <https://sems-web-application-fyld.vercel.app/> |
 | Tecnología | Vue 3, Vite, PrimeVue con *preset* Material, Pinia, TanStack Query |
 
-**Vistas implementadas:** autenticación (inicio de sesión, registro, verificación, recuperación),
-resumen, dispositivos, monitoreo, analítica, alertas, reportes, suscripción y pagos, y
-configuración.
+![WebDeploy](assets/webDeploy.png)
 
-> `<Insertar capturas de las vistas principales de la aplicación web.>`
 
 ### 5.2.4. Implemented Native-Mobile Application Evidence
 
@@ -1786,7 +2091,7 @@ configuración.
 | Dato | Valor |
 | :-- | :-- |
 | Repositorio | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Backend> |
-| Desplegado en | `<URL del servicio>` |
+| Desplegado en | <https://sems-backend-diseno.onrender.com/swagger>  |
 | Tecnología | ASP.NET Core 8, C#, Entity Framework Core, PostgreSQL |
 | Endpoints | 111 |
 | Módulos | 8 |
@@ -1820,7 +2125,7 @@ configuración.
 - Los datos de la tarjeta nunca llegan al servidor: se introducen en la página de la pasarela y la
   aplicación solo recibe un identificador del medio de pago.
 
-> `<Insertar capturas de peticiones y respuestas contra la API desplegada.>`
+![BackDeploy](assets/backDeploy.png)
 
 ### 5.2.6. RESTful API Documentation
 
