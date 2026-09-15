@@ -34,15 +34,17 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 
 **Logo de la Startup**
 
-<img src="assets/LogoEnergix.png" alt="Startup Logo" width="300">
+<div align="center">
+  <img src="assets/images/others/energix-logo.jpg" alt="Startup Logo" width="200">
+</div>
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
 | Foto | Integrante | Código | Carrera | Perfil |
 | :--: | :-- | :-- | :-- | :-- |
 | `<Foto>` | `<Apellidos, Nombres>` **(Team Leader)** | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
-| <img src="assets/ProfileWinnieMerino.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
-| <img src="assets/ProfileNestorRojas.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
+| <img src="assets/images/team-photos/profile-winnie.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
+| <img src="assets/images/team-photos/profile-nestor.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
 | `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
 | `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
 
@@ -248,7 +250,8 @@ suministro en categoría tarifaria con cargo por potencia.
 
 #### 1.2.2.4. Lean UX Canvas
 
-![uxCanva](assets/uxCanva.png)
+*Figura 1 (Lean Product Canvas)*  
+<img src="assets/images/figures/01-uxcanva.png" alt="uxCanva" style="width: 100vw;">
 
 | Cuadrante | Contenido |
 | :-- | :-- |
@@ -359,20 +362,7 @@ origina el sobrecosto comercial.
 
 ### 2.1.1. Análisis competitivo
 
-| Competitive Analysis Landscape | | **Energix — SEMS** | **Schneider EcoStruxure** | **Portal de la distribuidora** | **Medidores tipo Refoss / Shelly** |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| **¿Por qué llevar a cabo este análisis?** | | Determinar qué necesidad del segmento de establecimientos comerciales no está siendo atendida por la oferta actual, y sobre qué base construir la ventaja competitiva de SEMS. | | | |
-| **Perfil** | Overview | Plataforma web de gestión energética para establecimientos comerciales. Mide por local y por zona, calcula con la tarifa comercial peruana y avisa antes de superar la potencia contratada. | Suite empresarial de gestión de energía y automatización para industria y edificios corporativos. | Portal de consulta de consumo y facturación que la distribuidora ofrece a sus clientes. | Dispositivos de medición de consumo con aplicación móvil, orientados al mercado doméstico. |
-| | Ventaja competitiva | Modela la estructura tarifaria comercial peruana completa (punta, fuera de punta y demanda máxima) y alerta con margen antes del exceso. | Profundidad técnica, calidad de energía, integración con control industrial y respaldo de marca global. | El dato proviene de la misma empresa que emite la factura. | Precio bajo e instalación sencilla. |
-| **Perfil de Marketing** | Mercado objetivo | Establecimientos comerciales de 200 a 2.000 m² y cadenas de retail pequeñas y medianas. | Industria, minería, edificios corporativos y grandes superficies. | Todos los clientes de la concesionaria. | Consumidor doméstico y pequeño negocio. |
-| | Estrategias de marketing | Venta directa a cadenas, alianzas con gremios de comerciantes y prueba piloto gratuita en un local. | Red de integradores certificados y venta consultiva de alto ticket. | Canal propio incluido en el servicio. | Comercio electrónico y retail de tecnología. |
-| **Perfil de Producto** | Productos y servicios | Landing page, aplicación web, API RESTful y aplicación móvil. Alertas de demanda, factura estimada desglosada, consumo por zona y comparación entre locales. | Medidores, software de supervisión, servicios de ingeniería y analítica avanzada. | Consulta de recibos, histórico de consumo y demanda facturada. | Medidor con aplicación de consumo y automatizaciones básicas. |
-| | Precios y costos | Suscripción mensual escalonada por número de locales. Plan de entrada gratuito para un local. | Licenciamiento e implementación de alto costo, con proyecto de integración. | Sin costo adicional, incluido en el servicio eléctrico. | Pago único por dispositivo. |
-| | Canales de distribución | Web y móvil. | Integradores y fuerza de ventas directa. | Web y aplicación de la distribuidora. | Comercio electrónico. |
-| **Análisis SWOT** | Fortalezas | Modela la tarifa comercial peruana; alerta preventiva de demanda; desglose por zona; equipo con conocimiento del contexto regulatorio local. | Marca consolidada, robustez técnica, catálogo completo de hardware y software. | Acceso directo al dato oficial de facturación. | Costo bajo, gran base instalada y facilidad de uso. |
-| | Debilidades | Startup sin trayectoria ni base instalada; depende de hardware de medición de terceros; sin histórico de casos de éxito. | Costo y complejidad desproporcionados para el segmento; ciclo de venta largo. | Dato diferido y agregado; sin desglose por zona; sin capacidad de alerta preventiva. | No modela franja horaria ni demanda máxima; orientado al hogar; sin gestión multi-local. |
-| | Oportunidades | Segmento desatendido entre el medidor doméstico y la suite industrial; presión creciente sobre los costos operativos del retail. | Expansión hacia edificios comerciales medianos. | Ampliar los servicios digitales al cliente comercial. | Adaptar su producto al segmento comercial. |
-| | Amenazas | Que la distribuidora o un fabricante de medidores incorporen alertas de demanda en su propia oferta. | Competidores especializados más ágiles en nichos concretos. | Regulación y competencia en la comercialización eléctrica. | Saturación del mercado y competencia por precio. |
+<table width="100%"><tr><th colspan="2">Competitive Analysis Landscape</th><th width="18%"><strong>Energix — SEMS</strong><br><img src="assets/images/others/energix-logo.jpg" alt="Energix Logo" width="80"></th><th width="18%"><strong>Schneider Electric</strong><br><img src="assets/images/others/schneider-logo.png" alt="Schneider Electric Logo" width="80"></th><th width="17%"><strong>Portal de la distribuidora</strong><br><img src="assets/images/others/luzdelsur-logo.jpg" alt="Distribuidora Logo" width="80"></th><th width="17%"><strong>Medidores tipo Refoss / Shelly</strong><br><img src="assets/images/others/refoss-logo.jpg" alt="Refoss Logo" width="80"></th></tr><tr><td colspan="2"><strong>¿Por qué llevar a cabo este análisis?</strong></td><td colspan="4">Determinar qué necesidad del segmento de establecimientos comerciales no está siendo atendida por la oferta actual, y sobre qué base construir la ventaja competitiva de SEMS.</td></tr><tr><td rowspan="2"><strong>Perfil</strong></td><td>Overview</td><td>Plataforma web de gestión energética para establecimientos comerciales. Mide por local y por zona, calcula con la tarifa comercial peruana y avisa antes de superar la potencia contratada.</td><td>Suite empresarial de gestión de energía y automatización para industria y edificios corporativos.</td><td>Portal de consulta de consumo y facturación que la distribuidora ofrece a sus clientes.</td><td>Dispositivos de medición de consumo con aplicación móvil, orientados al mercado doméstico.</td></tr><tr><td>Ventaja competitiva</td><td>Modela la estructura tarifaria comercial peruana completa (punta, fuera de punta y demanda máxima) y alerta con margen antes del exceso.</td><td>Profundidad técnica, calidad de energía, integración con control industrial y respaldo de marca global.</td><td>El dato proviene de la misma empresa que emite la factura.</td><td>Precio bajo e instalación sencilla.</td></tr><tr><td rowspan="2"><strong>Perfil de Marketing</strong></td><td>Mercado objetivo</td><td>Establecimientos comerciales de 200 a 2.000 m² y cadenas de retail pequeñas y medianas.</td><td>Industria, minería, edificios corporativos y grandes superficies.</td><td>Todos los clientes de la concesionaria.</td><td>Consumidor doméstico y pequeño negocio.</td></tr><tr><td>Estrategias de marketing</td><td>Venta directa a cadenas, alianzas con gremios de comerciantes y prueba piloto gratuita en un local.</td><td>Red de integradores certificados y venta consultiva de alto ticket.</td><td>Canal propio incluido en el servicio.</td><td>Comercio electrónico y retail de tecnología.</td></tr><tr><td rowspan="3"><strong>Perfil de Producto</strong></td><td>Productos y servicios</td><td>Landing page, aplicación web, API RESTful y aplicación móvil. Alertas de demanda, factura estimada desglosada, consumo por zona y comparación entre locales.</td><td>Medidores, software de supervisión, servicios de ingeniería y analítica avanzada.</td><td>Consulta de recibos, histórico de consumo y demanda facturada.</td><td>Medidor con aplicación de consumo y automatizaciones básicas.</td></tr><tr><td>Precios y costos</td><td>Suscripción mensual escalonada por número de locales. Plan de entrada gratuito para un local.</td><td>Licenciamiento e implementación de alto costo, con proyecto de integración.</td><td>Sin costo adicional, incluido en el servicio eléctrico.</td><td>Pago único por dispositivo.</td></tr><tr><td>Canales de distribución</td><td>Web y móvil.</td><td>Integradores y fuerza de ventas directa.</td><td>Web y aplicación de la distribuidora.</td><td>Comercio electrónico.</td></tr><tr><td rowspan="4"><strong>Análisis SWOT</strong></td><td>Fortalezas</td><td>Modela la tarifa comercial peruana; alerta preventiva de demanda; desglose por zona; equipo con conocimiento del contexto regulatorio local.</td><td>Marca consolidada, robustez técnica, catálogo completo de hardware y software.</td><td>Acceso directo al dato oficial de facturación.</td><td>Costo bajo, gran base instalada y facilidad de uso.</td></tr><tr><td>Debilidades</td><td>Startup sin trayectoria ni base instalada; depende de hardware de medición de terceros; sin histórico de casos de éxito.</td><td>Costo y complejidad desproporcionados para el segmento; ciclo de venta largo.</td><td>Dato diferido y agregado; sin desglose por zona; sin capacidad de alerta preventiva.</td><td>No modela franja horaria ni demanda máxima; orientado al hogar; sin gestión multi-local.</td></tr><tr><td>Oportunidades</td><td>Segmento desatendido entre el medidor doméstico y la suite industrial; presión creciente sobre los costos operativos del retail.</td><td>Expansión hacia edificios comerciales medianos.</td><td>Ampliar los servicios digitales al cliente comercial.</td><td>Adaptar su producto al segmento comercial.</td></tr><tr><td>Amenazas</td><td>Que la distribuidora o un fabricante de medidores incorporen alertas de demanda en su propia oferta.</td><td>Competidores especializados más ágiles en nichos concretos.</td><td>Regulación y competencia en la comercialización eléctrica.</td><td>Saturación del mercado y competencia por precio.</td></tr></table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
@@ -526,7 +516,7 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQB5nwCliWL5S6uU__Jhf6JZAWlwk4Z6HWyNSsf2NyK_DOo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OrbLbV) |
 | Timing de inicio | 00:00 |
 | Duración | 08:11 |
-| Screenshot | ![Captura Entrevista Fabrizzio](assets/chapter2/entrevistaSegment1-Disenio.png) |
+| Screenshot | <img src="assets/images/interviews/needfinding/01-entrevista-responsable01.png" alt="Captura Entrevista Fabrizzio" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -551,8 +541,6 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 
 `<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
 
-> Repetir esta ficha para cada entrevista: **3 a 5 por segmento**.
-
 #### Segmento #2 — Entrevista 1
 
 | Campo | Dato |
@@ -565,12 +553,11 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
 | Timing de inicio | 00:00 |
 | Duración | 08:08 |
-| Screenshot | ![Captura Entrevista Segmento 2](assets/chapter2/entrevistaSegment2-Disenio.png) |
+| Screenshot | <img src="assets/images/interviews/needfinding/03-entrevista-propetario01.png" alt="Captura Entrevista Jasmin" width="250"> |
 
 **Resumen de la entrevista**
 
 El entrevistado es propietario y administrador de una cafetería de especialidad de 80 m² y gestiona todas las operaciones diarias de manera empírica. El costo de energía representa una parte significativa de sus gastos fijos (20%). Sin embargo, no revisa el detalle de su recibo, ignorando conceptos técnicos como el cargo por potencia y la tarifa comercial. Suele encender los equipos de manera rutinaria, generando picos de consumo por las tardes (hora punta) al activar luces y aire acondicionado simultáneamente por la afluencia de clientes. Ante un recibo inexplicable en campaña pasada, su única acción fue apagar equipos al azar sin conocer realmente cuáles consumían más. Estaría dispuesto a pagar una herramienta mensual si se le demuestra un ahorro tangible en el recibo, y ve con gran interés recibir avisos de exceso de consumo en tiempo real mediante notificaciones *push* en su smartphone, el cual es su principal herramienta de gestión, junto con apps bancarias.
-
 
 #### Segmento #2 — Entrevista 2 (Plantilla)
 
@@ -590,11 +577,7 @@ El entrevistado es propietario y administrador de una cafetería de especialidad
 
 `<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
 
-> Repetir esta ficha para cada entrevista: **3 a 5 por segmento**.
-
 ### 2.2.3. Análisis de entrevistas
-
-> **Pendiente de ejecución por el equipo.** Se completa una vez registradas las entrevistas.
 
 El análisis se realiza **por segmento**, identificando con sustento estadístico (porcentajes) las
 características objetivas y subjetivas más comunes, que son las que sostienen la construcción de
@@ -616,10 +599,7 @@ los arquetipos. Cada porcentaje debe poder verificarse contra los resúmenes de 
 
 ## 2.3. Needfinding
 
-> Los artefactos de esta sección **derivan de las entrevistas** y deben elaborarse una vez
-> registradas y analizadas. Se incluye aquí la estructura y las herramientas indicadas por el
-> enunciado. Construirlos antes de entrevistar invalidaría el proceso: los arquetipos dejarían de
-> representar a personas reales y pasarían a ser suposiciones del equipo.
+Los artefactos de esta sección derivan de las entrevistas y deben elaborarse una vez registradas y analizadas. Se incluye aquí la estructura y las herramientas indicadas por el enunciado. Construirlos antes de entrevistar invalidaría el proceso: los arquetipos dejarían de representar a personas reales y pasarían a ser suposiciones del equipo.
 
 ### 2.3.1. User Personas
 
@@ -627,32 +607,33 @@ Elaborados en **UXPressia**, uno por segmento objetivo. Cada User Persona debe i
 demográficos, rasgos de personalidad, motivaciones, frustraciones, objetivos, marcas e
 influencias, canales digitales y dispositivos, **todos derivados del análisis de la sección 2.2.3**.
 
-**User Persona — Segmento #1: Responsable de operaciones de cadena**
+**User Persona — Segmento #1: Responsables de operaciones y mantenimiento de cadenas de retail**
 
-`<Insertar imagen del User Persona elaborado en UXPressia>`
+*Figura 2 (User Persona 1)*  
+<img src="assets/images/figures/02-user-persona-1.png" alt="User Persona Renzo" style="width: 100vw;">
 
-`<Párrafo explicativo del arquetipo, indicando de qué hallazgos de las entrevistas proviene cada
-característica.>`
+> El arquetipo de Renzo Varela se construyó a partir de la entrevista a Fabrizzio, coordinador de tres minimarkets. Se caracteriza por priorizar el control, la prevención de sobrecostos y la reacción rápida ante incidencias, a partir de su necesidad de anticipar excesos de consumo, recibir alertas móviles y conocer el consumo por local o zona.
 
-**User Persona — Segmento #2: Propietario de establecimiento independiente**
+**User Persona — Segmento #2: Propietarios y administradores de establecimientos independientes**
 
-`<Insertar imagen del User Persona elaborado en UXPressia>`
+*Figura 3 (User Persona 2)*  
+<img src="assets/images/figures/03-user-persona-2.png" alt="User Persona Valeria" style="width: 100vw;">
 
-`<Párrafo explicativo.>`
+> El arquetipo de Valeria Mendoza se construyó a partir de la entrevista a Jasmin, propietaria y administradora de una cafetería de especialidad. Se caracteriza por priorizar el ahorro, la simplicidad y la toma rápida de decisiones, a partir de su necesidad de identificar qué equipos consumen más energía, evitar picos de consumo y recibir alertas claras desde su smartphone.
 
 ### 2.3.2. User Task Matrix
 
 Matriz de tareas por User Persona, indicando frecuencia e importancia de cada tarea.
 
-| Tarea | Persona #1 — Frecuencia | Persona #1 — Importancia | Persona #2 — Frecuencia | Persona #2 — Importancia |
-| :-- | :-- | :-- | :-- | :-- |
-| Revisar el consumo y gasto diario | Media | Alta | Alta | Alta |
-| Identificar la causa de una variación en el recibo | Media | Alta | Baja | Alta |
-| Atender una alerta de demanda o consumo | Alta | Alta | Alta | Alta |
-| Comparar el desempeño energético entre locales | Alta | Alta | Baja | Baja |
-| Configurar umbrales y avisos de potencia | Baja | Alta | Baja | Alta |
-| Gestionar accesos al personal del local | Media | Alta | Baja | Media |
-| Descargar reportes consolidados para gerencia | Media | Alta | Baja | Baja |
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
+
+*Figura 4 (User Task Matrix 1)*
+<img src="assets/images/figures/04-u-task-matrix-1.png" alt="User Task Matrix 1" style="width: 100vw;">
+
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
+
+*Figura 5 (User Task Matrix 2)*
+<img src="assets/images/figures/05-u-task-matrix-2.png" alt="User Task Matrix 2" style="width: 100vw;">
 
 **Análisis de la Matriz de Tareas (User Task Matrix)**
 Ambos perfiles coinciden en la alta importancia de tareas enfocadas en el ahorro y resolución de alertas (revisar consumo diario y atender alertas de demanda), siendo estos los flujos críticos del negocio. Sin embargo, existen diferencias clave en la frecuencia de ciertas actividades operativas debido a su naturaleza y escala de operación. El **Persona #1 (Responsable de Operaciones de Cadena)** realiza con alta frecuencia tareas de análisis comparativo entre sedes y descarga de reportes para gerencia, ya que su rol exige la justificación de gastos corporativos. Por otro lado, el **Persona #2 (Propietario Independiente)** le da poca importancia y frecuencia a comparar locales y descargar reportes corporativos, pero revisa con altísima frecuencia su consumo diario, dado que está altamente preocupado por el día a día y el impacto en su bolsillo.
@@ -665,38 +646,30 @@ Scenario Map*, que describe la secuencia de acciones, el *Journey Map* añade la
 emocional y el nivel de conocimiento que la persona tiene en cada fase, que es lo que explica por
 qué el problema persiste.
 
-> `<Insertar los User Journey Maps elaborados en UXPressia, uno por cada User Persona.>`
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-**User Journey Map — User Persona #1 (responsable de operaciones de cadena)**
+*Figura 6 (User Journey Map 1)*
+<img src="assets/images/figures/06-u-journey-map-1.png" alt="User Journey Map 1" style="width: 100vw;">
 
-| Fase | Acción | Punto de contacto | Qué piensa | Emoción | Oportunidad |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| Inicio del mes | Recibe el presupuesto energético del trimestre | Hoja de cálculo interna | «Tengo que cerrar por debajo de lo presupuestado» | Confianza | Fijar un objetivo por local y medirlo desde el día 1 |
-| Operación diaria | Delega la operación en cada jefe de tienda | Llamadas y mensajería | «Confío en que avisen si algo pasa» | Neutral | Dar a cada sede su propia vista con permisos acotados |
-| Ocurre el pico | Nadie lo percibe: la operación continúa con normalidad | Ninguno | — | Ignorancia | **Alerta con margen antes de superar la potencia contratada** |
-| Llega el recibo | Detecta un cargo por potencia superior al previsto | Recibo de la distribuidora | «¿De dónde salió esto?» | Frustración | Desglose por local y por zona del periodo facturado |
-| Investigación | Pide explicaciones a la sede y no obtiene evidencia | Correo, reuniones | «Nadie sabe qué pasó» | Impotencia | Historial de demanda con marca temporal del pico |
-| Cierre | Justifica la desviación ante gerencia sin causa raíz | Informe mensual | «El mes que viene puede repetirse» | Resignación | Comparación entre locales para aislar la sede desviada |
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-**User Journey Map — User Persona #2 (propietario de establecimiento independiente)**
-
-| Fase | Acción | Punto de contacto | Qué piensa | Emoción | Oportunidad |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| Inicio del mes | Opera el local sin ninguna referencia de consumo | Local | «La luz es lo que es» | Indiferencia | Panel simple con el consumo del día en soles |
-| Operación diaria | Enciende todo al abrir y apaga al cerrar | Tablero eléctrico | «Siempre lo hemos hecho así» | Rutina | Señalar el arranque simultáneo como causa de pico |
-| Ocurre el pico | No lo percibe | Ninguno | — | Ignorancia | **Aviso inmediato en el móvil con qué hacer** |
-| Llega el recibo | Ve un importe mayor sin explicación | Recibo | «¿Por qué subió si trabajé igual?» | Ansiedad | Comparación contra los tres meses anteriores |
-| Reacción | Apaga equipos al azar para ahorrar | Local | «Algo tengo que hacer» | Angustia | Recomendación concreta priorizada por impacto |
-| Cierre | Asume el costo como inevitable | — | «Es parte del negocio» | Resignación | Evidencia del ahorro conseguido mes a mes |
+*Figura 7 (User Journey Map 2)*
+<img src="assets/images/figures/07-u-journey-map-2.png" alt="User Journey Map 2" style="width: 100vw;">
 
 ### 2.3.4. Empathy Mapping
 
 Elaborados en **UXPressia**, uno por User Persona, con los cuadrantes *Thinks and Feels*, *Sees*,
 *Says and Does*, *Hears*, *Pains* y *Gains*.
 
-`<Insertar imagen del Empathy Map del User Persona #1 y su explicación>`
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-`<Insertar imagen del Empathy Map del User Persona #2 y su explicación>`
+*Figura 8 (Empathy Map 1)*
+<img src="assets/images/figures/08-empathy-map-1.png" alt="Empathy Map 1" style="width: 100vw;">
+
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
+
+*Figura 9 (Empathy Map 2)*
+<img src="assets/images/figures/09-empathy-map-2.png" alt="Empathy Map 2" style="width: 100vw;">
 
 ### 2.3.5. As-is Scenario Mapping
 
@@ -704,20 +677,19 @@ Elaborados en **Lucidchart**, uno por User Persona, con las filas *Phases*, *Doi
 *Thinking* y *Feeling*, describiendo cómo el usuario afronta hoy la gestión del costo energético
 de su establecimiento **sin** la solución.
 
-**Figura 1**
-*As-Is Scenario Map para el Responsable de Operaciones de Cadena*
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-![As-Is Scenario Map - Responsable de Operaciones de Cadena](assets/chapter2/segmento1.png)
+*Figura 10 (As-Is Scenario Map 1)*
+<img src="assets/images/figures/10-as-is-scenario-map-1.png" alt="As Is Scenario Map 1" style="width: 100vw;">
 
-*Nota.* El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (pain points), así como la confianza que siente al delegar las tareas operativas (happy moments). También se identifican áreas por descubrir (blank areas), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
+> **Nota.** El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (**pain points**), así como la confianza que siente al delegar las tareas operativas (**happy moments**). También se identifican áreas por descubrir (**blank areas**), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
 
-**Figura 2**
-*As-Is Scenario Map para el Propietario de Establecimiento Independiente*
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-![As-Is Scenario Map - Propietario de Establecimiento Independiente](assets/chapter2/segmento2.png)
+*Figura 11 (As-Is Scenario Map 2)*
+<img src="assets/images/figures/11-as-is-scenario-map-2.png" alt="As Is Scenario Map 2" style="width: 100vw;">
 
-*Nota.* El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (pain points) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (happy moments) y áreas sobre las que no se tiene información (blank areas), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
-
+> **Nota.** El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (**pain points**) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (**happy moments**) y áreas sobre las que no se tiene información (**blank areas**), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
 
 ## 2.4. Ubiquitous Language
 
