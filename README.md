@@ -42,7 +42,7 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 | :--: | :-- | :-- | :-- | :-- |
 | `<Foto>` | `<Apellidos, Nombres>` **(Team Leader)** | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
 | <img src="assets/ProfileWinnieMerino.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
-| `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+| <img src="assets/ProfileNestorRojas.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
 | `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
 | `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
 
