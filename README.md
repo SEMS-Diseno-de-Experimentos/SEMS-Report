@@ -541,8 +541,6 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 
 `<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
 
-> Repetir esta ficha para cada entrevista: **3 a 5 por segmento**.
-
 #### Segmento #2 — Entrevista 1
 
 | Campo | Dato |
@@ -560,7 +558,6 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 **Resumen de la entrevista**
 
 El entrevistado es propietario y administrador de una cafetería de especialidad de 80 m² y gestiona todas las operaciones diarias de manera empírica. El costo de energía representa una parte significativa de sus gastos fijos (20%). Sin embargo, no revisa el detalle de su recibo, ignorando conceptos técnicos como el cargo por potencia y la tarifa comercial. Suele encender los equipos de manera rutinaria, generando picos de consumo por las tardes (hora punta) al activar luces y aire acondicionado simultáneamente por la afluencia de clientes. Ante un recibo inexplicable en campaña pasada, su única acción fue apagar equipos al azar sin conocer realmente cuáles consumían más. Estaría dispuesto a pagar una herramienta mensual si se le demuestra un ahorro tangible en el recibo, y ve con gran interés recibir avisos de exceso de consumo en tiempo real mediante notificaciones *push* en su smartphone, el cual es su principal herramienta de gestión, junto con apps bancarias.
-
 
 #### Segmento #2 — Entrevista 2 (Plantilla)
 
@@ -580,11 +577,7 @@ El entrevistado es propietario y administrador de una cafetería de especialidad
 
 `<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
 
-> Repetir esta ficha para cada entrevista: **3 a 5 por segmento**.
-
 ### 2.2.3. Análisis de entrevistas
-
-> **Pendiente de ejecución por el equipo.** Se completa una vez registradas las entrevistas.
 
 El análisis se realiza **por segmento**, identificando con sustento estadístico (porcentajes) las
 características objetivas y subjetivas más comunes, que son las que sostienen la construcción de
@@ -606,10 +599,7 @@ los arquetipos. Cada porcentaje debe poder verificarse contra los resúmenes de 
 
 ## 2.3. Needfinding
 
-> Los artefactos de esta sección **derivan de las entrevistas** y deben elaborarse una vez
-> registradas y analizadas. Se incluye aquí la estructura y las herramientas indicadas por el
-> enunciado. Construirlos antes de entrevistar invalidaría el proceso: los arquetipos dejarían de
-> representar a personas reales y pasarían a ser suposiciones del equipo.
+Los artefactos de esta sección derivan de las entrevistas y deben elaborarse una vez registradas y analizadas. Se incluye aquí la estructura y las herramientas indicadas por el enunciado. Construirlos antes de entrevistar invalidaría el proceso: los arquetipos dejarían de representar a personas reales y pasarían a ser suposiciones del equipo.
 
 ### 2.3.1. User Personas
 
@@ -643,7 +633,7 @@ Matriz de tareas por User Persona, indicando frecuencia e importancia de cada ta
 **Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
 *Figura 5 (User Task Matrix 2)*
-<img src="/assets/images/figures/05-u-task-matrix-2.png" alt="User Task Matrix 2" style="width: 100vw;">
+<img src="assets/images/figures/05-u-task-matrix-2.png" alt="User Task Matrix 2" style="width: 100vw;">
 
 **Análisis de la Matriz de Tareas (User Task Matrix)**
 Ambos perfiles coinciden en la alta importancia de tareas enfocadas en el ahorro y resolución de alertas (revisar consumo diario y atender alertas de demanda), siendo estos los flujos críticos del negocio. Sin embargo, existen diferencias clave en la frecuencia de ciertas actividades operativas debido a su naturaleza y escala de operación. El **Persona #1 (Responsable de Operaciones de Cadena)** realiza con alta frecuencia tareas de análisis comparativo entre sedes y descarga de reportes para gerencia, ya que su rol exige la justificación de gastos corporativos. Por otro lado, el **Persona #2 (Propietario Independiente)** le da poca importancia y frecuencia a comparar locales y descargar reportes corporativos, pero revisa con altísima frecuencia su consumo diario, dado que está altamente preocupado por el día a día y el impacto en su bolsillo.
@@ -656,29 +646,15 @@ Scenario Map*, que describe la secuencia de acciones, el *Journey Map* añade la
 emocional y el nivel de conocimiento que la persona tiene en cada fase, que es lo que explica por
 qué el problema persiste.
 
-> `<Insertar los User Journey Maps elaborados en UXPressia, uno por cada User Persona.>`
+**Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-**User Journey Map — User Persona #1 (responsable de operaciones de cadena)**
+*Figura 6 (User Journey Map 1)*
+<img src="assets/images/figures/06-u-journey-map-1.png" alt="User Journey Map 1" style="width: 100vw;">
 
-| Fase | Acción | Punto de contacto | Qué piensa | Emoción | Oportunidad |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| Inicio del mes | Recibe el presupuesto energético del trimestre | Hoja de cálculo interna | «Tengo que cerrar por debajo de lo presupuestado» | Confianza | Fijar un objetivo por local y medirlo desde el día 1 |
-| Operación diaria | Delega la operación en cada jefe de tienda | Llamadas y mensajería | «Confío en que avisen si algo pasa» | Neutral | Dar a cada sede su propia vista con permisos acotados |
-| Ocurre el pico | Nadie lo percibe: la operación continúa con normalidad | Ninguno | — | Ignorancia | **Alerta con margen antes de superar la potencia contratada** |
-| Llega el recibo | Detecta un cargo por potencia superior al previsto | Recibo de la distribuidora | «¿De dónde salió esto?» | Frustración | Desglose por local y por zona del periodo facturado |
-| Investigación | Pide explicaciones a la sede y no obtiene evidencia | Correo, reuniones | «Nadie sabe qué pasó» | Impotencia | Historial de demanda con marca temporal del pico |
-| Cierre | Justifica la desviación ante gerencia sin causa raíz | Informe mensual | «El mes que viene puede repetirse» | Resignación | Comparación entre locales para aislar la sede desviada |
+**Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-**User Journey Map — User Persona #2 (propietario de establecimiento independiente)**
-
-| Fase | Acción | Punto de contacto | Qué piensa | Emoción | Oportunidad |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| Inicio del mes | Opera el local sin ninguna referencia de consumo | Local | «La luz es lo que es» | Indiferencia | Panel simple con el consumo del día en soles |
-| Operación diaria | Enciende todo al abrir y apaga al cerrar | Tablero eléctrico | «Siempre lo hemos hecho así» | Rutina | Señalar el arranque simultáneo como causa de pico |
-| Ocurre el pico | No lo percibe | Ninguno | — | Ignorancia | **Aviso inmediato en el móvil con qué hacer** |
-| Llega el recibo | Ve un importe mayor sin explicación | Recibo | «¿Por qué subió si trabajé igual?» | Ansiedad | Comparación contra los tres meses anteriores |
-| Reacción | Apaga equipos al azar para ahorrar | Local | «Algo tengo que hacer» | Angustia | Recomendación concreta priorizada por impacto |
-| Cierre | Asume el costo como inevitable | — | «Es parte del negocio» | Resignación | Evidencia del ahorro conseguido mes a mes |
+*Figura 7 (User Journey Map 2)*
+<img src="assets/images/figures/07-u-journey-map-2.png" alt="User Journey Map 2" style="width: 100vw;">
 
 ### 2.3.4. Empathy Mapping
 
