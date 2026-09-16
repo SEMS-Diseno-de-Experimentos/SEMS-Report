@@ -536,6 +536,24 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 
 El entrevistado se desempeña como responsable de operaciones de una cadena de tiendas y tiene a su cargo la supervisión de varios locales, coordinando actividades de mantenimiento y controlando los gastos operativos. Señala que el consumo eléctrico representa un costo importante y que actualmente la información se revisa principalmente mediante recibos mensuales y reportes internos, por lo que resulta difícil detectar a tiempo las causas de un aumento en el consumo. También menciona que no cuentan con una medición precisa por zonas y que la comparación entre locales se dificulta debido a diferencias de tamaño, horarios y equipamiento. Considera útil recibir alertas cuando exista un consumo fuera de lo normal, especialmente mediante el teléfono, y plantea que los administradores deberían visualizar información y alertas, mientras que la configuración debería estar limitada a personal autorizado. Finalmente, indica que para adoptar una herramienta de este tipo sería necesario demostrar información confiable y ahorros medibles, evitando falsas alertas y una operación demasiado compleja.
 
+#### Segmento #1 — Entrevista 3
+
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Valia Mariajose Merino Cardenas |
+| Edad | 24 años |
+| Distrito | Lima |
+| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets) |
+| Número de locales a cargo | 1 local |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQBnE-dDCR2BT5hCn-bTX-xVAeEfOK53nj_MWunOS8d1fo8?e=3MiCCI&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| Timing de inicio | 00:25 |
+| Duración | 06:36 |
+| Screenshot | <img src="assets/images/interviews/needfinding/01-entrevista-responsable03.png" alt="Captura Entrevista Valia" width="250"> |
+
+**Resumen de la entrevista**
+
+La entrevistada coordina la operación de 7 locales Plaza Vea en la zona norte de Lima, con establecimientos de entre 2,500 y 4,000 m². La energía eléctrica representa entre el 8% y 12% de sus costos operativos, pero se entera del consumo recién al cierre de mes con el recibo, sin visibilidad de qué equipo o zona consume más. Las cámaras de frío operan 24/7 y son el mayor consumidor, seguidas del aire acondicionado y la iluminación en horas pico; tras un corte, todos los equipos arrancan simultáneamente sin ningún procedimiento de escalonamiento. Estaría dispuesta a llevar la herramienta a su gerencia si un piloto de 2 a 3 meses demuestra ahorro real y un payback menor a 12-18 meses. Prefiere recibir alertas urgentes por notificación push o WhatsApp para detectar fallas de equipos antes de que impacten la factura, ya que el correo lo revisa con menor frecuencia. Considera clave optimizar el consumo energético dado que es uno de sus tres costos operativos más altos después de planilla y alquiler.
+
 #### Segmento #2 — Entrevista 1
 
 | Campo | Dato |
