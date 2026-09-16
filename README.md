@@ -127,7 +127,7 @@ similares.
 | **When** (Cuándo) | De forma continua durante la operación del local. El pico de demanda se produce típicamente en el arranque de la jornada y en las horas de mayor afluencia, que además coinciden con la hora punta del sistema (18:00–23:00 de todos los días, salvo que la distribuidora haya concedido la exclusión de domingos a solicitud del cliente). |
 | **Why** (Por qué) | Porque la medición disponible es agregada y diferida: un único medidor por suministro y una única lectura mensual. No existe visibilidad por zona, ni distinción por franja horaria, ni ninguna alerta que llegue mientras el problema todavía se puede corregir. |
 | **How** (Cómo) | Mediante medición por zona dentro de cada local, cálculo de la factura estimada con la tarifa comercial correspondiente al suministro, y alertas de demanda que se disparan al aproximarse a la potencia contratada, antes de superarla. |
-| **How Much** (Cuánto) | El cargo por potencia puede representar cerca de la mitad del costo variable de un recibo comercial. Evitar un único pico mensual de exceso, o desplazar parte del consumo fuera de hora punta, produce ahorros directos y recurrentes. `<Sustentar con el cálculo del caso de estudio del equipo y con el pliego tarifario vigente.>` |
+| **How Much** (Cuánto) | El cargo por potencia puede representar cerca de la mitad del costo variable de un recibo comercial. Evitar un único pico mensual de exceso, o desplazar parte del consumo fuera de hora punta, produce ahorros directos y recurrentes. |
 
 ### 1.2.2. Lean UX Process
 
@@ -494,15 +494,9 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 
 ### 2.2.2. Registro de entrevistas
 
-> **Pendiente de ejecución por el equipo.** Esta sección se completa con las entrevistas reales.
-> Por cada entrevista se debe registrar: nombres y apellidos, edad, distrito, cargo, un screenshot
-> del cuadro de video, el URL del video subido a Microsoft Stream con el *timing* de inicio y la
-> duración, y un resumen descriptivo de las principales respuestas.
->
-> **El resumen debe incluir todas las características objetivas y subjetivas** (personalidad,
-> marcas e influencias, tecnología, canales de interacción, navegador y dispositivos), porque cada
-> característica de los arquetipos de la sección 2.3 debe poder rastrearse hasta un dato recogido
-> aquí.
+Esta sección se completa con las entrevistas reales. Por cada entrevista se debe registrar: nombres y apellidos, edad, distrito, cargo, un screenshot del cuadro de video, el URL del video subido a Microsoft Stream con el timing de inicio y la duración, y un resumen descriptivo de las principales respuestas.
+
+**El resumen debe incluir todas las características objetivas y subjetivas** (personalidad, marcas e influencias, tecnología, canales de interacción, navegador y dispositivos), porque cada característica de los arquetipos de la sección 2.3 debe poder rastrearse hasta un dato recogido aquí.
 
 #### Segmento #1 — Entrevista 1
 
@@ -574,7 +568,7 @@ El entrevistado es propietario y administrador de una cafetería de especialidad
 | Screenshot | <img src="assets/images/interviews/needfinding/04-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
 
 **Resumen de la entrevista**
-La entrevistada es administradora de un local de alquiler para eventos de 170 m², donde se ofrecen servicios de música, almuerzos y cenas, y opera con un equipo de 8 personas (música, cocina, mozos, decoración y mantenimiento). Los recibos de luz y agua constituyen sus gastos fijos más altos debido a la actividad diaria del negocio. Sin embargo, solo revisa el monto total del recibo, sin conocer la potencia eléctrica contratada ni haber recibido nunca una propuesta de auditoría eléctrica, aunque sí contrató recientemente a un electricista para revisar el tablero de llaves térmicas. Su equipo principal de alto consumo es una refrigeradora grande que permanece encendida las 24 horas, mientras que el resto (parlantes, congeladores adicionales, luces, plancha y horno microondas) se desenchufa al cierre; aun así, atribuye los incrementos mensuales a descuidos genéricos, sin poder calcular el ahorro exacto de apagar equipos específicos. Estaría dispuesta a invertir en una herramienta de optimización si esta demuestra, comparando el historial de los últimos tres meses, un ahorro real de entre 30% y 50% (por ejemplo, bajar de 200 a 100 soles mensuales). Ve como fundamental recibir notificaciones inmediatas ante consumos excesivos o anómalos —preferentemente por WhatsApp o llamada, similar al sistema de Calidda— ya que esto le permitiría detectar el mismo día conexiones clandestinas u otros problemas. Finalmente, reflexiona junto a la entrevistadora que, a diferencia de los hogares, en los negocios el ajuste del consumo energético es indispensable por la presión de los gastos fijos y el pago de personal.
+La entrevistada administra un local de eventos de 170 m² con un equipo de 8 personas. La luz y el agua representan sus mayores gastos fijos, pero solo revisa el monto total de los recibos y desconoce cuánto consume cada equipo. La refrigeradora permanece encendida las 24 horas y los demás aparatos se desenchufan al cierre. Estaría dispuesta a invertir en una herramienta que demuestre un ahorro del 30% al 50%, comparando los últimos tres meses. Prefiere recibir alertas inmediatas por WhatsApp o llamada para detectar consumos anómalos y posibles conexiones clandestinas. Considera indispensable optimizar el consumo energético para afrontar los gastos del negocio y el pago del personal.
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -733,12 +727,12 @@ Stories, el Impact Mapping y el Product Backlog priorizado.
 **To-Be Scenario Map — User Persona #1: Responsable de operaciones de cadena**
 
 *Figura 12 (To-Be Scenario Map 1)*
-<img src="assets/images/figures/to-be-scenario-map-1.png" alt="To Be Scenario Map 1" style="width: 100vw;">
+<img src="assets/images/figures/12-to-be-scenario-map-1.png" alt="To Be Scenario Map 1" style="width: 100vw;">
 
 **To-Be Scenario Map — User Persona #2: Propietario de establecimiento independiente**
 
 *Figura 13 (To-Be Scenario Map 2)*
-<img src="assets/images/figures/to-be-scenario-map-2.png" alt="To Be Scenario Map 2" style="width: 100vw;">
+<img src="assets/images/figures/13-to-be-scenario-map-2.png" alt="To Be Scenario Map 2" style="width: 100vw;">
 
 Energix cumple un rol distinto según el tipo de usuario; para el administrador independiente es una herramienta de autocontrol y prevención personal, mientras que para el responsable de cadena es una herramienta de supervisión y alerta temprana sobre múltiples puntos de operación. En ambos casos, el hilo conductor es que el monitoreo constante reduce la incertidumbre y genera confianza al llegar el recibo final, porque el monto ya era esperado gracias al seguimiento hecho durante el mes.
 
@@ -898,31 +892,12 @@ producto— se priorizan por delante de la analítica avanzada y de los pagos.
 
 ## 3.4. Impact Mapping
 
-> Se elabora en **UXPressia**, a partir de las fichas de los User Personas de la sección 2.3.1.
+El Impact Mapping relaciona los objetivos de SEMS con sus usuarios, los cambios esperados en sus hábitos de consumo energético y las funcionalidades que permiten lograrlos. Ayuda a priorizar las soluciones que contribuyen al ahorro energético y a las necesidades identificadas en las entrevistas.
 
-**Business Goals (SMART)**
+> **Nota metodológica.** El Impact Mapping se elabora en **UXPressia** tomando como base las fichas de los User Personas de la sección 2.3.1.
 
-| ID | Business Goal |
-| :-- | :-- |
-| BG01 | Alcanzar 120 locales activos con suscripción de pago en un plazo de 12 meses desde el lanzamiento. |
-| BG02 | Lograr que el 60% de las alertas de demanda de nivel *warning* vayan seguidas de una reducción de carga dentro de los 30 minutos siguientes, medido durante el segundo trimestre de operación. |
-| BG03 | Alcanzar una tasa de renovación mensual del 85% entre las organizaciones suscritas, medida al sexto mes. |
-| BG04 | Conseguir que 15 organizaciones con más de cinco locales adopten el plan *Enterprise* en los primeros 12 meses. |
-
-**Estructura del Impact Map**
-
-| Goal | Actor | Impact | Deliverable | User Stories |
-| :-- | :-- | :-- | :-- | :-- |
-| BG02 | Responsable de operaciones de cadena | Que reaccione ante el aviso reduciendo carga en lugar de ignorarlo | Alerta de demanda con margen expresado en kW y canal de notificación configurable | US28, US29, US30, US34 |
-| BG02 | Propietario de establecimiento independiente | Que comprenda qué significa el aviso sin formación eléctrica | Mensaje de alerta redactado en términos de margen y de costo, no de magnitudes eléctricas | US29, US30 |
-| BG01 | Propietario de establecimiento independiente | Que registre su local y su medidor sin apoyo técnico | Flujo de alta guiado de organización, local, zona y medidor | US12, US13, US18, US19 |
-| BG01 | Visitante del Landing Page | Que reconozca el problema del cargo por potencia como propio | Sección del Landing Page con ejemplo numérico del impacto de un pico | US02, US03 |
-| BG03 | Responsable de operaciones de cadena | Que use la plataforma de forma sostenida y no solo al inicio | Proyección de factura desglosada y comparación entre locales | US35, US36, US39 |
-| BG04 | Responsable de operaciones de cadena | Que incorpore locales adicionales a la plataforma | Gestión multi-local con permisos por sede y límites por plan | US10, US14, US40, US42 |
-
+*Figura 14 (Impact Map)*
 `<Insertar imagen del Impact Map elaborado en UXPressia>`
-
-
 
 # Capítulo IV: Product Design
 
@@ -966,10 +941,10 @@ La jerarquía tipográfica sigue la escala estándar del sistema Material 3:
 *   **Body (Texto corrido):** `1rem` con interlineado de `1.55`, peso Regular (400).
 *   **Label (Etiqueta):** `0.8125rem`, peso Medium (500). Fundamental para micro-interacciones, badges de estado y ejes de gráficos.
 
-<p align="center">
-  <img src="assets/images/style-guidelines/typography.png" alt="Sistema tipográfico de SEMS" width="800"><br>
-  <i>Nota. Sistema tipográfico utilizado en la identidad visual de SEMS.</i>
-</p>
+*Figura 15 (Sistema tipográfico de SEMS)*
+<img src="assets/images/figures/15-typography.png" alt="Sistema tipográfico de SEMS" style="width: 100vw;">
+
+> **Nota.** Sistema tipográfico utilizado en la identidad visual de SEMS.
 
 #### 4.1.1.2. Colors
 
@@ -983,10 +958,10 @@ Para la gestión energética, SEMS implementa colores semánticos con significad
 
 La plataforma respeta el criterio WCAG 2.1 nivel AA: cada rol de color incluye su variante `on-*` (ej. texto blanco `#FFFFFF` sobre Primary Blue `#0B57D0`) asegurando ratios de contraste superiores al mínimo de 4.5:1.
 
-<p align="center">
-  <img src="assets/images/style-guidelines/colors.png" alt="Paleta de colores de SEMS" width="800"><br>
-  <i>Nota. Sistema de color basado en Material Design 3 utilizado en SEMS.</i>
-</p>
+*Figura 16 (Paleta de colores de SEMS)*
+<img src="assets/images/figures/16-colors.png" alt="Paleta de colores de SEMS" style="width: 100vw;">
+
+> **Nota.** Sistema de color basado en Material Design 3 utilizado en SEMS.
 
 #### 4.1.1.3. Iconography
 
@@ -999,10 +974,10 @@ Las características técnicas de la iconografía son:
 
 Se ha diseñado un conjunto primario de representaciones para acciones repetitivas, como *Dashboard*, *Medidores*, *Reportes*, *Alertas* y *Configuración*, reduciendo la dependencia exclusiva de texto y acelerando la navegación.
 
-<p align="center">
-  <img src="assets/images/style-guidelines/iconography.png" alt="Sistema de iconografía de SEMS" width="800"><br>
-  <i>Nota. Sistema de iconografía empleado en la interfaz de SEMS.</i>
-</p>
+*Figura 17 (Sistema de iconografía de SEMS)*
+<img src="assets/images/figures/17-iconography.png" alt="Sistema de iconografía de SEMS" style="width: 100vw;">
+
+> **Nota.** Sistema de iconografía empleado en la interfaz de SEMS.
 
 #### 4.1.1.4. Spacing and Movement
 
@@ -1041,10 +1016,10 @@ La navegación principal abandona las barras laterales y adopta un **Bottom Tab 
 
 Asimismo, las pantallas secundarias y de filtros emplean ventanas modales arrastrables (*Sheets*) emergentes desde el borde inferior, y el encabezado superior mantiene la navegación clásica de iPhone (Botón `< Atrás` alineado a la izquierda con el título de la vista centrado).
 
-<p align="center">
-  <img src="assets/images/style-guidelines/ios_styles.png" alt="iOS Mobile Style Guidelines" width="800"><br>
-  <i>Nota. Patrones de adaptación visual de SEMS para la plataforma iOS.</i>
-</p>
+*Figura 18 (iOS Mobile Style Guidelines)*
+<img src="assets/images/figures/18-ios_styles.png" alt="iOS Mobile Style Guidelines" style="width: 100vw;">
+
+> **Nota.** Patrones de adaptación visual de SEMS para la plataforma iOS.
 
 #### 4.1.3.2. Android Mobile Style Guidelines
 
@@ -1054,10 +1029,10 @@ El sistema de navegación inferior, o **Bottom Navigation**, implementa el carac
 
 Acciones rápidas como la creación de nuevos locales o el reporte de incidencias se delegan a un **Floating Action Button (FAB)**, el cual utiliza la escala de radio 16px. El encabezado, o **Top App Bar**, integra menú hamburguesa, búsqueda e información contextual alineada a la izquierda sobre un fondo Surface sólido, completando la familiaridad requerida por usuarios de Android.
 
-<p align="center">
-  <img src="assets/images/style-guidelines/android_styles.png" alt="Android Mobile Style Guidelines" width="800"><br>
-  <i>Nota. Implementación de los lineamientos de Material Design 3 en la app Android de SEMS.</i>
-</p>
+*Figura 19 (Android Mobile Style Guidelines)*
+<img src="assets/images/figures/19-android_styles.png" alt="Android Mobile Style Guidelines" style="width: 100vw;">
+
+> **Nota.** Implementación de los lineamientos de Material Design 3 en la app Android de SEMS.
 
 ## 4.2. Information Architecture
 
