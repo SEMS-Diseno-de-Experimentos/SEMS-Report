@@ -523,7 +523,7 @@ inicia explicando el propósito de la investigación y solicitando consentimient
 Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona la operación de forma reactiva, enterándose del costo eléctrico solo al llegar el recibo mensual, lo que representa su segundo mayor gasto después del alquiler. Su mayor frustración es el cargo por potencia, ya que al carecer de medidores por zonas (como frigoríficos) no puede detectar ineficiencias ni sustentar excesos tarifarios ante la gerencia. Indica gran disposición a usar una solución que envíe alertas de demanda con margen a su celular, siempre que esto logre evitar penalidades tarifarias (retorno de inversión) y permita dar accesos acotados a los jefes de cada tienda. A nivel tecnológico, usa ERP corporativo en su laptop, pero depende intensamente de WhatsApp y notificaciones *push* en su smartphone para emergencias.
 
 
-#### Segmento #1 — Entrevista 2 (Plantilla)
+#### Segmento #1 — Entrevista 2
 
 | Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
 | :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
