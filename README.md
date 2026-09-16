@@ -730,25 +730,17 @@ Stories, el Impact Mapping y el Product Backlog priorizado.
 
 ## 3.1. To-Be Scenario Mapping
 
-> Se elabora en **LucidChart o Miro**, uno por User Persona, una vez construidos los As-Is de la
-> sección 2.3.4.
-
-El proceso seguido por el equipo comprende las etapas de preparación, lluvia de ideas individual,
-revisión conjunta, identificación de fases como columnas, denominación de las fases y comparación
-con el As-Is correspondiente para hacer explícitos los cambios que introduce la solución.
-
 **To-Be Scenario Map — User Persona #1: Responsable de operaciones de cadena**
 
-`<Insertar imagen con las filas Phases, Doing, Thinking y Feeling>`
-
-`<Explicación del mapa y comparación con el As-Is: qué fases desaparecen, cuáles se acortan y en
-qué punto del recorrido el usuario pasa de reaccionar a anticipar.>`
+*Figura 12 (To-Be Scenario Map 1)*
+<img src="assets/images/figures/to-be-scenario-map-1.png" alt="To Be Scenario Map 1" style="width: 100vw;">
 
 **To-Be Scenario Map — User Persona #2: Propietario de establecimiento independiente**
 
-`<Insertar imagen>`
+*Figura 13 (To-Be Scenario Map 2)*
+<img src="assets/images/figures/to-be-scenario-map-2.png" alt="To Be Scenario Map 2" style="width: 100vw;">
 
-`<Explicación y comparación con el As-Is.>`
+Energix cumple un rol distinto según el tipo de usuario; para el administrador independiente es una herramienta de autocontrol y prevención personal, mientras que para el responsable de cadena es una herramienta de supervisión y alerta temprana sobre múltiples puntos de operación. En ambos casos, el hilo conductor es que el monitoreo constante reduce la incertidumbre y genera confianza al llegar el recibo final, porque el monto ya era esperado gracias al seguimiento hecho durante el mes.
 
 ## 3.2. User Stories
 
