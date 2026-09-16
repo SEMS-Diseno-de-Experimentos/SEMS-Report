@@ -941,110 +941,132 @@ Page* y de la aplicación web, la arquitectura de software y el diseño de datos
 
 ## 4.1. Style Guidelines
 
+SEMS (Smart Energy Management System) es una plataforma digital orientada a facilitar el monitoreo, gestión y optimización del consumo eléctrico en tiempo real para establecimientos comerciales y cadenas. Debido a que la solución involucra procesos críticos como el control de costos, predicción de picos de demanda y alertas de excesos tarifarios, la interfaz debe transmitir absoluta confianza, precisión de datos y eficiencia durante toda la experiencia de uso.
+
+Las Style Guidelines de SEMS establecen los principales lineamientos visuales y de comunicación que deberán mantenerse de forma consistente tanto en el Landing Page como en la Web Application y las futuras aplicaciones móviles. Estos lineamientos se construyen sobre la gramática visual de **Material Design 3**, adaptada a las necesidades específicas de la gestión energética.
+
+El objetivo de esta guía es mantener una identidad visual coherente en todos los puntos de interacción con el usuario y facilitar que el equipo de diseño y desarrollo trabaje bajo un mismo estándar técnico. De esta manera, se asegura que la plataforma sea intuitiva, visualmente estable y óptima para usuarios que necesitan consultar paneles de datos técnicos de forma rápida y sin ambigüedades.
+
 ### 4.1.1. General Style Guidelines
 
-El lenguaje de diseño de toda la solución es **Material Design 3**. La decisión no es estética:
-el enunciado del curso lo fija como restricción, y adoptarlo permite que el *Landing Page* y la
-aplicación web compartan una misma gramática visual sin tener que mantener dos sistemas.
+La identidad visual de SEMS está diseñada para reflejar tecnología de vanguardia, precisión analítica y sostenibilidad, atributos esenciales en un sistema de gestión de eficiencia energética.
 
-**Branding.** *Energix* es la startup; **SEMS** es el producto. En los artefactos digitales el
-nombre visible es SEMS, y Energix aparece como responsable en el pie de página y en la sección
-legal. La marca se apoya en un símbolo de rayo sobre un cuadrado de esquinas redondeadas, que
-funciona a 32 px como favicon y a 36 px en la barra superior.
+El diseño prioriza un enfoque *data-driven*, manteniendo una interfaz limpia (minimalista) que evite la sobrecarga cognitiva. Las tablas de consumo, gráficos predictivos y alertas requieren jerarquías claras, por lo que se minimizan los elementos decorativos innecesarios. El uso de patrones visuales consistentes permite al usuario, desde el administrador de un solo local hasta el coordinador de toda una cadena, identificar rápidamente variaciones en su consumo y tomar acciones preventivas.
 
-**Paleta.** Se usan los *color roles* de Material Design 3 en lugar de colores sueltos. Cada rol
-tiene su pareja de contraste (`on-*`), lo que garantiza que ningún texto quede por debajo del
-mínimo legible.
+#### Branding
 
-| Rol | Claro | Oscuro | Uso |
-| :-- | :-- | :-- | :-- |
-| `primary` | `#0b57d0` | `#adc6ff` | Acciones principales, enlaces, énfasis |
-| `on-primary` | `#ffffff` | `#002e69` | Texto sobre `primary` |
-| `primary-container` | `#d9e2ff` | `#00458f` | Fondos de realce, etiquetas |
-| `tertiary` | `#146c2e` | `#a8d2b3` | Ahorro conseguido, estados favorables |
-| `error` | `#b3261e` | `#f2b8b5` | Alerta de demanda, exceso de potencia |
-| `surface` | `#fdfcff` | `#111318` | Fondo de página |
-| `on-surface` | `#1a1c1e` | `#e2e2e6` | Texto principal |
-| `on-surface-variant` | `#43474e` | `#c3c7cf` | Texto secundario |
-| `outline-variant` | `#c3c7cf` | `#43474e` | Bordes y separadores |
+La marca se apoya en una distinción clara: **Energix** es la startup desarrolladora, mientras que **SEMS** es el nombre del producto de software. En todos los artefactos digitales (Landing Page y Apps), el nombre visible predominante es SEMS, dejando a Energix como respaldo corporativo visible en pies de página y documentación legal.
 
-El verde de `tertiary` se reserva para el ahorro y el rojo de `error` para la demanda por encima
-de lo contratado. Esa asociación es constante en los tres artefactos: un número verde siempre
-significa dinero que no se gastó, y un bloque rojo siempre significa un cargo que se va a aplicar.
+El logotipo de SEMS se fundamenta en un símbolo de **rayo sobre un cuadrado de esquinas redondeadas**, representando la energía controlada y acotada dentro de un sistema inteligente. Este símbolo se adapta de manera escalable: funciona a 32 px como *favicon* del navegador y a 36 px en la barra superior de la aplicación web, manteniendo siempre su legibilidad.
 
-**Tipografía.** *Roboto*, la familia tipográfica de Material Design, con la escala de tipos del
-sistema. Se define una pila de reserva (`"Segoe UI", system-ui, -apple-system, sans-serif`) para
-que la página siga siendo legible si la fuente remota no carga.
+La identidad visual se distancia de enfoques genéricos y se alinea con una imagen tecnológica B2B. Al gestionar datos financieros y consumo industrial, la estética debe proyectar estabilidad y seguridad para corporaciones y negocios independientes por igual.
 
-| Estilo | Tamaño | Peso | Uso |
-| :-- | :-- | :-- | :-- |
-| Display | `clamp(2.25rem, 1.4rem + 3.2vw, 3.5rem)` | 700 | Titular del *hero* |
-| Headline | `clamp(1.75rem, 1.2rem + 2vw, 2.5rem)` | 700 | Títulos de sección |
-| Title | 1.25 rem | 600 | Títulos de tarjeta |
-| Body | 1 rem / 1.55 | 400 | Texto corrido |
-| Label | 0.8125 rem | 600 | Etiquetas y *kickers* |
+#### 4.1.1.1. Typography
 
-**Espaciado y forma.** Rejilla de 4 px. La escala de formas sigue la de Material Design: 4 px para
-elementos pequeños, 12–16 px para tarjetas, 28 px para contenedores grandes y radio completo para
-botones y *chips*.
+La tipografía de SEMS ha sido definida con el objetivo de asegurar la legibilidad absoluta de cifras y métricas, componentes centrales de un dashboard energético.
 
-**Movimiento.** Curva estándar `cubic-bezier(0.2, 0, 0, 1)` con duraciones de 150 ms (corta),
-300 ms (media) y 500 ms (larga). Toda animación se desactiva bajo `prefers-reduced-motion`.
+Se emplea la familia tipográfica **Roboto**, la fuente nativa de Material Design, en toda la plataforma. Al ser una tipografía sans-serif de gran legibilidad numérica y excelente escalabilidad en pantallas densas, facilita la asimilación de grandes volúmenes de datos operativos. Se define adicionalmente una pila de reserva (`"Segoe UI", system-ui, -apple-system, sans-serif`) para garantizar la estabilidad visual si la fuente web falla.
 
-**Tono de voz.** Segunda persona, frases cortas y cifras concretas en soles. Se evita el
-vocabulario técnico de ingeniería eléctrica en la interfaz de cara al cliente: se habla de
-«consumo», «pico» y «potencia contratada», no de «factor de carga» ni de «demanda coincidente».
+La jerarquía tipográfica sigue la escala estándar del sistema Material 3:
+
+*   **Display (Hero):** `clamp(2.25rem, 1.4rem + 3.2vw, 3.5rem)`, peso Bold (700). Utilizada para los titulares de gran impacto en el Landing Page.
+*   **Headline (Sección):** `clamp(1.75rem, 1.2rem + 2vw, 2.5rem)`, peso Bold (700). Para separar grandes bloques de contenido.
+*   **Title (Tarjeta):** `1.25rem`, peso Medium (500) o SemiBold (600). Para los títulos de widgets y módulos de datos.
+*   **Body (Texto corrido):** `1rem` con interlineado de `1.55`, peso Regular (400).
+*   **Label (Etiqueta):** `0.8125rem`, peso Medium (500). Fundamental para micro-interacciones, badges de estado y ejes de gráficos.
+
+<p align="center">
+  <img src="../assets/images/style-guidelines/typography.png" alt="Sistema tipográfico de SEMS" width="800"><br>
+  <i>Nota. Sistema tipográfico utilizado en la identidad visual de SEMS.</i>
+</p>
+
+#### 4.1.1.2. Colors
+
+La paleta de colores de SEMS abandona el enfoque estático clásico y adopta los **color roles** dinámicos de Material Design 3. Esta decisión garantiza un contraste perfecto (relación fondo/texto) y facilita la implementación automatizada de modos claro y oscuro.
+
+El color principal es el **Primary Blue (#0B57D0)**, que inspira tecnología, control y seguridad corporativa. Su contenedor respectivo, el **Primary Container (#D9E2FF)**, se usa para realzar elementos activos o fondos de tarjetas importantes.
+
+Para la gestión energética, SEMS implementa colores semánticos con significados inmutables en toda la interfaz:
+*   **Tertiary (Success Green - #146C2E):** Reservado estrictamente para escenarios favorables, como ahorros conseguidos, reducción de consumo o metas logradas.
+*   **Error (Danger Red - #B3261E):** Utilizado exclusivamente para alertar sobre la superación de la demanda máxima contratada, fallas en medidores o posibles penalizaciones económicas.
+
+La plataforma respeta el criterio WCAG 2.1 nivel AA: cada rol de color incluye su variante `on-*` (ej. texto blanco `#FFFFFF` sobre Primary Blue `#0B57D0`) asegurando ratios de contraste superiores al mínimo de 4.5:1.
+
+<p align="center">
+  <img src="../assets/images/style-guidelines/colors.png" alt="Paleta de colores de SEMS" width="800"><br>
+  <i>Nota. Sistema de color basado en Material Design 3 utilizado en SEMS.</i>
+</p>
+
+#### 4.1.1.3. Iconography
+
+La iconografía de SEMS utiliza la biblioteca oficial **Material Symbols** de Google. Sigue un estilo simple, lineal (variante *Outlined*) y sumamente consistente, facilitando el escaneo rápido de funciones dentro del sistema.
+
+Las características técnicas de la iconografía son:
+*   **Estilo:** Lineal (Outline), con variante rellenada (Fill) únicamente para indicar estados activos (ej. menús seleccionados).
+*   **Tamaño Base:** 24 x 24 píxeles para íconos estándar de acción.
+*   **Color Base:** `On-Surface (#1a1c1e)` para inactivos, y `Primary Blue (#0b57d0)` para los elementos enfocados.
+
+Se ha diseñado un conjunto primario de representaciones para acciones repetitivas, como *Dashboard*, *Medidores*, *Reportes*, *Alertas* y *Configuración*, reduciendo la dependencia exclusiva de texto y acelerando la navegación.
+
+<p align="center">
+  <img src="../assets/images/style-guidelines/iconography.png" alt="Sistema de iconografía de SEMS" width="800"><br>
+  <i>Nota. Sistema de iconografía empleado en la interfaz de SEMS.</i>
+</p>
+
+#### 4.1.1.4. Spacing and Movement
+
+**Espaciado.** El sistema se estructura en una rejilla (grid) con incrementos de 4 px. Esta unidad atómica permite separaciones lógicas: 4 px u 8 px para agrupaciones atadas lógicamente (ícono y etiqueta), 16 px para márgenes internos de tarjetas (paddings) y 24 px o 32 px para la separación entre bloques principales. Adicionalmente, las formas (shape scale) utilizan esquinas redondeadas siguiendo los tokens MD3: 4 px en campos pequeños, 12-16 px en contenedores de datos, y radios completos (píldoras) en botones interactivos.
+
+**Movimiento.** Se aplican transiciones fluidas mediante la curva estándar `cubic-bezier(0.2, 0, 0, 1)`. Las duraciones se limitan a 150 ms para micro-interacciones (hover de botones), 300 ms para expansión de modales/acordeones y 500 ms para transiciones largas de página. Toda animación obedece a las preferencias del sistema (`prefers-reduced-motion`) desactivándose cuando sea necesario por accesibilidad.
+
+#### 4.1.1.5. Tone of Communication
+
+El tono de voz en SEMS se caracteriza por ser **directo, orientativo y técnico-comercial**. Debido a que el producto traduce datos de ingeniería eléctrica a decisiones financieras, el vocabulario se purga de tecnicismos inaccesibles en las interfaces cliente.
+
+*   Se utilizan términos como "Consumo Actual", "Pico Diario" y "Penalidad" en lugar de vocabulario abstracto como "Factor de demanda" o "Demanda coincidente".
+*   Las alertas son redactadas en segunda persona, y priorizan soluciones: *"Estás a un 5% de superar tu potencia contratada en el Local San Isidro. Se recomienda apagar equipos de alto consumo temporales."*
+*   Se presentan cifras precisas en moneda local (Soles) en lugar de solo kWh, para conectar el consumo con el impacto directo en el presupuesto.
 
 ### 4.1.2. Web Style Guidelines
 
-**Landing Page.** Implementado con HTML5, CSS3 y JavaScript sin framework. Los *color roles* y la
-escala tipográfica se declaran como propiedades personalizadas de CSS sobre `:root`; el esquema
-oscuro solo redefine esos tokens, de modo que no existe una segunda hoja de estilos que mantener.
+La implementación web de SEMS comprende dos experiencias unificadas por el diseño:
 
-Componentes de Material Design utilizados: botón relleno (*filled*), botón con contorno
-(*outlined*), botón tonal, botón de icono, tarjeta con elevación, *chip* de asistencia y lista.
-Los botones aplican el patrón de *state layer*: una capa translúcida del color actual al 8 % en
-*hover* y al 12 % en foco y pulsación, en lugar de un cambio de color.
+**Landing Page.** Construido para maximizar conversiones, presenta una jerarquía vertical enfocada en la propuesta de valor. La navegación es intuitiva, anclada en un header superior con *Call to Actions* primarios. Utiliza un archivo CSS modular sin dependencias externas pesadas, inyectando las variables de Material 3 en la capa `:root`. Para interacciones visuales, aplica la técnica de *state layers* de MD3: transparencias al 8% y 12% del color nativo durante los eventos `:hover` y `:focus`, respectivamente, en lugar de repintar completamente los botones.
 
-**Aplicación web.** Vue 3 con **PrimeVue** y su *preset* Material, tal como exige el enunciado
-para el caso de Vue. La correspondencia entre ambos artefactos es directa: PrimeVue implementa los
-mismos componentes de Material Design que el *Landing Page* construye a mano, por lo que un botón
-principal se ve igual en los dos sitios.
+**Web Application (Dashboard).** Desarrollada empleando componentes altamente estructurados basados en librerías que implementan MD3 de manera estricta (como PrimeVue en su variante Material).
+La navegación se confina a un panel lateral fijo (*Sidebar*) oscuro para aislar la acción de navegación del lienzo de datos. Las grillas de datos (*DataTables*) y tarjetas interactivas de consumo habitan un contenedor central con fondo claro (Surface), asegurando máximo contraste visual para los gráficos predictivos e histogramas generados por Chart.js. 
 
-| Elemento | Landing Page | Aplicación web |
-| :-- | :-- | :-- |
-| Botón principal | `.btn.btn-filled` | `<Button>` (*filled*) |
-| Botón secundario | `.btn.btn-outlined` | `<Button outlined>` |
-| Tarjeta | `.card` | `<Card>` |
-| Tabla | `<table>` con estilos propios | `<DataTable>` |
-| Aviso | `.mock-alert` | `<Message severity="error">` |
-
-**Modo claro y oscuro.** Ambos artefactos ofrecen los dos temas. La preferencia se guarda en
-`localStorage` y se aplica antes del primer pintado para evitar el parpadeo. Si no hay preferencia
-guardada, se respeta `prefers-color-scheme`.
-
-**Accesibilidad.** Se aplica **WCAG 2.1 nivel AA**:
-
-- Contraste mínimo de 4.5:1 en texto normal, verificado en los dos temas.
-- Objetivos táctiles de 48 × 48 px.
-- Anillo de foco visible en todo elemento interactivo.
-- Enlace de salto al contenido como primer elemento enfocable.
-- Puntos de referencia semánticos (`header`, `nav`, `main`, `footer`) y un solo `h1` por página.
-- Atributos ARIA en controles sin texto visible, en el acordeón de preguntas frecuentes
-  (`aria-expanded` / `aria-controls`) y en el conmutador de tema (`aria-pressed`).
+Ambas plataformas respetan las preferencias nativas del navegador, aplicando los esquemas *Light Mode* o *Dark Mode* de manera fluida y leyendo la configuración local del sistema del usuario para evitar destellos blancos (*FOUC*).
 
 ### 4.1.3. Mobile Style Guidelines
 
-> Esta sección se completa cuando exista la aplicación nativa. La paleta, la tipografía y la
-> escala de espaciado definidas en 4.1.1 son las que se trasladarán a ambas plataformas.
+El ecosistema nativo de SEMS traslada los tokens fundamentales de diseño de la web —la paleta semántica, la tipografía Roboto y la escala de espacios— hacia plataformas táctiles (iOS y Android), adaptándolos para coincidir con los patrones ergonómicos e interactivos de cada sistema operativo.
 
 #### 4.1.3.1. iOS Mobile Style Guidelines
 
-> `<Style guidelines para iOS.>`
+La versión para dispositivos Apple interpreta la identidad visual de SEMS bajo las reglas del **Human Interface Guidelines (HIG)**.
+
+La navegación principal abandona las barras laterales y adopta un **Bottom Tab Bar** nativo con efecto de desenfoque translúcido (*blur*). A diferencia del diseño Material puro, el Tab Bar de iOS no emplea "píldoras" de fondo para los ítems seleccionados; en su lugar, el ícono cambia a su variante sólida (*filled*) teñida de Primary Blue, mientras que los elementos inactivos se mantienen en la variante contorneada gris. 
+
+Asimismo, las pantallas secundarias y de filtros emplean ventanas modales arrastrables (*Sheets*) emergentes desde el borde inferior, y el encabezado superior mantiene la navegación clásica de iPhone (Botón `< Atrás` alineado a la izquierda con el título de la vista centrado).
+
+<p align="center">
+  <img src="../assets/images/style-guidelines/ios_styles.png" alt="iOS Mobile Style Guidelines" width="800"><br>
+  <i>Nota. Patrones de adaptación visual de SEMS para la plataforma iOS.</i>
+</p>
 
 #### 4.1.3.2. Android Mobile Style Guidelines
 
-> `<Style guidelines para Android.>`
+La versión de Android mantiene la cohesión pura con **Material Design 3**, optimizando los componentes de la web para el uso con una sola mano y gestos táctiles.
+
+El sistema de navegación inferior, o **Bottom Navigation**, implementa el característico diseño MD3 donde el ícono activo es contenido dentro de una píldora (*pill*) del color `Primary Container`, elevando la visibilidad del estado actual. 
+
+Acciones rápidas como la creación de nuevos locales o el reporte de incidencias se delegan a un **Floating Action Button (FAB)**, el cual utiliza la escala de radio 16px. El encabezado, o **Top App Bar**, integra menú hamburguesa, búsqueda e información contextual alineada a la izquierda sobre un fondo Surface sólido, completando la familiaridad requerida por usuarios de Android.
+
+<p align="center">
+  <img src="../assets/images/style-guidelines/android_styles.png" alt="Android Mobile Style Guidelines" width="800"><br>
+  <i>Nota. Implementación de los lineamientos de Material Design 3 en la app Android de SEMS.</i>
+</p>
 
 ## 4.2. Information Architecture
 
