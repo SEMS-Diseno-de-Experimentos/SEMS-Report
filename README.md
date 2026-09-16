@@ -898,7 +898,7 @@ producto— se priorizan por delante de la analítica avanzada y de los pagos.
 
 ## 3.4. Impact Mapping
 
-> Se elabora en **UXPressia**, a partir de las fichas de los User Personas de la sección 2.3.1.
+<img src="assets/images/figures/impactMapping.png" alt="Impact Mapping" style="width: 100vw;">
 
 **Business Goals (SMART)**
 
@@ -2300,9 +2300,9 @@ cada entrega.
 | Repositorio de la API | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Backend> |
 | Repositorio de la aplicación móvil | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Mobile-App> |
 | Landing Page desplegado | <https://sems-diseno-de-experimentos.github.io/SEMS-Landing-Page/> |
-| Aplicación web desplegada | `<URL de Vercel>` |
-| API desplegada | `<URL del servicio>` |
-| Documentación de la API | `<URL del servicio>/swagger` |
+| Aplicación web desplegada | <https://sems-web-application-fyld.vercel.app/>|
+| API desplegada | <https://sems-backend-diseno.onrender.com> |
+| Documentación de la API | <https://sems-backend-diseno.onrender.com/swagger/index.html> |
 | Tablero de gestión | `<URL del tablero>` |
 
 
