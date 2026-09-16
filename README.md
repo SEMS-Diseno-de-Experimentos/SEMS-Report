@@ -976,7 +976,7 @@ La jerarquía tipográfica sigue la escala estándar del sistema Material 3:
 *   **Label (Etiqueta):** `0.8125rem`, peso Medium (500). Fundamental para micro-interacciones, badges de estado y ejes de gráficos.
 
 <p align="center">
-  <img src="../assets/images/style-guidelines/typography.png" alt="Sistema tipográfico de SEMS" width="800"><br>
+  <img src="assets/images/style-guidelines/typography.png" alt="Sistema tipográfico de SEMS" width="800"><br>
   <i>Nota. Sistema tipográfico utilizado en la identidad visual de SEMS.</i>
 </p>
 
@@ -993,7 +993,7 @@ Para la gestión energética, SEMS implementa colores semánticos con significad
 La plataforma respeta el criterio WCAG 2.1 nivel AA: cada rol de color incluye su variante `on-*` (ej. texto blanco `#FFFFFF` sobre Primary Blue `#0B57D0`) asegurando ratios de contraste superiores al mínimo de 4.5:1.
 
 <p align="center">
-  <img src="../assets/images/style-guidelines/colors.png" alt="Paleta de colores de SEMS" width="800"><br>
+  <img src="assets/images/style-guidelines/colors.png" alt="Paleta de colores de SEMS" width="800"><br>
   <i>Nota. Sistema de color basado en Material Design 3 utilizado en SEMS.</i>
 </p>
 
@@ -1009,7 +1009,7 @@ Las características técnicas de la iconografía son:
 Se ha diseñado un conjunto primario de representaciones para acciones repetitivas, como *Dashboard*, *Medidores*, *Reportes*, *Alertas* y *Configuración*, reduciendo la dependencia exclusiva de texto y acelerando la navegación.
 
 <p align="center">
-  <img src="../assets/images/style-guidelines/iconography.png" alt="Sistema de iconografía de SEMS" width="800"><br>
+  <img src="assets/images/style-guidelines/iconography.png" alt="Sistema de iconografía de SEMS" width="800"><br>
   <i>Nota. Sistema de iconografía empleado en la interfaz de SEMS.</i>
 </p>
 
@@ -1051,7 +1051,7 @@ La navegación principal abandona las barras laterales y adopta un **Bottom Tab 
 Asimismo, las pantallas secundarias y de filtros emplean ventanas modales arrastrables (*Sheets*) emergentes desde el borde inferior, y el encabezado superior mantiene la navegación clásica de iPhone (Botón `< Atrás` alineado a la izquierda con el título de la vista centrado).
 
 <p align="center">
-  <img src="../assets/images/style-guidelines/ios_styles.png" alt="iOS Mobile Style Guidelines" width="800"><br>
+  <img src="assets/images/style-guidelines/ios_styles.png" alt="iOS Mobile Style Guidelines" width="800"><br>
   <i>Nota. Patrones de adaptación visual de SEMS para la plataforma iOS.</i>
 </p>
 
@@ -1064,7 +1064,7 @@ El sistema de navegación inferior, o **Bottom Navigation**, implementa el carac
 Acciones rápidas como la creación de nuevos locales o el reporte de incidencias se delegan a un **Floating Action Button (FAB)**, el cual utiliza la escala de radio 16px. El encabezado, o **Top App Bar**, integra menú hamburguesa, búsqueda e información contextual alineada a la izquierda sobre un fondo Surface sólido, completando la familiaridad requerida por usuarios de Android.
 
 <p align="center">
-  <img src="../assets/images/style-guidelines/android_styles.png" alt="Android Mobile Style Guidelines" width="800"><br>
+  <img src="assets/images/style-guidelines/android_styles.png" alt="Android Mobile Style Guidelines" width="800"><br>
   <i>Nota. Implementación de los lineamientos de Material Design 3 en la app Android de SEMS.</i>
 </p>
 
