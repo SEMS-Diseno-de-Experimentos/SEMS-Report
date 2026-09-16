@@ -559,23 +559,22 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 
 El entrevistado es propietario y administrador de una cafetería de especialidad de 80 m² y gestiona todas las operaciones diarias de manera empírica. El costo de energía representa una parte significativa de sus gastos fijos (20%). Sin embargo, no revisa el detalle de su recibo, ignorando conceptos técnicos como el cargo por potencia y la tarifa comercial. Suele encender los equipos de manera rutinaria, generando picos de consumo por las tardes (hora punta) al activar luces y aire acondicionado simultáneamente por la afluencia de clientes. Ante un recibo inexplicable en campaña pasada, su única acción fue apagar equipos al azar sin conocer realmente cuáles consumían más. Estaría dispuesto a pagar una herramienta mensual si se le demuestra un ahorro tangible en el recibo, y ve con gran interés recibir avisos de exceso de consumo en tiempo real mediante notificaciones *push* en su smartphone, el cual es su principal herramienta de gestión, junto con apps bancarias.
 
-#### Segmento #2 — Entrevista 2 (Plantilla)
+#### Segmento #2 — Entrevista 2
 
 | Campo | Dato |
 | :-- | :-- |
-| Nombres y apellidos | `<...>` |
-| Edad | `<...>` |
-| Distrito | `<...>` |
-| Cargo / tipo de establecimiento | `<...>` |
-| Número de locales a cargo | `<...>` |
-| URL del video | `<...>` |
-| Timing de inicio | `<mm:ss>` |
-| Duración | `<mm:ss>` |
-| Screenshot | `<Insertar captura del cuadro de video>` |
+| Nombres y apellidos | Yuli Mersi Ordinola Chunga |
+| Edad | 54 años |
+| Distrito | Piura |
+| Cargo / tipo de establecimiento | Administrador de local de recepción para eventos |
+| Número de locales a cargo | 1 |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQA8ZsGrwfiRT50MqC85e4-CATbOrSmrbNmF9zogQw8q3Go?e=wtdMMt)|
+| Timing de inicio | 00:13 |
+| Duración | 16:00 |
+| Screenshot | <img src="assets/images/interviews/needfinding/04-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
 
 **Resumen de la entrevista**
-
-`<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
+La entrevistada es administradora de un local de alquiler para eventos de 170 m², donde se ofrecen servicios de música, almuerzos y cenas, y opera con un equipo de 8 personas (música, cocina, mozos, decoración y mantenimiento). Los recibos de luz y agua constituyen sus gastos fijos más altos debido a la actividad diaria del negocio. Sin embargo, solo revisa el monto total del recibo, sin conocer la potencia eléctrica contratada ni haber recibido nunca una propuesta de auditoría eléctrica, aunque sí contrató recientemente a un electricista para revisar el tablero de llaves térmicas. Su equipo principal de alto consumo es una refrigeradora grande que permanece encendida las 24 horas, mientras que el resto (parlantes, congeladores adicionales, luces, plancha y horno microondas) se desenchufa al cierre; aun así, atribuye los incrementos mensuales a descuidos genéricos, sin poder calcular el ahorro exacto de apagar equipos específicos. Estaría dispuesta a invertir en una herramienta de optimización si esta demuestra, comparando el historial de los últimos tres meses, un ahorro real de entre 30% y 50% (por ejemplo, bajar de 200 a 100 soles mensuales). Ve como fundamental recibir notificaciones inmediatas ante consumos excesivos o anómalos —preferentemente por WhatsApp o llamada, similar al sistema de Calidda— ya que esto le permitiría detectar el mismo día conexiones clandestinas u otros problemas. Finalmente, reflexiona junto a la entrevistadora que, a diferencia de los hogares, en los negocios el ajuste del consumo energético es indispensable por la presión de los gastos fijos y el pago de personal.
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -731,25 +730,17 @@ Stories, el Impact Mapping y el Product Backlog priorizado.
 
 ## 3.1. To-Be Scenario Mapping
 
-> Se elabora en **LucidChart o Miro**, uno por User Persona, una vez construidos los As-Is de la
-> sección 2.3.4.
-
-El proceso seguido por el equipo comprende las etapas de preparación, lluvia de ideas individual,
-revisión conjunta, identificación de fases como columnas, denominación de las fases y comparación
-con el As-Is correspondiente para hacer explícitos los cambios que introduce la solución.
-
 **To-Be Scenario Map — User Persona #1: Responsable de operaciones de cadena**
 
-`<Insertar imagen con las filas Phases, Doing, Thinking y Feeling>`
-
-`<Explicación del mapa y comparación con el As-Is: qué fases desaparecen, cuáles se acortan y en
-qué punto del recorrido el usuario pasa de reaccionar a anticipar.>`
+*Figura 12 (To-Be Scenario Map 1)*
+<img src="assets/images/figures/to-be-scenario-map-1.png" alt="To Be Scenario Map 1" style="width: 100vw;">
 
 **To-Be Scenario Map — User Persona #2: Propietario de establecimiento independiente**
 
-`<Insertar imagen>`
+*Figura 13 (To-Be Scenario Map 2)*
+<img src="assets/images/figures/to-be-scenario-map-2.png" alt="To Be Scenario Map 2" style="width: 100vw;">
 
-`<Explicación y comparación con el As-Is.>`
+Energix cumple un rol distinto según el tipo de usuario; para el administrador independiente es una herramienta de autocontrol y prevención personal, mientras que para el responsable de cadena es una herramienta de supervisión y alerta temprana sobre múltiples puntos de operación. En ambos casos, el hilo conductor es que el monitoreo constante reduce la incertidumbre y genera confianza al llegar el recibo final, porque el monto ya era esperado gracias al seguimiento hecho durante el mes.
 
 ## 3.2. User Stories
 
