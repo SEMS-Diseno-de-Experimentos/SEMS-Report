@@ -563,19 +563,18 @@ El entrevistado es propietario y administrador de una cafetería de especialidad
 
 | Campo | Dato |
 | :-- | :-- |
-| Nombres y apellidos | `<...>` |
-| Edad | `<...>` |
-| Distrito | `<...>` |
-| Cargo / tipo de establecimiento | `<...>` |
-| Número de locales a cargo | `<...>` |
-| URL del video | `<...>` |
-| Timing de inicio | `<mm:ss>` |
-| Duración | `<mm:ss>` |
-| Screenshot | `<Insertar captura del cuadro de video>` |
+| Nombres y apellidos | Yuli Mersi Ordinola Chunga |
+| Edad | 54 años |
+| Distrito | Piura |
+| Cargo / tipo de establecimiento | Administrador de local de recepción para eventos |
+| Número de locales a cargo | 1 |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQA8ZsGrwfiRT50MqC85e4-CATbOrSmrbNmF9zogQw8q3Go?e=wtdMMt)|
+| Timing de inicio | 00:13 |
+| Duración | 16:00 |
+| Screenshot | <img src="assets/images/interviews/needfinding/03-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
 
 **Resumen de la entrevista**
-
-`<Resumen descriptivo de las respuestas del entrevistado a las preguntas realizadas, incluyendo características objetivas y subjetivas.>`
+La entrevistada es administradora de un local de alquiler para eventos de 170 m², donde se ofrecen servicios de música, almuerzos y cenas, y opera con un equipo de 8 personas (música, cocina, mozos, decoración y mantenimiento). Los recibos de luz y agua constituyen sus gastos fijos más altos debido a la actividad diaria del negocio. Sin embargo, solo revisa el monto total del recibo, sin conocer la potencia eléctrica contratada ni haber recibido nunca una propuesta de auditoría eléctrica, aunque sí contrató recientemente a un electricista para revisar el tablero de llaves térmicas. Su equipo principal de alto consumo es una refrigeradora grande que permanece encendida las 24 horas, mientras que el resto (parlantes, congeladores adicionales, luces, plancha y horno microondas) se desenchufa al cierre; aun así, atribuye los incrementos mensuales a descuidos genéricos, sin poder calcular el ahorro exacto de apagar equipos específicos. Estaría dispuesta a invertir en una herramienta de optimización si esta demuestra, comparando el historial de los últimos tres meses, un ahorro real de entre 30% y 50% (por ejemplo, bajar de 200 a 100 soles mensuales). Ve como fundamental recibir notificaciones inmediatas ante consumos excesivos o anómalos —preferentemente por WhatsApp o llamada, similar al sistema de Calidda— ya que esto le permitiría detectar el mismo día conexiones clandestinas u otros problemas. Finalmente, reflexiona junto a la entrevistadora que, a diferencia de los hogares, en los negocios el ajuste del consumo energético es indispensable por la presión de los gastos fijos y el pago de personal.
 
 ### 2.2.3. Análisis de entrevistas
 
