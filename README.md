@@ -1,3 +1,207 @@
+<div align="center">
+
+<img src="assets/images/others/01-upc-logo.png" alt="UPC Logo" width="150px">
+<br><br>
+
+Universidad Peruana de Ciencias Aplicadas
+
+**Carrera:** Ingeniería de Software
+
+**Sección:** 1ASI0732 
+
+**Curso:** Diseño de Experimentos de Ingeniería de Software 
+
+**NRC:** 17821
+
+**Profesor:** Lennin Percy Cenas Vasquez
+
+**Informe del Trabajo Final**
+
+**Startup:** Energix
+
+**Startup:** SEMS
+
+**Integrantes**
+
+<div style="text-align: center;">
+<div style="display: inline-block;">
+<table style="width: auto; border-collapse: collapse; text-align: center;">
+  <thead>
+    <tr>
+      <th style="padding: 8px; border: 1px solid #666; text-align: center;">Código</th>
+      <th style="padding: 8px; border: 1px solid #666; text-align: center;">Apellidos y Nombres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">U20211G491</td>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">Encalada Salazar, Alexis</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">U202317099</td>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">Rojas Tello, Nestor Alonso</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">U20231E504</td>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">Merino Ordinola, Winnie Lisbeth</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">U202310342</td>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">Noriega Collado, Jean Fabio</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">U20201A277</td>
+      <td style="padding: 8px; border: 1px solid #666; text-align: center;">Ramos Cerdan, Elias Daniel</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+**Período:** 202620
+
+**Septiembre 2026**
+
+</div>
+
+---
+
+# Registro de versiones del informe
+
+| Versión | Fecha | Autor | Descripción de modificación |
+| --- | --- | --- | --- |
+| 0.1.0 | 12/9/26 | @Alexiz248 | docs: añadir descripción de la startup, problemática y segmentos objetivo |
+| 0.1.1 | 12/9/26 | @nes-ro | docs: desarrollar Lean UX Process y análisis de competidores |
+| 0.1.2 | 13/9/26 | @dumbaskidd | docs: incorporar diseño, registro y análisis de entrevistas |
+| 0.1.3 | 13/9/26 | @winniemerino | docs: desarrollar needfinding y ubiquitous language |
+| 0.1.4 | 14/9/26 | @nes-ro | docs: definir user stories, product backlog e impact mapping |
+| 0.1.5 | 14/9/26 | @Alexiz248 | docs: añadir lineamientos de estilo y arquitectura de información |
+| 0.1.6 | 15/9/26 | @dumbaskidd | docs: documentar diseño de interfaces y prototipos web y móviles |
+| 0.1.7 | 15/9/26 | @eliocerdan | docs: incorporar arquitectura de software, diseño de clases y base de datos |
+| 0.1.8 | 16/9/26 | @Alexiz248 | docs: documentar configuración, implementación y despliegue del producto |
+| 0.1.9 | 16/9/26 | @nes-ro | docs: actualizar conclusiones, bibliografía y anexos; ajustar formato y numeración de figuras |
+
+# Project Report Collaboration Insights
+
+**Repositorio de la documentación del proyecto:** [https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Report](https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Report)
+
+A continuación, se detallan las actividades realizadas en cada entrega, la participación de los miembros del equipo, y las evidencias correspondientes.
+
+**AV1**
+
+<img src="assets/images/others/02-docs-insights-av1.png" alt="Docs Insight AV1" style="width: 100vw;">
+
+# Tabla de contenidos
+
+Tabla de contenidos  
+Student Outcome  
+
+**Part I: As-Is Software Project**  
+
+**Capítulo I: Introducción**  
+1.1. Startup Profile  
+1.1.1. Descripción de la Startup  
+1.1.2. Perfiles de integrantes del equipo  
+1.2. Solution Profile  
+1.2.1. Antecedentes y problemática  
+1.2.2. Lean UX Process.  
+1.2.2.1. Lean UX Problem Statements.  
+1.2.2.2. Lean UX Assumptions.  
+1.2.2.3. Lean UX Hypothesis Statements.  
+1.2.2.4. Lean UX Canvas.  
+1.3. Segmentos objetivo.  
+
+**Capítulo II: Requirements Elicitation & Analysis**  
+2.1. Competidores.  
+2.1.1. Análisis competitivo.  
+2.1.2. Estrategias y tácticas frente a competidores.  
+2.2. Entrevistas.  
+2.2.1. Diseño de entrevistas.  
+2.2.2. Registro de entrevistas.  
+2.2.3. Análisis de entrevistas.  
+2.3. Needfinding.  
+2.3.1. User Personas.  
+2.3.2. User Task Matrix.  
+2.3.3. User Journey Mapping.  
+2.3.4. Empathy Mapping.  
+2.3.5. As-is Scenario Mapping.  
+2.4. Ubiquitous Language.  
+
+**Capítulo III: Requirements Specification**  
+3.1. To-Be Scenario Mapping.  
+3.2. User Stories.  
+3.3. Product Backlog.  
+3.4. Impact Mapping.  
+
+**Capítulo IV: Product Design**  
+4.1. Style Guidelines.  
+4.1.1. General Style Guidelines.  
+4.1.2. Web Style Guidelines.  
+4.1.3. Mobile Style Guidelines.  
+4.1.3.1. iOS Mobile Style Guidelines.  
+4.1.3.2. Android Mobile Style Guidelines.  
+4.2. Information Architecture.  
+4.2.1. Organization Systems.  
+4.2.2. Labeling Systems.  
+4.2.3. SEO Tags and Meta Tags  
+4.2.4. Searching Systems.  
+4.2.5. Navigation Systems.  
+4.3. Landing Page UI Design.  
+4.3.1. Landing Page Wireframe.  
+4.3.2. Landing Page Mock-up.  
+4.4. Mobile Applications UX/UI Design.  
+4.4.1. Mobile Applications Wireframes.  
+4.4.2. Mobile Applications Wireflow Diagrams.  
+4.4.3. Mobile Applications Mock-ups.  
+4.4.4. Mobile Applications User Flow Diagrams.  
+4.5. Mobile Applications Prototyping.  
+4.5.1. Android Mobile Applications Prototyping.  
+4.5.2. iOS Mobile Applications Prototyping.  
+4.6. Web Applications UX/UI Design.  
+4.6.1. Web Applications Wireframes.  
+4.6.2. Web Applications Wireflow Diagrams.  
+4.6.3. Web Applications Mock-ups.  
+4.6.4. Web Applications User Flow Diagrams.  
+4.7. Web Applications Prototyping.  
+4.8. Domain-Driven Software Architecture.  
+4.8.1. Software Architecture Context Diagram.  
+4.8.2. Software Architecture Container Diagrams.  
+4.8.3. Software Architecture Components Diagrams.  
+4.9. Software Object-Oriented Design.  
+4.9.1. Class Diagrams.  
+4.9.2. Class Dictionary.  
+4.10. Database Design.  
+4.10.1. Relational/Non-Relational Database Diagram.  
+
+**Capítulo V: Product Implementation**  
+5.1. Software Configuration Management.  
+5.1.1. Software Development Environment Configuration.  
+5.1.2. Source Code Management.  
+5.1.3. Source Code Style Guide & Conventions.  
+5.1.4. Software Deployment Configuration.  
+5.2. Product Implementation & Deployment.  
+5.2.1. Sprint Backlogs.  
+5.2.2. Implemented Landing Page Evidence  
+5.2.3. Implemented Frontend-Web Application Evidence  
+5.2.4. Acuerdo de Servicio - SaaS  
+5.2.5. Implemented Native-Mobile Application Evidence  
+5.2.6. Implemented RESTful API and/or Serverless Backend Evidence  
+5.2.7. RESTful API documentation  
+5.2.8. Team Collaboration Insights  
+5.3. Video About-the-Product.  
+
+# Student Outcome
+
+El curso contribuye al cumplimiento del Student Outcome ABET:
+
+**ABET – EAC - Student Outcome 4**
+
+**Criterio:** La capacidad de reconocer responsabilidades éticas y profesionales en situaciones de ingeniería y hacer juicios informados, que deben considerar el impacto de las soluciones de ingeniería en contextos globales, económicos, ambientales y sociales.
+
+| Criterio específico | Acciones realizadas | Conclusiones |
+| --- | --- | --- |
+| **4.c.1 Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software.** | **Encalada Salazar, Alexis**<br>**AV1:** En el planteamiento de SEMS, reconoció la responsabilidad de comunicar el alcance de la solución y diferenciar los beneficios esperados de los resultados comprobados, evitando presentar el ahorro energético como una garantía.<br><br>**Rojas Tello, Nestor Alonso**<br>**AV1:** En el análisis de competidores y segmentos objetivo, consideró la importancia de sustentar las comparaciones y las necesidades con información verificable, sin atribuir a los usuarios características que no hayan sido recogidas en la investigación.<br><br>**Merino Ordinola, Winnie Lisbeth**<br>**AV1:** En el análisis de la experiencia del usuario, reconoció la necesidad de solicitar consentimiento para registrar entrevistas y cuidar la exposición de datos personales al documentar las respuestas y elaborar los User Personas.<br><br>**Noriega Collado, Jean Fabio**<br>**AV1:** En la definición de requisitos, consideró la responsabilidad de presentar las estimaciones de consumo y facturación con claridad, para que el usuario pueda distinguirlas de los valores definitivos del recibo eléctrico.<br><br>**Ramos Cerdan, Elias Daniel**<br>**AV1:** Al analizar las recomendaciones de ahorro, reconoció que reducir el consumo no debe comprometer la seguridad de las personas ni la continuidad de equipos esenciales, como los de refrigeración. | **AV1:** El análisis de SEMS permite reconocer que la responsabilidad profesional comprende proteger la información de los participantes, sustentar las afirmaciones del informe y comunicar las limitaciones de la solución. Las recomendaciones de ahorro deben respetar la seguridad y las necesidades operativas de cada establecimiento. |
+| **4.c.2 Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales.** | **Encalada Salazar, Alexis**<br>**AV1:** Al evaluar la propuesta de valor, consideró que el beneficio económico de SEMS debe contrastarse con los costos de adopción y operación, para que la inversión resulte razonable para los establecimientos objetivo.<br><br>**Rojas Tello, Nestor Alonso**<br>**AV1:** A partir del análisis del mercado y de los segmentos, consideró que una solución de gestión energética debe adaptarse a las tarifas y condiciones de cada contexto. Por ello, el enfoque peruano de SEMS no puede trasladarse a otros países sin revisar sus condiciones locales.<br><br>**Merino Ordinola, Winnie Lisbeth**<br>**AV1:** Al analizar las necesidades de los usuarios, consideró el impacto social de interfaces y alertas comprensibles para personas sin formación eléctrica, de modo que puedan tomar decisiones sin depender de conocimientos técnicos especializados.<br><br>**Noriega Collado, Jean Fabio**<br>**AV1:** En la priorización de funcionalidades, valoró el monitoreo y las alertas por su aporte a la detección de consumos evitables. Distinguió el beneficio ambiental de reducir el consumo del beneficio económico de desplazarlo a horarios de menor costo.<br><br>**Ramos Cerdan, Elias Daniel**<br>**AV1:** Al evaluar el uso de SEMS en negocios, consideró que las decisiones de ahorro deben equilibrarse con la conservación de productos, las condiciones de trabajo y la atención al cliente, evitando trasladar el ahorro a perjuicios para trabajadores o consumidores. | **AV1:** La evaluación de SEMS integra los costos y beneficios para el negocio, el uso responsable de la energía y las consecuencias para trabajadores y clientes. También reconoce que su aplicación en otros contextos requiere adaptar tarifas y condiciones de uso. Estos criterios orientan decisiones de diseño que equilibran viabilidad económica, responsabilidad ambiental y bienestar social. |
 
 # Capítulo I: Introducción
 
@@ -35,18 +239,18 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 **Logo de la Startup**
 
 <div align="center">
-  <img src="assets/images/others/energix-logo.jpg" alt="Startup Logo" width="200">
+  <img src="assets/images/others/03-energix-logo.jpg" alt="Startup Logo" width="200">
 </div>
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
 | Foto | Integrante | Código | Carrera | Perfil |
 | :--: | :-- | :-- | :-- | :-- |
-|<img src="assets/images/team-photos/profile-alexis.png" alt="Profile Picture" width="100"> | Encalada Salazar, Alexis **(Team Leader)** | U20211G491 | Ingeniería de Software | Estudiante de ingeniería de software, poseo conocimientos en diferentes lenguajes de programación, manejo de bases de datos y edición de videos |
-| <img src="assets/images/team-photos/profile-winnie.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
-| <img src="assets/images/team-photos/profile-nestor.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
-| <img src="assets/images/team-photos/profile-jean.jpeg" alt="Profile Picture" width="100"> | Noriega Collado, Jean Fabio | U202310342 | Ingeniería de Software | Estudio ingenieria de software. Me gusta liderar equipos de trabajo y mantener ambientes ordenados en la medida de lo posible. Entre mis habilidades, podria decir que soy suficiente y eficiente, de manera que cubro los aspectos necesarios para la realizacion de proyectos largos y complejos. Siguiendo los principios por los cuales estudio la carrera. |
-| `<Foto>` | `<Apellidos, Nombres>` | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+|<img src="assets/images/team-photos/01-profile-alexis.png" alt="Profile Picture" width="100"> | Encalada Salazar, Alexis **(Team Leader)** | U20211G491 | Ingeniería de Software | Estudiante de ingeniería de software, poseo conocimientos en diferentes lenguajes de programación, manejo de bases de datos y edición de videos |
+| <img src="assets/images/team-photos/02-profile-winnie.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
+| <img src="assets/images/team-photos/03-profile-nestor.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
+| <img src="assets/images/team-photos/04-profile-jean.jpeg" alt="Profile Picture" width="100"> | Noriega Collado, Jean Fabio | U202310342 | Ingeniería de Software | Estudio ingenieria de software. Me gusta liderar equipos de trabajo y mantener ambientes ordenados en la medida de lo posible. Entre mis habilidades, podria decir que soy suficiente y eficiente, de manera que cubro los aspectos necesarios para la realizacion de proyectos largos y complejos. Siguiendo los principios por los cuales estudio la carrera. |
+| <img src="assets/images/team-photos/05-profile-elias.jpeg" alt="Profile Picture" width="100"> | Ramos Cerdan, Elias Daniel | U20201A277 | Ingeniería de Software |  Estoy en el séptimo ciclo de la carrera de Ingeniería de Software. Me adapto con facilidad a entornos nuevos y siempre busco maneras de mejorar mi ejecución de cada avance en los trabajos. El desarrollo de software es un área de gran interés para mí, tengo conocimientos en C++, python, html, css, y javascript y disfruto abordando problemas que exigen tanto razonamiento lógico como creatividad. |
 
 ## 1.2. Solution Profile
 
@@ -362,7 +566,7 @@ origina el sobrecosto comercial.
 
 ### 2.1.1. Análisis competitivo
 
-<table width="100%"><tr><th colspan="2">Competitive Analysis Landscape</th><th width="18%"><strong>Energix — SEMS</strong><br><img src="assets/images/others/energix-logo.jpg" alt="Energix Logo" width="80"></th><th width="18%"><strong>Schneider Electric</strong><br><img src="assets/images/others/schneider-logo.png" alt="Schneider Electric Logo" width="80"></th><th width="17%"><strong>Portal de la distribuidora</strong><br><img src="assets/images/others/luzdelsur-logo.jpg" alt="Distribuidora Logo" width="80"></th><th width="17%"><strong>Medidores tipo Refoss / Shelly</strong><br><img src="assets/images/others/refoss-logo.jpg" alt="Refoss Logo" width="80"></th></tr><tr><td colspan="2"><strong>¿Por qué llevar a cabo este análisis?</strong></td><td colspan="4">Determinar qué necesidad del segmento de establecimientos comerciales no está siendo atendida por la oferta actual, y sobre qué base construir la ventaja competitiva de SEMS.</td></tr><tr><td rowspan="2"><strong>Perfil</strong></td><td>Overview</td><td>Plataforma web de gestión energética para establecimientos comerciales. Mide por local y por zona, calcula con la tarifa comercial peruana y avisa antes de superar la potencia contratada.</td><td>Suite empresarial de gestión de energía y automatización para industria y edificios corporativos.</td><td>Portal de consulta de consumo y facturación que la distribuidora ofrece a sus clientes.</td><td>Dispositivos de medición de consumo con aplicación móvil, orientados al mercado doméstico.</td></tr><tr><td>Ventaja competitiva</td><td>Modela la estructura tarifaria comercial peruana completa (punta, fuera de punta y demanda máxima) y alerta con margen antes del exceso.</td><td>Profundidad técnica, calidad de energía, integración con control industrial y respaldo de marca global.</td><td>El dato proviene de la misma empresa que emite la factura.</td><td>Precio bajo e instalación sencilla.</td></tr><tr><td rowspan="2"><strong>Perfil de Marketing</strong></td><td>Mercado objetivo</td><td>Establecimientos comerciales de 200 a 2.000 m² y cadenas de retail pequeñas y medianas.</td><td>Industria, minería, edificios corporativos y grandes superficies.</td><td>Todos los clientes de la concesionaria.</td><td>Consumidor doméstico y pequeño negocio.</td></tr><tr><td>Estrategias de marketing</td><td>Venta directa a cadenas, alianzas con gremios de comerciantes y prueba piloto gratuita en un local.</td><td>Red de integradores certificados y venta consultiva de alto ticket.</td><td>Canal propio incluido en el servicio.</td><td>Comercio electrónico y retail de tecnología.</td></tr><tr><td rowspan="3"><strong>Perfil de Producto</strong></td><td>Productos y servicios</td><td>Landing page, aplicación web, API RESTful y aplicación móvil. Alertas de demanda, factura estimada desglosada, consumo por zona y comparación entre locales.</td><td>Medidores, software de supervisión, servicios de ingeniería y analítica avanzada.</td><td>Consulta de recibos, histórico de consumo y demanda facturada.</td><td>Medidor con aplicación de consumo y automatizaciones básicas.</td></tr><tr><td>Precios y costos</td><td>Suscripción mensual escalonada por número de locales. Plan de entrada gratuito para un local.</td><td>Licenciamiento e implementación de alto costo, con proyecto de integración.</td><td>Sin costo adicional, incluido en el servicio eléctrico.</td><td>Pago único por dispositivo.</td></tr><tr><td>Canales de distribución</td><td>Web y móvil.</td><td>Integradores y fuerza de ventas directa.</td><td>Web y aplicación de la distribuidora.</td><td>Comercio electrónico.</td></tr><tr><td rowspan="4"><strong>Análisis SWOT</strong></td><td>Fortalezas</td><td>Modela la tarifa comercial peruana; alerta preventiva de demanda; desglose por zona; equipo con conocimiento del contexto regulatorio local.</td><td>Marca consolidada, robustez técnica, catálogo completo de hardware y software.</td><td>Acceso directo al dato oficial de facturación.</td><td>Costo bajo, gran base instalada y facilidad de uso.</td></tr><tr><td>Debilidades</td><td>Startup sin trayectoria ni base instalada; depende de hardware de medición de terceros; sin histórico de casos de éxito.</td><td>Costo y complejidad desproporcionados para el segmento; ciclo de venta largo.</td><td>Dato diferido y agregado; sin desglose por zona; sin capacidad de alerta preventiva.</td><td>No modela franja horaria ni demanda máxima; orientado al hogar; sin gestión multi-local.</td></tr><tr><td>Oportunidades</td><td>Segmento desatendido entre el medidor doméstico y la suite industrial; presión creciente sobre los costos operativos del retail.</td><td>Expansión hacia edificios comerciales medianos.</td><td>Ampliar los servicios digitales al cliente comercial.</td><td>Adaptar su producto al segmento comercial.</td></tr><tr><td>Amenazas</td><td>Que la distribuidora o un fabricante de medidores incorporen alertas de demanda en su propia oferta.</td><td>Competidores especializados más ágiles en nichos concretos.</td><td>Regulación y competencia en la comercialización eléctrica.</td><td>Saturación del mercado y competencia por precio.</td></tr></table>
+<table width="100%"><tr><th colspan="2">Competitive Analysis Landscape</th><th width="18%"><strong>Energix — SEMS</strong><br><img src="assets/images/others/03-energix-logo.jpg" alt="Energix Logo" width="80"></th><th width="18%"><strong>Schneider Electric</strong><br><img src="assets/images/others/04-schneider-logo.png" alt="Schneider Electric Logo" width="80"></th><th width="17%"><strong>Portal de la distribuidora</strong><br><img src="assets/images/others/05-luzdelsur-logo.jpg" alt="Distribuidora Logo" width="80"></th><th width="17%"><strong>Medidores tipo Refoss / Shelly</strong><br><img src="assets/images/others/06-refoss-logo.jpg" alt="Refoss Logo" width="80"></th></tr><tr><td colspan="2"><strong>¿Por qué llevar a cabo este análisis?</strong></td><td colspan="4">Determinar qué necesidad del segmento de establecimientos comerciales no está siendo atendida por la oferta actual, y sobre qué base construir la ventaja competitiva de SEMS.</td></tr><tr><td rowspan="2"><strong>Perfil</strong></td><td>Overview</td><td>Plataforma web de gestión energética para establecimientos comerciales. Mide por local y por zona, calcula con la tarifa comercial peruana y avisa antes de superar la potencia contratada.</td><td>Suite empresarial de gestión de energía y automatización para industria y edificios corporativos.</td><td>Portal de consulta de consumo y facturación que la distribuidora ofrece a sus clientes.</td><td>Dispositivos de medición de consumo con aplicación móvil, orientados al mercado doméstico.</td></tr><tr><td>Ventaja competitiva</td><td>Modela la estructura tarifaria comercial peruana completa (punta, fuera de punta y demanda máxima) y alerta con margen antes del exceso.</td><td>Profundidad técnica, calidad de energía, integración con control industrial y respaldo de marca global.</td><td>El dato proviene de la misma empresa que emite la factura.</td><td>Precio bajo e instalación sencilla.</td></tr><tr><td rowspan="2"><strong>Perfil de Marketing</strong></td><td>Mercado objetivo</td><td>Establecimientos comerciales de 200 a 2.000 m² y cadenas de retail pequeñas y medianas.</td><td>Industria, minería, edificios corporativos y grandes superficies.</td><td>Todos los clientes de la concesionaria.</td><td>Consumidor doméstico y pequeño negocio.</td></tr><tr><td>Estrategias de marketing</td><td>Venta directa a cadenas, alianzas con gremios de comerciantes y prueba piloto gratuita en un local.</td><td>Red de integradores certificados y venta consultiva de alto ticket.</td><td>Canal propio incluido en el servicio.</td><td>Comercio electrónico y retail de tecnología.</td></tr><tr><td rowspan="3"><strong>Perfil de Producto</strong></td><td>Productos y servicios</td><td>Landing page, aplicación web, API RESTful y aplicación móvil. Alertas de demanda, factura estimada desglosada, consumo por zona y comparación entre locales.</td><td>Medidores, software de supervisión, servicios de ingeniería y analítica avanzada.</td><td>Consulta de recibos, histórico de consumo y demanda facturada.</td><td>Medidor con aplicación de consumo y automatizaciones básicas.</td></tr><tr><td>Precios y costos</td><td>Suscripción mensual escalonada por número de locales. Plan de entrada gratuito para un local.</td><td>Licenciamiento e implementación de alto costo, con proyecto de integración.</td><td>Sin costo adicional, incluido en el servicio eléctrico.</td><td>Pago único por dispositivo.</td></tr><tr><td>Canales de distribución</td><td>Web y móvil.</td><td>Integradores y fuerza de ventas directa.</td><td>Web y aplicación de la distribuidora.</td><td>Comercio electrónico.</td></tr><tr><td rowspan="4"><strong>Análisis SWOT</strong></td><td>Fortalezas</td><td>Modela la tarifa comercial peruana; alerta preventiva de demanda; desglose por zona; equipo con conocimiento del contexto regulatorio local.</td><td>Marca consolidada, robustez técnica, catálogo completo de hardware y software.</td><td>Acceso directo al dato oficial de facturación.</td><td>Costo bajo, gran base instalada y facilidad de uso.</td></tr><tr><td>Debilidades</td><td>Startup sin trayectoria ni base instalada; depende de hardware de medición de terceros; sin histórico de casos de éxito.</td><td>Costo y complejidad desproporcionados para el segmento; ciclo de venta largo.</td><td>Dato diferido y agregado; sin desglose por zona; sin capacidad de alerta preventiva.</td><td>No modela franja horaria ni demanda máxima; orientado al hogar; sin gestión multi-local.</td></tr><tr><td>Oportunidades</td><td>Segmento desatendido entre el medidor doméstico y la suite industrial; presión creciente sobre los costos operativos del retail.</td><td>Expansión hacia edificios comerciales medianos.</td><td>Ampliar los servicios digitales al cliente comercial.</td><td>Adaptar su producto al segmento comercial.</td></tr><tr><td>Amenazas</td><td>Que la distribuidora o un fabricante de medidores incorporen alertas de demanda en su propia oferta.</td><td>Competidores especializados más ágiles en nichos concretos.</td><td>Regulación y competencia en la comercialización eléctrica.</td><td>Saturación del mercado y competencia por precio.</td></tr></table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
@@ -519,17 +723,17 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 
 #### Segmento #1 — Entrevista 2
 
-| Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
-| :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nombres y apellidos | Miguel Pomasonco                                                                                                                                                                                                                                                                                                                                        |
-| Edad | 53 años                                                                                                                                                                                                                                                                                                                                                 |
-| Distrito | La Victoria                                                                                                                                                                                                                                                                                                                                             |
-| Cargo / tipo de establecimiento | Coordinador de tiendas de tamaño mediano de ventas                                                                                                                                                                                                                                                                                                      |
-| Número de locales a cargo | 3                                                                                                                                                                                                                                                                                                                                                       |
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Miguel Pomasonco |
+| Edad | 53 años |
+| Distrito | La Victoria |
+| Cargo / tipo de establecimiento | Coordinador de tiendas de tamaño mediano de ventas |
+| Número de locales a cargo | 3 |
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQBdjAxIlyqkT78044_Vx_txAfngwLSWD0A7ALENK_-wqJY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=B0zEPB) |
-| Timing de inicio | 00:00                                                                                                                                                                                                                                                                                                                                                   |
-| Duración | 08:46                                                                                                                                                                                                                                                                                                                                                   |
-| Screenshot |  <img src="assets/images/interviews/needfinding/02-entrevista-responsable02.png" alt="Captura Entrevista Jasmin" width="250">                                                                                                                                                                                                                            |
+| Timing de inicio | 00:00 |
+| Duración | 08:46 |
+| Screenshot | <img src="assets/images/interviews/needfinding/02-entrevista-responsable02.png" alt="Captura Entrevista Jasmin" width="250"> |
 
 
 **Resumen de la entrevista**
@@ -548,7 +752,7 @@ El entrevistado se desempeña como responsable de operaciones de una cadena de t
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQBnE-dDCR2BT5hCn-bTX-xVAeEfOK53nj_MWunOS8d1fo8?e=3MiCCI&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
 | Timing de inicio | 00:25 |
 | Duración | 06:36 |
-| Screenshot | <img src="assets/images/interviews/needfinding/01-entrevista-responsable03.png" alt="Captura Entrevista Valia" width="250"> |
+| Screenshot | <img src="assets/images/interviews/needfinding/03-entrevista-responsable03.png" alt="Captura Entrevista Valia" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -566,7 +770,7 @@ La entrevistada coordina la operación de 7 locales Plaza Vea en la zona norte d
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
 | Timing de inicio | 00:00 |
 | Duración | 08:08 |
-| Screenshot | <img src="assets/images/interviews/needfinding/03-entrevista-propetario01.png" alt="Captura Entrevista Jasmin" width="250"> |
+| Screenshot | <img src="assets/images/interviews/needfinding/04-entrevista-propetario01.png" alt="Captura Entrevista Jasmin" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -584,24 +788,24 @@ El entrevistado es propietario y administrador de una cafetería de especialidad
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQA8ZsGrwfiRT50MqC85e4-CATbOrSmrbNmF9zogQw8q3Go?e=wtdMMt)|
 | Timing de inicio | 00:13 |
 | Duración | 16:00 |
-| Screenshot | <img src="assets/images/interviews/needfinding/04-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
+| Screenshot | <img src="assets/images/interviews/needfinding/05-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
 
 **Resumen de la entrevista**
 La entrevistada administra un local de eventos de 170 m² con un equipo de 8 personas. La luz y el agua representan sus mayores gastos fijos, pero solo revisa el monto total de los recibos y desconoce cuánto consume cada equipo. La refrigeradora permanece encendida las 24 horas y los demás aparatos se desenchufan al cierre. Estaría dispuesta a invertir en una herramienta que demuestre un ahorro del 30% al 50%, comparando los últimos tres meses. Prefiere recibir alertas inmediatas por WhatsApp o llamada para detectar consumos anómalos y posibles conexiones clandestinas. Considera indispensable optimizar el consumo energético para afrontar los gastos del negocio y el pago del personal.
 
 #### Segmento #2 — Entrevista 3
 
-| Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
-| :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nombres y apellidos | Angel Giuseppe Barrera Romero                                                                                                                                                                                                                                                                                                                           |
-| Edad | 30 años                                                                                                                                                                                                                                                                                                                                                 |
-| Distrito | San Isidro                                                                                                                                                                                                                                                                                                                                              |
-| Cargo / tipo de establecimiento | Propietario y administrador (Supermercado)                                                                                                                                                                                                                                                                                                              |
-| Número de locales a cargo | 1 local                                                                                                                                                                                                                                                                                                                                                 |
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Angel Giuseppe Barrera Romero |
+| Edad | 30 años |
+| Distrito | San Isidro |
+| Cargo / tipo de establecimiento | Propietario y administrador (Supermercado) |
+| Número de locales a cargo | 1 local |
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQBN_4MF1dKfRKsYAjbOYnNMAa0O1zn8FhGtaWp70uTfs64?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=LFmOPL) |
-| Timing de inicio | 00:00                                                                                                                                                                                                                                                                                                                                                   |
-| Duración | 10:29                                                                                                                                                                                                                                                                                                                                                   |
-| Screenshot | <img src="assets/images/interviews/needfinding/05-entrevista-propietario03.png" alt="Captura Entrevista Angel" width="250">                                                                                                                                                                                                                             |
+| Timing de inicio | 00:00 |
+| Duración | 10:29 |
+| Screenshot | <img src="assets/images/interviews/needfinding/06-entrevista-propietario03.png" alt="Captura Entrevista Angel" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -613,19 +817,37 @@ El análisis se realiza **por segmento**, identificando con sustento estadístic
 características objetivas y subjetivas más comunes, que son las que sostienen la construcción de
 los arquetipos. Cada porcentaje debe poder verificarse contra los resúmenes de la sección 2.2.2.
 
-**Estructura del análisis por segmento**
+**Análisis por segmento**
+
+Los porcentajes corresponden a las menciones o indicios presentes en las tres entrevistas de cada segmento. Las interpretaciones se señalan en el hallazgo; la ausencia de una mención no implica una respuesta negativa.
+
+**Segmento #1: Responsables de operaciones y mantenimiento de cadenas de retail**
 
 | Característica | Hallazgo | Porcentaje | Entrevistas que lo sustentan |
 | :-- | :-- | :-- | :-- |
-| Rango de edad predominante | `<...>` | `<X %>` | `<E1, E2, E4>` |
-| Dispositivo principal de consulta | `<...>` | `<X %>` | `<...>` |
-| Canal preferido para alertas | `<...>` | `<X %>` | `<...>` |
-| Conoce su potencia contratada | `<...>` | `<X %>` | `<...>` |
-| Identifica el cargo por potencia sin ayuda | `<...>` | `<X %>` | `<...>` |
-| Ha tenido un recibo inexplicable | `<...>` | `<X %>` | `<...>` |
-| Puede atribuir consumo a una zona | `<...>` | `<X %>` | `<...>` |
-| Frustración más mencionada | `<...>` | `<X %>` | `<...>` |
-| Disposición a pagar una suscripción | `<...>` | `<X %>` | `<...>` |
+| Rango de edad predominante | Predominan los 24 años. | 66,7 % | Fabrizzio y Valia |
+| Dispositivo principal de consulta | El celular destaca para recibir alertas operativas. | 100 % | Fabrizzio, Miguel y Valia |
+| Canal preferido para alertas | WhatsApp y notificaciones push. | 66,7 % | Fabrizzio y Valia |
+| Conoce su potencia contratada | Ningún resumen confirma que conozcan el valor contratado. | 0 % con conocimiento confirmado | Fabrizzio, Miguel y Valia |
+| Identifica el cargo por potencia sin ayuda | Fabrizzio reconoce el cargo; esto sugiere familiaridad, aunque no acredita identificación sin ayuda. | 33,3 % mencionan el cargo | Fabrizzio |
+| Ha tenido un recibo inexplicable | Se infiere dificultad para explicar cobros elevados por las referencias a excesos y aumentos de consumo. | 66,7 % presentan indicios | Fabrizzio y Miguel |
+| Puede atribuir consumo a una zona | Carecen de información precisa por zonas o equipos. | 100 % reportan limitaciones | Fabrizzio, Miguel y Valia |
+| Frustración más mencionada | Conocer el gasto al cierre del mes sin poder localizar sus causas. | 100 % | Fabrizzio, Miguel y Valia |
+| Disposición a pagar una suscripción | El interés depende del ahorro y del retorno de inversión; sugiere una posible contratación. | 100 % muestran interés condicionado | Fabrizzio, Miguel y Valia |
+
+**Segmento #2: Propietarios y administradores de establecimientos independientes**
+
+| Característica | Hallazgo | Porcentaje | Entrevistas que lo sustentan |
+| :-- | :-- | :-- | :-- |
+| Rango de edad predominante | Entre 25 y 30 años. | 66,7 % | Jasmin y Angel |
+| Dispositivo principal de consulta | El celular destaca para gestionar el negocio o recibir alertas; Angel complementa con laptop. | 66,7 % mencionan uso del celular | Jasmin y Angel |
+| Canal preferido para alertas | Push para Jasmin; WhatsApp o llamada para Yuli. | 33,3 % por cada preferencia | Jasmin y Yuli |
+| Conoce su potencia contratada | Angel reconoce que no conoce con precisión el valor contratado. | 33,3 % expresan desconocimiento | Angel |
+| Identifica el cargo por potencia sin ayuda | El desconocimiento del cargo o de su efecto en el costo sugiere comprensión técnica limitada. | 66,7 % presentan indicios | Jasmin y Angel |
+| Ha tenido un recibo inexplicable | Jasmin relata un cobro inesperado y apagó equipos sin identificar la causa. | 33,3 % lo mencionan | Jasmin |
+| Puede atribuir consumo a una zona | No conocen con precisión cuánto consume cada equipo o zona. | 100 % reportan limitaciones | Jasmin, Yuli y Angel |
+| Frustración más mencionada | Gastos eléctricos elevados y poca información para reducirlos. | 100 % | Jasmin, Yuli y Angel |
+| Disposición a pagar una suscripción | Pagarían o invertirían si obtienen ahorro; solo Jasmin especifica un pago mensual. | 100 % muestran disposición económica | Jasmin, Yuli y Angel |
 
 ## 2.3. Needfinding
 
@@ -867,75 +1089,76 @@ desde el primer sprint, seguidas de la construcción de la jerarquía de organiz
 que es la que habilita todo lo demás. Las historias de control de demanda —el diferencial del
 producto— se priorizan por delante de la analítica avanzada y de los pagos.
 
-**Herramienta:** `<Pivotal Tracker / Jira / Trello>`
-**URL pública del Product Backlog:** `<...>`
-`<Insertar captura del Product Backlog en la herramienta>`
+**Herramienta:** Jira
+**URL pública del Product Backlog:** [Ver Product Backlog en Jira](https://upc-team-m57tll9j.atlassian.net/jira/software/projects/HU/list/?filter=allissues&jql=project%20%3D%20%22HU%22%20ORDER%20BY%20created%20DESC)
+
+*Figura 14 (SEMS Jira)*
+<img src="assets/images/figures/14-SEMS-jira.jpeg" alt="SEMS Jira" style="width: 100vw;">
 
 | # Orden | User Story Id | Título | Descripción | Story Points |
 | :-- | :-- | :-- | :-- | :-- |
-| 1 | US01 | Sección hero del Landing Page | Como visitante, deseo comprender en la primera pantalla qué problema resuelve SEMS, para decidir en segundos si me interesa. | 3 |
-| 2 | US02 | Explicación del cargo por potencia | Como visitante del segmento de establecimientos, deseo entender por qué un pico de minutos encarece mi recibo del mes, para reconocer el problema como propio. | 3 |
-| 3 | US04 | Navegación del Landing Page | Como visitante, deseo desplazarme entre las secciones del Landing Page, para revisar la información en el orden que me interesa. | 2 |
-| 4 | US03 | Sección de planes en el Landing Page | Como visitante, deseo conocer los planes y sus límites, para estimar cuál corresponde a mi caso antes de registrarme. | 3 |
-| 5 | TS06 | Documentación OpenAPI | Como developer, deseo la especificación OpenAPI publicada, para conocer el contrato sin leer el código fuente. | 2 |
-| 6 | US06 | Registro de cuenta | Como visitante, deseo crear una cuenta con mi correo y contraseña, para acceder a la aplicación. | 3 |
-| 7 | US07 | Inicio de sesión | Como usuario registrado, deseo iniciar sesión, para acceder a la información de mis locales. | 3 |
-| 8 | TS01 | API de autenticación | Como developer, deseo un endpoint de autenticación que emita tokens, para proteger el acceso a los recursos del API. | 3 |
-| 9 | TS02 | Protección por defecto de los endpoints | Como developer, deseo que todo endpoint exija sesión salvo los explícitamente públicos, para que un descuido no deje un recurso abierto. | 3 |
-| 10 | US12 | Registro de la organización | Como administrador, deseo registrar mi empresa con su RUC y tipo de negocio, para agrupar bajo ella todos mis locales. | 5 |
-| 11 | US13 | Registro de un local | Como administrador, deseo registrar un local con su potencia contratada y su categoría tarifaria, para que el sistema calcule sobre la tarifa que realmente le aplica. | 5 |
-| 12 | US14 | Consulta de los locales de la organización | Como responsable de operaciones, deseo ver la lista de mis locales vigentes, para acceder a cada uno desde un punto único. | 3 |
-| 13 | TS03 | API de organizaciones y locales | Como developer, deseo endpoints para gestionar organizaciones, locales y zonas, para que las aplicaciones cliente construyan la jerarquía del negocio. | 5 |
-| 14 | US18 | Registro de zonas de un local | Como supervisor, deseo dividir mi local en zonas, para saber en qué parte se consume la energía. | 3 |
-| 15 | US19 | Registro de un medidor en un local | Como supervisor, deseo registrar un medidor indicando su local y su zona, para atribuir su consumo al suministro y al área correctos. | 5 |
-| 16 | US20 | Consulta de medidores por local | Como supervisor, deseo ver los medidores instalados en mi local, para verificar la cobertura de la medición. | 2 |
-| 17 | US27 | Consulta de la tarifa vigente | Como supervisor, deseo consultar la tarifa aplicable a mi local, para conocer los precios de energía y el cargo por potencia. | 3 |
-| 18 | US24 | Consulta del consumo actual | Como supervisor, deseo ver el consumo actual de mi local, para saber cómo está operando en este momento. | 3 |
-| 19 | US28 | Creación de una regla de demanda | Como responsable, deseo definir a qué porcentaje de mi potencia contratada quiero ser avisado, para tener margen de reacción. | 5 |
-| 20 | US29 | Aviso de demanda con margen | Como responsable, deseo recibir un aviso cuando la demanda de mi local se acerca a la potencia contratada, para reducir carga antes del recargo. | 8 |
-| 21 | US30 | Aviso de exceso de potencia | Como responsable, deseo saber cuándo he superado la potencia contratada, para dimensionar el recargo del periodo y evitar que se repita. | 3 |
-| 22 | US31 | Ausencia de aviso por debajo del umbral | Como responsable, deseo no recibir avisos cuando la operación es normal, para que la alerta conserve su valor. | 2 |
-| 23 | TS05 | API de evaluación de demanda | Como developer, deseo un endpoint que evalúe una demanda medida contra las reglas del local, para generar las alertas correspondientes. | 5 |
-| 24 | US35 | Proyección de factura del periodo | Como responsable, deseo conocer la factura estimada de mi local desglosada, para saber qué concepto pesa más. | 8 |
-| 25 | US36 | Peso del cargo por potencia | Como responsable, deseo ver qué proporción de mi factura corresponde al cargo por potencia, para decidir si conviene actuar sobre el pico o sobre el consumo. | 3 |
-| 26 | TS04 | API de cálculo de factura | Como developer, deseo un endpoint que calcule la factura estimada a partir del consumo y la demanda, para que las aplicaciones no repliquen la lógica tarifaria. | 5 |
-| 27 | US25 | Consulta del histórico de consumo | Como supervisor, deseo consultar el consumo histórico de un medidor, para comparar periodos. | 3 |
-| 28 | US26 | Consumo desglosado por zona | Como supervisor, deseo ver el consumo agrupado por zona, para identificar qué área concentra el gasto. | 5 |
-| 29 | US21 | Consulta de medidores por zona | Como supervisor, deseo ver los medidores de una zona concreta, para revisar el consumo de esa área. | 2 |
-| 30 | US10 | Asignación de acceso a una persona | Como administrador de la organización, deseo dar acceso a una persona indicando su papel y su alcance, para que gestione únicamente lo que le corresponde. | 5 |
-| 31 | US11 | Revocación de acceso | Como administrador, deseo revocar el acceso de una persona, para retirar permisos cuando deja el puesto. | 3 |
-| 32 | US17 | Consulta de mis organizaciones | Como usuario, deseo ver a qué organizaciones pertenezco y con qué papel, para cambiar de contexto cuando trabajo para más de una. | 3 |
-| 33 | US33 | Consulta y resolución de alertas | Como supervisor, deseo revisar y marcar como resueltas las alertas de mi local, para llevar control de las atendidas. | 3 |
-| 34 | US32 | Umbrales de consumo por dispositivo | Como supervisor, deseo definir umbrales de consumo para un equipo, para detectar comportamientos anómalos. | 5 |
-| 35 | US34 | Preferencias de notificación | Como responsable, deseo configurar por qué canal y con qué severidad mínima recibo avisos, para no ser interrumpido por alertas menores. | 3 |
-| 36 | US15 | Actualización de los datos de un local | Como supervisor, deseo actualizar los datos de mi local, para reflejar un cambio de potencia contratada o de categoría tarifaria. | 2 |
-| 37 | US22 | Traslado de un medidor entre zonas | Como supervisor, deseo reasignar un medidor a otra zona del mismo local, para reflejar un traslado de equipo. | 3 |
-| 38 | US23 | Baja de un medidor | Como supervisor, deseo dar de baja un medidor retirado, para que deje de contar en mi cupo y en los listados. | 3 |
-| 39 | US16 | Archivado de un local | Como administrador, deseo archivar un local que ha cerrado, para que deje de aparecer sin perder su histórico. | 2 |
-| 40 | US39 | Comparación entre locales | Como responsable de operaciones, deseo comparar el desempeño energético de mis locales, para identificar los que están peor. | 8 |
-| 41 | US37 | Recomendaciones de ahorro | Como responsable, deseo recibir recomendaciones concretas para reducir mi costo, para saber por dónde empezar. | 5 |
-| 42 | US38 | Detección de anomalías de consumo | Como supervisor, deseo que el sistema señale consumos atípicos, para investigar posibles fallas o desperdicios. | 8 |
-| 43 | US40 | Consulta de planes disponibles | Como administrador, deseo ver los planes con sus límites y precios, para elegir el que corresponde a mi cadena. | 2 |
-| 44 | US42 | Límite de locales según el plan | Como administrador, deseo que el sistema respete el límite de locales de mi plan, para conocer cuándo necesito ampliarlo. | 3 |
-| 45 | US43 | Registro de método de pago | Como administrador, deseo registrar un método de pago, para automatizar la renovación de la suscripción. | 5 |
-| 46 | US41 | Contratación de un plan | Como administrador, deseo contratar un plan, para habilitar las funcionalidades que necesita mi organización. | 8 |
-| 47 | TS08 | Webhook de la pasarela de pagos | Como developer, deseo un endpoint de webhook autenticado por firma, para confirmar los pagos sin exponer un recurso abierto. | 5 |
-| 48 | US44 | Consulta de comprobantes | Como administrador, deseo consultar mis comprobantes de pago, para llevar el control contable de la suscripción. | 3 |
-| 49 | US08 | Recuperación de contraseña | Como usuario registrado, deseo restablecer mi contraseña, para recuperar el acceso si la olvido. | 3 |
-| 50 | US09 | Cierre de sesión | Como usuario autenticado, deseo cerrar sesión, para impedir el acceso desde un equipo compartido del local. | 2 |
-| 51 | US05 | Selección de idioma en el Landing Page | Como visitante, deseo cambiar el idioma del Landing Page, para leer el contenido en el idioma que domino. | 3 |
-| 52 | TS07 | Endpoints de salud del servicio | Como developer, deseo endpoints de salud diferenciados, para que el proveedor de hosting distinga un proceso caído de una base de datos inaccesible. | 2 |
-| 53 | TS09 | Configuración de CORS | Como developer, deseo restringir los orígenes que pueden consumir el API desde un navegador, para impedir el uso desde sitios no autorizados. | 2 |
+| 1 | US01 | Sección hero del Landing Page | Como visitante, deseo comprender en la primera pantalla qué problema resuelve SEMS, para decidir en segundos si me interesa. | 2 |
+| 2 | US02 | Explicación del cargo por potencia | Como visitante del segmento de establecimientos, deseo entender por qué un pico de minutos encarece mi recibo del mes, para reconocer el problema como propio. | 2 |
+| 3 | US04 | Navegación del Landing Page | Como visitante, deseo desplazarme entre las secciones del Landing Page, para revisar la información en el orden que me interesa. | 1 |
+| 4 | US03 | Sección de planes en el Landing Page | Como visitante, deseo conocer los planes y sus límites, para estimar cuál corresponde a mi caso antes de registrarme. | 2 |
+| 5 | TS06 | Documentación OpenAPI | Como developer, deseo la especificación OpenAPI publicada, para conocer el contrato sin leer el código fuente. | 1 |
+| 6 | US06 | Registro de cuenta | Como visitante, deseo crear una cuenta con mi correo y contraseña, para acceder a la aplicación. | 2 |
+| 7 | US07 | Inicio de sesión | Como usuario registrado, deseo iniciar sesión, para acceder a la información de mis locales. | 2 |
+| 8 | TS01 | API de autenticación | Como developer, deseo un endpoint de autenticación que emita tokens, para proteger el acceso a los recursos del API. | 2 |
+| 9 | TS02 | Protección por defecto de los endpoints | Como developer, deseo que todo endpoint exija sesión salvo los explícitamente públicos, para que un descuido no deje un recurso abierto. | 2 |
+| 10 | US12 | Registro de la organización | Como administrador, deseo registrar mi empresa con su RUC y tipo de negocio, para agrupar bajo ella todos mis locales. | 3 |
+| 11 | US13 | Registro de un local | Como administrador, deseo registrar un local con su potencia contratada y su categoría tarifaria, para que el sistema calcule sobre la tarifa que realmente le aplica. | 3 |
+| 12 | US14 | Consulta de los locales de la organización | Como responsable de operaciones, deseo ver la lista de mis locales vigentes, para acceder a cada uno desde un punto único. | 2 |
+| 13 | TS03 | API de organizaciones y locales | Como developer, deseo endpoints para gestionar organizaciones, locales y zonas, para que las aplicaciones cliente construyan la jerarquía del negocio. | 3 |
+| 14 | US18 | Registro de zonas de un local | Como supervisor, deseo dividir mi local en zonas, para saber en qué parte se consume la energía. | 2 |
+| 15 | US19 | Registro de un medidor en un local | Como supervisor, deseo registrar un medidor indicando su local y su zona, para atribuir su consumo al suministro y al área correctos. | 3 |
+| 16 | US20 | Consulta de medidores por local | Como supervisor, deseo ver los medidores instalados en mi local, para verificar la cobertura de la medición. | 1 |
+| 17 | US27 | Consulta de la tarifa vigente | Como supervisor, deseo consultar la tarifa aplicable a mi local, para conocer los precios de energía y el cargo por potencia. | 2 |
+| 18 | US24 | Consulta del consumo actual | Como supervisor, deseo ver el consumo actual de mi local, para saber cómo está operando en este momento. | 2 |
+| 19 | US28 | Creación de una regla de demanda | Como responsable, deseo definir a qué porcentaje de mi potencia contratada quiero ser avisado, para tener margen de reacción. | 3 |
+| 20 | US29 | Aviso de demanda con margen | Como responsable, deseo recibir un aviso cuando la demanda de mi local se acerca a la potencia contratada, para reducir carga antes del recargo. | 5 |
+| 21 | US30 | Aviso de exceso de potencia | Como responsable, deseo saber cuándo he superado la potencia contratada, para dimensionar el recargo del periodo y evitar que se repita. | 2 |
+| 22 | US31 | Ausencia de aviso por debajo del umbral | Como responsable, deseo no recibir avisos cuando la operación es normal, para que la alerta conserve su valor. | 1 |
+| 23 | TS05 | API de evaluación de demanda | Como developer, deseo un endpoint que evalúe una demanda medida contra las reglas del local, para generar las alertas correspondientes. | 3 |
+| 24 | US35 | Proyección de factura del periodo | Como responsable, deseo conocer la factura estimada de mi local desglosada, para saber qué concepto pesa más. | 5 |
+| 25 | US36 | Peso del cargo por potencia | Como responsable, deseo ver qué proporción de mi factura corresponde al cargo por potencia, para decidir si conviene actuar sobre el pico o sobre el consumo. | 2 |
+| 26 | TS04 | API de cálculo de factura | Como developer, deseo un endpoint que calcule la factura estimada a partir del consumo y la demanda, para que las aplicaciones no repliquen la lógica tarifaria. | 3 |
+| 27 | US25 | Consulta del histórico de consumo | Como supervisor, deseo consultar el consumo histórico de un medidor, para comparar periodos. | 2 |
+| 28 | US26 | Consumo desglosado por zona | Como supervisor, deseo ver el consumo agrupado por zona, para identificar qué área concentra el gasto. | 3 |
+| 29 | US21 | Consulta de medidores por zona | Como supervisor, deseo ver los medidores de una zona concreta, para revisar el consumo de esa área. | 1 |
+| 30 | US10 | Asignación de acceso a una persona | Como administrador de la organización, deseo dar acceso a una persona indicando su papel y su alcance, para que gestione únicamente lo que le corresponde. | 3 |
+| 31 | US11 | Revocación de acceso | Como administrador, deseo revocar el acceso de una persona, para retirar permisos cuando deja el puesto. | 2 |
+| 32 | US17 | Consulta de mis organizaciones | Como usuario, deseo ver a qué organizaciones pertenezco y con qué papel, para cambiar de contexto cuando trabajo para más de una. | 2 |
+| 33 | US33 | Consulta y resolución de alertas | Como supervisor, deseo revisar y marcar como resueltas las alertas de mi local, para llevar control de las atendidas. | 2 |
+| 34 | US32 | Umbrales de consumo por dispositivo | Como supervisor, deseo definir umbrales de consumo para un equipo, para detectar comportamientos anómalos. | 3 |
+| 35 | US34 | Preferencias de notificación | Como responsable, deseo configurar por qué canal y con qué severidad mínima recibo avisos, para no ser interrumpido por alertas menores. | 2 |
+| 36 | US15 | Actualización de los datos de un local | Como supervisor, deseo actualizar los datos de mi local, para reflejar un cambio de potencia contratada o de categoría tarifaria. | 1 |
+| 37 | US22 | Traslado de un medidor entre zonas | Como supervisor, deseo reasignar un medidor a otra zona del mismo local, para reflejar un traslado de equipo. | 2 |
+| 38 | US23 | Baja de un medidor | Como supervisor, deseo dar de baja un medidor retirado, para que deje de contar en mi cupo y en los listados. | 2 |
+| 39 | US16 | Archivado de un local | Como administrador, deseo archivar un local que ha cerrado, para que deje de aparecer sin perder su histórico. | 1 |
+| 40 | US39 | Comparación entre locales | Como responsable de operaciones, deseo comparar el desempeño energético de mis locales, para identificar los que están peor. | 5 |
+| 41 | US37 | Recomendaciones de ahorro | Como responsable, deseo recibir recomendaciones concretas para reducir mi costo, para saber por dónde empezar. | 3 |
+| 42 | US38 | Detección de anomalías de consumo | Como supervisor, deseo que el sistema señale consumos atípicos, para investigar posibles fallas o desperdicios. | 5 |
+| 43 | US40 | Consulta de planes disponibles | Como administrador, deseo ver los planes con sus límites y precios, para elegir el que corresponde a mi cadena. | 1 |
+| 44 | US42 | Límite de locales según el plan | Como administrador, deseo que el sistema respete el límite de locales de mi plan, para conocer cuándo necesito ampliarlo. | 2 |
+| 45 | US43 | Registro de método de pago | Como administrador, deseo registrar un método de pago, para automatizar la renovación de la suscripción. | 3 |
+| 46 | US41 | Contratación de un plan | Como administrador, deseo contratar un plan, para habilitar las funcionalidades que necesita mi organización. | 5 |
+| 47 | TS08 | Webhook de la pasarela de pagos | Como developer, deseo un endpoint de webhook autenticado por firma, para confirmar los pagos sin exponer un recurso abierto. | 3 |
+| 48 | US44 | Consulta de comprobantes | Como administrador, deseo consultar mis comprobantes de pago, para llevar el control contable de la suscripción. | 2 |
+| 49 | US08 | Recuperación de contraseña | Como usuario registrado, deseo restablecer mi contraseña, para recuperar el acceso si la olvido. | 2 |
+| 50 | US09 | Cierre de sesión | Como usuario autenticado, deseo cerrar sesión, para impedir el acceso desde un equipo compartido del local. | 1 |
+| 51 | US05 | Selección de idioma en el Landing Page | Como visitante, deseo cambiar el idioma del Landing Page, para leer el contenido en el idioma que domino. | 2 |
+| 52 | TS07 | Endpoints de salud del servicio | Como developer, deseo endpoints de salud diferenciados, para que el proveedor de hosting distinga un proceso caído de una base de datos inaccesible. | 1 |
+| 53 | TS09 | Configuración de CORS | Como developer, deseo restringir los orígenes que pueden consumir el API desde un navegador, para impedir el uso desde sitios no autorizados. | 1 |
 
 ## 3.4. Impact Mapping
 
-<img src="assets/images/figures/impactMapping.png" alt="Impact Mapping" style="width: 100vw;">
 El Impact Mapping relaciona los objetivos de SEMS con sus usuarios, los cambios esperados en sus hábitos de consumo energético y las funcionalidades que permiten lograrlos. Ayuda a priorizar las soluciones que contribuyen al ahorro energético y a las necesidades identificadas en las entrevistas.
 
-> **Nota metodológica.** El Impact Mapping se elabora en **UXPressia** tomando como base las fichas de los User Personas de la sección 2.3.1.
+*Figura 15 (Impact Map)*
+<img src="assets/images/figures/15-impact-map.png" alt="SEMS Jira" style="width: 100vw;">
 
-*Figura 14 (Impact Map)*
-`<Insertar imagen del Impact Map elaborado en UXPressia>`
+> **Nota metodológica.** El Impact Mapping se elabora en **UXPressia** tomando como base las fichas de los User Personas de la sección 2.3.1.
 
 # Capítulo IV: Product Design
 
@@ -979,8 +1202,8 @@ La jerarquía tipográfica sigue la escala estándar del sistema Material 3:
 *   **Body (Texto corrido):** `1rem` con interlineado de `1.55`, peso Regular (400).
 *   **Label (Etiqueta):** `0.8125rem`, peso Medium (500). Fundamental para micro-interacciones, badges de estado y ejes de gráficos.
 
-*Figura 15 (Sistema tipográfico de SEMS)*
-<img src="assets/images/figures/15-typography.png" alt="Sistema tipográfico de SEMS" style="width: 100vw;">
+*Figura 16 (Sistema tipográfico de SEMS)*
+<img src="assets/images/figures/16-typography.png" alt="Sistema tipográfico de SEMS" style="width: 100vw;">
 
 > **Nota.** Sistema tipográfico utilizado en la identidad visual de SEMS.
 
@@ -996,8 +1219,8 @@ Para la gestión energética, SEMS implementa colores semánticos con significad
 
 La plataforma respeta el criterio WCAG 2.1 nivel AA: cada rol de color incluye su variante `on-*` (ej. texto blanco `#FFFFFF` sobre Primary Blue `#0B57D0`) asegurando ratios de contraste superiores al mínimo de 4.5:1.
 
-*Figura 16 (Paleta de colores de SEMS)*
-<img src="assets/images/figures/16-colors.png" alt="Paleta de colores de SEMS" style="width: 100vw;">
+*Figura 17 (Paleta de colores de SEMS)*
+<img src="assets/images/figures/17-colors.png" alt="Paleta de colores de SEMS" style="width: 100vw;">
 
 > **Nota.** Sistema de color basado en Material Design 3 utilizado en SEMS.
 
@@ -1012,8 +1235,8 @@ Las características técnicas de la iconografía son:
 
 Se ha diseñado un conjunto primario de representaciones para acciones repetitivas, como *Dashboard*, *Medidores*, *Reportes*, *Alertas* y *Configuración*, reduciendo la dependencia exclusiva de texto y acelerando la navegación.
 
-*Figura 17 (Sistema de iconografía de SEMS)*
-<img src="assets/images/figures/17-iconography.png" alt="Sistema de iconografía de SEMS" style="width: 100vw;">
+*Figura 18 (Sistema de iconografía de SEMS)*
+<img src="assets/images/figures/18-iconography.png" alt="Sistema de iconografía de SEMS" style="width: 100vw;">
 
 > **Nota.** Sistema de iconografía empleado en la interfaz de SEMS.
 
@@ -1054,8 +1277,8 @@ La navegación principal abandona las barras laterales y adopta un **Bottom Tab 
 
 Asimismo, las pantallas secundarias y de filtros emplean ventanas modales arrastrables (*Sheets*) emergentes desde el borde inferior, y el encabezado superior mantiene la navegación clásica de iPhone (Botón `< Atrás` alineado a la izquierda con el título de la vista centrado).
 
-*Figura 18 (iOS Mobile Style Guidelines)*
-<img src="assets/images/figures/18-ios_styles.png" alt="iOS Mobile Style Guidelines" style="width: 100vw;">
+*Figura 19 (iOS Mobile Style Guidelines)*
+<img src="assets/images/figures/19-ios_styles.png" alt="iOS Mobile Style Guidelines" style="width: 100vw;">
 
 > **Nota.** Patrones de adaptación visual de SEMS para la plataforma iOS.
 
@@ -1067,8 +1290,8 @@ El sistema de navegación inferior, o **Bottom Navigation**, implementa el carac
 
 Acciones rápidas como la creación de nuevos locales o el reporte de incidencias se delegan a un **Floating Action Button (FAB)**, el cual utiliza la escala de radio 16px. El encabezado, o **Top App Bar**, integra menú hamburguesa, búsqueda e información contextual alineada a la izquierda sobre un fondo Surface sólido, completando la familiaridad requerida por usuarios de Android.
 
-*Figura 19 (Android Mobile Style Guidelines)*
-<img src="assets/images/figures/19-android_styles.png" alt="Android Mobile Style Guidelines" style="width: 100vw;">
+*Figura 20 (Android Mobile Style Guidelines)*
+<img src="assets/images/figures/20-android_styles.png" alt="Android Mobile Style Guidelines" style="width: 100vw;">
 
 > **Nota.** Implementación de los lineamientos de Material Design 3 en la app Android de SEMS.
 
@@ -1175,7 +1398,8 @@ hay token válido.
 
 ### 4.3.1. Landing Page Wireframe
 
-![Landing](assets/landingWireframe.png) 
+*Figura 21 (Landing Page Wireframe)*
+<img src="assets/images/figures/21-landing-wireframe.png" alt="Landing Page Wireframe" style="width: 100vw;">
 
 Estructura de bloques, de arriba abajo:
 
@@ -1195,7 +1419,8 @@ En navegador móvil las columnas colapsan a una sola y la navegación pasa al me
 
 ### 4.3.2. Landing Page Mock-up
 
-![LandingMock](assets/landingMockup.png)
+*Figura 22 (Landing Page Mock-up)*
+<img src="assets/images/figures/22-landing-mockup.png" alt="Landing Page Mock-up" style="width: 100vw;">
 
 ## 4.4. Mobile Applications UX/UI Design
 
@@ -1207,42 +1432,32 @@ El diseño está enfocado en facilitar el monitoreo de energía y la gestión de
 
 En esta sección se presentan los wireframes de fidelidad media para la aplicación móvil de SEMS, diseñada específicamente para los roles de Administrador de cadena (Segmento 1) y Propietario independiente (Segmento 2). La propuesta visual y funcional responde directamente a estándares de usabilidad móvil, estructuración de datos y accesibilidad.
 
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_1.png" alt="wireframe 1" width="300"><br>
-  Nota: Wireframe de Inicio de Sesión
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_2.png" alt="wireframe 2" width="300"><br>
-  Nota: Wireframe de Recuperación y Registro
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_3.png" alt="wireframe 3" width="700"><br>
-  Nota: Wireframe del Dashboard y Mis Dispositivos
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_4.png" alt="wireframe 4" width="700"><br>
-  Nota: Wireframe de Monitoreo y Escaneo de Medidores
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_5.png" alt="wireframe 5" width="700"><br>
-  Nota: Wireframe de Analíticas y Recomendaciones
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_6.png" alt="wireframe 6" width="700"><br>
-  Nota: Wireframe de Reportes, Suscripción y Organización
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_7.png" alt="wireframe 7" width="500"><br>
-  Nota: Wireframe de Configuración y Perfil
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_8.png" alt="wireframe 8" width="500"><br>
-  Nota: Wireframe de detalle de consumos
-</p>
-<p align="center">
-  <img src="assets/chapter4/wireframes/Screenshot_9.png" alt="wireframe 9" width="300"><br>
-  Nota: Wireframe de menús modales
-</p>
+*Figura 23 (Wireframe de Inicio de Sesión)*
+<img src="assets/images/figures/23-wireframe-inicio-sesion.png" alt="Wireframe de Inicio de Sesión" style="width: 100vw;">
+
+*Figura 24 (Wireframe de Recuperación y Registro)*
+<img src="assets/images/figures/24-wireframe-recuperacion.png" alt="Wireframe de Recuperación y Registro" style="width: 100vw;">
+
+*Figura 25 (Wireframe del Dashboard y Mis Dispositivos)*
+<img src="assets/images/figures/25-wireframe-dashboard-dispositivos.png" alt="Wireframe del Dashboard y Mis Dispositivos" style="width: 100vw;">
+
+*Figura 26 (Wireframe de Monitoreo y Escaneo de Medidores)*
+<img src="assets/images/figures/26-wireframe-monitoreo-medidores.png" alt="Wireframe de Monitoreo y Escaneo de Medidores" style="width: 100vw;">
+
+*Figura 27 (Wireframe de Analíticas y Recomendaciones)*
+<img src="assets/images/figures/27-wireframe-analiticas-recomendaciones.png" alt="Wireframe de Analíticas y Recomendaciones" style="width: 100vw;">
+
+*Figura 28 (Wireframe de Reportes, Suscripción y Organización)*
+<img src="assets/images/figures/28-wireframe-reportes-suscripcion.png" alt="Wireframe de Reportes, Suscripción y Organización" style="width: 100vw;">
+
+*Figura 29 (Wireframe de Configuración y Perfil)*
+<img src="assets/images/figures/29-wireframe-configuracion-perfil.png" alt="Wireframe de Configuración y Perfil" style="width: 100vw;">
+
+*Figura 30 (Wireframe de Detalle de Consumos)*
+<img src="assets/images/figures/30-wireframe-detalle-consumos.png" alt="Wireframe de Detalle de Consumos" style="width: 100vw;">
+
+*Figura 31 (Wireframe de menús modales)*
+<img src="assets/images/figures/31-wireframe-menu-modales.png" alt="Wireframe de menús modales" style="width: 100vw;">
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
 
@@ -2035,16 +2250,42 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 
 | Sprint | Objetivo | Fecha inicio | Fecha fin |
 | :-- | :-- | :-- | :-- |
-| 1 | Publicar el Landing Page y la API con el registro, la gestión de organizaciones y locales, y el cálculo de la factura comercial | `<dd/mm/aaaa>` | `<dd/mm/aaaa>` |
+| 1 | Publicar el Landing Page y la API con el registro, la gestión de organizaciones y locales, y el cálculo de la factura comercial | 01/09/2026 | 14/09/2026 |
 
 | ID | User Story | Tarea | Responsable | Estimación (h) | Estado |
 | :-- | :-- | :-- | :-- | --: | :-- |
-| US01 | Sección hero del Landing Page | Maquetar el *hero* con la propuesta de valor | `<Integrante>` | 4 | `<Estado>` |
-| US03 | Sección de planes | Maquetar los tres planes con sus límites | `<Integrante>` | 4 | `<Estado>` |
-| US04 | Navegación del Landing Page | Barra superior, menú móvil y anclas | `<Integrante>` | 3 | `<Estado>` |
-| US05 | Selección de idioma | Diccionarios en-US y es-419, y conmutador | `<Integrante>` | 5 | `<Estado>` |
-| — | Infraestructura | Publicación automática en GitHub Pages | `<Integrante>` | 2 | `<Estado>` |
-| — | Infraestructura | Despliegue de la API y de la base de datos | `<Integrante>` | 4 | `<Estado>` |
+| US01 | Sección hero del Landing Page | Maquetar el *hero* con la propuesta de valor | Merino Ordinola, Winnie Lisbeth | 4 | Done |
+| US01 | Sección hero del Landing Page | Maquetar la sección de cifras del sector comercial con sus fuentes | Merino Ordinola, Winnie Lisbeth | 3 | Done |
+| US01 | Sección hero del Landing Page | Enlazar el call-to-action principal con el registro de la aplicación web | Noriega Collado, Jean Fabio | 2 | Done |
+| US02 | Explicación del cargo por potencia | Redactar el ejemplo numérico que contrasta el costo de energía con el cargo por potencia | Ramos Cerdan, Elias Daniel | 3 | Done |
+| US02 | Explicación del cargo por potencia | Maquetar la sección de problemática legible en móvil y escritorio | Rojas Tello, Nestor Alonso | 3 | Done |
+| US03 | Sección de planes | Maquetar los tres planes con sus límites | Merino Ordinola, Winnie Lisbeth | 4 | Done |
+| US04 | Navegación del Landing Page | Barra superior, menú móvil y anclas | Rojas Tello, Nestor Alonso | 3 | Done |
+| US05 | Selección de idioma | Diccionarios en-US y es-419, y conmutador | Ramos Cerdan, Elias Daniel | 5 | Done |
+| — | Infraestructura | Publicación automática en GitHub Pages | Rojas Tello, Nestor Alonso | 2 | Done |
+| TS01 | API de autenticación | Endpoints de registro e inicio de sesión con emisión de token | Encalada Salazar, Alexis | 5 | Done |
+| US06 | Registro de cuenta | Validar correo no registrado y contraseña válida al crear la cuenta | Rojas Tello, Nestor Alonso | 3 | Done |
+| US07 | Inicio de sesión | Rechazar credenciales incorrectas sin revelar si el correo existe | Rojas Tello, Nestor Alonso | 2 | Done |
+| TS02 | Protección por defecto de los endpoints | Política de autorización global con endpoints públicos explícitos | Encalada Salazar, Alexis | 3 | Done |
+| US12 | Registro de la organización | Alta de organización con validación de RUC de once dígitos y unicidad | Noriega Collado, Jean Fabio | 4 | Done |
+| US13 | Registro de un local | Alta de local con potencia contratada, categoría tarifaria y código único | Noriega Collado, Jean Fabio | 5 | Done |
+| US14 | Consulta de los locales de la organización | Listado de locales vigentes que excluye los archivados | Merino Ordinola, Winnie Lisbeth | 3 | Done |
+| TS03 | API de organizaciones y locales | Endpoints REST con respuestas 201, 400 y 404 | Noriega Collado, Jean Fabio | 4 | Done |
+| US18 | Registro de zonas de un local | Alta de zonas con deducción de operación fuera del horario de atención | Ramos Cerdan, Elias Daniel | 3 | Done |
+| TS04 | API de cálculo de factura | Endpoint de factura estimada con desglose de energía, potencia, cargo fijo e IGV | Encalada Salazar, Alexis | 5 | Done |
+| US35 | Proyección de factura del periodo | Cálculo del exceso de demanda sobre la potencia contratada | Ramos Cerdan, Elias Daniel | 4 | Done |
+| TS06 | Documentación OpenAPI | Publicar la especificación Swagger con mensajes en inglés | Ramos Cerdan, Elias Daniel | 2 | Done |
+| TS07 | Endpoints de salud del servicio | Endpoints `/health` y `/health/ready` con verificación de la base de datos | Rojas Tello, Nestor Alonso | 2 | Done |
+| TS09 | Configuración de CORS | Política de orígenes permitidos para la aplicación web | Merino Ordinola, Winnie Lisbeth | 2 | Done |
+| — | Infraestructura | Despliegue de la API y de la base de datos con migraciones en Supabase | Encalada Salazar, Alexis | 4 | Done |
+| — | Infraestructura | Despliegue de la aplicación web en Vercel | Noriega Collado, Jean Fabio | 2 | Done |
+
+**Total estimado:** 82 horas.
+
+> Se amplía con un cuadro por sprint en cada entrega.
+
+*Figura ** (Sprint 1)*
+<img src="assets/images/figures/xx-sprint-1.png" alt="Sprint 1" style="width: 100vw;">
 
 > Se amplía con un cuadro por sprint en cada entrega.
 
