@@ -2515,26 +2515,8 @@ aceptar un dato de circulación frecuente que resultó no coincidir con el anuar
 
 ## Anexos
 
-**Anexo A. Estructura para la sección Objetivo del Estudiante (Student Outcome)**
 
-Ver [Student Outcome](00-student-outcome.md).
-
-**Anexo B. Informe de participación**
-
-El *Final Project Individual Member Performance Report* lo elabora el Team Leader en un documento
-aparte, con el nombre de archivo
-`upc-pre-202620-1asi0732-<NRC>-energix-performance-<avn/tbn>` en `.docx` y `.pdf`, y se adjunta en
-cada entrega.
-
-| Ítem | Estudiante | Responsabilidades | Cumplimiento | Calificación |
-| :-- | :-- | :-- | :-- | :-- |
-| 1 | `<Apellidos, Nombres>` | `<Responsabilidades>` | `<A tiempo / A destiempo / Parcialmente / No cumplió>` | `<20/16/13/07/00>` |
-| 2 | `<Apellidos, Nombres>` | `<Responsabilidades>` | `<...>` | `<...>` |
-| 3 | `<Apellidos, Nombres>` | `<Responsabilidades>` | `<...>` | `<...>` |
-| 4 | `<Apellidos, Nombres>` | `<Responsabilidades>` | `<...>` | `<...>` |
-| 5 | `<Apellidos, Nombres>` | `<Responsabilidades>` | `<...>` | `<...>` |
-
-**Anexo C. Videos**
+**Anexo A. Videos**
 
 | Entrega | Video | URL | Duración |
 | :-- | :-- | :-- | :-- |
@@ -2543,7 +2525,7 @@ cada entrega.
 | TB1 | About-the-Team | `<URL>` | `<mm:ss>` |
 | TB1 | Evidencia de entrevistas | `<URL>` | `<mm:ss>` |
 
-**Anexo D. Enlaces del proyecto**
+**Anexo B. Enlaces del proyecto**
 
 | Recurso | URL |
 | :-- | :-- |
@@ -2557,7 +2539,7 @@ cada entrega.
 | Aplicación web desplegada | <https://sems-web-application-fyld.vercel.app/>|
 | API desplegada | <https://sems-backend-diseno.onrender.com> |
 | Documentación de la API | <https://sems-backend-diseno.onrender.com/swagger/index.html> |
-| Tablero de gestión | `<URL del tablero>` |
+| Tablero de gestión | <https://upc-team-m57tll9j.atlassian.net/jira/software/projects/HU/list/?filter=allissues&jql=project%20%3D%20%22HU%22%20ORDER%20BY%20created%20DESC> |
 
 
 
