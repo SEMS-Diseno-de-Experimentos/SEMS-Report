@@ -42,7 +42,7 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 
 | Foto | Integrante | Código | Carrera | Perfil |
 | :--: | :-- | :-- | :-- | :-- |
-| `<Foto>` | `<Apellidos, Nombres>` **(Team Leader)** | `<Código>` | Ingeniería de Software | `<Párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo.>` |
+|<img src="assets/images/team-photos/profile-alexis.png" alt="Profile Picture" width="100"> | Encalada Salazar, Alexis **(Team Leader)** | U20211G491 | Ingeniería de Software | Estudiante de ingeniería de software, poseo conocimientos en diferentes lenguajes de programación, manejo de bases de datos y edición de videos |
 | <img src="assets/images/team-photos/profile-winnie.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
 | <img src="assets/images/team-photos/profile-nestor.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
 | <img src="assets/images/team-photos/profile-jean.jpeg" alt="Profile Picture" width="100"> | Noriega Collado, Jean Fabio | U202310342 | Ingeniería de Software | Estudio ingenieria de software. Me gusta liderar equipos de trabajo y mantener ambientes ordenados en la medida de lo posible. Entre mis habilidades, podria decir que soy suficiente y eficiente, de manera que cubro los aspectos necesarios para la realizacion de proyectos largos y complejos. Siguiendo los principios por los cuales estudio la carrera. |
@@ -929,6 +929,7 @@ producto— se priorizan por delante de la analítica avanzada y de los pagos.
 
 ## 3.4. Impact Mapping
 
+<img src="assets/images/figures/impactMapping.png" alt="Impact Mapping" style="width: 100vw;">
 El Impact Mapping relaciona los objetivos de SEMS con sus usuarios, los cambios esperados en sus hábitos de consumo energético y las funcionalidades que permiten lograrlos. Ayuda a priorizar las soluciones que contribuyen al ahorro energético y a las necesidades identificadas en las entrevistas.
 
 > **Nota metodológica.** El Impact Mapping se elabora en **UXPressia** tomando como base las fichas de los User Personas de la sección 2.3.1.
@@ -2312,9 +2313,9 @@ cada entrega.
 | Repositorio de la API | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Backend> |
 | Repositorio de la aplicación móvil | <https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Mobile-App> |
 | Landing Page desplegado | <https://sems-diseno-de-experimentos.github.io/SEMS-Landing-Page/> |
-| Aplicación web desplegada | `<URL de Vercel>` |
-| API desplegada | `<URL del servicio>` |
-| Documentación de la API | `<URL del servicio>/swagger` |
+| Aplicación web desplegada | <https://sems-web-application-fyld.vercel.app/>|
+| API desplegada | <https://sems-backend-diseno.onrender.com> |
+| Documentación de la API | <https://sems-backend-diseno.onrender.com/swagger/index.html> |
 | Tablero de gestión | `<URL del tablero>` |
 
 
