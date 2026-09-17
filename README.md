@@ -1710,10 +1710,10 @@ User Flow:
 ![Login](assets/WireAnalytics.png)
 
 
-![Login](assets/WireAelrts.png)
+![Login](assets/WireAlerts.png)
 
 
-![Login](assets/WireReports.png)
+![Login](assets/WreReports.png)
 
 
 ![Login](assets/WireSubs.png)
@@ -2308,7 +2308,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 - Llamados a la acción por segmento que redirigen a las vistas correspondientes de la aplicación web.
 - Sección de Términos y Condiciones con la política de privacidad y el acuerdo de nivel de servicio.
 
-![landingDeploy](assets/landingDeploy.png)
+![landingDeploy](assets/landingDeploy.PNG)
 
 ### 5.2.3. Implemented Frontend-Web Application Evidence
 
@@ -2318,7 +2318,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 | Desplegado en | <https://sems-web-application-fyld.vercel.app/> |
 | Tecnología | Vue 3, Vite, PrimeVue con *preset* Material, Pinia, TanStack Query |
 
-![WebDeploy](assets/webDeploy.png)
+![WebDeploy](assets/webDeploy.PNG)
 
 
 ### 5.2.4. Implemented Native-Mobile Application Evidence
@@ -2364,7 +2364,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 - Los datos de la tarjeta nunca llegan al servidor: se introducen en la página de la pasarela y la
   aplicación solo recibe un identificador del medio de pago.
 
-![BackDeploy](assets/backDeploy.png)
+![BackDeploy](assets/backDeploy.PNG)
 
 ### 5.2.6. RESTful API Documentation
 
@@ -2418,16 +2418,7 @@ Content-Type: application/json
 | Flujo de trabajo | GitFlow |
 | Convención de commits | Conventional Commits |
 
-> `<Insertar la gráfica de contribuciones de cada repositorio (pestaña Insights → Contributors) y
-> una tabla que relacione cada integrante con sus commits y Pull Requests del sprint.>`
-
-| Integrante | Commits | Pull Requests | Revisiones | Artefactos principales |
-| :-- | --: | --: | --: | :-- |
-| `<Integrante>` | `<n>` | `<n>` | `<n>` | `<Artefactos>` |
-| `<Integrante>` | `<n>` | `<n>` | `<n>` | `<Artefactos>` |
-| `<Integrante>` | `<n>` | `<n>` | `<n>` | `<Artefactos>` |
-| `<Integrante>` | `<n>` | `<n>` | `<n>` | `<Artefactos>` |
-| `<Integrante>` | `<n>` | `<n>` | `<n>` | `<Artefactos>` |
+![Commits](assets/Commits.PNG)
 
 ## 5.3. Video About-the-Product
 
