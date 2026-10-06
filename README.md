@@ -2442,6 +2442,910 @@ producto quede documentado con honestidad y sea verificable en la siguiente entr
 | DT06 | La aplicación móvil no está iniciada | SEMS-Mobile-App | Alcance pendiente | `<Sprint>` |
 
 
+### Capítulo VI: Product Verification & Validation
+
+## 6.1. Testing Suites & Validation
+
+La validación del *backend* se organiza en cuatro suites, cada una en su propio proyecto de prueba
+dentro del repositorio [SEMS-Backend](https://github.com/SEMS-Diseno-de-Experimentos/SEMS-Backend):
+
+| Suite | Proyecto | Herramientas |
+| :-- | :-- | :-- |
+| Core Entities Unit Tests | `tests/Sems.Api.Tests` | *xUnit* 2.9, *NSubstitute* 5.1 para los *mocks* |
+| Core Integration Tests | `tests/Sems.Api.IntegrationTests` | *xUnit*, `WebApplicationFactory<Program>` (*Microsoft.AspNetCore.Mvc.Testing* 8.0), SQLite en memoria |
+| Core Behavior-Driven Development | `tests/Sems.Api.Specs` | *SpecFlow* 3.9 sobre *xUnit*, escenarios en Gherkin |
+| Core System Tests | `tests/Sems.Api.SystemTests` | *xUnit*, `WebApplicationFactory<Program>`, SQLite en memoria |
+
+Las tres suites que levantan la API comparten el proyecto `tests/Sems.Api.TestSupport`, que contiene la
+fábrica de la aplicación, el cliente HTTP de prueba, un sustituto del envío de correo y el firmador de
+eventos de Stripe. La cobertura se mide con *coverlet* y el reporte HTML se genera con
+*ReportGenerator* 5.5.
+
+Todas las suites se ejecutan con un único comando desde la raíz del repositorio:
+
+```bash
+dotnet test SemsBackend.sln --logger "trx" --collect:"XPlat Code Coverage" --results-directory ./TestResults
+```
+
+En la ejecución documentada en este capítulo (5 de octubre de 2026, .NET SDK 8.0.425) se ejecutaron
+**424 pruebas: 424 aprobadas, 0 fallidas y 0 omitidas**. La cobertura de
+líneas del ensamblado `Sems.Api`, combinando las cuatro suites y excluyendo las migraciones de
+*Entity Framework Core*, es de **67.3%**, con 58.3% de cobertura de ramas. Las cifras de
+las figuras se obtienen directamente de los archivos `.trx` y `coverage.cobertura.xml` de esa ejecución.
+
+*Figura 32 (Resumen general de resultados de las cuatro suites)*
+<img src="assets/images/figures/32-test-results-summary.png" alt="Resumen general de resultados" style="width: 100vw;">
+
+> Total de pruebas, aprobadas, fallidas y omitidas por suite, generado a partir de los cuatro archivos `.trx`.
+
+*Figura 33 (Resumen de cobertura de código)*
+<img src="assets/images/figures/33-coverage-summary.png" alt="Resumen de cobertura" style="width: 100vw;">
+
+> Reporte de *ReportGenerator* sobre la combinación de los cuatro archivos de cobertura.
+
+*Figura 34 (Cobertura de código por módulo)*
+<img src="assets/images/figures/34-coverage-by-module.png" alt="Cobertura por módulo" style="width: 100vw;">
+
+> Cobertura de líneas y de ramas de cada uno de los ocho módulos, del núcleo compartido y de `Program`,
+> con el desglose por capa (Domain, Application, Infrastructure, Interfaces).
+
+La cobertura es menor en Payments (49.9%) porque las operaciones que llaman a la API de Stripe
+(intención de pago, sesión de *checkout*, métodos de pago) no se ejecutan contra el proveedor real; el
+*webhook*, que es la parte que decide si un cobro se contabiliza, sí está cubierto. En IAM, la capa
+Application queda en un valor más bajo porque la siembra de datos de demostración se desactiva durante
+las pruebas.
+
+**Defectos encontrados durante la construcción de las suites.** Las pruebas detectaron nueve defectos del
+*backend*. Cada uno se corrigió en el código de producción, sin ajustar la prueba que lo reveló:
+
+| # | Módulo | Defecto | Prueba que lo reveló |
+| --: | :-- | :-- | :-- |
+| 1 | IAM | `forgot-password` nunca enviaba el enlace de recuperación: el evento `PasswordResetRequested` se publicaba después de la última escritura y el bus, que despacha al confirmar, no lo entregaba | `AuthenticationEndpointsTests.ForgotPassword_ExistingEmail_SendsResetLinkOnlyToThatAccount` |
+| 2 | IAM | `reset-password` respondía en español (`Contrasena actualizada correctamente.`) | `AccountRecoveryFlowTests` |
+| 3 | Plataforma | La política CORS aceptaba cualquier origen junto con credenciales e ignoraba la lista configurada (TS09) | `CorsPolicyTests.Preflight_UnregisteredOrigin_OmitsAllowOriginHeader` |
+| 4 | Energy | `bill-estimate` y `tariffs/{category}` aceptaban una categoría inexistente (`XYZ`) y la facturaban como baja tensión | `EnergyEndpointsTests.EstimateBill_UnknownTariffCategory_Returns400` |
+| 5 | Energy | La tarifa publicaba `peak_hours` como `18:00-23:00 lun-sab`, en contra de la regla de hora punta de todos los días | `EnergyEndpointsTests.GetTariff_Mt2_Returns200WithPeakHoursEveryDay` |
+| 6 | Energy | El total de la factura se redondeaba por separado y no siempre era la suma del subtotal y el IGV (con 1 kWh en punta: `13.08 + 2.35 = 15.43`, total `15.44`) | `CommercialTariffTests.Calculate_AnyConsumption_TotalEqualsRoundedSubtotalPlusRoundedIgv` |
+| 7 | Device Management | `GET /api/v1/device-management/devices` seguía listando los dispositivos dados de baja | `DeviceEndpointsTests.RemoveDevice_DeviceNoLongerAppearsInTheGeneralListing` |
+| 8 | Alerts | Las alertas de demanda (`WARNING`, `CRITICAL`) no publicaban `AlertTriggered`, por lo que nunca se notificaban por correo | `DemandAlertEndpointsTests.EvaluateDemand_RaisedAlert_IsListedForTheUserAndNotifiedByEmail` |
+| 9 | Organizations | Volver a dar acceso a una persona cuyo vínculo fue revocado respondía `500`, por el índice único (organización, usuario) | `OrganizationEndpointsTests.GrantMembership_AgainAfterRevoking_Returns201` |
+
+### 6.1.1. Core Entities Unit Tests.
+
+Las pruebas unitarias validan las reglas de dominio de cada módulo de forma aislada: no usan base de
+datos ni HTTP. Los *aggregates* y *value objects* se prueban directamente; los servicios de aplicación se
+prueban con sus repositorios, el bus de eventos y los puertos entre módulos (`ISiteDirectory`,
+`IBillCalculator`, `IEnergyPricingProvider`, `IPaymentProvider`) reemplazados por *mocks* de
+*NSubstitute*. Cada prueba sigue el patrón *Arrange-Act-Assert* y su nombre, el patrón
+`Method_Scenario_ExpectedResult`. Las reglas con valores frontera (hora punta, umbral de aviso, potencia
+contratada) se prueban con `[Theory]` en los valores exactos del borde.
+
+**IAM**
+
+**`tests/Sems.Api.Tests/Iam/AuthenticationServiceTests.cs`** Prueba el servicio de aplicación
+`AuthenticationService` y `AccountRecoveryService`, con repositorio, *hashing*, emisión de token y
+publicador de eventos simulados:
+
+- Registro con un correo nuevo → se guarda el resumen de la contraseña y se publica `UserRegistered` con el rol `STAFF`
+- Registro con un correo existente → `CONFLICT` y no se guarda nada
+- Contraseña nula o de menos de ocho caracteres → `VALIDATION_ERROR`
+- Rol `RESIDENT`, del segmento anterior → `VALIDATION_ERROR`
+- Inicio de sesión con credenciales válidas → sesión emitida y evento `UserLoggedIn`
+- Contraseña incorrecta y correo inexistente → el mismo error `UNAUTHORIZED` con el mismo mensaje (`Invalid credentials`)
+- Recuperación de contraseña con correo inexistente → termina sin emitir token ni evento
+- Recuperación con correo existente → `PasswordResetRequested` se publica antes de guardar el token
+
+**`tests/Sems.Api.Tests/Iam/AuthTokenServiceTests.cs`** Prueba el servicio `AuthTokenService`:
+
+- Token de refresco → en la base queda su resumen SHA-256 de 64 caracteres, nunca el valor en claro
+- Dos emisiones seguidas → valores distintos
+- Token de refresco usado → se rota y el segundo uso es rechazado (`UNAUTHORIZED`)
+- Cierre de sesión sin token → se revocan todas las sesiones del usuario
+- Enlace de recuperación → sirve una sola vez
+- Token de verificación usado como enlace de recuperación → rechazado
+
+**`tests/Sems.Api.Tests/Iam/IdentityDomainTests.cs`** Prueba el *aggregate* `User`, el *value object*
+`EmailAddress` y los adaptadores de seguridad:
+
+- Correo con espacios y mayúsculas → se normaliza (`owner@energix.test`); formato inválido → `VALIDATION_ERROR`
+- Usuario con verificación activa → nace `PENDING` hasta activarse
+- Resumen BCrypt → empieza con `$2`, lleva *salt* distinto en cada emisión y verifica la contraseña
+- Resumen BCrypt mal formado → la comparación devuelve `false` en lugar de lanzar una excepción
+- Token JWT → lleva el identificador del usuario en `sub`, el correo, el rol y la expiración configurada
+
+**Organizations**
+
+**`tests/Sems.Api.Tests/Organizations/OrganizationDomainTests.cs`** Prueba los *aggregates*
+`Organization`, `Site` y las entidades `Zone` y `Membership`:
+
+- RUC de 10 o 12 dígitos, con letra o con separador → `VALIDATION_ERROR`
+- RUC de 11 dígitos con espacios → se acepta recortado (`10456789012`)
+- Local con potencia contratada cero → `VALIDATION_ERROR`
+- Exceso de potencia de un local de 120 kW → `30` con 150 kW, `0` con exactamente 120 kW
+- Categorías `BT5B`, `BT3`, `BT4`, `MT2` y `MT3` → se aceptan; `BT6`, `MT1` o vacía → `VALIDATION_ERROR`
+- Solo `BT5B` → no cobra potencia
+- Código de local → se normaliza a mayúsculas (`T-001`)
+- Local nuevo → `ExcludesSundaysFromPeak = false` por defecto
+- Zona → pertenece al local en que se registra; una cámara frigorífica opera fuera de horario por defecto
+- Administrador limitado a un local o supervisor sin local → `VALIDATION_ERROR`
+- Vínculo revocado → deja de dar acceso; al reinstaurarlo vuelve a estar activo con el nuevo papel
+
+**`tests/Sems.Api.Tests/Organizations/OrganizationCommandServiceTests.cs`** Prueba el servicio
+`OrganizationCommandService` con los cuatro repositorios simulados:
+
+- Alta de organización → se guarda y quien la crea queda como `ORG_ADMIN` de toda la organización
+- RUC ya registrado → `CONFLICT` y no se guarda nada
+- Código de local repetido en la organización → `CONFLICT`
+- Organización inexistente → `NOT_FOUND`; organización suspendida → `CONFLICT`
+- Zona en un local archivado → `CONFLICT`
+- Supervisor asignado a un local de otra organización → `VALIDATION_ERROR`
+- Revocar al último administrador → `CONFLICT`; revocar a uno de dos administradores → se revoca
+- Dar acceso a quien fue revocado → se reinstaura el mismo vínculo
+
+**Device Management**
+
+**`tests/Sems.Api.Tests/Devices/DeviceTests.cs`** Prueba el *aggregate* `Device` y su máquina de estados:
+
+- Alta válida → nace `ACTIVE` en su local; sin local, código, nombre o tipo → `VALIDATION_ERROR`
+- Baja → pasa a `REMOVED` y conserva sus datos; una segunda baja → `CONFLICT`
+- Dispositivo dado de baja → no admite edición, vinculación ni configuración
+- `REMOVED` → es un estado terminal (`CanTransitionTo` devuelve `false`)
+- Cambio de zona → se permite; el local no cambia
+
+**`tests/Sems.Api.Tests/Devices/DeviceCommandServiceTests.cs`** Prueba el servicio
+`DeviceCommandService` con el puerto `ISiteDirectory` simulado:
+
+- Local activo y zona propia → se guarda y se publica `DeviceRegistered`
+- Local inexistente o inactivo → `NOT_FOUND`
+- Zona de otro local → `VALIDATION_ERROR` y no se publica ningún evento
+- Código externo repetido → `CONFLICT`, sin consultar el local
+- Baja → se guarda como `REMOVED` y se publica `DeviceStatusUpdated` con `REMOVED`
+- Traslado a una zona de otro local → `VALIDATION_ERROR`
+
+**Energy Monitoring**
+
+**`tests/Sems.Api.Tests/Energy/PeakHoursTests.cs`** Prueba la regla `HorarioPunta`, con instantes en UTC
+y su hora local de Perú (UTC-5):
+
+- Miércoles 17:59 → fuera de punta; 18:00 → punta; 22:59 → punta; 23:00 → fuera de punta
+- Domingo 20:00 sin exclusión → punta
+- Domingo 18:00 → punta sin exclusión y fuera de punta con `ExcludesSundaysFromPeak = true`
+- Sábado 21:00 con exclusión de domingos → sigue en punta
+- Domingo 11:00 → fuera de punta
+
+**`tests/Sems.Api.Tests/Energy/CommercialTariffTests.cs`** Prueba el *value object* `CommercialTariff`:
+
+- Mismo consumo de energía con un pico de 150 kW sobre 120 kW contratados → el costo de energía no cambia y el total sube más de S/ 3000
+- Demanda de 150 kW con 120 kW contratados → `120 × 58.40 + 30 × 87.60`
+- Demanda igual a la contratada → sin exceso; 120.01 kW → exceso de `0.01`
+- Costo de potencia con 0, 5000 o 250 000 kWh → siempre el mismo (independiente de la energía)
+- Sin demanda registrada → costo de potencia `0`
+- Cualquier consumo → `Total = Subtotal + IGV`
+- Ejemplo de la sección 5.2.6 → subtotal `32108.80`, IGV `5779.58`, total `37888.38`
+
+**`tests/Sems.Api.Tests/Energy/EnergyCommandServiceTests.cs`** Prueba el servicio
+`EnergyCommandService` con el puerto `IEnergyPricingProvider` simulado:
+
+- Factura estimada → usa la tarifa de la categoría pedida, normalizada (`mt3` → `MT3`)
+- Consumo o demanda negativos → `VALIDATION_ERROR` sin consultar el proveedor
+- Potencia contratada cero → `VALIDATION_ERROR`
+- Categoría `XYZ`, `BT6` o vacía → `VALIDATION_ERROR` sin consultar el proveedor
+- Lectura válida → se publica `ReadingProcessed`; frecuencia de 70 Hz → `VALIDATION_ERROR` sin guardar ni publicar
+- Número de serie de medidor repetido → `CONFLICT`
+
+**`tests/Sems.Api.Tests/Energy/EnergyValueObjectTests.cs`** Prueba `PowerReading`, `TariffCategories`
+y el adaptador simulado del proveedor de tarifas:
+
+- Potencia, tensión o corriente negativas → `VALIDATION_ERROR`
+- Frecuencia de 44.9 Hz o 65.1 Hz → rechazada; 45 Hz y 65 Hz → aceptadas
+- `BT5B` → sin cargo por potencia; media tensión → energía más barata y potencia más cara que baja tensión
+- Toda categoría con cargo por potencia → el exceso cuesta más que la potencia normal
+
+**`tests/Sems.Api.Tests/Energy/EnergyContractTests.cs`** Verifica el contrato JSON en *snake_case* de
+lecturas, consumos y factura estimada.
+
+**Analytics**
+
+**`tests/Sems.Api.Tests/Analytics/AnalyticsServiceTests.cs`** Prueba el servicio `AnalyticsService` con
+el puerto `IBillCalculator` simulado, y su implementación `EnergyBillCalculator`:
+
+- Proyección de un local → guarda el importe que devuelve la calculadora (`37888.38`) y el consumo total (`60000` kWh)
+- `EnergyBillCalculator` → delega en la tarifa de Energy y entrega el mismo total
+- Categoría inexistente → `VALIDATION_ERROR` sin consultar el proveedor
+- Recomendación inexistente → `NOT_FOUND`
+
+**`tests/Sems.Api.Tests/Analytics/AnalyticsDomainTests.cs`** Prueba `Anomaly`, `Recommendation` y
+`ConsumptionRanking`:
+
+- Desviación de una anomalía → relativa al consumo esperado (`50 %`, `-50 %`); sin consumo esperado → `0`
+- Aplicar dos veces una recomendación → conserva la primera fecha
+
+**Alerts**
+
+**`tests/Sems.Api.Tests/Alerts/DemandRuleTests.cs`** Prueba el *aggregate* `DemandRule` con 120 kW
+contratados y aviso al 85 % (umbral de 102 kW):
+
+- 101.99 kW → `OK`; 102 kW → `WARNING`; 119.99 kW → `WARNING`; 120 kW → `WARNING`; 120.01 kW → `EXCEEDED`
+- Sin porcentaje → se avisa al 85 %
+- Aviso al 100 % → `OK` en 119.99 kW y `WARNING` en 120 kW
+- Porcentaje 0 o mayor que 100, potencia contratada cero o local vacío → `VALIDATION_ERROR`
+- Margen → `15` kW con 105 kW y `-30` kW con 150 kW
+- Regla desactivada → nunca avisa
+
+**`tests/Sems.Api.Tests/Alerts/AlertCommandServiceTests.cs`** Prueba la evaluación de demanda del servicio
+`AlertCommandService` con los repositorios y el bus simulados:
+
+- Demanda por debajo del umbral → ninguna alerta ni evento
+- 102 kW → alerta `WARNING` con `18 kW of headroom left`
+- 135 kW → alerta `CRITICAL` con `15 kW above the 120 kW contracted` y evento `AlertTriggered`
+- Dos reglas incumplidas → una alerta por regla
+
+**`tests/Sems.Api.Tests/Alerts/AlertDomainTests.cs`** Prueba umbrales, reglas de inactividad y el estado
+de las alertas.
+
+**Subscriptions**
+
+**`tests/Sems.Api.Tests/Subscriptions/PlanSeederTests.cs`** Prueba la carga de planes de `PlanSeeder`:
+
+- Catálogo vacío → `Básico`, `Pro` y `Enterprise` con `SITES_LIMIT` de `1`, `5` e `ilimitado`
+- Todos los planes → tienen `SITES_LIMIT` y ninguno conserva el antiguo límite de dispositivos (`LINKED_DEVICES_LIMIT`)
+- Catálogo ya cargado → no hace nada
+
+**`tests/Sems.Api.Tests/Subscriptions/SubscriptionServiceTests.cs`** Prueba el servicio
+`SubscriptionService`:
+
+- Alta con un plan existente → `ACTIVE` y evento `SubscriptionChanged`
+- Plan inexistente → `NOT_FOUND`; cancelar una suscripción cancelada o cambiar de plan una vencida → `CONFLICT`
+
+**`tests/Sems.Api.Tests/Subscriptions/SubscriptionContractTests.cs`** Verifica el contrato asimétrico:
+petición en *snake_case* y respuesta en *PascalCase*.
+
+**Payments**
+
+**`tests/Sems.Api.Tests/Payments/WebhookCommandServiceTests.cs`** Prueba el servicio
+`WebhookCommandService` con el puerto `IPaymentProvider` simulado:
+
+- Evento `checkout.session.completed` nuevo → pago cobrado, comprobante y evento `PaymentProcessed`
+- Evento ya recibido → se descarta sin cobrar ni guardar
+- Firma inválida → `VALIDATION_ERROR` y no se guarda nada
+- Estado de Stripe desconocido → nunca se trata como cobrado (`processing`)
+
+**`tests/Sems.Api.Tests/Payments/PaymentDomainTests.cs`** Prueba `Money`, `Payment`, `Invoice` y
+`PaymentWebhookEvent`:
+
+- Importe no positivo o moneda vacía → `VALIDATION_ERROR`
+- S/ 29.90 → `2990` céntimos para Stripe
+- Pago → nace pendiente; solo al procesarse registra la fecha de cobro
+
+*Figura 35 (Resultados de las pruebas unitarias por clase)*
+<img src="assets/images/figures/35-unit-tests-by-class.png" alt="Pruebas unitarias por clase" style="width: 100vw;">
+
+> 22 clases de prueba agrupadas por módulo, todas aprobadas.
+
+| Suite | Archivos | Pruebas | Passed | Failed |
+| :-- | --: | --: | --: | --: |
+| Core Entities Unit Tests | 22 | 263 | 263 | 0 |
+
+### 6.1.2. Core Integration Tests.
+
+Las pruebas de integración levantan la API completa en memoria con `WebApplicationFactory<Program>`:
+la misma composición de `Program.cs`, el *middleware* de errores, la autenticación JWT, la política de
+autorización global y los controladores reales. Solo se reemplazan la base de datos y el envío de
+correo.
+
+La base de datos es **SQLite en memoria**, una por clase de prueba. No se usó *Testcontainers* con
+PostgreSQL porque el equipo de desarrollo no tiene Docker disponible. Tampoco se usó el proveedor
+*InMemory* de *Entity Framework Core* porque no aplica índices únicos, y sin ellos las pruebas de RUC,
+código de local, código de medidor y correo duplicados no tendrían validez. El esquema se crea a partir
+del modelo con `EnsureCreated` y los planes se cargan con el mismo `PlanSeeder` de producción.
+
+El token se obtiene como lo haría un cliente: registro e inicio de sesión contra `/api/v1/auth`. El
+*webhook* de Stripe se prueba con eventos firmados con el secreto de prueba, de modo que la verificación
+real del SDK de Stripe no se desactiva. Las peticiones respetan el contrato JSON de cada módulo:
+*camelCase* en IAM y Device Management, *snake_case* en Energy, Analytics, Alerts, Organizations y
+Payments, y *snake_case* en la petición y *PascalCase* en la respuesta de Subscriptions.
+
+Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
+
+**IAM** — `tests/Sems.Api.IntegrationTests/Iam/AuthenticationEndpointsTests.cs`
+
+- `POST /api/v1/auth/register` con un correo nuevo → responde `200 OK` con `token` y `refreshToken`
+- `POST /api/v1/auth/register` con un correo existente → responde `409 Conflict`
+- `POST /api/v1/auth/register` con correo inválido o contraseña corta → responde `400 Bad Request`
+- Tras el registro, la base guarda un resumen BCrypt (`$2…`) y el token de refresco como SHA-256 de 64 caracteres
+- `POST /api/v1/auth/login` con credenciales válidas → responde `200 OK`
+- `POST /api/v1/auth/login` con contraseña incorrecta y con correo inexistente → `401 Unauthorized` con el mismo cuerpo
+- `POST /api/v1/auth/forgot-password` con correo existente e inexistente → `200 OK` con respuesta idéntica; el enlace solo se envía a la cuenta existente
+- `POST /api/v1/auth/refresh` dos veces con el mismo token → la segunda responde `401 Unauthorized`
+- `POST /api/v1/auth/logout` → responde `204 No Content` y el token revocado ya no refresca
+- `GET /api/v1/users/me` sin token o con un token mal formado → responde `401 Unauthorized`
+
+**Organizations** — `tests/Sems.Api.IntegrationTests/Organizations/OrganizationEndpointsTests.cs`
+
+- `POST /api/v1/organizations` con RUC válido → responde `201 Created` y el creador queda como `ORG_ADMIN`
+- `POST /api/v1/organizations` con un RUC registrado → responde `409 Conflict`
+- `POST /api/v1/organizations` con RUC de 10, 12 dígitos o con letra → responde `400 Bad Request` (`tax_id must be 11 digits`)
+- `POST /api/v1/organizations` sin token → responde `401 Unauthorized`
+- `GET /api/v1/organizations/{id}` inexistente → `404 Not Found`; con un identificador que no es UUID → `400 Bad Request`
+- `POST /api/v1/organizations/{id}/sites` con `BT5B`, `BT3`, `BT4`, `MT2` y `MT3` → responde `201 Created`, con `charges_for_demand = false` solo en `BT5B`
+- Código de local repetido en la organización → `409 Conflict`; el mismo código en otra organización → `201 Created`
+- Potencia contratada `0` o `-5` → `400 Bad Request`; categoría `BT6` → `400 Bad Request`
+- `DELETE /api/v1/sites/{id}` → `204 No Content`; el local archivado no aparece en el listado pero se consulta por su identificador
+- `POST /api/v1/sites/{id}/zones` con `COLD_STORAGE` → `201 Created` con `operates_off_hours = true`; en un local archivado → `409 Conflict`
+- `POST /api/v1/organizations/{id}/members` con supervisor sin local → `400 Bad Request`
+- `DELETE /api/v1/organizations/{id}/members/{membershipId}` del último administrador → `409 Conflict`
+- Volver a dar acceso a una persona revocada → `201 Created`
+
+**Device Management** — `tests/Sems.Api.IntegrationTests/Devices/DeviceEndpointsTests.cs`
+
+- `POST /api/v1/device-management/devices` en un local activo y una zona propia → responde `201 Created` con estado `ACTIVE`
+- Zona de otro local → `400 Bad Request`; local inexistente o archivado → `404 Not Found`
+- Código externo repetido → `409 Conflict`; `siteId` que no es UUID → `400 Bad Request`; sin token → `401 Unauthorized`
+- `PUT /api/v1/device-management/devices/{id}` a una zona del mismo local → `200 OK`; de otro local → `400 Bad Request`
+- `DELETE /api/v1/device-management/devices/{id}` → `204 No Content`; el dispositivo deja los listados por local, por usuario y general
+- El dispositivo dado de baja → se sigue consultando por su identificador con estado `REMOVED`; una segunda baja → `409 Conflict`
+
+**Energy Monitoring** — `tests/Sems.Api.IntegrationTests/Energy/EnergyEndpointsTests.cs`
+
+- `POST /api/v1/energy/bill-estimate` con el ejemplo de la sección 5.2.6 → `200 OK` con `subtotal 32108.80`, `igv 5779.58` y `total 37888.38`
+- Demanda igual a la contratada → `has_power_excess = false`
+- Mismo consumo con un pico mayor → solo crece `power_cost`
+- Categoría `XYZ`, consumo negativo o potencia contratada `0` → `400 Bad Request`; sin token → `401 Unauthorized`
+- `GET /api/v1/energy/tariffs/MT2` → `200 OK` con `peak_hours = "18:00-23:00 every day"`
+- `POST /api/v1/energy-meters` con número de serie repetido → `409 Conflict`
+- `POST /api/v1/energy-readings` válida → `201 Created`; con 70 Hz → `400 Bad Request`
+
+**Analytics** — `tests/Sems.Api.IntegrationTests/Analytics/BillForecastEndpointsTests.cs`
+
+- `POST /api/v1/analytics/bill-predictions/forecast` → `201 Created` con el mismo total que `bill-estimate`, a través del puerto `IBillCalculator`
+
+**Alerts** — `tests/Sems.Api.IntegrationTests/Alerts/DemandAlertEndpointsTests.cs`
+
+- `POST /api/v1/demand-rules` con 85 % → `201 Created` con `warning_threshold_kw = 102`; con 0 % o 101 % → `400 Bad Request`
+- `POST /api/v1/sites/{id}/demand-evaluations` con 101.9 kW → `200 OK` con lista vacía
+- Con 102 kW y con 120 kW → alerta `WARNING` con el margen restante
+- Con 130 kW → alerta `CRITICAL`, listada para el usuario y notificada por correo
+- `PATCH /api/v1/alerts/{id}/status` con `resolved` → `200 OK` con fecha de resolución
+
+**Subscriptions** — `tests/Sems.Api.IntegrationTests/Subscriptions/SubscriptionEndpointsTests.cs`
+
+- `GET /api/v1/subscription-plans` → `200 OK` con tres planes y su `SITES_LIMIT` en *PascalCase*
+- `POST /api/v1/subscriptions` en *snake_case* → `201 Created` con respuesta en *PascalCase*; plan inexistente → `404 Not Found`
+- `PATCH /api/v1/subscriptions/{id}/cancel` dos veces → la segunda responde `409 Conflict`
+
+**Payments** — `tests/Sems.Api.IntegrationTests/Payments/StripeWebhookEndpointTests.cs`
+
+- `POST /api/v1/webhooks/stripe` sin cabecera `Stripe-Signature` → `400 Bad Request`
+- Firmado con otro secreto o con el cuerpo alterado → `400 Bad Request` y no se registra ningún pago
+- Firma válida → `200 OK`, pago `processed` y comprobante emitido
+- El mismo evento dos veces → ambos `200 OK`, pero solo el primero se procesa y existe un único pago
+
+**Plataforma** — `tests/Sems.Api.IntegrationTests/Platform/HealthEndpointsTests.cs` y `CorsPolicyTests.cs`
+
+- `GET /health` sin token → `200 OK`, también con la base de datos inaccesible
+- `GET /health/ready` → `200 OK` con la base disponible y `503 Service Unavailable` con la base inaccesible
+- `GET /swagger/v1/swagger.json` → `200 OK` con los *endpoints* de todos los módulos
+- Petición de comprobación previa desde `http://localhost:5173` → incluye `Access-Control-Allow-Origin`; desde un origen no registrado → no la incluye
+
+*Figura 36 (Resultados de las pruebas de integración por clase)*
+<img src="assets/images/figures/36-integration-tests-by-class.png" alt="Pruebas de integración por clase" style="width: 100vw;">
+
+> 11 clases de prueba en 10 archivos, todas aprobadas contra la API completa.
+
+| Suite | Archivos | Pruebas | Passed | Failed |
+| :-- | --: | --: | --: | --: |
+| Core Integration Tests | 10 | 103 | 103 | 0 |
+
+### 6.1.3. Core Behavior-Driven Development
+
+Las *features* se escriben en Gherkin, en inglés, en tercera persona y en presente, sin detalles de
+interfaz. Cada escenario lleva como *tag* el identificador de la User Story o Technical Story que valida
+(sección 3.2), y cada *feature* el de su épica. Los *step definitions* (`tests/Sems.Api.Specs/Steps`)
+llaman a la API real levantada con `WebApplicationFactory`; cada *feature* tiene su propia instancia y
+su propia base de datos. Donde una misma regla se valida con varios valores se usa *Scenario Outline*
+con una tabla *Examples*.
+
+*Figura 37 (Escenarios BDD agrupados por feature)*
+<img src="assets/images/figures/37-bdd-scenarios-by-feature.png" alt="Escenarios BDD por feature" style="width: 100vw;">
+
+> 30 escenarios en seis *features*; cada fila de *Examples* es una ejecución, lo que da 52 ejecuciones.
+
+**BDD Feature File: IAM (Registro e inicio de sesión)**
+
+User Stories cubiertas: US06, US07, US08, TS01 y TS02.
+
+```gherkin
+@EP02
+Feature: Account registration and sign-in
+  The platform keeps every establishment's data behind an account. A visitor
+  registers with an email and a password, and a registered user signs in to
+  receive a session token. Neither sign-in nor password recovery reveals
+  whether an email is registered.
+
+  @US06 @TS01
+  Scenario: A visitor registers with an unused email
+    Given the email "maria.quispe@minimarket.pe" is not registered
+    When the visitor registers with that email and the password "SecurePass123"
+    Then the account is created
+    And a session token is issued
+
+  @US06
+  Scenario: A visitor registers with an email already in use
+    Given an account exists for "carlos.rojas@bakery.pe" with the password "SecurePass123"
+    When the visitor registers with that email and the password "AnotherPass456"
+    Then the request is rejected as a conflict
+
+  @US07 @TS01
+  Scenario: A registered user signs in with valid credentials
+    Given an account exists for "ana.torres@gym.pe" with the password "SecurePass123"
+    When someone signs in as "ana.torres@gym.pe" with the password "SecurePass123"
+    Then a session token is issued
+
+  @US07 @TS01
+  Scenario Outline: Sign-in is rejected without revealing whether the email exists
+    Given an account exists for "luis.vega@pharmacy.pe" with the password "SecurePass123"
+    When someone signs in as "<email>" with the password "<password>"
+    Then the access is rejected as unauthorized
+    And the rejection message is "Invalid credentials"
+
+    Examples:
+      | case               | email                 | password      |
+      | wrong password     | luis.vega@pharmacy.pe | WrongPass999  |
+      | unregistered email | nobody@pharmacy.pe    | SecurePass123 |
+
+  @US08
+  Scenario: Password recovery answers the same whether the account exists or not
+    Given an account exists for "rosa.diaz@restaurant.pe" with the password "SecurePass123"
+    When password recovery is requested for "rosa.diaz@restaurant.pe"
+    And password recovery is requested for "ghost@restaurant.pe"
+    Then both recovery requests receive the same response
+    And a reset link is sent only to "rosa.diaz@restaurant.pe"
+
+  @TS02
+  Scenario: A protected endpoint rejects a request without a token
+    When a request without a token asks for the current user
+    Then the access is rejected as unauthorized
+```
+
+*Figura 38 (Ejecución de la feature de registro e inicio de sesión)*
+<img src="assets/images/figures/38-bdd-feature-authentication.png" alt="Ejecución BDD de autenticación" style="width: 100vw;">
+
+> Cada escenario muestra los pasos ejecutados y el método que los implementa.
+
+**BDD Feature File: Organizations (Organización, locales y zonas)**
+
+User Stories cubiertas: US12, US13, US14, US16, US18 y TS03.
+
+```gherkin
+@EP03
+Feature: Organization, site and zone registration
+  An administrator registers the business with its tax id (RUC) and then each
+  physical site with its contracted power and tariff category, so that every
+  bill estimate uses the tariff the site actually pays. Sites are divided into
+  zones to know where the energy is consumed.
+
+  Background:
+    Given an administrator is signed in
+
+  @US12 @TS03
+  Scenario: The administrator registers an organization with a valid RUC
+    When the administrator registers the organization "Minimarket Los Andes S.A.C." with the RUC "20601234567"
+    Then the organization is created
+    And the administrator holds the "ORG_ADMIN" role in it
+
+  @US12
+  Scenario Outline: An organization with a malformed RUC is rejected
+    When the administrator registers the organization "Bodega Central" with the RUC "<ruc>"
+    Then the request is rejected as invalid with the message "tax_id must be 11 digits"
+
+    Examples:
+      | case        | ruc          |
+      | ten digits  | 2060123456   |
+      | twelve      | 206012345678 |
+      | with letter | 2060123456A  |
+
+  @US12
+  Scenario: An organization with a RUC already registered is rejected
+    Given an organization with the RUC "20609876543" already exists
+    When the administrator registers the organization "Copycat S.A.C." with the RUC "20609876543"
+    Then the request is rejected as a conflict
+
+  @US13 @TS03
+  Scenario Outline: The administrator registers a site with its supply data
+    Given the administrator has registered an organization
+    When the administrator registers the site "<code>" with <power> kW contracted under the tariff "<tariff>"
+    Then the site is registered in the organization
+    And the site charges for demand: <charges>
+
+    Examples:
+      | code  | power | tariff | charges |
+      | T-001 | 15    | BT5B   | no      |
+      | T-002 | 60    | BT3    | yes     |
+      | T-003 | 250   | MT2    | yes     |
+
+  @US13
+  Scenario: A site code already used in the organization is rejected
+    Given the administrator has registered an organization
+    And the organization has the site "T-001"
+    When the administrator registers the site "T-001" with 120 kW contracted under the tariff "MT2"
+    Then the request is rejected as a conflict
+
+  @US13
+  Scenario Outline: A site without a positive contracted power is rejected
+    Given the administrator has registered an organization
+    When the administrator registers the site "T-009" with <power> kW contracted under the tariff "MT2"
+    Then the request is rejected as invalid
+
+    Examples:
+      | power |
+      | 0     |
+      | -10   |
+
+  @US14 @US16
+  Scenario: Archived sites no longer appear in the site list
+    Given the administrator has registered an organization
+    And the organization has the site "T-001"
+    And the organization has the site "T-002"
+    When the administrator archives the site "T-002"
+    Then the site list contains only "T-001"
+
+  @US18
+  Scenario Outline: A zone deduces whether it operates outside opening hours
+    Given the administrator has registered an organization
+    And the organization has the site "T-001"
+    When the administrator registers the zone "<name>" of type "<type>" in the site "T-001"
+    Then the zone is registered in that site
+    And the zone operates off hours: <off_hours>
+
+    Examples:
+      | name        | type         | off_hours |
+      | Cold rooms  | COLD_STORAGE | yes       |
+      | Sales floor | SALES_FLOOR  | no        |
+```
+
+*Figura 39 (Ejecución de la feature de organización, locales y zonas)*
+<img src="assets/images/figures/39-bdd-feature-organizations-and-sites.png" alt="Ejecución BDD de organizaciones" style="width: 100vw;">
+
+> Los tres RUC mal formados y las tres categorías tarifarias se ejecutan como filas de *Examples*.
+
+**BDD Feature File: Energy (Factura estimada)**
+
+User Stories cubiertas: US35, US36 y TS04.
+
+```gherkin
+@EP07
+Feature: Estimated commercial bill
+  The bill of a commercial site adds the energy consumed by time band, the
+  power charge on the month's maximum demand and a fixed charge, plus IGV. The
+  power charge does not depend on the energy consumed, and the demand above
+  the contracted power is billed at a penalty price for the whole month.
+
+  Background:
+    Given a signed-in user
+
+  @TS04 @US35
+  Scenario: The estimate breaks the bill down by concept
+    When the user estimates the "MT2" bill of a site with 250 kW contracted, 12000 kWh at peak, 48000 kWh off peak and a maximum demand of 280 kW
+    Then the energy cost is 14868.00
+    And the power cost is 17228.00
+    And the subtotal is 32108.80
+    And the IGV is 5779.58
+    And the total is 37888.38
+
+  @US35
+  Scenario Outline: The excess is billed only when the maximum demand exceeds the contracted power
+    When the user estimates the "MT2" bill of a site with 120 kW contracted, 6000 kWh at peak, 24000 kWh off peak and a maximum demand of <demand> kW
+    Then the bill shows a power excess: <excess>
+    And the excess power is <excess_kw> kW
+    And the power cost is <power_cost>
+
+    Examples:
+      | demand | excess | excess_kw | power_cost |
+      | 100    | no     | 0         | 5840.00    |
+      | 120    | no     | 0         | 7008.00    |
+      | 150    | yes    | 30        | 9636.00    |
+
+  @US35 @US36
+  Scenario: A single demand peak raises the bill without consuming more energy
+    When the user estimates the "MT2" bill of a site with 120 kW contracted, 6000 kWh at peak, 24000 kWh off peak and a maximum demand of 110 kW
+    And the user estimates the same bill with a maximum demand of 150 kW
+    Then both estimates have the same energy cost
+    And the second estimate costs more than 3000 soles extra
+
+  @US36
+  Scenario: The estimate reports the share of the subtotal taken by power
+    When the user estimates the "MT2" bill of a site with 250 kW contracted, 12000 kWh at peak, 48000 kWh off peak and a maximum demand of 280 kW
+    Then the power share of the subtotal is 53.7 percent
+
+  @TS04
+  Scenario: An unknown tariff category is rejected
+    When the user estimates the "XYZ" bill of a site with 120 kW contracted, 6000 kWh at peak, 24000 kWh off peak and a maximum demand of 110 kW
+    Then the request is rejected as invalid
+```
+
+*Figura 40 (Ejecución de la feature de factura estimada)*
+<img src="assets/images/figures/40-bdd-feature-bill-estimate.png" alt="Ejecución BDD de factura estimada" style="width: 100vw;">
+
+> El exceso se cobra solo con demanda mayor que la contratada: 100 kW y 120 kW no generan exceso, 150 kW sí.
+
+**BDD Feature File: Energy (Horario de punta)**
+
+User Story cubierta: US27. Ningún *endpoint* clasifica una lectura individual por franja, por lo que el
+*Scenario Outline* ejecuta la regla de dominio `HorarioPunta`; la tarifa publicada sí se verifica a
+través de la API.
+
+```gherkin
+@EP05 @US27
+Feature: Peak hours of the commercial tariff
+  Energy consumed between 18:00 and 23:00, local time in Peru, is billed at the
+  peak price every day of the year, Sundays included. A site is exempt on
+  Sundays only when its supply was granted that exclusion by the distributor.
+  No endpoint classifies a single reading, so these scenarios exercise the
+  domain rule directly; the published tariff is checked through the API.
+
+  Scenario Outline: A reading is classified into its time band
+    Given a site whose supply <exclusion> the Sunday exclusion
+    When a reading arrives on <day> at <time> local time
+    Then the reading falls in the <band> band
+
+    Examples:
+      | exclusion     | day       | time  | band     |
+      | does not have | Wednesday | 17:59 | off-peak |
+      | does not have | Wednesday | 18:00 | peak     |
+      | does not have | Wednesday | 22:59 | peak     |
+      | does not have | Wednesday | 23:00 | off-peak |
+      | does not have | Sunday    | 20:00 | peak     |
+      | has           | Sunday    | 20:00 | off-peak |
+      | has           | Saturday  | 20:00 | peak     |
+      | does not have | Sunday    | 11:00 | off-peak |
+
+  Scenario: The published tariff states peak hours for every day
+    Given a signed-in user
+    When the user consults the "MT2" tariff
+    Then the peak hours are "18:00-23:00 every day"
+```
+
+*Figura 41 (Ejecución de la feature de horario de punta)*
+<img src="assets/images/figures/41-bdd-feature-peak-hours.png" alt="Ejecución BDD de horario de punta" style="width: 100vw;">
+
+> Bordes 17:59, 18:00, 22:59 y 23:00, y domingo con y sin exclusión.
+
+**BDD Feature File: Alerts (Regla de demanda)**
+
+User Stories cubiertas: US28, US29, US30, US31 y TS05.
+
+```gherkin
+@EP06
+Feature: Demand alerts before the contracted power is exceeded
+  A demand rule watches a site's demand against its contracted power. It warns
+  with headroom once the demand reaches the warning percentage, and raises a
+  critical alert when the contracted power is exceeded, so the manager can shed
+  load before the excess power charge applies to the whole month.
+
+  Background:
+    Given a signed-in manager with a site of 120 kW contracted
+
+  @US28
+  Scenario: The manager creates a demand rule
+    When the manager creates a demand rule warning at 85 percent
+    Then the rule is active with a warning threshold of 102 kW
+
+  @US28
+  Scenario Outline: A warning percentage out of range is rejected
+    When the manager creates a demand rule warning at <percent> percent
+    Then the request is rejected as invalid
+
+    Examples:
+      | percent |
+      | 0       |
+      | 101     |
+
+  @TS05 @US29 @US30 @US31
+  Scenario Outline: The measured demand raises the alert that matches its level
+    Given the site has a demand rule warning at 85 percent
+    When a demand of <demand> kW is evaluated for the site
+    Then the resulting alert is "<severity>"
+
+    Examples:
+      | demand | severity |
+      | 90     | none     |
+      | 101.9  | none     |
+      | 102    | WARNING  |
+      | 120    | WARNING  |
+      | 120.1  | CRITICAL |
+      | 150    | CRITICAL |
+
+  @US29
+  Scenario: The warning tells how much headroom is left
+    Given the site has a demand rule warning at 85 percent
+    When a demand of 108 kW is evaluated for the site
+    Then the resulting alert is "WARNING"
+    And the alert reports "12 kW of headroom left"
+
+  @US30
+  Scenario: The critical alert tells the excess and notifies the manager
+    Given the site has a demand rule warning at 85 percent
+    When a demand of 135 kW is evaluated for the site
+    Then the resulting alert is "CRITICAL"
+    And the alert reports "15 kW above the 120 kW contracted"
+    And the manager receives the alert by email
+```
+
+*Figura 42 (Ejecución de la feature de alertas de demanda)*
+<img src="assets/images/figures/42-bdd-feature-demand-alerts.png" alt="Ejecución BDD de alertas de demanda" style="width: 100vw;">
+
+> El umbral exacto (102 kW) y la potencia contratada exacta (120 kW) generan `WARNING`; 120.1 kW genera `CRITICAL`.
+
+**BDD Feature File: Device Management (Alta y baja de medidores)**
+
+User Stories cubiertas: US19, US20 y US23.
+
+```gherkin
+@EP04
+Feature: Submeter registration and removal
+  A supervisor registers each submeter in an active site and, optionally, in
+  one of that site's zones. Removing a submeter is logical: it leaves the
+  listings and stops counting towards the plan, but its history is kept.
+
+  Background:
+    Given a signed-in supervisor with the site "T-001" and its zone "Cold rooms"
+
+  @US19
+  Scenario: The supervisor registers a submeter in a zone of the site
+    When the supervisor registers the submeter "SM-0001" in the site "T-001" and the zone "Cold rooms"
+    Then the submeter is registered as "ACTIVE"
+    And the submeter belongs to the site "T-001" and the zone "Cold rooms"
+
+  @US19
+  Scenario: A zone that belongs to another site is rejected
+    Given the organization also has the site "T-002" and its zone "Kitchen"
+    When the supervisor registers the submeter "SM-0002" in the site "T-001" and the zone "Kitchen"
+    Then the request is rejected as invalid
+
+  @US19
+  Scenario: A duplicated submeter code is rejected
+    Given the submeter "SM-0003" is registered in the site "T-001"
+    When the supervisor registers the submeter "SM-0003" in the site "T-001" and the zone "Cold rooms"
+    Then the request is rejected as a conflict
+
+  @US20 @US23
+  Scenario: A removed submeter leaves the listings but keeps its history
+    Given the submeter "SM-0004" is registered in the site "T-001"
+    And the submeter "SM-0005" is registered in the site "T-001"
+    When the supervisor removes the submeter "SM-0005"
+    Then the site "T-001" lists only the submeter "SM-0004"
+    And the submeter "SM-0005" is kept with the status "REMOVED"
+```
+
+*Figura 43 (Ejecución de la feature de alta y baja de medidores)*
+<img src="assets/images/figures/43-bdd-feature-submeters.png" alt="Ejecución BDD de medidores" style="width: 100vw;">
+
+> El medidor dado de baja deja el listado del local y se conserva con estado `REMOVED`.
+
+| Suite | Archivos | Pruebas | Passed | Failed |
+| :-- | --: | --: | --: | --: |
+| Core Behavior-Driven Development | 6 | 52 | 52 | 0 |
+
+### 6.1.4. Core System Tests.
+
+Las pruebas de sistema recorren flujos completos de negocio contra la aplicación levantada, encadenando
+varios módulos en una misma prueba y verificando el resultado en cada paso, incluidos los efectos de los
+eventos de dominio entre módulos (correos enviados por `AlertTriggered`, `PasswordResetRequested` y
+`PaymentProcessed`).
+
+*Figura 44 (Resultados de las pruebas de sistema por flujo)*
+<img src="assets/images/figures/44-system-tests-by-class.png" alt="Pruebas de sistema por flujo" style="width: 100vw;">
+
+> Cuatro flujos, seis pruebas, todas aprobadas.
+
+**Flujo 1: Alta de un establecimiento**
+
+| ID | Título | Descripción |
+| :-- | :-- | :-- |
+| US06 | Registro de cuenta | Como visitante, deseo crear una cuenta con mi correo y contraseña, para acceder a la aplicación. |
+| US07 | Inicio de sesión | Como usuario registrado, deseo iniciar sesión, para acceder a la información de mis locales. |
+| US12 | Registro de la organización | Como administrador, deseo registrar mi empresa con su RUC y tipo de negocio, para agrupar bajo ella todos mis locales. |
+| US13 | Registro de un local | Como administrador, deseo registrar un local con su potencia contratada y su categoría tarifaria, para que el sistema calcule sobre la tarifa que realmente le aplica. |
+| US14 | Consulta de los locales de la organización | Como responsable de operaciones, deseo ver la lista de mis locales vigentes, para acceder a cada uno desde un punto único. |
+| US18 | Registro de zonas de un local | Como supervisor, deseo dividir mi local en zonas, para saber en qué parte se consume la energía. |
+| US19 | Registro de un medidor en un local | Como supervisor, deseo registrar un medidor indicando su local y su zona, para atribuir su consumo al suministro y al área correctos. |
+| US20 | Consulta de medidores por local | Como supervisor, deseo ver los medidores instalados en mi local, para verificar la cobertura de la medición. |
+| US40 | Consulta de planes disponibles | Como administrador, deseo ver los planes con sus límites y precios, para elegir el que corresponde a mi cadena. |
+
+Pasos: registro → inicio de sesión → consulta de `/users/me` → verificación del plan de entrada asignado →
+alta de la organización (el creador queda como `ORG_ADMIN`) → alta del local `T-001` con 120 kW en `MT2`
+→ alta de la zona `COLD_STORAGE` → alta del medidor en esa zona → el medidor aparece en los listados por
+local, por zona y por usuario. Una segunda prueba verifica que un medidor en una zona de otro local se
+rechaza y no aparece en el listado.
+
+Archivo: **`tests/Sems.Api.SystemTests/OnboardingFlowTests.cs`**
+
+*Figura 45 (Ejecución del flujo de alta de un establecimiento)*
+<img src="assets/images/figures/45-system-flow-onboarding.png" alt="Flujo de alta" style="width: 100vw;">
+
+**Flujo 2: Prevención del cargo por potencia**
+
+| ID | Título | Descripción |
+| :-- | :-- | :-- |
+| US24 | Consulta del consumo actual | Como supervisor, deseo ver el consumo actual de mi local, para saber cómo está operando en este momento. |
+| US28 | Creación de una regla de demanda | Como responsable, deseo definir a qué porcentaje de mi potencia contratada quiero ser avisado, para tener margen de reacción. |
+| US29 | Aviso de demanda con margen | Como responsable, deseo recibir un aviso cuando la demanda de mi local se acerca a la potencia contratada, para reducir carga antes del recargo. |
+| US30 | Aviso de exceso de potencia | Como responsable, deseo saber cuándo he superado la potencia contratada, para dimensionar el recargo del periodo y evitar que se repita. |
+| US31 | Ausencia de aviso por debajo del umbral | Como responsable, deseo no recibir avisos cuando la operación es normal, para que la alerta conserve su valor. |
+| US35 | Proyección de factura del periodo | Como responsable, deseo conocer la factura estimada de mi local desglosada, para saber qué concepto pesa más. |
+| US36 | Peso del cargo por potencia | Como responsable, deseo ver qué proporción de mi factura corresponde al cargo por potencia, para decidir si conviene actuar sobre el pico o sobre el consumo. |
+| TS05 | API de evaluación de demanda | Como developer, deseo un endpoint que evalúe una demanda medida contra las reglas del local, para generar las alertas correspondientes. |
+
+Pasos: local de 120 kW en `MT2` → regla de demanda al 85 % (102 kW) → medidor del local → cuatro lecturas
+de 90, 104, 118 y 132 kW, cada una registrada y evaluada → resultado `ninguna`, `WARNING`, `WARNING` y
+`CRITICAL` → la última lectura es la consulta de consumo actual → tres alertas listadas y tres correos
+enviados al responsable → la factura estimada con demanda máxima de 132 kW muestra 12 kW de exceso y
+un costo de potencia de `120 × 58.40 + 12 × 87.60` → la proyección de Analytics da el mismo total. Una
+segunda prueba verifica que una demanda que no pasa de 101.9 kW no genera alertas, correos ni exceso.
+
+Archivo: **`tests/Sems.Api.SystemTests/DemandChargePreventionFlowTests.cs`**
+
+*Figura 46 (Ejecución del flujo de prevención del cargo por potencia)*
+<img src="assets/images/figures/46-system-flow-demand-charge-prevention.png" alt="Flujo de prevención del cargo por potencia" style="width: 100vw;">
+
+**Flujo 3: Contratación y pago de un plan**
+
+| ID | Título | Descripción |
+| :-- | :-- | :-- |
+| US40 | Consulta de planes disponibles | Como administrador, deseo ver los planes con sus límites y precios, para elegir el que corresponde a mi cadena. |
+| US41 | Contratación de un plan | Como administrador, deseo contratar un plan, para habilitar las funcionalidades que necesita mi organización. |
+| US44 | Consulta de comprobantes | Como administrador, deseo consultar mis comprobantes de pago, para llevar el control contable de la suscripción. |
+| TS08 | Webhook de la pasarela de pagos | Como developer, deseo un endpoint de webhook autenticado por firma, para confirmar los pagos sin exponer un recurso abierto. |
+
+Pasos: consulta de planes → suscripción al plan `Pro` → Stripe confirma el *checkout* con un evento
+firmado → Stripe reenvía el mismo evento y se descarta → existe un único pago `processed` de S/ 79.90, su
+comprobante y un único correo de comprobante.
+
+Archivo: **`tests/Sems.Api.SystemTests/SubscriptionPaymentFlowTests.cs`**
+
+*Figura 47 (Ejecución del flujo de contratación y pago)*
+<img src="assets/images/figures/47-system-flow-subscription-payment.png" alt="Flujo de contratación y pago" style="width: 100vw;">
+
+**Flujo 4: Recuperación de la cuenta**
+
+| ID | Título | Descripción |
+| :-- | :-- | :-- |
+| US07 | Inicio de sesión | Como usuario registrado, deseo iniciar sesión, para acceder a la información de mis locales. |
+| US08 | Recuperación de contraseña | Como usuario registrado, deseo restablecer mi contraseña, para recuperar el acceso si la olvido. |
+| US09 | Cierre de sesión | Como usuario autenticado, deseo cerrar sesión, para impedir el acceso desde un equipo compartido del local. |
+
+Pasos: solicitud de recuperación → el enlace llega por correo → cambio de contraseña con el token del
+enlace → el enlace no sirve una segunda vez → el token de refresco anterior queda revocado → solo la
+nueva contraseña permite iniciar sesión.
+
+Archivo: **`tests/Sems.Api.SystemTests/AccountRecoveryFlowTests.cs`**
+
+*Figura 48 (Ejecución del flujo de recuperación de la cuenta)*
+<img src="assets/images/figures/48-system-flow-account-recovery.png" alt="Flujo de recuperación de la cuenta" style="width: 100vw;">
+
+| Suite | Archivos | Pruebas | Passed | Failed |
+| :-- | --: | --: | --: | --: |
+| Core System Tests | 4 | 6 | 6 | 0 |
+
+**Resumen de las suites**
+
+| Suite | Archivos | Pruebas | Passed | Failed |
+| :-- | --: | --: | --: | --: |
+| Core Entities Unit Tests | 22 | 263 | 263 | 0 |
+| Core Integration Tests | 10 | 103 | 103 | 0 |
+| Core Behavior-Driven Development | 6 | 52 | 52 | 0 |
+| Core System Tests | 4 | 6 | 6 | 0 |
+| **Total** | **42** | **424** | **424** | **0** |
+
+**Commits de testing**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+
+> `<Completar con los commits de la rama feature/testing-suites una vez registrados.>`
+
+
+
 # Conclusiones, Bibliografía y Anexos
 
 ## Conclusiones
