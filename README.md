@@ -2446,8 +2446,8 @@ Content-Type: application/json
 
 | Dato | Valor |
 | :-- | :-- |
-| Enlace | `<URL privado de Microsoft Stream>` |
-| Duración | `<mm:ss>` |
+| Enlace | [About The Product.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQB_GbtfhMFRSJgYxSx3AkfbAQVnFQVNAjNmJV2Gocy7ZH4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uLhWV7) |
+| Duración | 30 segundos (00:30) |
 
 ## 5.4. Deuda técnica identificada
 
