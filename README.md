@@ -189,6 +189,28 @@ Student Outcome
 5.2.7. RESTful API documentation  
 5.2.8. Team Collaboration Insights  
 5.3. Video About-the-Product.  
+Part II: Verification, Validation & Pipeline
+Capítulo VI: Product Verification & Validation
+6.1. Testing Suites & Validation
+6.1.1. Core Entities Unit Tests.
+6.1.2. Core Integration Tests.
+6.1.3. Core Behavior-Driven Development
+6.1.4. Core System Tests.
+Capítulo VII: DevOps Practices
+7.1. ContinuousIntegration
+7.1.1. Tools and Practices.
+7.1.2. Build & Test Suite Pipeline Components.
+7.2. Continuous Delivery
+7.2.1. Tools and Practices.
+7.2.2. Stages Deployment Pipeline Components.
+7.3. Continuous deployment
+7.3.1. Tools and Practices.
+7.3.2. Production Deployment Pipeline Components.
+7.4. Continuous Monitoring
+7.4.1. Tools and Practices
+7.4.2. Monitoring Pipeline Components
+7.4.3. Alerting Pipeline Components
+7.4.4. Notification Pipeline Components.
 
 # Student Outcome
 
@@ -3337,14 +3359,377 @@ Archivo: **`tests/Sems.Api.SystemTests/AccountRecoveryFlowTests.cs`**
 | Core System Tests | 4 | 6 | 6 | 0 |
 | **Total** | **42** | **424** | **424** | **0** |
 
-**Commits de testing**
+## 7.1 Continuous Integration
 
-| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
-| :-- | :-- | :-- | :-- | :-- | :-- |
+### 7.1.1. Tools and Practices
 
-> `<Completar con los commits de la rama feature/testing-suites una vez registrados.>`
+Para el proceso de Continuous Integration de SEMS se emplean diferentes herramientas orientadas al control de versiones, compilación, pruebas automatizadas y análisis de código. Estas permiten detectar errores antes de integrar cambios en las ramas principales y mantener una base de código estable.
+
+#### Tools
+
+| Herramienta | Tipo | Descripción | Propósito |
+|---|---|---|---|
+| Git / GitHub | Control de versiones | Herramientas utilizadas para almacenar y gestionar el código fuente de los diferentes componentes de SEMS. | Centralizar el código, gestionar ramas y controlar la integración de cambios. |
+| GitHub Actions | Integración continua | Plataforma de automatización integrada con GitHub que permite ejecutar workflows ante eventos como `push` y `pull_request`. | Automatizar la compilación y ejecución de pruebas antes de integrar nuevos cambios. |
+| .NET 8 | Build / Backend | Plataforma utilizada para desarrollar y compilar el Backend de SEMS. | Restaurar dependencias, compilar la solución y ejecutar las pruebas mediante comandos como `dotnet restore`, `dotnet build` y `dotnet test`. |
+| xUnit | Testing | Framework utilizado para implementar pruebas automatizadas en el Backend. | Validar la lógica del sistema y comprobar el correcto funcionamiento de diferentes componentes. |
+| Microsoft.AspNetCore.Mvc.Testing | Integration Testing | Herramienta de ASP.NET Core utilizada para ejecutar la API dentro de un entorno de prueba. | Realizar pruebas de integración sobre los endpoints y comportamiento del Backend. |
+| NSubstitute | Mocking | Librería utilizada para crear objetos simulados durante las pruebas. | Aislar dependencias y facilitar las pruebas unitarias de servicios y componentes. |
+| SpecFlow | BDD | Herramienta utilizada para definir escenarios de comportamiento mediante especificaciones. | Relacionar los requerimientos funcionales con escenarios de prueba orientados al comportamiento. |
+| Coverlet | Code Coverage | Herramienta configurada dentro de los proyectos de pruebas del Backend. | Obtener información sobre la cobertura alcanzada por las pruebas automatizadas. |
+| Docker | Containerization | Tecnología utilizada para contenerizar el Backend mediante un `Dockerfile`. | Mantener un entorno consistente para la construcción y posterior despliegue de la aplicación. |
+| Vite | Build / Frontend | Herramienta utilizada para el desarrollo y construcción de la Web Application desarrollada con Vue. | Generar el build optimizado de producción mediante `npm run build`. |
+| ESLint | Static Analysis | Herramienta de análisis estático utilizada en la Web Application. | Detectar problemas de código y mantener las convenciones definidas para JavaScript y Vue. |
+| Flutter Test | Mobile Testing | Herramienta incluida dentro del entorno de desarrollo Flutter. | Permitir la ejecución de pruebas sobre componentes y funcionalidades de la Mobile Application. |
+| Flutter Lints | Static Analysis | Conjunto de reglas de análisis estático para proyectos desarrollados en Dart y Flutter. | Detectar malas prácticas y mantener consistencia en el código de la Mobile Application. |
+
+#### Practices
+
+- **GitFlow y Feature Branching:** las nuevas funcionalidades y modificaciones se desarrollan en ramas independientes antes de ser integradas a las ramas principales.
+
+- **Pull Requests:** los cambios son revisados y validados antes de incorporarse a `develop` o `main`.
+
+- **Conventional Commits:** los mensajes de commit utilizan convenciones como `feat`, `fix`, `test`, `refactor` o `ci`, facilitando la identificación y trazabilidad de los cambios.
+
+- **Integración frecuente:** los cambios son incorporados progresivamente al repositorio para detectar conflictos y errores de forma temprana.
+
+- **Automated Build and Testing:** el Backend cuenta con un workflow de GitHub Actions que ejecuta automáticamente la restauración de dependencias, compilación y pruebas ante cambios realizados en el repositorio.
+
+- **Static Code Analysis:** la Web Application utiliza ESLint y la Mobile Application utiliza Flutter Lints para detectar problemas en el código antes de su integración.
 
 
+### 7.1.2. Build & Test Suite Pipeline Components
+
+Para la integración continua del backend de SEMS se implementó un workflow mediante **GitHub Actions**, definido en el archivo `.github/workflows/ci.yml`.
+
+El pipeline se ejecuta automáticamente cuando se realizan cambios mediante `push` o `pull request` sobre las ramas `develop` y `main`. Su objetivo es verificar que el backend pueda compilar correctamente y que las pruebas automatizadas se ejecuten sin errores antes de integrar nuevos cambios.
+
+El workflow está compuesto por los siguientes pasos:
+
+- **Checkout repository:** descarga el código fuente del repositorio dentro del entorno de ejecución de GitHub Actions.
+- **Setup .NET:** configura el entorno utilizando .NET 8.
+- **Restore dependencies:** restaura las dependencias necesarias del proyecto mediante `dotnet restore`.
+- **Build solution:** compila la solución `SemsBackend.sln` en configuración Release.
+- **Run tests:** ejecuta las pruebas automatizadas de la solución mediante `dotnet test`.
+
+El workflow implementado es el siguiente:
+
+```yml
+name: Backend CI
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore SemsBackend.sln
+
+      - name: Build solution
+        run: dotnet build SemsBackend.sln --no-restore --configuration Release
+
+      - name: Run tests
+        run: dotnet test SemsBackend.sln --no-build --configuration Release
+        
+        
+```
+La ejecución del pipeline fue satisfactoria, oseagitHub Actions registró correctamente las ejecuciones realizadas durante la creación del Pull Request y luego de integrar el cambio a la rama develop.
+
+![Backend CI Workflow Runs](assets/chapter7/backend-ci-workflow-runs.png)
+
+En el detalle de la ejecución se observa que cada una de las etapas del pipeline fue completada correctamente. El proceso incluyó la preparación del entorno, restauración de dependencias, compilación de la solución y ejecución de las pruebas automatizadas.
+
+![Backend CI Build and Test Details](assets/chapter7/backend-ci-build-and-test-details.png)
+
+De esta manera, el pipeline permite detectar automáticamente errores de compilación o fallos en las pruebas antes de que los cambios sean incorporados a las ramas principales del proyecto.
+
+## 7.2. Continuous Delivery
+
+### 7.2.1. Tools and Practices
+
+Para el proceso de Continuous Delivery de SEMS se utilizan diferentes herramientas según el componente de la solución. El objetivo es mantener cada producto preparado para ser desplegado después de superar las validaciones correspondientes.
+
+En el caso del **Backend**, desarrollado con ASP.NET Core 8, se utiliza **Docker** para preparar la aplicación en un contenedor reproducible. El proyecto incluye un `Dockerfile` que realiza el proceso de compilación y publicación en configuración Release, generando una imagen lista para ejecutarse en el entorno de producción. El servicio se encuentra desplegado en **Render**.
+
+Para la **Web Application**, desarrollada con Vue 3 y Vite, se utiliza **Vercel** como plataforma de publicación. El proyecto dispone de la configuración necesaria para el funcionamiento de la aplicación como Single Page Application mediante el archivo `vercel.json`. Además, el proceso de construcción se realiza utilizando el comando `npm run build`.
+
+La **Landing Page** utiliza **GitHub Pages** para su publicación. Debido a que está desarrollada con HTML5, CSS3 y JavaScript, no requiere un proceso de compilación previo. El repositorio contiene un workflow de **GitHub Actions** que se ejecuta cuando se realizan cambios en la rama `main` y publica automáticamente el contenido mediante GitHub Pages.
+
+Por su parte, la **Mobile Application** está desarrollada con Flutter. Actualmente el proyecto cuenta con la configuración y dependencias necesarias para su desarrollo, pero no se encontró un pipeline automatizado para realizar su distribución hacia una tienda de aplicaciones. Por este motivo, dentro del proceso actual de Continuous Delivery se considera como un componente todavía pendiente de automatización.
+
+Como prácticas generales se utilizan **GitHub**, **GitFlow**, **Pull Requests**, **Conventional Commits** y **Semantic Versioning** para gestionar los cambios y versiones del producto. Además, el pipeline de Continuous Integration implementado previamente permite verificar la compilación y ejecución de pruebas antes de que los cambios sean incorporados a las ramas principales.
+
+### 7.2.2. Stages Deployment Pipeline Components
+
+El proceso de Continuous Delivery de SEMS utiliza diferentes mecanismos de despliegue según el componente de la solución. Aunque cada producto utiliza una plataforma distinta, el objetivo común es publicar versiones funcionales después de que los cambios hayan sido integrados y validados.
+
+#### Landing Page
+
+La Landing Page utiliza un pipeline automatizado mediante **GitHub Actions** y **GitHub Pages**.
+
+El workflow se ejecuta mediante un evento `push` y realiza las siguientes etapas:
+
+- **Checkout:** obtiene el código fuente del repositorio.
+- **Configure Pages:** prepara la configuración necesaria para GitHub Pages.
+- **Upload the site:** carga los archivos estáticos que serán publicados.
+- **Deploy:** realiza la publicación final de la Landing Page.
+
+La ejecución del pipeline finalizó correctamente, mostrando todas sus etapas en estado exitoso.
+
+![Landing Page Deployment Pipeline](assets/chapter7/landing-page-deployment-pipeline.png)
+
+#### Web Application
+
+La Web Application utiliza **Vercel** como plataforma de deployment.
+
+El despliegue se encuentra asociado a la rama `main` del repositorio. Vercel recibe los cambios del proyecto, ejecuta el proceso de construcción de la aplicación desarrollada con Vue 3 y Vite, y posteriormente publica la versión resultante en el entorno de producción.
+
+En la evidencia se observa que el deployment se encuentra en estado **Ready**, indicando que la versión fue construida y publicada correctamente.
+
+![Web Application Production Deployment](assets/chapter7/web-application-vercel-deployment.jpeg)
+
+El flujo general de esta etapa es:
+
+`GitHub Repository → Vercel Build → Production Deployment → Ready`
+
+#### Backend
+
+El Backend de SEMS se encuentra desplegado mediante **Render**.
+
+El servicio ejecuta la aplicación ASP.NET Core dentro del entorno de producción y, una vez finalizado el proceso de despliegue, Render inicia el servicio y publica la API en su URL principal.
+
+En los registros de ejecución se observa que la aplicación fue iniciada correctamente en el entorno `Production` y que el servicio quedó disponible públicamente.
+
+![Backend Render Deployment](assets/chapter7/backend-render-deployment.jpeg)
+
+El flujo general del Backend es:
+
+`Backend Source Code → Build and Deployment → Application Startup → Production Service Live`
+
+De esta manera, los principales componentes de SEMS utilizan pipelines y plataformas de deployment independientes pero complementarias. La Landing Page se publica mediante GitHub Actions y GitHub Pages, la Web Application mediante Vercel y el Backend mediante Render. Esto permite mantener cada componente desplegado en un entorno acorde con su tecnología y características.
+
+## 7.3. Continuous deployment
+
+### 7.3.1. Tools and Practices
+
+Para el proceso de Continuous Deployment de SEMS se utilizan diferentes herramientas que permiten publicar los componentes de la solución en sus respectivos entornos de producción.
+
+#### Tools
+
+| Herramienta | Tipo | Descripción | Propósito |
+|---|---|---|---|
+| GitHub | Source Code Management | Plataforma donde se encuentran alojados los repositorios de los diferentes componentes de SEMS. | Gestionar versiones, ramas y cambios que posteriormente serán desplegados. |
+| GitHub Actions | Deployment Automation | Herramienta de automatización utilizada en el repositorio de la Landing Page. | Ejecutar el workflow encargado de preparar y publicar automáticamente el sitio mediante GitHub Pages. |
+| GitHub Pages | Production Hosting | Servicio utilizado para alojar la Landing Page de SEMS. | Publicar el contenido estático de la Landing Page en un entorno accesible públicamente. |
+| Vercel | Frontend Deployment | Plataforma utilizada para alojar la Web Application desarrollada con Vue 3 y Vite. | Construir y publicar la aplicación web en un entorno de producción. |
+| Render | Backend Deployment | Plataforma utilizada para alojar el RESTful API desarrollado con ASP.NET Core. | Ejecutar y mantener disponible el Backend de SEMS en producción. |
+| Docker | Containerization | Tecnología utilizada para empaquetar el Backend junto con las dependencias necesarias para su ejecución. | Mantener un entorno consistente durante la construcción y despliegue del Backend. |
+
+#### Practices
+
+- **Deployment from stable branches:** los cambios destinados a producción provienen de ramas previamente integradas y revisadas dentro del flujo de trabajo del equipo.
+
+- **Pull Request validation:** antes de integrar cambios relevantes, se utilizan Pull Requests para revisar las modificaciones realizadas.
+
+- **Pre-deployment validation:** el Backend ejecuta previamente procesos de build y pruebas automatizadas mediante GitHub Actions, reduciendo el riesgo de desplegar cambios con errores.
+
+- **Production environment separation:** cada componente de SEMS utiliza un entorno de producción independiente: GitHub Pages para la Landing Page, Vercel para la Web Application y Render para el Backend.
+
+- **Environment configuration:** las configuraciones y variables necesarias para producción se administran de acuerdo con la plataforma utilizada, evitando incluir credenciales directamente en el código fuente.
+
+- **Deployment verification:** luego de realizar un despliegue se verifica que el servicio quede disponible y operativo en el entorno de producción.
+
+Estas prácticas permiten que los componentes principales de SEMS puedan ser desplegados de manera controlada, manteniendo separación entre desarrollo, validación y producción.
+
+### 7.3.2. Production Deployment Pipeline Components
+
+El proceso de Continuous Deployment de SEMS permite publicar los principales componentes del sistema en entornos de producción utilizando diferentes plataformas según la tecnología de cada aplicación.
+
+#### Landing Page
+
+La Landing Page se despliega mediante **GitHub Actions** y **GitHub Pages**.
+
+El proceso inicia cuando los cambios son integrados en la rama correspondiente del repositorio. GitHub Actions ejecuta el workflow encargado de preparar los archivos estáticos del proyecto y posteriormente realiza la publicación mediante GitHub Pages.
+
+Las principales etapas del deployment son:
+
+1. **Checkout del repositorio:** se obtiene el código fuente de la Landing Page.
+2. **Configuración de GitHub Pages:** se prepara el entorno necesario para realizar la publicación.
+3. **Carga del sitio:** se suben los archivos HTML, CSS y JavaScript que componen la aplicación.
+4. **Deployment:** GitHub Pages publica la nueva versión del sitio.
+5. **Verificación:** se comprueba que el sitio quede disponible públicamente.
+
+![Landing Page Deployment Pipeline](assets/chapter7/landing-page-deployment-pipeline.png)
+
+#### Web Application
+
+La Web Application de SEMS se encuentra desplegada mediante **Vercel**.
+
+La aplicación, desarrollada con Vue 3 y Vite, utiliza el proceso de construcción definido mediante `npm run build`. Vercel genera la versión optimizada de producción y posteriormente publica la aplicación en su entorno de hosting.
+
+Las principales etapas del deployment son:
+
+1. **Obtención del código fuente:** Vercel utiliza la versión asociada al repositorio del proyecto.
+2. **Instalación de dependencias:** se preparan las dependencias requeridas por la aplicación.
+3. **Build de producción:** Vite genera la versión optimizada de la Web Application.
+4. **Deployment:** Vercel publica la aplicación en el entorno de producción.
+5. **Verificación:** el deployment queda identificado con el estado `Ready`, confirmando que la aplicación se encuentra disponible.
+
+![Web Application Production Deployment](assets/chapter7/web-application-vercel-deployment.jpeg)
+
+#### Backend
+
+El Backend de SEMS se encuentra desplegado mediante **Render** y desarrollado con ASP.NET Core.
+
+Durante el deployment, el servicio prepara el entorno de ejecución del Backend y levanta la aplicación en modo `Production`. Una vez iniciado correctamente, Render publica la API mediante una URL accesible desde Internet.
+
+Las principales etapas del deployment del Backend son:
+
+1. **Preparación del Backend:** se obtiene el código fuente y se preparan las dependencias necesarias para su ejecución.
+2. **Build de la aplicación:** se compila el proyecto ASP.NET Core.
+3. **Inicialización del servicio:** Render ejecuta la aplicación dentro del entorno de producción.
+4. **Publicación de la API:** el servicio queda disponible mediante la URL pública proporcionada por Render.
+5. **Verificación mediante Swagger/OpenAPI:** se utiliza la interfaz de Swagger para comprobar que los endpoints de la API están correctamente definidos y pueden ser visualizados de manera interactiva.
+
+En los registros de Render se observa que el servicio se ejecuta utilizando el entorno `Production` y que la aplicación inicia correctamente.
+
+![Backend Render Deployment](assets/chapter7/backend-render-deployment.jpeg)
+
+Como parte de la verificación del Backend se utilizó Swagger/OpenAPI, permitiendo visualizar los diferentes endpoints disponibles en la API de SEMS.
+
+Las siguientes evidencias muestran la documentación interactiva del servicio:
+
+![Swagger Evidence 1](assets/chapter7/swagger-01.png)
+
+![Swagger Evidence 2](assets/chapter7/swagger-02.png)
+
+![Swagger Evidence 3](assets/chapter7/swagger-03.png)
+
+![Swagger Evidence 4](assets/chapter7/swagger-04.png)
+
+
+Swagger permite verificar los recursos disponibles, los métodos HTTP implementados y la estructura de los endpoints expuestos por el Backend.
+
+#### Mobile Application
+
+La Mobile Application está desarrollada con Flutter.
+
+Actualmente, el proyecto no cuenta con evidencia de un pipeline automatizado de producción hacia Google Play Store o Apple App Store. Por este motivo, su distribución todavía no forma parte del proceso automatizado de Continuous Deployment utilizado por los demás componentes de SEMS.
+
+Este aspecto queda identificado como una oportunidad de mejora futura, pudiendo incorporarse herramientas especializadas para automatizar la generación y distribución de builds móviles.
+
+De esta manera, el proceso de producción de SEMS se encuentra distribuido entre distintas plataformas: GitHub Pages para la Landing Page, Vercel para la Web Application y Render para el Backend. La API desplegada puede ser verificada mediante Swagger/OpenAPI, permitiendo comprobar la disponibilidad y estructura de los endpoints implementados.
+
+## 7.4. Continuous Monitoring
+
+El Continuous Monitoring en SEMS tiene como objetivo supervisar el comportamiento de los componentes desplegados, detectar fallos en los servicios y verificar que las aplicaciones continúen disponibles después de cada deployment.
+
+El monitoreo se realiza utilizando las herramientas proporcionadas por las plataformas donde se encuentran desplegados los diferentes componentes del sistema, complementadas con la supervisión de los workflows de integración continua.
+
+### 7.4.1. Tools and Practices
+
+Para el monitoreo continuo de SEMS se utilizan herramientas que permiten revisar el estado de los servicios, los registros de ejecución y los resultados de los pipelines.
+
+#### Tools
+
+| Herramienta | Tipo | Descripción | Propósito |
+|---|---|---|---|
+| Render | Backend Monitoring | Plataforma donde se encuentra desplegado el Backend de SEMS y que proporciona registros de ejecución del servicio. | Supervisar el inicio de la aplicación, identificar errores de ejecución y comprobar que el servicio permanezca disponible. |
+| Vercel | Frontend Monitoring | Plataforma utilizada para el despliegue de la Web Application y que permite revisar el estado de sus deployments. | Comprobar que las versiones publicadas hayan sido construidas y desplegadas correctamente. |
+| GitHub Actions | Pipeline Monitoring | Herramienta utilizada para ejecutar y supervisar workflows automatizados del proyecto. | Identificar errores durante los procesos de build y testing y verificar el estado de cada ejecución. |
+| GitHub Pages | Landing Page Hosting | Plataforma utilizada para publicar la Landing Page. | Verificar que el sitio permanezca disponible después de cada deployment. |
+| Swagger / OpenAPI | API Verification | Interfaz utilizada para visualizar y comprobar la estructura de los endpoints del Backend. | Facilitar la verificación funcional de los recursos expuestos por la API. |
+
+#### Practices
+
+- **Log monitoring:** se revisan los registros generados por el Backend para identificar errores durante la ejecución del servicio.
+
+- **Deployment status verification:** después de cada deployment se comprueba que el componente publicado se encuentre en estado operativo.
+
+- **Pipeline status monitoring:** se revisan los resultados de GitHub Actions para detectar fallos en las etapas de compilación o pruebas.
+
+- **Service availability verification:** se comprueba que la Web Application, Landing Page y Backend continúen disponibles mediante sus respectivas URLs.
+
+- **API verification:** los endpoints del Backend pueden ser revisados mediante Swagger/OpenAPI para comprobar su disponibilidad y estructura.
+
+Estas prácticas permiten detectar problemas durante el ciclo de integración y despliegue, facilitando la identificación temprana de errores que puedan afectar el funcionamiento de SEMS.
+
+### 7.4.2. Monitoring Pipeline Components
+
+El pipeline de monitoreo de SEMS se compone de diferentes mecanismos de supervisión que permiten observar el estado de los componentes desplegados.
+
+En el caso del **Backend**, Render proporciona registros de ejecución que permiten identificar eventos relacionados con el inicio de la aplicación, errores internos y funcionamiento general del servicio. Estos logs constituyen el principal mecanismo para revisar el comportamiento del Backend en su entorno de producción.
+
+Para la **Web Application**, Vercel permite supervisar el estado de los deployments realizados. Un deployment identificado con el estado `Ready` indica que el proceso de construcción y publicación finalizó correctamente y que la aplicación se encuentra disponible.
+
+En la **Landing Page**, GitHub Actions permite revisar la ejecución del workflow utilizado para su publicación mediante GitHub Pages. El historial del workflow permite identificar si cada proceso de deployment terminó correctamente o presentó algún error.
+
+GitHub Actions también permite supervisar el proceso de integración continua del Backend. Cada ejecución muestra el estado de las diferentes etapas del workflow, incluyendo la restauración de dependencias, compilación y ejecución de pruebas.
+
+El flujo general de monitoreo puede representarse de la siguiente manera:
+
+`Deployment → Service Execution → Logs / Pipeline Status → Verification → Error Detection`
+
+De esta manera, SEMS mantiene diferentes mecanismos de supervisión según el componente de la plataforma, permitiendo verificar tanto el estado de los servicios desplegados como la correcta ejecución de los procesos automatizados.
+
+### 7.4.3. Alerting Pipeline Components
+
+El componente de alertas tiene como objetivo facilitar la detección de fallos durante los procesos de integración y despliegue de SEMS.
+
+**GitHub Actions** proporciona información inmediata sobre el resultado de cada workflow. Cuando una etapa del pipeline presenta un error, la ejecución queda registrada con estado fallido, permitiendo identificar la etapa específica que ocasionó el problema.
+
+En el Backend, los **logs de Render** permiten identificar errores de ejecución, problemas durante el inicio del servicio o eventos inesperados que puedan afectar la disponibilidad de la API.
+
+Por su parte, **Vercel** permite identificar deployments que no hayan finalizado correctamente mediante el estado de cada proceso de construcción y publicación de la Web Application.
+
+Las principales situaciones que pueden generar una alerta dentro del proceso son:
+
+- fallo durante la compilación del Backend;
+- errores durante la ejecución de las pruebas automatizadas;
+- fallo en el workflow de GitHub Actions;
+- error durante el deployment de la Web Application;
+- problemas durante el inicio o ejecución del Backend;
+- indisponibilidad de alguno de los servicios desplegados.
+
+El flujo general de alertas puede representarse de la siguiente manera:
+
+`Error Detected → Pipeline or Service Status → Failure Identification → Developer Review → Correction`
+
+Este proceso permite que el equipo pueda identificar rápidamente problemas relacionados con la integración, construcción o disponibilidad de los componentes de SEMS.
+
+### 7.4.4. Notification Pipeline Components
+
+El pipeline de notificaciones de SEMS permite comunicar al equipo el resultado de los diferentes procesos automatizados y facilitar la identificación de problemas durante el desarrollo y despliegue del sistema.
+
+**GitHub Actions** constituye uno de los principales mecanismos de notificación dentro del proyecto. Cada ejecución del workflow registra si el proceso terminó correctamente o presentó algún fallo, mostrando el estado de las etapas de compilación y pruebas.
+
+Cuando un workflow falla, GitHub permite identificar directamente la etapa que presentó el problema, facilitando su revisión antes de continuar con la integración de nuevos cambios.
+
+Las plataformas de deployment también proporcionan información relacionada con el estado de las aplicaciones. **Vercel** muestra el resultado de los deployments realizados sobre la Web Application, mientras que **Render** registra los eventos y logs correspondientes al Backend desplegado.
+
+El flujo de notificación del proyecto puede resumirse de la siguiente manera:
+
+`Pipeline / Deployment → Execution Result → Status Notification → Team Review → Corrective Action`
+
+De esta manera, el equipo puede mantenerse informado sobre el estado de los procesos de integración y despliegue, reduciendo el tiempo necesario para identificar y corregir fallos que puedan afectar la estabilidad de SEMS.
 
 # Conclusiones, Bibliografía y Anexos
 
