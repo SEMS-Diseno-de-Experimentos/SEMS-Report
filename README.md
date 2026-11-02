@@ -4488,6 +4488,246 @@ esperan a tener volumen de usuarios, porque hoy responderlas sería inventar los
 | Duración | Cuatro semanas, tras completar la distribución de la aplicación móvil |
 | Lo que ponemos en riesgo | Depende de cerrar DT06; hasta entonces el experimento no se puede ejecutar |
 
+## 8.2. Experiment Design
+
+### 8.2.1. Hypotheses
+
+Las hipótesis de la sección 1.2.2.3 se formularon antes de construir el producto y están redactadas
+en el lenguaje de Lean UX, que sirve para alinear al equipo pero no para decidir. Aquí se reescriben
+como hipótesis estadísticas: con una población, una medida, una hipótesis nula y un efecto mínimo
+que vale la pena detectar. Lo que cambia no es la idea, es que ahora cada una se puede rechazar.
+
+| ID | Hipótesis original | Formulación contrastable |
+| :-- | :-- | :-- |
+| H1 | Avisar al 85 % logra que reduzca carga a tiempo (Hipótesis 1) | **H₀:** p(reducción \| alerta) = p(reducción \| sin alerta). **H₁:** p(reducción \| alerta) − p(reducción \| sin alerta) ≥ 0.30. Unidad: episodio de cruce de umbral |
+| H2 | La alerta accionable supera al número crudo | **H₀:** p(reducción \| texto B) = p(reducción \| texto A). **H₁:** diferencia ≥ 0.20, o mediana del tiempo hasta la acción al menos 50 % menor |
+| H3 | El desglose hace entender el peso del cargo por potencia (Hipótesis 2) | **H₀:** p(identifica el concepto dominante) ≤ 0.25, que es el azar entre tres conceptos y un «no sé». **H₁:** p ≥ 0.70 |
+| H4 | El desglose por zona dirige las acciones de ahorro (Hipótesis 3) | **H₀:** p(consulta semanal de la vista por zona) ≤ 0.20. **H₁:** p ≥ 0.50, en locales con dos o más zonas |
+| H5 | Informar el consumo en punta hace desplazar carga (Hipótesis 5) | **H₀:** μ(Δ proporción de punta) = 0. **H₁:** reducción media ≥ 5 puntos porcentuales a los dos meses |
+
+Hipótesis 4 del capítulo I (comparación entre locales) no se traduce todavía: exige cuentas con tres
+o más locales, que hoy no existen. Queda registrada y sin experimento, que es más honesto que
+diseñarle uno que no se puede correr.
+
+**El efecto mínimo no es arbitrario.** El umbral de 30 puntos de H1 sale de la aritmética del
+negocio, no del gusto: el cargo por exceso de potencia en media tensión es de S/ 87.60 por kW-mes
+frente a S/ 58.40 por kW-mes de potencia contratada (sección 5.2.6). Evitar 10 kW de exceso en un
+local ahorra S/ 876 al mes, muy por encima de los S/ 79.90 del plan Pro. Una mejora menor a 30
+puntos dejaría el ahorro esperado por debajo de lo que el cliente paga, y entonces el producto no
+se sostiene aunque el efecto fuera estadísticamente real.
+
+### 8.2.2. Domain Business Metrics
+
+Las métricas se agrupan por quién las mira y para qué decide. Las de dominio son las que el cliente
+reconoce en su recibo; las de negocio son las que deciden si la empresa sigue existiendo.
+
+**Métricas de dominio (las del recibo del cliente)**
+
+| Métrica | Definición | Por qué importa | Referencia |
+| :-- | :-- | :-- | :-- |
+| Demanda máxima del periodo | El mayor valor de potencia registrado en el mes, en kW | Es el número que fija el cargo por potencia de todo el periodo | Sección 5.2.6 |
+| Exceso de potencia | `max(0, demanda máxima − potencia contratada)` | Se factura a S/ 87.60 por kW-mes en MT, frente a S/ 58.40 el contratado | `CommercialTariffTests` |
+| Proporción de consumo en punta | kWh entre 18:00 y 23:00 sobre el total del periodo | La energía en punta cuesta S/ 0.2810 frente a S/ 0.2395 fuera de punta, en MT | `PeakHoursTests` |
+| Concentración por zona | Porcentaje del consumo del local que aporta su zona mayor | Dirige dónde actuar; el motor de hallazgos la marca por encima del 40 % | `InsightEngine` |
+| Costo evitado | Diferencia entre el cargo por potencia facturado y el que se habría facturado con la demanda máxima del periodo anterior | Es el único número que convierte el producto en retorno, y es lo que tres entrevistados exigen ver antes de pagar | Derivada |
+
+**Métricas de negocio**
+
+| Métrica | Definición | Meta de referencia |
+| :-- | :-- | :-- |
+| Locales activos | Locales con al menos una lectura en los últimos siete días | Crecimiento mensual |
+| Tasa de activación | Cuentas que completan organización + local + medidor + regla de demanda, sobre cuentas registradas | ≥ 60 % en los primeros siete días |
+| Tasa de respuesta a alertas | Episodios con reducción dentro de 30 minutos sobre episodios con alerta | ≥ 60 %, que es el umbral de la Hipótesis 1 |
+| Retención mensual | Suscripciones que renuevan sobre suscripciones vigentes al inicio del mes | ≥ 85 % |
+| Ingreso recurrente mensual | Suma de las suscripciones activas | — |
+| Relación ahorro/precio | Costo evitado medio por local sobre el precio del plan | > 3× para que el argumento de venta se sostenga solo |
+
+### 8.2.3. Measures
+
+Cada hipótesis necesita una medida que se pueda calcular sin criterio humano. Esta tabla las fija,
+porque una medida ambigua convierte cualquier resultado en discusión.
+
+| Medida | Definición operativa exacta | Tipo | Fuente |
+| :-- | :-- | :-- | :-- |
+| **Episodio de cruce** | Intervalo que empieza en la primera lectura con demanda ≥ 85 % de la potencia contratada y termina cuando dos lecturas consecutivas caen por debajo, o a los 60 minutos | Unidad de análisis | Tabla de lecturas (`em_`) |
+| **Reducción a tiempo** | Vale 1 si dentro de los 30 minutos siguientes al inicio del episodio alguna lectura cae por debajo del 85 % | Binaria | Calculada sobre lecturas |
+| **Tiempo hasta la acción** | Minutos entre el envío de la alerta y la primera lectura por debajo del umbral | Continua, censurada a 60 minutos | Calculada |
+| **Apertura de la alerta** | Marca de tiempo de la apertura del correo o del *tap* en la notificación | Binaria + tiempo | Requiere instrumentación (sección 8.2.8) |
+| **Concepto dominante identificado** | Vale 1 si la persona nombra el concepto que efectivamente pesa más en su propia factura estimada | Binaria | Prueba moderada |
+| **Consulta de la vista por zona** | Una visita a `/sites/{id}/zone-consumption` por semana y por local | Conteo | Evento de producto |
+| **Δ proporción de punta** | Proporción de punta del mes 2 menos la del mes 0, en puntos porcentuales | Continua | Calculada sobre lecturas |
+
+Tres advertencias de medición que conviene dejar escritas, porque son las que invalidan este tipo de
+experimento:
+
+- **La reducción puede ocurrir sin alerta.** Un local cierra, baja la demanda y eso cuenta como
+  reducción. Por eso el grupo de control es imprescindible: sin él se mediría el ciclo normal del
+  negocio y se le atribuiría al producto.
+- **El episodio no es independiente del local.** Un mismo local genera muchos episodios parecidos.
+  Tratarlos como observaciones independientes infla la significancia; la sección 8.2.5 lo corrige.
+- **El horario contamina.** Los cruces de umbral se concentran en las mismas franjas. La
+  aleatorización se hace por episodio y no por día, para que ambos grupos reciban la misma mezcla
+  de horas.
+
+### 8.2.4. Conditions
+
+**Experimento E1 + E2 (se ejecutan juntos)**
+
+| Elemento | Definición |
+| :-- | :-- |
+| Población | Locales comerciales de Lima con suministro en categoría con cargo por potencia, de 200 a 2 000 m², de los dos segmentos objetivo |
+| Muestra | Tres locales piloto: dos de cadena (segmento #1) y uno independiente (segmento #2) |
+| Unidad de aleatorización | El episodio de cruce de umbral |
+| Grupos | **Control:** episodio registrado, sin alerta. **Tratamiento A:** alerta con el texto actual. **Tratamiento B:** alerta con el texto accionable. Asignación 1:1:1 |
+| Variable de respuesta | Reducción a tiempo (binaria); secundaria, tiempo hasta la acción |
+| Duración | Cuatro semanas corridas, sin feriados largos ni campaña navideña, que distorsionan el perfil de carga |
+| Criterio de inclusión | El local debe tener la regla de demanda activa y al menos una zona registrada, porque la variante B la necesita |
+| Criterio de exclusión del episodio | Cortes de suministro, y episodios que empiecen en los 30 minutos siguientes al cierre del local |
+| Qué se mantiene constante | El umbral (85 %), la ventana de silencio (30 minutos) y el destinatario del aviso |
+
+**Consideración ética y de riesgo.** El grupo de control no recibe aviso, de modo que un episodio
+asignado a control podría terminar en un pico mayor. Tres salvaguardas: los locales piloto hoy no
+tienen ningún sistema de aviso, así que el control es su situación actual y el experimento no los
+deja peor; el consentimiento se obtiene por escrito explicando que la mitad de los avisos se
+retiene; y se fija un corte de seguridad: si la demanda supera el 100 % de la potencia contratada,
+se envía la alerta aunque el episodio sea de control, y ese episodio se excluye del análisis.
+
+**Experimento E4 (comprensión del desglose, Q4)**
+
+| Elemento | Definición |
+| :-- | :-- |
+| Población | Responsables de los dos segmentos |
+| Muestra | 19 personas por grupo (ver 8.2.5); grupo único contra el umbral del azar |
+| Procedimiento | Sesión moderada de 20 minutos. La persona navega su propia factura estimada y responde, sin ayuda, qué concepto pesa más en su recibo y por qué |
+| Variable de respuesta | Concepto dominante identificado (binaria) |
+| Sesgo que hay que controlar | El moderador no puede nombrar los conceptos antes de la pregunta; el guion se fija por escrito y es el mismo para todos |
+
+### 8.2.5. Scale Calculations and Decisions
+
+Los tamaños se calculan con α = 0.05 a dos colas y potencia 1 − β = 0.80, con la aproximación normal
+para la diferencia de dos proporciones:
+
+> n por grupo = [ z₍₁₋α/₂₎·√(2·p̄·q̄) + z₍₁₋β₎·√(p₁q₁ + p₂q₂) ]² / (p₁ − p₂)²
+
+| Experimento | p₁ (control) | p₂ (tratamiento) | n por grupo | Total |
+| :-- | --: | --: | --: | --: |
+| E1 — alerta contra silencio | 0.15 | 0.60 | **17 episodios** | 34 |
+| E2 — texto B contra texto A | 0.40 | 0.60 | 97 episodios | 194 |
+| E4 — comprensión del desglose | 0.25 | 0.70 | **19 personas** | 38 |
+| H4 — consulta de la vista por zona | 0.20 | 0.50 | 39 locales | 78 |
+
+La proporción de control de E1 se fija en 0.15 porque es la tasa a la que esperamos que la demanda
+baje sola dentro de 30 minutos por el ciclo normal del local; es un supuesto y el propio
+experimento lo mide, de modo que la primera semana sirve también para corregirlo.
+
+**Corrección por agrupamiento.** Los episodios de un mismo local se parecen entre sí, así que no
+cuentan como observaciones independientes. Con un efecto de diseño DEFF = 1 + (m − 1)·ICC, donde m
+es el número medio de episodios por local y ICC la correlación intraclase:
+
+| Episodios por local (m) | ICC supuesto | DEFF | n por grupo corregido |
+| --: | --: | --: | --: |
+| 8 | 0.05 | 1.35 | 23 |
+| 8 | 0.10 | 1.70 | **29** |
+| 12 | 0.10 | 2.10 | 36 |
+
+**Decisión.** Se planifica con el escenario conservador: **29 episodios por grupo**, 87 episodios en
+total entre los tres brazos. Con tres locales que cruzan el umbral unas ocho veces por semana cada
+uno, son unos 24 episodios semanales y el experimento cierra en cuatro semanas. Si al terminar la
+segunda semana el ritmo de episodios va por debajo de 15 semanales, se extiende a seis semanas antes
+que bajar la potencia del contraste.
+
+**Lo que no alcanza.** E2 necesita 97 episodios por grupo para detectar 20 puntos, y en cuatro
+semanas no se llega. Se asume de entrada: E2 se ejecuta como **exploratorio**, su resultado orienta
+la redacción del aviso pero no se presenta como conclusión. Decirlo antes de mirar los datos es lo
+que impide convertir después una diferencia casual en un hallazgo.
+
+**Para H5** (desplazamiento de punta), con una reducción mínima de 5 puntos porcentuales y una
+desviación supuesta de 8 puntos entre locales, se necesitan 41 locales por grupo, 82 en total. Es
+un orden de magnitud por encima del piloto, de modo que H5 queda explícitamente fuera de este ciclo.
+
+### 8.2.6. Methods Selection
+
+| Pregunta | Método | Por qué ese y no otro |
+| :-- | :-- | :-- |
+| Q1 / Q3 | Experimento controlado aleatorizado, con asignación por episodio y análisis agrupado por local | Es la única forma de separar el efecto de la alerta del ciclo normal del local. La aleatorización por episodio, y no por local, elimina las diferencias entre locales, que son enormes: un minimarket de 320 m² y un supermercado de 4 000 m² no son comparables |
+| Q2 | Mismo diseño, con el canal como factor | Se añade como segundo factor en lugar de montar un experimento aparte, para aprovechar la misma instrumentación |
+| Q4 | Prueba moderada de comprensión, con guion fijo | Es una pregunta de entendimiento, no de conducta agregada: hay que ver a la persona intentarlo. Una encuesta mediría lo que cree entender, no lo que entiende |
+| Q6 | Serie temporal interrumpida con grupo de comparación | No se puede aleatorizar la recomendación sin retener información útil durante dos meses; la comparación con locales que no la reciben acota la tendencia estacional |
+| Q8 | Investigación de campo: instalación real en dos locales, con cronómetro y presupuesto | No hay forma de estimarlo desde el escritorio; el dato que importa es cuántos propietarios dicen que sí tras oír el precio |
+
+**Lo que se descarta y por qué.** No se usa encuesta de satisfacción para Q1: preguntar «¿la alerta
+le resultó útil?» mide cortesía, no conducta. No se usa prueba A/B sobre la aplicación web, porque
+el número de usuarios hace que cualquier diferencia caiga dentro del ruido. Y no se usa un piloto
+sin grupo de control, que es la tentación obvia: mediría la temporada, no el producto.
+
+### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection
+
+El plan de analítica se arma con el esquema Goal–Question–Metric, de modo que cada métrica
+recolectada responda a una pregunta y cada pregunta sirva a un objetivo. Lo que no encaje en esta
+cadena no se recolecta: un dato que nadie va a mirar es costo de mantenimiento y riesgo de privacidad
+sin contrapartida.
+
+| Objetivo | Pregunta | KPI | Métricas que lo alimentan | Meta |
+| :-- | :-- | :-- | :-- | :-- |
+| **G1. Que la alerta produzca acción** | ¿Se reduce la carga tras el aviso? | Tasa de respuesta a alertas | Episodios de cruce, reducción a tiempo, tiempo hasta la acción | ≥ 60 % |
+| | ¿Llega el aviso a quien debe? | Tasa de apertura | Alertas enviadas, abiertas, por canal | ≥ 80 % en 10 min |
+| **G2. Que el producto se note en el recibo** | ¿Baja el costo? | Costo evitado por local y mes | Demanda máxima, exceso de potencia, cargo por potencia del periodo y del anterior | > 3× el precio del plan |
+| | ¿Se desplaza el consumo? | Proporción de punta | kWh en punta, kWh totales | −5 pp en dos meses |
+| **G3. Que la cuenta llegue a ser útil** | ¿Se completa la configuración? | Tasa de activación | Registro, organización creada, local creado, medidor creado, regla creada | ≥ 60 % en 7 días |
+| | ¿Dónde se abandona? | Embudo de activación | Los cinco pasos anteriores, con marca de tiempo | — |
+| **G4. Que el negocio se sostenga** | ¿Renuevan? | Retención mensual | Suscripciones activas, altas, bajas | ≥ 85 % |
+| | ¿El motor de hallazgos sirve? | Recomendaciones aplicadas | Hallazgos emitidos, vistos, aplicados | ≥ 25 % aplicadas |
+
+**Privacidad y alcance de la recolección.** Los eventos registran el identificador de la cuenta, del
+local y del medidor, nunca el correo ni el nombre de la persona. La sección 6.2.1.2 ya fija que los
+datos sensibles no salen del *backend*; el plan de analítica no abre una excepción. Las lecturas de
+energía son del cliente y se usan agregadas para estas métricas, lo que debe constar en el acuerdo
+de servicio de la sección 5.2.4.
+
+### 8.2.8. Web and Mobile Tracking Plan
+
+Hoy el producto no tiene **ninguna** instrumentación de comportamiento: `/metrics` de Prometheus
+mide latencias y códigos HTTP, que dicen si el servidor está sano, no si el producto sirve. Sin lo
+que sigue, ninguno de los experimentos de este capítulo se puede ejecutar, porque no habría de dónde
+leer la respuesta. Este es el plan mínimo.
+
+**Convenciones.** Nombre del evento en `snake_case`, en pasado, con el sujeto primero
+(`alert_opened`, no `open_alert`). Toda propiedad de identidad es un identificador opaco, nunca un
+dato personal. Todo evento lleva `occurred_at` en UTC y `site_id` cuando aplica.
+
+| Evento | Cuándo se dispara | Propiedades | Plataforma | Pregunta que responde |
+| :-- | :-- | :-- | :-- | :-- |
+| `account_registered` | Al completar el registro | `user_id`, `segment`, `method` (`password` \| `google`) | Web, Móvil | G3 |
+| `organization_created` | Al crear la organización | `user_id`, `organization_id` | Web | G3 |
+| `site_created` | Al crear un local | `site_id`, `tariff_category`, `contracted_power_kw` | Web | G3 |
+| `meter_created` | Al registrar un medidor | `site_id`, `meter_id`, `zone_id` | Web | G3 |
+| `demand_rule_created` | Al crear la regla de demanda | `site_id`, `threshold_percent` | Web | G3, Q7 |
+| `threshold_crossed` | Al procesar una lectura que cruza el umbral | `site_id`, `episode_id`, `measured_kw`, `contracted_kw` | Servidor | **Q1** |
+| `alert_suppressed` | Episodio asignado a control, o silenciado por la ventana de 30 min | `episode_id`, `reason` (`experiment_control` \| `silence_window`) | Servidor | **Q1** |
+| `alert_sent` | Al enviar el aviso | `episode_id`, `channel` (`email` \| `push`), `variant` (`A` \| `B`) | Servidor | **Q1, Q2, Q3** |
+| `alert_opened` | Al abrir el correo o tocar la notificación | `episode_id`, `channel`, `latency_seconds` | Web, Móvil | **Q2** |
+| `demand_recovered` | Primera lectura por debajo del umbral dentro del episodio | `episode_id`, `minutes_since_crossing` | Servidor | **Q1, Q2, Q3** |
+| `episode_closed` | Al cerrar el episodio, con o sin recuperación | `episode_id`, `recovered` (bool), `peak_kw`, `duration_minutes` | Servidor | **Q1** |
+| `zone_breakdown_viewed` | Al abrir la vista de consumo por zona | `site_id`, `zone_count`, `period_days` | Web, Móvil | **Q5** |
+| `bill_estimate_viewed` | Al abrir la factura estimada | `site_id`, `has_power_excess` | Web, Móvil | Q4 |
+| `site_comparison_viewed` | Al abrir la comparación entre locales | `organization_id`, `site_count` | Web | Hipótesis 4 |
+| `insight_viewed` | Al mostrar un hallazgo del motor | `insight_id`, `rule` (`zone_concentration` \| `peak_shift` \| `demand_peak`) | Web, Móvil | G4 |
+| `insight_applied` | Al marcar un hallazgo como aplicado | `insight_id`, `days_since_emitted` | Web, Móvil | G4 |
+| `subscription_changed` | Al contratar o cambiar de plan | `plan_name`, `previous_plan` | Web | G4 |
+
+**De dónde sale cada evento.** Los siete marcados como *Servidor* se emiten desde el *backend*, y
+casi todos tienen ya su punto de enganche: el bus de eventos de dominio descrito en la sección 5.1.3
+despacha `ReadingProcessed` y `AlertTriggered` después de confirmar la transacción, que es
+exactamente donde deben colgarse `threshold_crossed`, `alert_sent` y `demand_recovered`. Emitirlos
+desde el servidor y no desde el navegador no es un detalle: son los eventos que deciden el
+experimento, y un bloqueador de publicidad o una pestaña cerrada no pueden hacerlos desaparecer.
+
+**El concepto que falta en el modelo.** `episode_id` no existe hoy. El sistema registra alertas, no
+episodios: sabe que a las 18:04 la demanda llegó a 104 kW y que avisó, pero no agrupa ese cruce, el
+silencio posterior y la recuperación en una sola cosa con identidad. Sin ese agrupamiento no hay
+unidad de análisis, y sin unidad de análisis no hay experimento. Es el cambio de modelo que abre el
+capítulo 8.3.
+
 # Conclusiones, Bibliografía y Anexos
 
 ## Conclusiones
