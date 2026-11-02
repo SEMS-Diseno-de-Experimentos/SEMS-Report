@@ -3830,6 +3830,41 @@ El flujo general del Backend es:
 
 `Backend Source Code → Build and Deployment → Application Startup → Production Service Live`
 
+**El artefacto que se entrega.** Lo que Render ejecuta no es el repositorio: es la imagen que
+describe el `Dockerfile` del *backend*, construida en dos etapas. La distinción importa porque es la
+que hace que lo que se prueba y lo que corre en producción sean la misma cosa.
+
+```dockerfile
+# ------------------------------------------------------------ etapa de build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY src/Sems.Api/Sems.Api.csproj src/Sems.Api/
+RUN dotnet restore src/Sems.Api/Sems.Api.csproj
+COPY . .
+RUN dotnet publish src/Sems.Api/Sems.Api.csproj -c Release -o /app --no-restore
+
+# ---------------------------------------------------------- etapa de runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+RUN adduser --disabled-password --gecos "" --uid 1001 sems
+USER sems
+COPY --from=build --chown=sems:sems /app ./
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Sems.Api.dll"]
+```
+
+Tres decisiones del archivo que no son cosméticas:
+
+- **La imagen final lleva solo el *runtime*, no el SDK ni el código fuente.** Pasa de unos 800 MB a
+  unos 220 MB. Menos peso es menos tiempo de despliegue, pero sobre todo es menos superficie: el
+  compilador y las fuentes no tienen por qué estar en producción.
+- **Los `.csproj` se copian antes que el resto del código.** Mientras no cambien las dependencias,
+  Docker reutiliza la capa del `restore` y la construcción tarda segundos en vez de minutos. Es la
+  diferencia entre poder desplegar varias veces al día y no hacerlo.
+- **El proceso corre como `sems` (uid 1001), no como `root`.** Si alguien consiguiera ejecutar código
+  dentro del contenedor, no lo haría con privilegios de administrador.
+
 De esta manera, los principales componentes de SEMS utilizan pipelines y plataformas de deployment independientes pero complementarias. La Landing Page se publica mediante GitHub Actions y GitHub Pages, la Web Application mediante Vercel y el Backend mediante Render. Esto permite mantener cada componente desplegado en un entorno acorde con su tecnología y características.
 
 ## 7.3. Continuous deployment
