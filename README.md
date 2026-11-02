@@ -4308,6 +4308,186 @@ El flujo de notificación del proyecto puede resumirse de la siguiente manera:
 
 De esta manera, el equipo puede mantenerse informado sobre el estado de los procesos de integración y despliegue, reduciendo el tiempo necesario para identificar y corregir fallos que puedan afectar la estabilidad de SEMS.
 
+# Capítulo VIII: Experiment-Driven Development
+
+Los capítulos VI y VII demuestran que el producto hace lo que dice hacer: 582 pruebas verdes, 70.5 %
+de cobertura y un *pipeline* que no deja entrar una rama rota. Nada de eso dice si el producto sirve
+para lo que fue construido. Este capítulo se ocupa de esa otra pregunta, y la trata como lo que es:
+algo que se mide, no algo que se argumenta.
+
+La distinción importa porque el supuesto central de SEMS es conductual, no técnico. El producto
+apuesta a que **avisar a tiempo cambia lo que hace la persona**. Que la alerta se calcule bien y
+llegue en 30 segundos está probado en el capítulo VI; que al recibirla alguien apague una cámara de
+frío, no. Eso es exactamente lo que el Lean UX Canvas de la sección 1.2.2.4 identificó como «lo más
+importante que necesitamos aprender primero», y es lo que este capítulo convierte en experimentos.
+
+## 8.1. Experiment Planning
+
+### 8.1.1. As-Is Summary
+
+**Qué existe hoy.** El estado del producto al cierre de esta entrega, medido y no estimado:
+
+| Dimensión | Estado |
+| :-- | :-- |
+| Backend | ASP.NET Core 8, monolito modular de ocho contextos, desplegado en Render. 582 pruebas verdes, 70.5 % de cobertura de líneas |
+| Aplicación web | Vue 3 + Vite en Vercel. Registro, organización, locales, zonas, medidores, reglas de demanda, factura estimada, consumo por zona y comparación entre locales |
+| Aplicación móvil | Iniciada (48 archivos Dart) y sin distribución |
+| Landing Page | Publicada en GitHub Pages |
+| Historias de usuario | 44 implementadas (US01–US44) sobre nueve épicas (EP01–EP09) |
+| Canal de aviso | **Correo electrónico**, disparado por el evento de dominio `AlertTriggered` |
+| Instrumentación de producto | **Ninguna.** El sistema expone `/metrics` de Prometheus con latencias y códigos HTTP, que son métricas de infraestructura, no de comportamiento |
+| Usuarios en producción | **Ninguno.** No hay cuentas reales, solo las de demostración |
+
+**Qué sabemos y cómo lo sabemos.** La base de evidencia son seis entrevistas de *needfinding*
+(sección 2.2), tres por segmento. De ellas salen cinco constantes que se repiten en todas o casi
+todas, y que son el punto de partida de este capítulo:
+
+| # | Hallazgo | Respaldo |
+| --: | :-- | :-- |
+| 1 | Nadie conoce su consumo hasta que llega el recibo | 6 de 6 entrevistas |
+| 2 | El canal de aviso que piden es *push* o WhatsApp en el celular, no correo | 6 de 6. Dos dicen explícitamente que el correo lo revisan poco |
+| 3 | La adopción exige ahorro demostrado, no promesa: piloto de 2–3 meses, retorno en 12–18 meses | 4 de 6, las tres del segmento #1 y una del #2 |
+| 4 | Las cámaras de frío operan 24/7 y son el mayor consumidor; tras un corte todos los equipos arrancan a la vez, sin escalonamiento | Segmento #1, entrevistas 1 y 3 |
+| 5 | El cargo por potencia no se entiende: varios no saben cuál es su potencia contratada | 3 de 6, las tres del segmento #2 |
+
+**La brecha, en una línea.** El hallazgo 2 es el más incómodo porque contradice lo construido: el
+producto avisa por correo y las seis personas entrevistadas piden el celular. El hallazgo 3 dice
+que nadie paga sin un piloto medido. Y el supuesto que sostiene al producto entero —que el aviso
+provoca una acción— no está contrastado con un solo dato real. Ahí es donde hay que experimentar.
+
+### 8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims
+
+El material en bruto se clasifica en cuatro tipos, porque cada uno se trata distinto. Un **supuesto**
+es algo que damos por cierto sin haberlo verificado. Un **vacío de conocimiento** es algo que sabemos
+que no sabemos. Una **idea** es una solución candidata, que no se valida en sí misma sino por el
+supuesto que resolvería. Una **afirmación** es algo que ya podemos sostener con evidencia, y que por
+tanto no hay que volver a probar.
+
+**Supuestos (A)**
+
+| ID | Supuesto | Origen | Riesgo si es falso |
+| :-- | :-- | :-- | :-- |
+| A1 | Al recibir una alerta de demanda, el responsable reduce carga dentro de los 30 minutos siguientes | Hipótesis 1 (1.2.2.3) | **Crítico.** Es la propuesta de valor entera: si no hay acción, no hay ahorro y no hay producto |
+| A2 | Un umbral del 85 % de la potencia contratada da margen operativo suficiente para reaccionar | Regla por defecto implementada | Alto. Un umbral muy alto no deja reaccionar; uno muy bajo satura y se ignora |
+| A3 | El correo es un canal aceptable para una alerta que exige acción en minutos | Decisión de implementación | **Alto, y ya contradicho** por 6 de 6 entrevistas |
+| A4 | Mostrar la factura desglosada basta para que el usuario entienda el peso del cargo por potencia | Hipótesis 2 | Medio. Si no se entiende, el desglose es decoración |
+| A5 | El desglose por zona dirige las acciones de ahorro a la zona correcta | Hipótesis 3 | Medio |
+| A6 | Instalar un medidor por zona no es demasiado invasivo para el local | Supuesto de negocio 10 | Alto. Bloquea la adquisición antes del primer dato |
+| A7 | Una suscripción escalonada por número de locales es el modelo de ingreso que el segmento acepta | Supuesto de negocio 7 | Medio |
+| A8 | Las recomendaciones automáticas del motor de hallazgos (concentración por zona, desplazamiento de punta, escalonamiento de arranques) son accionables tal como están redactadas | `InsightEngine`, sección 6.1.1 | Medio. Un consejo que no se puede ejecutar erosiona la confianza en el resto |
+
+**Vacíos de conocimiento (G)**
+
+| ID | Vacío | Por qué no lo sabemos |
+| :-- | :-- | :-- |
+| G1 | Qué fracción de las alertas va seguida de una reducción real de demanda | No hay usuarios en producción ni instrumentación de comportamiento |
+| G2 | Cuánto margen de tiempo hay realmente entre cruzar el 85 % y fijar el pico del mes | Depende del perfil de carga de cada rubro; no tenemos datos de campo |
+| G3 | Cuántas alertas por semana tolera una persona antes de ignorarlas | Ningún dato; la ventana de silencio de 30 minutos se fijó por criterio, no por medición |
+| G4 | Cuál es la proporción de consumo en hora punta de un establecimiento comercial típico del segmento | No medido. Determina si la recomendación de desplazar carga tiene recorrido |
+| G5 | Si el responsable puede ejecutar la acción que la alerta sugiere, o si no tiene margen operativo | Mencionado como duda en el propio Lean UX Canvas |
+| G6 | Cuál es el costo y el tiempo real de instalar medición por zona en un local en operación | Nunca lo hemos hecho |
+
+**Ideas (I)**
+
+| ID | Idea | Supuesto o vacío que atacaría |
+| :-- | :-- | :-- |
+| I1 | Enviar la alerta por notificación *push* en la aplicación móvil además de por correo | A3, G1 |
+| I2 | Enviar la alerta por WhatsApp mediante la API de mensajería | A3 |
+| I3 | Que la alerta diga la acción concreta y su efecto estimado («apaga el aire de la zona Sala: ~12 kW») en lugar del número crudo | A1, G5 |
+| I4 | Umbral doble: aviso temprano al 75 % y crítico al 85 %, en vez de uno solo | A2, G2 |
+| I5 | Registrar la respuesta a la alerta con un botón «ya reduje carga» para cerrar el ciclo de medición | G1 |
+| I6 | Informe mensual de ahorro verificado que contraste el periodo con el anterior | Hallazgo 3: la adopción exige ahorro demostrado |
+| I7 | Asistente de escalonamiento de arranques tras un corte de energía | Hallazgo 4 |
+| I8 | Modo «un solo medidor» que no exija instrumentar zonas para empezar | A6 |
+
+**Afirmaciones (C)** — lo que ya está respaldado y no necesita experimento:
+
+| ID | Afirmación | Evidencia |
+| :-- | :-- | :-- |
+| C1 | El cálculo de la factura comercial peruana es correcto, incluido el exceso de potencia y el IGV | 24 pruebas de `CommercialTariffTests` y la *feature* `BillingProjection` |
+| C2 | La hora punta se aplica correctamente, todos los días, en hora de Perú | 13 pruebas de `PeakHoursTests` y 9 escenarios de `PeakHours.feature` |
+| C3 | Una lectura que cruza el umbral levanta la alerta sin intervención humana, y no se repite dentro de los 30 minutos | `DemandChargePreventionFlowTests`, defecto 11 de la sección 6.1 |
+| C4 | El consumo se puede atribuir a una zona y los porcentajes cierran en 100 | 15 pruebas de `ConsumptionBreakdownServiceTests` |
+| C5 | El sistema soporta varios usuarios por organización con permisos distintos | `OrganizationEndpointsTests`, pedido explícito en dos entrevistas |
+
+### 8.1.3. Experiment-Ready Questions
+
+Un vacío no se puede experimentar tal como se enuncia. Una pregunta lista para experimentar tiene
+cuatro propiedades: nombra una población concreta, una medida observable, un umbral que decide, y
+una ventana de tiempo. La tabla traduce el material anterior.
+
+| ID | Pregunta lista para experimentar | De |
+| :-- | :-- | :-- |
+| Q1 | De los episodios en que la demanda de un local cruza el 85 % de su potencia contratada, ¿en qué porcentaje la demanda baja del umbral dentro de los 30 minutos siguientes cuando se envía alerta, frente a cuando no se envía? | A1, G1 |
+| Q2 | ¿Cambia ese porcentaje si la alerta llega por notificación *push* en el móvil en lugar de por correo? | A3, I1 |
+| Q3 | ¿Cambia ese porcentaje si la alerta nombra la zona y el equipo a apagar con su efecto estimado, en lugar de informar solo los kW medidos? | A1, I3, G5 |
+| Q4 | Tras usar el panel durante dos semanas, ¿qué porcentaje de responsables identifica correctamente cuál de los tres conceptos (energía, potencia, cargo fijo) pesa más en su recibo? | A4 |
+| Q5 | En locales con dos o más zonas registradas, ¿qué porcentaje consulta la vista por zona al menos una vez por semana durante un mes? | A5 |
+| Q6 | ¿Cuál es la proporción media de consumo en hora punta de un establecimiento del segmento, y cuántos puntos porcentuales baja a los dos meses de recibir la recomendación de desplazamiento? | G4, A8 |
+| Q7 | ¿Cuántas alertas semanales recibe un local antes de que la tasa de respuesta caiga por debajo de la mitad de su valor inicial? | G3 |
+| Q8 | ¿Cuánto tiempo y cuánto dinero cuesta instalar medición por zona en un local en operación, y cuántos propietarios aceptan la instalación tras conocer el costo? | A6, G6 |
+
+### 8.1.4. Question Backlog
+
+Las ocho preguntas no valen lo mismo. Se ordenan por dos criterios que se multiplican: **cuánto duele
+equivocarse** (si la respuesta es «no», ¿qué parte del producto se cae?) y **qué tan a ciegas estamos**
+(¿hay algún dato que sostenga la respuesta actual?). El costo de responder entra como desempate,
+porque una pregunta barata y decisiva se responde antes que una cara y decisiva.
+
+| Orden | Pregunta | Costo de equivocarse | Incertidumbre | Costo de responder | Prioridad |
+| --: | :-- | :-- | :-- | :-- | :-- |
+| 1 | Q1 — ¿la alerta provoca la reducción? | Crítico: sin esto no hay propuesta de valor | Total | Medio: exige un local piloto instrumentado un mes | **Ahora** |
+| 2 | Q3 — ¿la alerta accionable funciona mejor que el número crudo? | Alto: define el contenido del aviso | Alta | Bajo: es una variante de texto sobre el mismo piloto | **Ahora** |
+| 3 | Q2 — ¿*push* en vez de correo? | Alto: seis de seis entrevistados piden el celular | Baja: la dirección se conoce, falta la magnitud | Medio: exige terminar la aplicación móvil | **Siguiente** |
+| 4 | Q8 — ¿la instalación por zona es aceptable? | Alto: bloquea la adquisición | Alta | Alto: trabajo de campo con un instalador | **Siguiente** |
+| 5 | Q4 — ¿se entiende el desglose de la factura? | Medio: afecta la percepción de valor, no la función | Media | Bajo: prueba moderada con seis personas | **Siguiente** |
+| 6 | Q6 — ¿cuánto se desplaza el consumo de punta? | Medio | Alta | Alto: dos meses de medición en varios locales | Después |
+| 7 | Q7 — ¿cuántas alertas antes de la fatiga? | Medio: sintoniza el silencio de 30 minutos | Alta | Alto: necesita volumen de alertas que hoy no existe | Después |
+| 8 | Q5 — ¿se usa la vista por zona? | Bajo: es beneficio secundario | Media | Bajo, pero necesita usuarios reales | Después |
+
+**Decisión del backlog.** Se ejecutan Q1 y Q3 en el mismo experimento, porque comparten
+instrumentación y población: medir si la alerta provoca acción y, a la vez, si la redacción accionable
+mejora esa tasa. Q2, Q4 y Q8 quedan listas con su tarjeta para el siguiente ciclo. Las tres últimas
+esperan a tener volumen de usuarios, porque hoy responderlas sería inventar los datos.
+
+### 8.1.5. Experiment Cards
+
+**Tarjeta E1 — ¿El aviso anticipado provoca una reducción de carga?**
+
+| Campo | Contenido |
+| :-- | :-- |
+| Pregunta | Q1 |
+| Creemos que | Avisar al responsable cuando la demanda alcanza el 85 % de la potencia contratada hace que reduzca carga antes de fijar un pico mayor |
+| Para verificarlo | Instrumentamos tres locales piloto con un medidor cada uno y la regla de demanda activa, y registramos cada episodio en que la demanda cruza el umbral. En la mitad de los episodios, asignados al azar, la alerta se envía; en la otra mitad se registra el episodio pero no se envía nada |
+| Y mediremos | La proporción de episodios en que la demanda baja del 85 % dentro de los 30 minutos siguientes al cruce |
+| Tendremos razón si | La proporción con alerta supera a la proporción sin alerta en al menos 30 puntos porcentuales, con p < 0.05 |
+| Duración | Cuatro semanas |
+| Lo que ponemos en riesgo | Nada del producto: el experimento solo silencia la mitad de los avisos en locales que hoy no tienen ninguno |
+
+**Tarjeta E2 — ¿La alerta accionable supera al número crudo?**
+
+| Campo | Contenido |
+| :-- | :-- |
+| Pregunta | Q3 |
+| Creemos que | Una alerta que nombra la zona y el equipo a apagar, con su efecto estimado en kW, produce más reducciones que una que informa solo la demanda medida |
+| Para verificarlo | Dentro del grupo con alerta de E1, cada aviso se redacta al azar en una de dos variantes: **A**, el texto actual («demanda de 104 kW, 85 % de los 120 kW contratados»); **B**, el texto accionable («demanda al 87 %: apagar el aire de la zona Sala libera unos 12 kW») |
+| Y mediremos | La misma proporción de reducción dentro de 30 minutos, y además el tiempo transcurrido hasta la reducción |
+| Tendremos razón si | La variante B supera a la A en al menos 20 puntos porcentuales, o reduce a la mitad el tiempo hasta la acción |
+| Duración | Las mismas cuatro semanas de E1 |
+| Lo que ponemos en riesgo | La variante B requiere que el local tenga zonas registradas; en locales de un solo medidor no es aplicable |
+
+**Tarjeta E3 — ¿El canal cambia la respuesta?**
+
+| Campo | Contenido |
+| :-- | :-- |
+| Pregunta | Q2 |
+| Creemos que | Una notificación *push* en el móvil se atiende más y más rápido que un correo, porque las seis personas entrevistadas declaran revisar poco el correo |
+| Para verificarlo | Una vez distribuida la aplicación móvil, cada episodio con alerta se envía por un canal asignado al azar: correo, o correo más *push* |
+| Y mediremos | La proporción de reducción dentro de 30 minutos y la mediana del tiempo entre el envío y la apertura |
+| Tendremos razón si | El canal con *push* supera al correo en al menos 20 puntos porcentuales de reducción, o adelanta la apertura en más de 10 minutos |
+| Duración | Cuatro semanas, tras completar la distribución de la aplicación móvil |
+| Lo que ponemos en riesgo | Depende de cerrar DT06; hasta entonces el experimento no se puede ejecutar |
+
 # Conclusiones, Bibliografía y Anexos
 
 ## Conclusiones
