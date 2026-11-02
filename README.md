@@ -203,6 +203,11 @@ Capítulo VI: Product Verification & Validation
 6.1.2. Core Integration Tests.
 6.1.3. Core Behavior-Driven Development
 6.1.4. Core System Tests.
+6.2. Static testing & Verification
+6.2.1. Static Code Analysis
+6.2.1.1. Coding standard & Code conventions.
+6.2.1.2. Code Quality & Code Security.
+6.2.2. Reviews
 Capítulo VII: DevOps Practices
 7.1. ContinuousIntegration
 7.1.1. Tools and Practices.
@@ -218,6 +223,25 @@ Capítulo VII: DevOps Practices
 7.4.2. Monitoring Pipeline Components
 7.4.3. Alerting Pipeline Components
 7.4.4. Notification Pipeline Components.
+Capítulo VIII: Experiment-Driven Development
+8.1. Experiment Planning
+8.1.1. As-Is Summary.
+8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims.
+8.1.3. Experiment-Ready Questions.
+8.1.4. Question Backlog.
+8.1.5. Experiment Cards.
+8.2. Experiment Design
+8.2.1. Hypotheses.
+8.2.2. Domain Business Metrics
+8.2.3. Measures.
+8.2.4. Conditions.
+8.2.5. Scale Calculations and Decisions.
+8.2.6. Methods Selection.
+8.2.7. Data Analytics: Goals, KPIs and Metrics Selection.
+8.2.8. Web and Mobile Tracking Plan.
+8.3. Experimentation
+8.3.1. To-Be User Stories.
+8.3.2. To-Be Product Backlog
 
 ## Student Outcome
 
@@ -4307,6 +4331,483 @@ El flujo de notificación del proyecto puede resumirse de la siguiente manera:
 `Pipeline / Deployment → Execution Result → Status Notification → Team Review → Corrective Action`
 
 De esta manera, el equipo puede mantenerse informado sobre el estado de los procesos de integración y despliegue, reduciendo el tiempo necesario para identificar y corregir fallos que puedan afectar la estabilidad de SEMS.
+
+# Capítulo VIII: Experiment-Driven Development
+
+Los capítulos VI y VII demuestran que el producto hace lo que dice hacer: 582 pruebas verdes, 70.5 %
+de cobertura y un *pipeline* que no deja entrar una rama rota. Nada de eso dice si el producto sirve
+para lo que fue construido. Este capítulo se ocupa de esa otra pregunta, y la trata como lo que es:
+algo que se mide, no algo que se argumenta.
+
+La distinción importa porque el supuesto central de SEMS es conductual, no técnico. El producto
+apuesta a que **avisar a tiempo cambia lo que hace la persona**. Que la alerta se calcule bien y
+llegue en 30 segundos está probado en el capítulo VI; que al recibirla alguien apague una cámara de
+frío, no. Eso es exactamente lo que el Lean UX Canvas de la sección 1.2.2.4 identificó como «lo más
+importante que necesitamos aprender primero», y es lo que este capítulo convierte en experimentos.
+
+## 8.1. Experiment Planning
+
+### 8.1.1. As-Is Summary
+
+**Qué existe hoy.** El estado del producto al cierre de esta entrega, medido y no estimado:
+
+| Dimensión | Estado |
+| :-- | :-- |
+| Backend | ASP.NET Core 8, monolito modular de ocho contextos, desplegado en Render. 582 pruebas verdes, 70.5 % de cobertura de líneas |
+| Aplicación web | Vue 3 + Vite en Vercel. Registro, organización, locales, zonas, medidores, reglas de demanda, factura estimada, consumo por zona y comparación entre locales |
+| Aplicación móvil | Iniciada (48 archivos Dart) y sin distribución |
+| Landing Page | Publicada en GitHub Pages |
+| Historias de usuario | 44 implementadas (US01–US44) sobre nueve épicas (EP01–EP09) |
+| Canal de aviso | **Correo electrónico**, disparado por el evento de dominio `AlertTriggered` |
+| Instrumentación de producto | **Ninguna.** El sistema expone `/metrics` de Prometheus con latencias y códigos HTTP, que son métricas de infraestructura, no de comportamiento |
+| Usuarios en producción | **Ninguno.** No hay cuentas reales, solo las de demostración |
+
+**Qué sabemos y cómo lo sabemos.** La base de evidencia son seis entrevistas de *needfinding*
+(sección 2.2), tres por segmento. De ellas salen cinco constantes que se repiten en todas o casi
+todas, y que son el punto de partida de este capítulo:
+
+| # | Hallazgo | Respaldo |
+| --: | :-- | :-- |
+| 1 | Nadie conoce su consumo hasta que llega el recibo | 6 de 6 entrevistas |
+| 2 | El canal de aviso que piden es *push* o WhatsApp en el celular, no correo | 6 de 6. Dos dicen explícitamente que el correo lo revisan poco |
+| 3 | La adopción exige ahorro demostrado, no promesa: piloto de 2–3 meses, retorno en 12–18 meses | 4 de 6, las tres del segmento #1 y una del #2 |
+| 4 | Las cámaras de frío operan 24/7 y son el mayor consumidor; tras un corte todos los equipos arrancan a la vez, sin escalonamiento | Segmento #1, entrevistas 1 y 3 |
+| 5 | El cargo por potencia no se entiende: varios no saben cuál es su potencia contratada | 3 de 6, las tres del segmento #2 |
+
+**La brecha, en una línea.** El hallazgo 2 es el más incómodo porque contradice lo construido: el
+producto avisa por correo y las seis personas entrevistadas piden el celular. El hallazgo 3 dice
+que nadie paga sin un piloto medido. Y el supuesto que sostiene al producto entero —que el aviso
+provoca una acción— no está contrastado con un solo dato real. Ahí es donde hay que experimentar.
+
+### 8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims
+
+El material en bruto se clasifica en cuatro tipos, porque cada uno se trata distinto. Un **supuesto**
+es algo que damos por cierto sin haberlo verificado. Un **vacío de conocimiento** es algo que sabemos
+que no sabemos. Una **idea** es una solución candidata, que no se valida en sí misma sino por el
+supuesto que resolvería. Una **afirmación** es algo que ya podemos sostener con evidencia, y que por
+tanto no hay que volver a probar.
+
+**Supuestos (A)**
+
+| ID | Supuesto | Origen | Riesgo si es falso |
+| :-- | :-- | :-- | :-- |
+| A1 | Al recibir una alerta de demanda, el responsable reduce carga dentro de los 30 minutos siguientes | Hipótesis 1 (1.2.2.3) | **Crítico.** Es la propuesta de valor entera: si no hay acción, no hay ahorro y no hay producto |
+| A2 | Un umbral del 85 % de la potencia contratada da margen operativo suficiente para reaccionar | Regla por defecto implementada | Alto. Un umbral muy alto no deja reaccionar; uno muy bajo satura y se ignora |
+| A3 | El correo es un canal aceptable para una alerta que exige acción en minutos | Decisión de implementación | **Alto, y ya contradicho** por 6 de 6 entrevistas |
+| A4 | Mostrar la factura desglosada basta para que el usuario entienda el peso del cargo por potencia | Hipótesis 2 | Medio. Si no se entiende, el desglose es decoración |
+| A5 | El desglose por zona dirige las acciones de ahorro a la zona correcta | Hipótesis 3 | Medio |
+| A6 | Instalar un medidor por zona no es demasiado invasivo para el local | Supuesto de negocio 10 | Alto. Bloquea la adquisición antes del primer dato |
+| A7 | Una suscripción escalonada por número de locales es el modelo de ingreso que el segmento acepta | Supuesto de negocio 7 | Medio |
+| A8 | Las recomendaciones automáticas del motor de hallazgos (concentración por zona, desplazamiento de punta, escalonamiento de arranques) son accionables tal como están redactadas | `InsightEngine`, sección 6.1.1 | Medio. Un consejo que no se puede ejecutar erosiona la confianza en el resto |
+
+**Vacíos de conocimiento (G)**
+
+| ID | Vacío | Por qué no lo sabemos |
+| :-- | :-- | :-- |
+| G1 | Qué fracción de las alertas va seguida de una reducción real de demanda | No hay usuarios en producción ni instrumentación de comportamiento |
+| G2 | Cuánto margen de tiempo hay realmente entre cruzar el 85 % y fijar el pico del mes | Depende del perfil de carga de cada rubro; no tenemos datos de campo |
+| G3 | Cuántas alertas por semana tolera una persona antes de ignorarlas | Ningún dato; la ventana de silencio de 30 minutos se fijó por criterio, no por medición |
+| G4 | Cuál es la proporción de consumo en hora punta de un establecimiento comercial típico del segmento | No medido. Determina si la recomendación de desplazar carga tiene recorrido |
+| G5 | Si el responsable puede ejecutar la acción que la alerta sugiere, o si no tiene margen operativo | Mencionado como duda en el propio Lean UX Canvas |
+| G6 | Cuál es el costo y el tiempo real de instalar medición por zona en un local en operación | Nunca lo hemos hecho |
+
+**Ideas (I)**
+
+| ID | Idea | Supuesto o vacío que atacaría |
+| :-- | :-- | :-- |
+| I1 | Enviar la alerta por notificación *push* en la aplicación móvil además de por correo | A3, G1 |
+| I2 | Enviar la alerta por WhatsApp mediante la API de mensajería | A3 |
+| I3 | Que la alerta diga la acción concreta y su efecto estimado («apaga el aire de la zona Sala: ~12 kW») en lugar del número crudo | A1, G5 |
+| I4 | Umbral doble: aviso temprano al 75 % y crítico al 85 %, en vez de uno solo | A2, G2 |
+| I5 | Registrar la respuesta a la alerta con un botón «ya reduje carga» para cerrar el ciclo de medición | G1 |
+| I6 | Informe mensual de ahorro verificado que contraste el periodo con el anterior | Hallazgo 3: la adopción exige ahorro demostrado |
+| I7 | Asistente de escalonamiento de arranques tras un corte de energía | Hallazgo 4 |
+| I8 | Modo «un solo medidor» que no exija instrumentar zonas para empezar | A6 |
+
+**Afirmaciones (C)** — lo que ya está respaldado y no necesita experimento:
+
+| ID | Afirmación | Evidencia |
+| :-- | :-- | :-- |
+| C1 | El cálculo de la factura comercial peruana es correcto, incluido el exceso de potencia y el IGV | 24 pruebas de `CommercialTariffTests` y la *feature* `BillingProjection` |
+| C2 | La hora punta se aplica correctamente, todos los días, en hora de Perú | 13 pruebas de `PeakHoursTests` y 9 escenarios de `PeakHours.feature` |
+| C3 | Una lectura que cruza el umbral levanta la alerta sin intervención humana, y no se repite dentro de los 30 minutos | `DemandChargePreventionFlowTests`, defecto 11 de la sección 6.1 |
+| C4 | El consumo se puede atribuir a una zona y los porcentajes cierran en 100 | 15 pruebas de `ConsumptionBreakdownServiceTests` |
+| C5 | El sistema soporta varios usuarios por organización con permisos distintos | `OrganizationEndpointsTests`, pedido explícito en dos entrevistas |
+
+### 8.1.3. Experiment-Ready Questions
+
+Un vacío no se puede experimentar tal como se enuncia. Una pregunta lista para experimentar tiene
+cuatro propiedades: nombra una población concreta, una medida observable, un umbral que decide, y
+una ventana de tiempo. La tabla traduce el material anterior.
+
+| ID | Pregunta lista para experimentar | De |
+| :-- | :-- | :-- |
+| Q1 | De los episodios en que la demanda de un local cruza el 85 % de su potencia contratada, ¿en qué porcentaje la demanda baja del umbral dentro de los 30 minutos siguientes cuando se envía alerta, frente a cuando no se envía? | A1, G1 |
+| Q2 | ¿Cambia ese porcentaje si la alerta llega por notificación *push* en el móvil en lugar de por correo? | A3, I1 |
+| Q3 | ¿Cambia ese porcentaje si la alerta nombra la zona y el equipo a apagar con su efecto estimado, en lugar de informar solo los kW medidos? | A1, I3, G5 |
+| Q4 | Tras usar el panel durante dos semanas, ¿qué porcentaje de responsables identifica correctamente cuál de los tres conceptos (energía, potencia, cargo fijo) pesa más en su recibo? | A4 |
+| Q5 | En locales con dos o más zonas registradas, ¿qué porcentaje consulta la vista por zona al menos una vez por semana durante un mes? | A5 |
+| Q6 | ¿Cuál es la proporción media de consumo en hora punta de un establecimiento del segmento, y cuántos puntos porcentuales baja a los dos meses de recibir la recomendación de desplazamiento? | G4, A8 |
+| Q7 | ¿Cuántas alertas semanales recibe un local antes de que la tasa de respuesta caiga por debajo de la mitad de su valor inicial? | G3 |
+| Q8 | ¿Cuánto tiempo y cuánto dinero cuesta instalar medición por zona en un local en operación, y cuántos propietarios aceptan la instalación tras conocer el costo? | A6, G6 |
+
+### 8.1.4. Question Backlog
+
+Las ocho preguntas no valen lo mismo. Se ordenan por dos criterios que se multiplican: **cuánto duele
+equivocarse** (si la respuesta es «no», ¿qué parte del producto se cae?) y **qué tan a ciegas estamos**
+(¿hay algún dato que sostenga la respuesta actual?). El costo de responder entra como desempate,
+porque una pregunta barata y decisiva se responde antes que una cara y decisiva.
+
+| Orden | Pregunta | Costo de equivocarse | Incertidumbre | Costo de responder | Prioridad |
+| --: | :-- | :-- | :-- | :-- | :-- |
+| 1 | Q1 — ¿la alerta provoca la reducción? | Crítico: sin esto no hay propuesta de valor | Total | Medio: exige un local piloto instrumentado un mes | **Ahora** |
+| 2 | Q3 — ¿la alerta accionable funciona mejor que el número crudo? | Alto: define el contenido del aviso | Alta | Bajo: es una variante de texto sobre el mismo piloto | **Ahora** |
+| 3 | Q2 — ¿*push* en vez de correo? | Alto: seis de seis entrevistados piden el celular | Baja: la dirección se conoce, falta la magnitud | Medio: exige terminar la aplicación móvil | **Siguiente** |
+| 4 | Q8 — ¿la instalación por zona es aceptable? | Alto: bloquea la adquisición | Alta | Alto: trabajo de campo con un instalador | **Siguiente** |
+| 5 | Q4 — ¿se entiende el desglose de la factura? | Medio: afecta la percepción de valor, no la función | Media | Bajo: prueba moderada con seis personas | **Siguiente** |
+| 6 | Q6 — ¿cuánto se desplaza el consumo de punta? | Medio | Alta | Alto: dos meses de medición en varios locales | Después |
+| 7 | Q7 — ¿cuántas alertas antes de la fatiga? | Medio: sintoniza el silencio de 30 minutos | Alta | Alto: necesita volumen de alertas que hoy no existe | Después |
+| 8 | Q5 — ¿se usa la vista por zona? | Bajo: es beneficio secundario | Media | Bajo, pero necesita usuarios reales | Después |
+
+**Decisión del backlog.** Se ejecutan Q1 y Q3 en el mismo experimento, porque comparten
+instrumentación y población: medir si la alerta provoca acción y, a la vez, si la redacción accionable
+mejora esa tasa. Q2, Q4 y Q8 quedan listas con su tarjeta para el siguiente ciclo. Las tres últimas
+esperan a tener volumen de usuarios, porque hoy responderlas sería inventar los datos.
+
+### 8.1.5. Experiment Cards
+
+**Tarjeta E1 — ¿El aviso anticipado provoca una reducción de carga?**
+
+| Campo | Contenido |
+| :-- | :-- |
+| Pregunta | Q1 |
+| Creemos que | Avisar al responsable cuando la demanda alcanza el 85 % de la potencia contratada hace que reduzca carga antes de fijar un pico mayor |
+| Para verificarlo | Instrumentamos tres locales piloto con un medidor cada uno y la regla de demanda activa, y registramos cada episodio en que la demanda cruza el umbral. En la mitad de los episodios, asignados al azar, la alerta se envía; en la otra mitad se registra el episodio pero no se envía nada |
+| Y mediremos | La proporción de episodios en que la demanda baja del 85 % dentro de los 30 minutos siguientes al cruce |
+| Tendremos razón si | La proporción con alerta supera a la proporción sin alerta en al menos 30 puntos porcentuales, con p < 0.05 |
+| Duración | Cuatro semanas |
+| Lo que ponemos en riesgo | Nada del producto: el experimento solo silencia la mitad de los avisos en locales que hoy no tienen ninguno |
+
+**Tarjeta E2 — ¿La alerta accionable supera al número crudo?**
+
+| Campo | Contenido |
+| :-- | :-- |
+| Pregunta | Q3 |
+| Creemos que | Una alerta que nombra la zona y el equipo a apagar, con su efecto estimado en kW, produce más reducciones que una que informa solo la demanda medida |
+| Para verificarlo | Dentro del grupo con alerta de E1, cada aviso se redacta al azar en una de dos variantes: **A**, el texto actual («demanda de 104 kW, 85 % de los 120 kW contratados»); **B**, el texto accionable («demanda al 87 %: apagar el aire de la zona Sala libera unos 12 kW») |
+| Y mediremos | La misma proporción de reducción dentro de 30 minutos, y además el tiempo transcurrido hasta la reducción |
+| Tendremos razón si | La variante B supera a la A en al menos 20 puntos porcentuales, o reduce a la mitad el tiempo hasta la acción |
+| Duración | Las mismas cuatro semanas de E1 |
+| Lo que ponemos en riesgo | La variante B requiere que el local tenga zonas registradas; en locales de un solo medidor no es aplicable |
+
+**Tarjeta E3 — ¿El canal cambia la respuesta?**
+
+| Campo | Contenido |
+| :-- | :-- |
+| Pregunta | Q2 |
+| Creemos que | Una notificación *push* en el móvil se atiende más y más rápido que un correo, porque las seis personas entrevistadas declaran revisar poco el correo |
+| Para verificarlo | Una vez distribuida la aplicación móvil, cada episodio con alerta se envía por un canal asignado al azar: correo, o correo más *push* |
+| Y mediremos | La proporción de reducción dentro de 30 minutos y la mediana del tiempo entre el envío y la apertura |
+| Tendremos razón si | El canal con *push* supera al correo en al menos 20 puntos porcentuales de reducción, o adelanta la apertura en más de 10 minutos |
+| Duración | Cuatro semanas, tras completar la distribución de la aplicación móvil |
+| Lo que ponemos en riesgo | Depende de cerrar DT06; hasta entonces el experimento no se puede ejecutar |
+
+## 8.2. Experiment Design
+
+### 8.2.1. Hypotheses
+
+Las hipótesis de la sección 1.2.2.3 se formularon antes de construir el producto y están redactadas
+en el lenguaje de Lean UX, que sirve para alinear al equipo pero no para decidir. Aquí se reescriben
+como hipótesis estadísticas: con una población, una medida, una hipótesis nula y un efecto mínimo
+que vale la pena detectar. Lo que cambia no es la idea, es que ahora cada una se puede rechazar.
+
+| ID | Hipótesis original | Formulación contrastable |
+| :-- | :-- | :-- |
+| H1 | Avisar al 85 % logra que reduzca carga a tiempo (Hipótesis 1) | **H₀:** p(reducción \| alerta) = p(reducción \| sin alerta). **H₁:** p(reducción \| alerta) − p(reducción \| sin alerta) ≥ 0.30. Unidad: episodio de cruce de umbral |
+| H2 | La alerta accionable supera al número crudo | **H₀:** p(reducción \| texto B) = p(reducción \| texto A). **H₁:** diferencia ≥ 0.20, o mediana del tiempo hasta la acción al menos 50 % menor |
+| H3 | El desglose hace entender el peso del cargo por potencia (Hipótesis 2) | **H₀:** p(identifica el concepto dominante) ≤ 0.25, que es el azar entre tres conceptos y un «no sé». **H₁:** p ≥ 0.70 |
+| H4 | El desglose por zona dirige las acciones de ahorro (Hipótesis 3) | **H₀:** p(consulta semanal de la vista por zona) ≤ 0.20. **H₁:** p ≥ 0.50, en locales con dos o más zonas |
+| H5 | Informar el consumo en punta hace desplazar carga (Hipótesis 5) | **H₀:** μ(Δ proporción de punta) = 0. **H₁:** reducción media ≥ 5 puntos porcentuales a los dos meses |
+
+Hipótesis 4 del capítulo I (comparación entre locales) no se traduce todavía: exige cuentas con tres
+o más locales, que hoy no existen. Queda registrada y sin experimento, que es más honesto que
+diseñarle uno que no se puede correr.
+
+**El efecto mínimo no es arbitrario.** El umbral de 30 puntos de H1 sale de la aritmética del
+negocio, no del gusto: el cargo por exceso de potencia en media tensión es de S/ 87.60 por kW-mes
+frente a S/ 58.40 por kW-mes de potencia contratada (sección 5.2.6). Evitar 10 kW de exceso en un
+local ahorra S/ 876 al mes, muy por encima de los S/ 79.90 del plan Pro. Una mejora menor a 30
+puntos dejaría el ahorro esperado por debajo de lo que el cliente paga, y entonces el producto no
+se sostiene aunque el efecto fuera estadísticamente real.
+
+### 8.2.2. Domain Business Metrics
+
+Las métricas se agrupan por quién las mira y para qué decide. Las de dominio son las que el cliente
+reconoce en su recibo; las de negocio son las que deciden si la empresa sigue existiendo.
+
+**Métricas de dominio (las del recibo del cliente)**
+
+| Métrica | Definición | Por qué importa | Referencia |
+| :-- | :-- | :-- | :-- |
+| Demanda máxima del periodo | El mayor valor de potencia registrado en el mes, en kW | Es el número que fija el cargo por potencia de todo el periodo | Sección 5.2.6 |
+| Exceso de potencia | `max(0, demanda máxima − potencia contratada)` | Se factura a S/ 87.60 por kW-mes en MT, frente a S/ 58.40 el contratado | `CommercialTariffTests` |
+| Proporción de consumo en punta | kWh entre 18:00 y 23:00 sobre el total del periodo | La energía en punta cuesta S/ 0.2810 frente a S/ 0.2395 fuera de punta, en MT | `PeakHoursTests` |
+| Concentración por zona | Porcentaje del consumo del local que aporta su zona mayor | Dirige dónde actuar; el motor de hallazgos la marca por encima del 40 % | `InsightEngine` |
+| Costo evitado | Diferencia entre el cargo por potencia facturado y el que se habría facturado con la demanda máxima del periodo anterior | Es el único número que convierte el producto en retorno, y es lo que tres entrevistados exigen ver antes de pagar | Derivada |
+
+**Métricas de negocio**
+
+| Métrica | Definición | Meta de referencia |
+| :-- | :-- | :-- |
+| Locales activos | Locales con al menos una lectura en los últimos siete días | Crecimiento mensual |
+| Tasa de activación | Cuentas que completan organización + local + medidor + regla de demanda, sobre cuentas registradas | ≥ 60 % en los primeros siete días |
+| Tasa de respuesta a alertas | Episodios con reducción dentro de 30 minutos sobre episodios con alerta | ≥ 60 %, que es el umbral de la Hipótesis 1 |
+| Retención mensual | Suscripciones que renuevan sobre suscripciones vigentes al inicio del mes | ≥ 85 % |
+| Ingreso recurrente mensual | Suma de las suscripciones activas | — |
+| Relación ahorro/precio | Costo evitado medio por local sobre el precio del plan | > 3× para que el argumento de venta se sostenga solo |
+
+### 8.2.3. Measures
+
+Cada hipótesis necesita una medida que se pueda calcular sin criterio humano. Esta tabla las fija,
+porque una medida ambigua convierte cualquier resultado en discusión.
+
+| Medida | Definición operativa exacta | Tipo | Fuente |
+| :-- | :-- | :-- | :-- |
+| **Episodio de cruce** | Intervalo que empieza en la primera lectura con demanda ≥ 85 % de la potencia contratada y termina cuando dos lecturas consecutivas caen por debajo, o a los 60 minutos | Unidad de análisis | Tabla de lecturas (`em_`) |
+| **Reducción a tiempo** | Vale 1 si dentro de los 30 minutos siguientes al inicio del episodio alguna lectura cae por debajo del 85 % | Binaria | Calculada sobre lecturas |
+| **Tiempo hasta la acción** | Minutos entre el envío de la alerta y la primera lectura por debajo del umbral | Continua, censurada a 60 minutos | Calculada |
+| **Apertura de la alerta** | Marca de tiempo de la apertura del correo o del *tap* en la notificación | Binaria + tiempo | Requiere instrumentación (sección 8.2.8) |
+| **Concepto dominante identificado** | Vale 1 si la persona nombra el concepto que efectivamente pesa más en su propia factura estimada | Binaria | Prueba moderada |
+| **Consulta de la vista por zona** | Una visita a `/sites/{id}/zone-consumption` por semana y por local | Conteo | Evento de producto |
+| **Δ proporción de punta** | Proporción de punta del mes 2 menos la del mes 0, en puntos porcentuales | Continua | Calculada sobre lecturas |
+
+Tres advertencias de medición que conviene dejar escritas, porque son las que invalidan este tipo de
+experimento:
+
+- **La reducción puede ocurrir sin alerta.** Un local cierra, baja la demanda y eso cuenta como
+  reducción. Por eso el grupo de control es imprescindible: sin él se mediría el ciclo normal del
+  negocio y se le atribuiría al producto.
+- **El episodio no es independiente del local.** Un mismo local genera muchos episodios parecidos.
+  Tratarlos como observaciones independientes infla la significancia; la sección 8.2.5 lo corrige.
+- **El horario contamina.** Los cruces de umbral se concentran en las mismas franjas. La
+  aleatorización se hace por episodio y no por día, para que ambos grupos reciban la misma mezcla
+  de horas.
+
+### 8.2.4. Conditions
+
+**Experimento E1 + E2 (se ejecutan juntos)**
+
+| Elemento | Definición |
+| :-- | :-- |
+| Población | Locales comerciales de Lima con suministro en categoría con cargo por potencia, de 200 a 2 000 m², de los dos segmentos objetivo |
+| Muestra | Tres locales piloto: dos de cadena (segmento #1) y uno independiente (segmento #2) |
+| Unidad de aleatorización | El episodio de cruce de umbral |
+| Grupos | **Control:** episodio registrado, sin alerta. **Tratamiento A:** alerta con el texto actual. **Tratamiento B:** alerta con el texto accionable. Asignación 1:1:1 |
+| Variable de respuesta | Reducción a tiempo (binaria); secundaria, tiempo hasta la acción |
+| Duración | Cuatro semanas corridas, sin feriados largos ni campaña navideña, que distorsionan el perfil de carga |
+| Criterio de inclusión | El local debe tener la regla de demanda activa y al menos una zona registrada, porque la variante B la necesita |
+| Criterio de exclusión del episodio | Cortes de suministro, y episodios que empiecen en los 30 minutos siguientes al cierre del local |
+| Qué se mantiene constante | El umbral (85 %), la ventana de silencio (30 minutos) y el destinatario del aviso |
+
+**Consideración ética y de riesgo.** El grupo de control no recibe aviso, de modo que un episodio
+asignado a control podría terminar en un pico mayor. Tres salvaguardas: los locales piloto hoy no
+tienen ningún sistema de aviso, así que el control es su situación actual y el experimento no los
+deja peor; el consentimiento se obtiene por escrito explicando que la mitad de los avisos se
+retiene; y se fija un corte de seguridad: si la demanda supera el 100 % de la potencia contratada,
+se envía la alerta aunque el episodio sea de control, y ese episodio se excluye del análisis.
+
+**Experimento E4 (comprensión del desglose, Q4)**
+
+| Elemento | Definición |
+| :-- | :-- |
+| Población | Responsables de los dos segmentos |
+| Muestra | 19 personas por grupo (ver 8.2.5); grupo único contra el umbral del azar |
+| Procedimiento | Sesión moderada de 20 minutos. La persona navega su propia factura estimada y responde, sin ayuda, qué concepto pesa más en su recibo y por qué |
+| Variable de respuesta | Concepto dominante identificado (binaria) |
+| Sesgo que hay que controlar | El moderador no puede nombrar los conceptos antes de la pregunta; el guion se fija por escrito y es el mismo para todos |
+
+### 8.2.5. Scale Calculations and Decisions
+
+Los tamaños se calculan con α = 0.05 a dos colas y potencia 1 − β = 0.80, con la aproximación normal
+para la diferencia de dos proporciones:
+
+> n por grupo = [ z₍₁₋α/₂₎·√(2·p̄·q̄) + z₍₁₋β₎·√(p₁q₁ + p₂q₂) ]² / (p₁ − p₂)²
+
+| Experimento | p₁ (control) | p₂ (tratamiento) | n por grupo | Total |
+| :-- | --: | --: | --: | --: |
+| E1 — alerta contra silencio | 0.15 | 0.60 | **17 episodios** | 34 |
+| E2 — texto B contra texto A | 0.40 | 0.60 | 97 episodios | 194 |
+| E4 — comprensión del desglose | 0.25 | 0.70 | **19 personas** | 38 |
+| H4 — consulta de la vista por zona | 0.20 | 0.50 | 39 locales | 78 |
+
+La proporción de control de E1 se fija en 0.15 porque es la tasa a la que esperamos que la demanda
+baje sola dentro de 30 minutos por el ciclo normal del local; es un supuesto y el propio
+experimento lo mide, de modo que la primera semana sirve también para corregirlo.
+
+**Corrección por agrupamiento.** Los episodios de un mismo local se parecen entre sí, así que no
+cuentan como observaciones independientes. Con un efecto de diseño DEFF = 1 + (m − 1)·ICC, donde m
+es el número medio de episodios por local y ICC la correlación intraclase:
+
+| Episodios por local (m) | ICC supuesto | DEFF | n por grupo corregido |
+| --: | --: | --: | --: |
+| 8 | 0.05 | 1.35 | 23 |
+| 8 | 0.10 | 1.70 | **29** |
+| 12 | 0.10 | 2.10 | 36 |
+
+**Decisión.** Se planifica con el escenario conservador: **29 episodios por grupo**, 87 episodios en
+total entre los tres brazos. Con tres locales que cruzan el umbral unas ocho veces por semana cada
+uno, son unos 24 episodios semanales y el experimento cierra en cuatro semanas. Si al terminar la
+segunda semana el ritmo de episodios va por debajo de 15 semanales, se extiende a seis semanas antes
+que bajar la potencia del contraste.
+
+**Lo que no alcanza.** E2 necesita 97 episodios por grupo para detectar 20 puntos, y en cuatro
+semanas no se llega. Se asume de entrada: E2 se ejecuta como **exploratorio**, su resultado orienta
+la redacción del aviso pero no se presenta como conclusión. Decirlo antes de mirar los datos es lo
+que impide convertir después una diferencia casual en un hallazgo.
+
+**Para H5** (desplazamiento de punta), con una reducción mínima de 5 puntos porcentuales y una
+desviación supuesta de 8 puntos entre locales, se necesitan 41 locales por grupo, 82 en total. Es
+un orden de magnitud por encima del piloto, de modo que H5 queda explícitamente fuera de este ciclo.
+
+### 8.2.6. Methods Selection
+
+| Pregunta | Método | Por qué ese y no otro |
+| :-- | :-- | :-- |
+| Q1 / Q3 | Experimento controlado aleatorizado, con asignación por episodio y análisis agrupado por local | Es la única forma de separar el efecto de la alerta del ciclo normal del local. La aleatorización por episodio, y no por local, elimina las diferencias entre locales, que son enormes: un minimarket de 320 m² y un supermercado de 4 000 m² no son comparables |
+| Q2 | Mismo diseño, con el canal como factor | Se añade como segundo factor en lugar de montar un experimento aparte, para aprovechar la misma instrumentación |
+| Q4 | Prueba moderada de comprensión, con guion fijo | Es una pregunta de entendimiento, no de conducta agregada: hay que ver a la persona intentarlo. Una encuesta mediría lo que cree entender, no lo que entiende |
+| Q6 | Serie temporal interrumpida con grupo de comparación | No se puede aleatorizar la recomendación sin retener información útil durante dos meses; la comparación con locales que no la reciben acota la tendencia estacional |
+| Q8 | Investigación de campo: instalación real en dos locales, con cronómetro y presupuesto | No hay forma de estimarlo desde el escritorio; el dato que importa es cuántos propietarios dicen que sí tras oír el precio |
+
+**Lo que se descarta y por qué.** No se usa encuesta de satisfacción para Q1: preguntar «¿la alerta
+le resultó útil?» mide cortesía, no conducta. No se usa prueba A/B sobre la aplicación web, porque
+el número de usuarios hace que cualquier diferencia caiga dentro del ruido. Y no se usa un piloto
+sin grupo de control, que es la tentación obvia: mediría la temporada, no el producto.
+
+### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection
+
+El plan de analítica se arma con el esquema Goal–Question–Metric, de modo que cada métrica
+recolectada responda a una pregunta y cada pregunta sirva a un objetivo. Lo que no encaje en esta
+cadena no se recolecta: un dato que nadie va a mirar es costo de mantenimiento y riesgo de privacidad
+sin contrapartida.
+
+| Objetivo | Pregunta | KPI | Métricas que lo alimentan | Meta |
+| :-- | :-- | :-- | :-- | :-- |
+| **G1. Que la alerta produzca acción** | ¿Se reduce la carga tras el aviso? | Tasa de respuesta a alertas | Episodios de cruce, reducción a tiempo, tiempo hasta la acción | ≥ 60 % |
+| | ¿Llega el aviso a quien debe? | Tasa de apertura | Alertas enviadas, abiertas, por canal | ≥ 80 % en 10 min |
+| **G2. Que el producto se note en el recibo** | ¿Baja el costo? | Costo evitado por local y mes | Demanda máxima, exceso de potencia, cargo por potencia del periodo y del anterior | > 3× el precio del plan |
+| | ¿Se desplaza el consumo? | Proporción de punta | kWh en punta, kWh totales | −5 pp en dos meses |
+| **G3. Que la cuenta llegue a ser útil** | ¿Se completa la configuración? | Tasa de activación | Registro, organización creada, local creado, medidor creado, regla creada | ≥ 60 % en 7 días |
+| | ¿Dónde se abandona? | Embudo de activación | Los cinco pasos anteriores, con marca de tiempo | — |
+| **G4. Que el negocio se sostenga** | ¿Renuevan? | Retención mensual | Suscripciones activas, altas, bajas | ≥ 85 % |
+| | ¿El motor de hallazgos sirve? | Recomendaciones aplicadas | Hallazgos emitidos, vistos, aplicados | ≥ 25 % aplicadas |
+
+**Privacidad y alcance de la recolección.** Los eventos registran el identificador de la cuenta, del
+local y del medidor, nunca el correo ni el nombre de la persona. La sección 6.2.1.2 ya fija que los
+datos sensibles no salen del *backend*; el plan de analítica no abre una excepción. Las lecturas de
+energía son del cliente y se usan agregadas para estas métricas, lo que debe constar en el acuerdo
+de servicio de la sección 5.2.4.
+
+### 8.2.8. Web and Mobile Tracking Plan
+
+Hoy el producto no tiene **ninguna** instrumentación de comportamiento: `/metrics` de Prometheus
+mide latencias y códigos HTTP, que dicen si el servidor está sano, no si el producto sirve. Sin lo
+que sigue, ninguno de los experimentos de este capítulo se puede ejecutar, porque no habría de dónde
+leer la respuesta. Este es el plan mínimo.
+
+**Convenciones.** Nombre del evento en `snake_case`, en pasado, con el sujeto primero
+(`alert_opened`, no `open_alert`). Toda propiedad de identidad es un identificador opaco, nunca un
+dato personal. Todo evento lleva `occurred_at` en UTC y `site_id` cuando aplica.
+
+| Evento | Cuándo se dispara | Propiedades | Plataforma | Pregunta que responde |
+| :-- | :-- | :-- | :-- | :-- |
+| `account_registered` | Al completar el registro | `user_id`, `segment`, `method` (`password` \| `google`) | Web, Móvil | G3 |
+| `organization_created` | Al crear la organización | `user_id`, `organization_id` | Web | G3 |
+| `site_created` | Al crear un local | `site_id`, `tariff_category`, `contracted_power_kw` | Web | G3 |
+| `meter_created` | Al registrar un medidor | `site_id`, `meter_id`, `zone_id` | Web | G3 |
+| `demand_rule_created` | Al crear la regla de demanda | `site_id`, `threshold_percent` | Web | G3, Q7 |
+| `threshold_crossed` | Al procesar una lectura que cruza el umbral | `site_id`, `episode_id`, `measured_kw`, `contracted_kw` | Servidor | **Q1** |
+| `alert_suppressed` | Episodio asignado a control, o silenciado por la ventana de 30 min | `episode_id`, `reason` (`experiment_control` \| `silence_window`) | Servidor | **Q1** |
+| `alert_sent` | Al enviar el aviso | `episode_id`, `channel` (`email` \| `push`), `variant` (`A` \| `B`) | Servidor | **Q1, Q2, Q3** |
+| `alert_opened` | Al abrir el correo o tocar la notificación | `episode_id`, `channel`, `latency_seconds` | Web, Móvil | **Q2** |
+| `demand_recovered` | Primera lectura por debajo del umbral dentro del episodio | `episode_id`, `minutes_since_crossing` | Servidor | **Q1, Q2, Q3** |
+| `episode_closed` | Al cerrar el episodio, con o sin recuperación | `episode_id`, `recovered` (bool), `peak_kw`, `duration_minutes` | Servidor | **Q1** |
+| `zone_breakdown_viewed` | Al abrir la vista de consumo por zona | `site_id`, `zone_count`, `period_days` | Web, Móvil | **Q5** |
+| `bill_estimate_viewed` | Al abrir la factura estimada | `site_id`, `has_power_excess` | Web, Móvil | Q4 |
+| `site_comparison_viewed` | Al abrir la comparación entre locales | `organization_id`, `site_count` | Web | Hipótesis 4 |
+| `insight_viewed` | Al mostrar un hallazgo del motor | `insight_id`, `rule` (`zone_concentration` \| `peak_shift` \| `demand_peak`) | Web, Móvil | G4 |
+| `insight_applied` | Al marcar un hallazgo como aplicado | `insight_id`, `days_since_emitted` | Web, Móvil | G4 |
+| `subscription_changed` | Al contratar o cambiar de plan | `plan_name`, `previous_plan` | Web | G4 |
+
+**De dónde sale cada evento.** Los siete marcados como *Servidor* se emiten desde el *backend*, y
+casi todos tienen ya su punto de enganche: el bus de eventos de dominio descrito en la sección 5.1.3
+despacha `ReadingProcessed` y `AlertTriggered` después de confirmar la transacción, que es
+exactamente donde deben colgarse `threshold_crossed`, `alert_sent` y `demand_recovered`. Emitirlos
+desde el servidor y no desde el navegador no es un detalle: son los eventos que deciden el
+experimento, y un bloqueador de publicidad o una pestaña cerrada no pueden hacerlos desaparecer.
+
+**El concepto que falta en el modelo.** `episode_id` no existe hoy. El sistema registra alertas, no
+episodios: sabe que a las 18:04 la demanda llegó a 104 kW y que avisó, pero no agrupa ese cruce, el
+silencio posterior y la recuperación en una sola cosa con identidad. Sin ese agrupamiento no hay
+unidad de análisis, y sin unidad de análisis no hay experimento. Es el cambio de modelo que abre el
+capítulo 8.3.
+
+## 8.3. Experimentation
+
+### 8.3.1. To-Be User Stories
+
+Las historias que siguen son las que hacen falta para que los experimentos del apartado 8.2 se
+puedan ejecutar. Continúan la numeración del *product backlog* de la sección 3.2, que llega hasta
+US44, y se agrupan en dos épicas nuevas.
+
+**EP10 — Instrumentación y experimentación**
+
+| ID | Título | Historia | Criterios de aceptación |
+| :-- | :-- | :-- | :-- |
+| US45 | Episodio de demanda como entidad | **Como** responsable del producto, **quiero** que cada cruce del umbral se registre como un episodio con identidad propia, **para** poder medir qué pasó después del aviso | **Dado** que la demanda de un local cruza el umbral, **cuando** se procesa la lectura, **entonces** se abre un episodio con su identificador, el instante del cruce, la demanda medida y la contratada. **Y** el episodio se cierra con la primera lectura por debajo del umbral o a los 60 minutos, registrando si hubo recuperación, el pico alcanzado y su duración |
+| US46 | Registro de eventos de producto | **Como** responsable del producto, **quiero** que las acciones relevantes emitan un evento con su contexto, **para** medir el comportamiento sin depender de lo que la gente declare | **Dado** el plan de la sección 8.2.8, **cuando** ocurre cualquiera de los eventos listados, **entonces** se registra con sus propiedades y `occurred_at` en UTC. **Y** ningún evento contiene correo, nombre ni otro dato personal |
+| US47 | Asignación aleatoria de episodios | **Como** responsable del experimento, **quiero** que cada episodio se asigne al azar a un brazo, **para** poder comparar con alerta y sin alerta | **Dado** un experimento activo, **cuando** se abre un episodio, **entonces** se le asigna control, tratamiento A o tratamiento B con probabilidad 1:1:1, y la asignación queda registrada y es inmutable. **Y** si la demanda supera el 100 % de la contratada, se envía la alerta aunque el brazo sea control, y el episodio se marca como excluido |
+| US48 | Variante accionable del mensaje de alerta | **Como** responsable de un local, **quiero** que la alerta me diga qué apagar y cuánto libera, **para** saber qué hacer sin interpretar un número | **Dado** un local con zonas registradas, **cuando** se envía una alerta de la variante B, **entonces** el mensaje nombra la zona de mayor consumo y su aporte estimado en kW. **Y** si el local no tiene zonas, el envío cae a la variante A y así se registra |
+| US49 | Panel de resultados del experimento | **Como** responsable del producto, **quiero** ver la tasa de respuesta por brazo con su intervalo de confianza, **para** decidir sin exportar datos a mano | **Dado** un experimento con episodios cerrados, **cuando** abro el panel, **entonces** veo por brazo el número de episodios, la tasa de recuperación en 30 minutos, la mediana del tiempo hasta la acción y el intervalo al 95 % |
+
+**EP11 — Aviso en el canal que la gente usa**
+
+| ID | Título | Historia | Criterios de aceptación |
+| :-- | :-- | :-- | :-- |
+| US50 | Notificación *push* de alerta de demanda | **Como** responsable de un local, **quiero** recibir la alerta como notificación en el celular, **para** enterarme cuando ocurre y no cuando reviso el correo | **Dado** un dispositivo con la aplicación instalada y sesión iniciada, **cuando** se levanta una alerta, **entonces** llega una notificación con la severidad, el local y la demanda medida. **Y** al tocarla se abre el detalle del local |
+| US51 | Confirmación de acción sobre la alerta | **Como** responsable de un local, **quiero** confirmar que ya reduje carga, **para** que el sistema sepa que atendí el aviso | **Dado** una alerta abierta, **cuando** pulso «ya reduje carga», **entonces** se registra la confirmación con su instante y se asocia al episodio |
+| US52 | Preferencia de canal de aviso | **Como** usuario, **quiero** elegir por dónde recibir los avisos, **para** no duplicar notificaciones ni perderlas | **Dado** mi perfil, **cuando** elijo correo, *push* o ambos, **entonces** los avisos posteriores respetan la elección. **Y** el valor por defecto es ambos |
+| US53 | Informe mensual de ahorro verificado | **Como** responsable de operaciones, **quiero** un informe que contraste el cargo por potencia del mes con el del mes anterior, **para** sustentar la herramienta ante mi gerencia | **Dado** un local con dos periodos cerrados, **cuando** abro el informe, **entonces** veo la demanda máxima de cada periodo, el exceso facturado y el costo evitado en soles. **Y** el informe se puede descargar |
+
+Las cuatro historias de EP11 no salen de una lluvia de ideas: US50 y US52 responden al hallazgo 2
+del apartado 8.1.1, que seis de seis entrevistados piden el celular; US53 responde al hallazgo 3,
+que la adopción exige ahorro demostrado y no prometido; y US51 existe porque sin confirmación
+explícita la medición de Q1 depende solo de inferir la acción desde las lecturas.
+
+### 8.3.2. To-Be Product Backlog
+
+El orden no es por tamaño ni por gusto: cada historia está donde está porque desbloquea a la
+siguiente o porque responde antes la pregunta más cara de equivocar. Los puntos siguen la escala
+Fibonacci usada en los *sprints* anteriores (sección 5.2.1).
+
+| # | Épica | ID | Historia | Puntos | Desbloquea | Justificación del orden |
+| --: | :-- | :-- | :-- | --: | :-- | :-- |
+| 1 | EP10 | US45 | Episodio de demanda como entidad | 8 | US46, US47, US49 | Sin unidad de análisis no hay experimento posible. Es la pieza de la que cuelga todo el capítulo |
+| 2 | EP10 | US46 | Registro de eventos de producto | 8 | US49, todas las métricas de 8.2.7 | Hoy no se mide nada del comportamiento; es la deuda que impide responder cualquier pregunta |
+| 3 | EP10 | US47 | Asignación aleatoria de episodios | 5 | E1, E2 | Es lo que convierte el piloto en experimento en vez de en anécdota |
+| 4 | EP10 | US48 | Variante accionable del mensaje | 5 | E2 | Barata y aprovecha el mismo piloto; sin ella E2 no existe |
+| 5 | EP11 | US51 | Confirmación de acción sobre la alerta | 3 | Medición de Q1 | Cierra el ciclo de medición sin depender solo de la inferencia desde lecturas |
+| 6 | EP10 | US49 | Panel de resultados del experimento | 5 | Decisión de E1 | Se puede vivir sin él leyendo la base a mano, por eso va después de lo que sí bloquea |
+| 7 | EP11 | US50 | Notificación *push* | 13 | E3 (Q2) | El más caro: exige cerrar DT06, distribuir la aplicación móvil y montar el servicio de notificaciones |
+| 8 | EP11 | US52 | Preferencia de canal | 3 | — | Solo tiene sentido una vez que hay más de un canal |
+| 9 | EP11 | US53 | Informe mensual de ahorro verificado | 8 | Adquisición | No bloquea ningún experimento, pero es la condición que tres entrevistados ponen para pagar |
+
+**Lo que este backlog significa para el próximo *sprint*.** Las cuatro primeras historias suman 26
+puntos y son la condición para ejecutar E1 y E2. Hasta que estén, el capítulo VIII es un diseño
+sobre el papel: el producto funciona y está probado, pero no sabe mirarse a sí mismo. La diferencia
+entre esta entrega y la siguiente es exactamente esa: pasar de **demostrar que el software hace lo
+que dice** —que es lo que prueban los capítulos VI y VII— a **demostrar que sirve para lo que fue
+hecho**, que es lo único que el cliente va a pagar.
 
 # Conclusiones, Bibliografía y Anexos
 
