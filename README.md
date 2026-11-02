@@ -2467,11 +2467,11 @@ producto quede documentado con honestidad y sea verificable en la siguiente entr
 | DT02 | El formulario de alta de dispositivo no envía `siteId`, que la API exige como obligatorio | Aplicación web | El alta de dispositivos falla contra la API actual | Sprint 2 |
 | DT03 | La aplicación web muestra la interfaz en español por defecto | Aplicación web | Incumple la restricción de idioma por defecto en inglés | Sprint 2 |
 | DT04 | No existe suite de pruebas automatizadas en la aplicación web | Aplicación web | Sin red de seguridad ante regresiones | Sprint 2 |
-| DT05 | No existe pipeline de integración continua | Los tres repositorios | Las pruebas del backend se ejecutan a mano | Sprint 2 |
-| DT06 | La aplicación móvil no está iniciada | SEMS-Mobile-App | Alcance pendiente | `<Sprint>` |
+| DT05 | ~~No existe pipeline de integración continua~~ **Resuelta parcialmente.** El *backend* tiene el *workflow* `Backend CI` desde el 7 de octubre (PR 7); la aplicación web y la móvil siguen sin pipeline | SEMS-Web-Application, SEMS-Mobile-App | El `npm run lint` y el `npm run build` de la web se ejecutan a mano | Sprint 2 |
+| DT06 | La aplicación móvil está iniciada (48 archivos Dart, ~5 800 líneas) pero no tiene *pipeline* de integración ni de distribución, y sus pruebas no se ejecutan de forma automatizada | SEMS-Mobile-App | `flutter analyze` y `flutter test` se ejecutan a mano, si se ejecutan | Sprint 2 |
 
 
-### Capítulo VI: Product Verification & Validation
+# Capítulo VI: Product Verification & Validation
 
 ## 6.1. Testing Suites & Validation
 
@@ -3647,7 +3647,9 @@ dejarlos escritos porque son la justificación de que la puerta humana exista:
 `COMMENTED` sin contenido en los tres *pull requests* donde se solicitó, porque la cuota de la cuenta
 estaba agotada. La revisión efectiva fue la humana, y el registro en GitHub lo refleja así.
 
-## 7.1 Continuous Integration
+# Capítulo VII: DevOps Practices
+
+## 7.1. Continuous Integration
 
 ### 7.1.1. Tools and Practices
 
@@ -3739,7 +3741,23 @@ jobs:
         
         
 ```
-La ejecución del pipeline fue satisfactoria, oseagitHub Actions registró correctamente las ejecuciones realizadas durante la creación del Pull Request y luego de integrar el cambio a la rama develop.
+La ejecución del *pipeline* fue satisfactoria: GitHub Actions registró correctamente las ejecuciones
+realizadas durante la creación del *pull request* y luego de integrar el cambio a la rama `develop`.
+
+Al cierre de este capítulo el *workflow* acumula **12 ejecuciones, las 12 con resultado `success`**:
+ocho disparadas por `pull_request` y cuatro por `push` a `develop`. Ninguna rama entró a `develop`
+con la compilación rota ni con una prueba en rojo.
+
+| # | Evento | Rama | Resultado | Fecha |
+| --: | :-- | :-- | :-- | :-- |
+| 1-2 | `pull_request` | `eliocerdan-patch-1` | `success` | 7 de octubre |
+| 3 | `push` | `develop` | `success` | 7 de octubre |
+| 4 | `pull_request` | `feat/claves-foraneas-intramodulo` | `success` | 24 de octubre |
+| 5-6 | `pull_request` | `feat/locales-y-hallazgos` | `success` | 28 de octubre |
+| 7, 9 | `pull_request` | `feat/modelo-comercial-y-hallazgos` | `success` | 28-29 de octubre |
+| 8, 10 | `push` | `develop` | `success` | 29 de octubre |
+| 11 | `pull_request` | `feat/cierre-del-back` | `success` | 29 de octubre |
+| 12 | `push` | `develop` | `success` | 29 de octubre |
 
 ![Backend CI Workflow Runs](assets/chapter7/backend-ci-workflow-runs.png)
 
@@ -3945,6 +3963,8 @@ Para el monitoreo continuo de SEMS se utilizan herramientas que permiten revisar
 | GitHub Actions | Pipeline Monitoring | Herramienta utilizada para ejecutar y supervisar workflows automatizados del proyecto. | Identificar errores durante los procesos de build y testing y verificar el estado de cada ejecución. |
 | GitHub Pages | Landing Page Hosting | Plataforma utilizada para publicar la Landing Page. | Verificar que el sitio permanezca disponible después de cada deployment. |
 | Swagger / OpenAPI | API Verification | Interfaz utilizada para visualizar y comprobar la estructura de los endpoints del Backend. | Facilitar la verificación funcional de los recursos expuestos por la API. |
+| ASP.NET Core Health Checks | Service Probes | Sondas `/health` y `/health/ready` publicadas por el propio Backend. | Distinguir «el proceso está vivo» de «el servicio puede atender peticiones», que es lo que decide si se le envía tráfico. |
+| prometheus-net | Metrics | Biblioteca que instrumenta las peticiones HTTP del Backend y publica `/metrics` en formato Prometheus. | Disponer de métricas de peticiones, latencias y códigos de respuesta por ruta, listas para ser recolectadas. |
 
 #### Practices
 
@@ -3972,9 +3992,27 @@ En la **Landing Page**, GitHub Actions permite revisar la ejecución del workflo
 
 GitHub Actions también permite supervisar el proceso de integración continua del Backend. Cada ejecución muestra el estado de las diferentes etapas del workflow, incluyendo la restauración de dependencias, compilación y ejecución de pruebas.
 
+**Instrumentación propia del Backend.** Además de lo que ofrecen las plataformas, el *backend*
+expone tres recursos pensados para que una herramienta externa lo supervise sin intervención humana.
+Los tres están cubiertos por `HealthEndpointsTests` (sección 6.1.2), de modo que un cambio no puede
+dejarlos sin responder sin que una prueba se ponga en rojo.
+
+| Recurso | Qué responde | Uso previsto |
+| :-- | :-- | :-- |
+| `GET /health` | `200 OK` mientras el proceso esté vivo, sin consultar la base de datos | Sonda de vitalidad de la plataforma (*liveness*): responde incluso con la base caída, para que la plataforma no reinicie un proceso sano por un problema que está fuera de él |
+| `GET /health/ready` | `200 OK` con la base disponible y `503 Service Unavailable` cuando no lo está | Sonda de disponibilidad (*readiness*): indica si el servicio puede atender peticiones, que es la pregunta que decide si se le envía tráfico |
+| `GET /metrics` | Métricas en formato Prometheus, generadas por `prometheus-net.AspNetCore` con `UseHttpMetrics()` | Serie temporal de peticiones, latencias y códigos de respuesta por ruta, lista para que un Prometheus la recolecte |
+
+La separación entre `/health` y `/health/ready` no es decorativa: es la que evita el caso en que la
+aplicación arranca bien, el *health check* responde `Healthy`, y después toda consulta falla porque
+la base de datos nunca estuvo accesible. Hoy las tres rutas se consultan a mano o desde la propia
+plataforma; conectar un Prometheus que recolecte `/metrics` de forma periódica es la mejora
+pendiente del monitoreo, y es lo único que falta para pasar de supervisión por inspección a
+supervisión por serie temporal.
+
 El flujo general de monitoreo puede representarse de la siguiente manera:
 
-`Deployment → Service Execution → Logs / Pipeline Status → Verification → Error Detection`
+`Deployment → Service Execution → Logs / Metrics / Health Probes → Verification → Error Detection`
 
 De esta manera, SEMS mantiene diferentes mecanismos de supervisión según el componente de la plataforma, permitiendo verificar tanto el estado de los servicios desplegados como la correcta ejecución de los procesos automatizados.
 
