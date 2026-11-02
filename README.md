@@ -2596,6 +2596,30 @@ publicador de eventos simulados:
 - Resumen BCrypt mal formado → la comparación devuelve `false` en lugar de lanzar una excepción
 - Token JWT → lleva el identificador del usuario en `sub`, el correo, el rol y la expiración configurada
 
+**`tests/Sems.Api.Tests/Iam/GoogleSignInTests.cs`** Prueba `AuthenticationService.SignInWithGoogleAsync`
+con el puerto `IGoogleTokenVerifier` simulado, de modo que se verifica la decisión del servicio ante cada
+respuesta posible de Google y no la llamada HTTP a `oauth2.googleapis.com`:
+
+- Primera entrada con Google → crea la cuenta con el nombre que devuelve Google y la deja activa
+- Correo que ya tiene cuenta → inicia sesión en esa cuenta, no crea una segunda
+- Cuenta en estado `PENDING` → Google responde por el correo y la cuenta queda verificada
+- Token emitido para otra aplicación (`aud` distinto del `GOOGLE_CLIENT_ID`) → rechazado
+- Correo sin verificar en Google (`email_verified = false`) → rechazado
+- Token que Google no reconoce → rechazado
+- Servidor sin `GOOGLE_CLIENT_ID` configurado → responde que la opción no está habilitada, en lugar de dejar entrar a cualquiera
+- Petición sin token → `VALIDATION_ERROR`
+
+**`tests/Sems.Api.Tests/Iam/UserProfileServiceTests.cs`** Prueba `UserProfileService`, que guarda el
+nombre y el segmento de establecimiento del titular de la cuenta:
+
+- Nombre y segmento → se guardan sin espacios sobrantes
+- Segmento escrito como `RETAIL_CHAIN`, `retail-chain` o ` Independent ` → se interpreta igual en los tres casos
+- Segmento inexistente → `VALIDATION_ERROR` que enumera los valores válidos
+- Nombre en blanco → queda vacío, no se guardan espacios
+- Nombre más largo que la columna → `VALIDATION_ERROR` en lugar de un error de base de datos
+- Petición sin segmento → lo deja sin asignar, sin fallar
+- Usuario inexistente → `NOT_FOUND`
+
 **Organizations**
 
 **`tests/Sems.Api.Tests/Organizations/OrganizationDomainTests.cs`** Prueba los *aggregates*
@@ -2687,6 +2711,21 @@ y el adaptador simulado del proveedor de tarifas:
 **`tests/Sems.Api.Tests/Energy/EnergyContractTests.cs`** Verifica el contrato JSON en *snake_case* de
 lecturas, consumos y factura estimada.
 
+**`tests/Sems.Api.Tests/Energy/ConsumptionBreakdownServiceTests.cs`** Prueba
+`ConsumptionBreakdownService`, que responde las tres preguntas de desglose de consumo (US24, US26, US39):
+
+- Local inexistente → `NOT_FOUND`
+- Local con dos zonas → reparte el consumo y los porcentajes suman 100
+- Medidor sin zona → su consumo se reporta aparte, como no asignado, en lugar de perderse
+- Zona sin lecturas → aparece en cero, no se omite
+- Lecturas en punta y fuera de punta → cada banda se valoriza con su propio precio
+- Local sin medidores → desglose vacío, sin fallar
+- Ventana pedida de 0, −5, 7 o 5000 días → se ajusta a 30, 30, 7 y 365 respectivamente
+- Locales de distinto tamaño → se comparan por consumo por kW contratado, no por consumo absoluto
+- Organización sin locales → comparación vacía
+- Consumo actual → suma la última potencia de cada medidor e informa cuántos reportaron
+- Medidor que nunca reportó → se cuenta en el total de medidores pero no aporta potencia
+
 **Analytics**
 
 **`tests/Sems.Api.Tests/Analytics/AnalyticsServiceTests.cs`** Prueba el servicio `AnalyticsService` con
@@ -2702,6 +2741,37 @@ el puerto `IBillCalculator` simulado, y su implementación `EnergyBillCalculator
 
 - Desviación de una anomalía → relativa al consumo esperado (`50 %`, `-50 %`); sin consumo esperado → `0`
 - Aplicar dos veces una recomendación → conserva la primera fecha
+
+**`tests/Sems.Api.Tests/Analytics/InsightEngineTests.cs`** Prueba `InsightEngine`, el motor que produce
+anomalías, recomendaciones y proyecciones a partir del consumo medido (US35, US37, US38). Usa el puerto
+`IEnergyUsage` simulado, de modo que el motor se prueba sin base de datos:
+
+- Sin consumo medido → no encuentra nada y no guarda nada
+- Solo el día en curso medido → lo ignora, porque el día aún no cierra
+- Pico con historia suficiente (al menos siete días) → levanta una anomalía de consumo
+- Pico sin historia suficiente → se queda callado
+- Desviación pequeña en un medidor pequeño → se queda callado, por los mínimos de 25 % y 5 kWh
+- Pico ya reportado hoy → no lo repite
+- Una zona concentra más del 40 % del local → recomienda revisar esa zona
+- Más del 25 % del consumo en la ventana de punta → recomienda desplazar carga
+- Poco consumo en punta → no recomienda desplazar carga
+- Demanda máxima por encima del 85 % de la potencia contratada → recomienda escalonar arranques
+- Demanda máxima muy por debajo → se queda callado
+- Recomendación ya emitida hoy → no la repite
+- Consumo sin local asociado → no produce recomendaciones
+- Consumo medido → proyecta la factura mensual del local
+- Pocos días medidos → declara un margen de error más amplio
+- Local ya proyectado hoy → no lo proyecta de nuevo
+
+**`tests/Sems.Api.Tests/Analytics/InsightRecomputeQueueTests.cs`** Prueba `InsightRecomputeQueue`, la
+cola con espera de cinco segundos que agrupa los recálculos pedidos por los eventos de lectura:
+
+- Nada pedido → no devuelve a nadie
+- Antes de que venza la espera → no devuelve a nadie
+- Vencida la espera → devuelve al usuario y vacía la cola
+- Varias peticiones del mismo usuario → se recalcula una sola vez
+- Peticiones de usuarios distintos → cada uno se recalcula
+- Usuario en blanco → se ignora
 
 **Alerts**
 
@@ -2803,6 +2873,16 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 - `POST /api/v1/auth/logout` → responde `204 No Content` y el token revocado ya no refresca
 - `GET /api/v1/users/me` sin token o con un token mal formado → responde `401 Unauthorized`
 
+**IAM (perfil)** — `tests/Sems.Api.IntegrationTests/Iam/UserProfileEndpointsTests.cs`
+
+- `POST /api/v1/auth/register` con nombre y segmento → la sesión devuelta ya los trae
+- `POST /api/v1/auth/register` sin nombre ni segmento → sigue funcionando, el perfil queda vacío
+- `POST /api/v1/auth/register` con un segmento inexistente → `400 Bad Request` enumerando los válidos
+- `POST /api/v1/auth/login` después de registrarse → devuelve el perfil guardado
+- `GET /api/v1/users/me` después de actualizar el perfil → devuelve los valores nuevos
+- `PUT /api/v1/users/me` con un segmento inexistente → `400 Bad Request`; sin token → `401 Unauthorized`
+- `PUT /api/v1/users/me` → solo modifica al titular del token, no a otras cuentas
+
 **Organizations** — `tests/Sems.Api.IntegrationTests/Organizations/OrganizationEndpointsTests.cs`
 
 - `POST /api/v1/organizations` con RUC válido → responde `201 Created` y el creador queda como `ORG_ADMIN`
@@ -2834,13 +2914,32 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 - Demanda igual a la contratada → `has_power_excess = false`
 - Mismo consumo con un pico mayor → solo crece `power_cost`
 - Categoría `XYZ`, consumo negativo o potencia contratada `0` → `400 Bad Request`; sin token → `401 Unauthorized`
-- `GET /api/v1/energy/tariffs/MT2` → `200 OK` con `peak_hours = "18:00-23:00 every day"`
+- `GET /api/v1/energy/tariffs/MT2` → `200 OK` con `peak_hours = "18:00-23:00"` y `peak_every_day = true`
 - `POST /api/v1/energy-meters` con número de serie repetido → `409 Conflict`
 - `POST /api/v1/energy-readings` válida → `201 Created`; con 70 Hz → `400 Bad Request`
+
+**Energy Monitoring (desglose de consumo)** — `tests/Sems.Api.IntegrationTests/Energy/ConsumptionBreakdownEndpointsTests.cs`
+
+- `GET /api/v1/sites/{siteId}/zone-consumption` en un local con dos zonas → `200 OK` con los porcentajes en *snake_case*
+- Medidor sin zona → su consumo se reporta aparte, no se mezcla con el de las zonas
+- Local inexistente → `404 Not Found`; sin token → `401 Unauthorized`
+- `GET /api/v1/organizations/{organizationId}/site-consumption` con dos locales → los compara por kW contratado
+- Organización sin lecturas → devuelve todos sus locales en cero
+- `GET /api/v1/sites/{siteId}/consumption/current` → suma la última potencia de cada medidor
+- Local que nunca reportó → responde cero, sin fallar
 
 **Analytics** — `tests/Sems.Api.IntegrationTests/Analytics/BillForecastEndpointsTests.cs`
 
 - `POST /api/v1/analytics/bill-predictions/forecast` → `201 Created` con el mismo total que `bill-estimate`, a través del puerto `IBillCalculator`
+
+**Analytics (motor de hallazgos)** — `tests/Sems.Api.IntegrationTests/Analytics/InsightEndpointsTests.cs`
+
+- `POST /api/v1/analytics/insights/recompute` sin consumo medido → `200 OK` informando que no se encontró nada
+- Consumo concentrado en una zona y en horario punta → produce consejos de ahorro
+- Consumo medido → proyecta la factura del local
+- Recálculo dos veces el mismo día → no duplica los hallazgos
+- Pico en el último día cerrado → levanta una anomalía
+- Sin token → `401 Unauthorized`
 
 **Alerts** — `tests/Sems.Api.IntegrationTests/Alerts/DemandAlertEndpointsTests.cs`
 
@@ -2957,7 +3056,7 @@ Feature: Account registration and sign-in
 
 **BDD Feature File: Organizations (Organización, locales y zonas)**
 
-User Stories cubiertas: US12, US13, US14, US16, US18 y TS03.
+User Stories cubiertas: US12, US13, US14, US16, US18, US42 y TS03.
 
 ```gherkin
 @EP03
@@ -3044,6 +3143,22 @@ Feature: Organization, site and zone registration
       | name        | type         | off_hours |
       | Cold rooms  | COLD_STORAGE | yes       |
       | Sales floor | SALES_FLOOR  | no        |
+
+  @US42
+  Scenario: The entry plan's site limit stops the second site
+    Given the administrator has registered an organization
+    When the administrator registers the site "T-001" with 120 kW contracted under the tariff "MT2"
+    Then the site is registered in the organization
+    When the administrator registers the site "T-002" with 90 kW contracted under the tariff "BT3"
+    Then the request is rejected as a conflict
+    And the rejection message is "the Básico plan includes 1 site(s); change the plan to register another one"
+
+  @US42
+  Scenario: Changing the plan lifts the site limit
+    Given the administrator has registered an organization
+    And the organization has the site "T-001"
+    When the administrator registers the site "T-002" with 90 kW contracted under the tariff "BT3"
+    Then the site is registered in the organization
 ```
 
 *Figura 39 (Ejecución de la feature de organización, locales y zonas)*
@@ -3145,7 +3260,8 @@ Feature: Peak hours of the commercial tariff
   Scenario: The published tariff states peak hours for every day
     Given a signed-in user
     When the user consults the "MT2" tariff
-    Then the peak hours are "18:00-23:00 every day"
+    Then the peak hours are "18:00-23:00"
+    And the tariff applies them every day
 ```
 
 *Figura 41 (Ejecución de la feature de horario de punta)*
@@ -3319,12 +3435,19 @@ Archivo: **`tests/Sems.Api.SystemTests/OnboardingFlowTests.cs`**
 | US36 | Peso del cargo por potencia | Como responsable, deseo ver qué proporción de mi factura corresponde al cargo por potencia, para decidir si conviene actuar sobre el pico o sobre el consumo. |
 | TS05 | API de evaluación de demanda | Como developer, deseo un endpoint que evalúe una demanda medida contra las reglas del local, para generar las alertas correspondientes. |
 
-Pasos: local de 120 kW en `MT2` → regla de demanda al 85 % (102 kW) → medidor del local → cuatro lecturas
-de 90, 104, 118 y 132 kW, cada una registrada y evaluada → resultado `ninguna`, `WARNING`, `WARNING` y
-`CRITICAL` → la última lectura es la consulta de consumo actual → tres alertas listadas y tres correos
-enviados al responsable → la factura estimada con demanda máxima de 132 kW muestra 12 kW de exceso y
-un costo de potencia de `120 × 58.40 + 12 × 87.60` → la proyección de Analytics da el mismo total. Una
-segunda prueba verifica que una demanda que no pasa de 101.9 kW no genera alertas, correos ni exceso.
+Pasos: local de 120 kW en `MT2` → regla de demanda al 85 % (102 kW) → medidor y submedidor del local →
+cuatro lecturas de 90, 104, 118 y 132 kW, registradas una tras otra. No hace falta pedir la evaluación:
+el sistema evalúa cada lectura contra la regla del local en cuanto llega, que es lo que exige US29,
+porque el pico que fija el cargo del mes dura minutos y nadie está pulsando un botón cuando ocurre.
+Resultado: dos alertas, no cuatro. La de 104 kW avisa (`WARNING`), la de 118 kW se calla por ser el
+mismo nivel dentro de la media hora de silencio de la regla, y la de 132 kW vuelve a avisar
+(`CRITICAL`) porque empeorar siempre es noticia nueva; sin ese freno un medidor que reporta cada minuto
+levantaría una alerta por lectura. Evaluar a mano justo después devuelve `ninguna`, por el mismo
+silencio. Luego: la última lectura es la consulta de consumo actual (132 000 W) → dos alertas listadas
+y dos correos enviados al responsable, uno de ellos con el texto `12 kW above the 120 kW contracted` →
+la factura estimada con demanda máxima de 132 kW muestra 12 kW de exceso y un costo de potencia de
+`120 × 58.40 + 12 × 87.60` → la proyección de Analytics da el mismo total. Una segunda prueba verifica
+que una demanda que no pasa de 101.9 kW no genera alertas, correos ni exceso.
 
 Archivo: **`tests/Sems.Api.SystemTests/DemandChargePreventionFlowTests.cs`**
 
