@@ -3649,6 +3649,22 @@ estaba agotada. La revisión efectiva fue la humana, y el registro en GitHub lo 
 
 # Capítulo VII: DevOps Practices
 
+SEMS son cuatro productos en cuatro repositorios, y no están en el mismo punto de madurez DevOps.
+Este cuadro es el mapa del capítulo: dice de cada producto qué tiene automatizado hoy y qué no, para
+que las secciones siguientes se lean sabiendo dónde hay evidencia y dónde hay un hueco declarado.
+
+| Producto | Repositorio | Integración continua | Entrega y despliegue | Monitoreo |
+| :-- | :-- | :-- | :-- | :-- |
+| Backend (ASP.NET Core 8) | SEMS-Backend | `Backend CI` en GitHub Actions: *restore*, *build* en Release y 582 pruebas en cada `pull_request` y `push` a `develop` y `main` | Imagen Docker en dos etapas, desplegada sola en Render desde `main` | Logs de Render, más `/health`, `/health/ready` y `/metrics` publicados por la propia API |
+| Landing Page (HTML/CSS/JS) | SEMS-Landing-Page | Sin pipeline: el sitio no se compila ni tiene pruebas | `Deploy to GitHub Pages`: publica solo en cada `push` a `main` | Historial del *workflow* y disponibilidad de la URL |
+| Web Application (Vue 3 + Vite) | SEMS-Web-Application | **Ninguna.** `npm run lint` y `npm run build` se ejecutan a mano (DT05) | Vercel construye y publica solo desde la rama conectada | Estado `Ready` del *deployment* en Vercel |
+| Mobile Application (Flutter) | SEMS-Mobile-App | **Ninguna.** `flutter analyze` y `flutter test` se ejecutan a mano (DT06) | **Ninguno.** No hay construcción ni distribución a tienda | Ninguno |
+
+Dos de los cuatro productos no tienen integración continua y uno no tiene despliegue de ningún tipo.
+Está escrito aquí y no al final del capítulo porque es la parte honesta del estado actual: la
+automatización del *backend* está completa y es la que sostiene la evidencia de las secciones 7.1 a
+7.4; la de los otros tres está a medias o no existe.
+
 ## 7.1. Continuous Integration
 
 ### 7.1.1. Tools and Practices
@@ -3687,6 +3703,22 @@ Para el proceso de Continuous Integration de SEMS se emplean diferentes herramie
 
 - **Static Code Analysis:** la Web Application utiliza ESLint y la Mobile Application utiliza Flutter Lints para detectar problemas en el código antes de su integración.
 
+#### Verificación de las prácticas declaradas
+
+Declarar una práctica es barato; lo que vale es si el repositorio la refleja. Se midió cada una
+sobre el historial real de los cinco repositorios, contando solo *commits* que no son de mezcla.
+
+| Práctica | Cómo se verificó | Resultado |
+| :-- | :-- | :-- |
+| GitFlow y *feature branching* | Ramas remotas de cada repositorio | Solo el *backend* la aplica de verdad: tiene `main`, `develop` y ramas `feat/…` que entran por *pull request*. Los otros cuatro repositorios trabajan con una sola rama `main` |
+| *Pull requests* | *Pull requests* abiertos en SEMS-Backend | 11 en total, con la puerta de CI obligatoria; ninguna integración a `develop` por *push* directo |
+| *Conventional Commits* | Prefijo `feat`/`fix`/`docs`/`test`/`refactor`/`chore`/`ci` en el asunto | Backend 48 de 52 (92 %), Landing Page 2 de 2 (100 %), Web Application 3 de 5 (60 %), Reporte 51 de 89 (57 %), Mobile Application 0 de 3 (0 %) |
+| *Semantic Versioning* | Etiquetas del repositorio | Una sola: `v2.0.0` en SEMS-Backend, por la migración de Java a ASP.NET Core. El resto de repositorios no etiqueta versiones |
+
+La conclusión que se saca de la tabla es la que conviene registrar: la disciplina está donde está el
+*pipeline*. El *backend*, que es el único repositorio donde una máquina revisa cada cambio, es
+también el que cumple las convenciones; donde nadie verifica, el cumplimiento cae a la mitad o a
+cero. No es casualidad y es el argumento más fuerte a favor de cerrar DT05 y DT06.
 
 ### 7.1.2. Build & Test Suite Pipeline Components
 
@@ -3767,6 +3799,78 @@ En el detalle de la ejecución se observa que cada una de las etapas del pipelin
 
 De esta manera, el pipeline permite detectar automáticamente errores de compilación o fallos en las pruebas antes de que los cambios sean incorporados a las ramas principales del proyecto.
 
+#### Los pipelines que faltan
+
+El *workflow* anterior cubre un producto de los cuatro. Dejar escrito qué falta, y con qué
+exactitud, es parte de la entrega: así la deuda DT05 y DT06 tiene un alcance medible y no es una
+intención.
+
+**Web Application.** Hoy Vercel construye y publica sin que nadie haya corrido el *linter*. El
+repositorio ya tiene `eslint.config.js` y el script `npm run lint`, de modo que lo único que falta
+es el disparador. El *workflow* necesario cabe en un archivo:
+
+```yml
+name: Web CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: semswebapp/package-lock.json
+      - run: npm ci
+        working-directory: semswebapp
+      - run: npm run lint
+        working-directory: semswebapp
+      - run: npm run build
+        working-directory: semswebapp
+```
+
+Dos pasos y una puerta: ningún cambio llegaría a producción con un error de ESLint o con la
+construcción rota, que es exactamente lo que hoy sí puede pasar.
+
+**Mobile Application.** El proyecto Flutter ya incluye `analysis_options.yaml` con `flutter_lints`,
+así que la pieza que falta es la misma: quién lo ejecuta.
+
+```yml
+name: Mobile CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+```
+
+**Landing Page.** No necesita integración continua: es HTML, CSS y JavaScript sin compilación ni
+pruebas, y su *workflow* de publicación (sección 7.2.2) ya hace de verificación mínima, porque una
+publicación fallida se ve en el historial de GitHub Actions.
+
+Las dos piezas que faltan son un archivo de veinte líneas cada una, en repositorios que ya tienen la
+herramienta configurada. Lo que las bloquea no es trabajo, es que nadie las ha escrito todavía.
+
 ## 7.2. Continuous Delivery
 
 ### 7.2.1. Tools and Practices
@@ -3801,6 +3905,53 @@ El workflow se ejecuta mediante un evento `push` y realiza las siguientes etapas
 La ejecución del pipeline finalizó correctamente, mostrando todas sus etapas en estado exitoso.
 
 ![Landing Page Deployment Pipeline](assets/chapter7/landing-page-deployment-pipeline.png)
+
+El *workflow* que lo define es el siguiente:
+
+```yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+Tres detalles del archivo valen la pena. `permissions` concede solo lo que el trabajo necesita
+—leer el repositorio, escribir en Pages y pedir el token de identidad— en vez de dejar los permisos
+por defecto. El bloque `concurrency` impide que dos publicaciones corran a la vez y, con
+`cancel-in-progress: false`, hace que una nueva espere en lugar de cancelar a la anterior: cancelar
+a mitad de camino puede dejar el sitio servido a medias. Y `workflow_dispatch` permite republicar a
+mano sin tener que inventar un *commit*, que es lo que se necesita cuando hay que volver a publicar
+una versión que ya estaba bien.
 
 #### Web Application
 
