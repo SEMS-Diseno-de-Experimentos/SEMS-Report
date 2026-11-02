@@ -4728,6 +4728,63 @@ silencio posterior y la recuperación en una sola cosa con identidad. Sin ese ag
 unidad de análisis, y sin unidad de análisis no hay experimento. Es el cambio de modelo que abre el
 capítulo 8.3.
 
+## 8.3. Experimentation
+
+### 8.3.1. To-Be User Stories
+
+Las historias que siguen son las que hacen falta para que los experimentos del apartado 8.2 se
+puedan ejecutar. Continúan la numeración del *product backlog* de la sección 3.2, que llega hasta
+US44, y se agrupan en dos épicas nuevas.
+
+**EP10 — Instrumentación y experimentación**
+
+| ID | Título | Historia | Criterios de aceptación |
+| :-- | :-- | :-- | :-- |
+| US45 | Episodio de demanda como entidad | **Como** responsable del producto, **quiero** que cada cruce del umbral se registre como un episodio con identidad propia, **para** poder medir qué pasó después del aviso | **Dado** que la demanda de un local cruza el umbral, **cuando** se procesa la lectura, **entonces** se abre un episodio con su identificador, el instante del cruce, la demanda medida y la contratada. **Y** el episodio se cierra con la primera lectura por debajo del umbral o a los 60 minutos, registrando si hubo recuperación, el pico alcanzado y su duración |
+| US46 | Registro de eventos de producto | **Como** responsable del producto, **quiero** que las acciones relevantes emitan un evento con su contexto, **para** medir el comportamiento sin depender de lo que la gente declare | **Dado** el plan de la sección 8.2.8, **cuando** ocurre cualquiera de los eventos listados, **entonces** se registra con sus propiedades y `occurred_at` en UTC. **Y** ningún evento contiene correo, nombre ni otro dato personal |
+| US47 | Asignación aleatoria de episodios | **Como** responsable del experimento, **quiero** que cada episodio se asigne al azar a un brazo, **para** poder comparar con alerta y sin alerta | **Dado** un experimento activo, **cuando** se abre un episodio, **entonces** se le asigna control, tratamiento A o tratamiento B con probabilidad 1:1:1, y la asignación queda registrada y es inmutable. **Y** si la demanda supera el 100 % de la contratada, se envía la alerta aunque el brazo sea control, y el episodio se marca como excluido |
+| US48 | Variante accionable del mensaje de alerta | **Como** responsable de un local, **quiero** que la alerta me diga qué apagar y cuánto libera, **para** saber qué hacer sin interpretar un número | **Dado** un local con zonas registradas, **cuando** se envía una alerta de la variante B, **entonces** el mensaje nombra la zona de mayor consumo y su aporte estimado en kW. **Y** si el local no tiene zonas, el envío cae a la variante A y así se registra |
+| US49 | Panel de resultados del experimento | **Como** responsable del producto, **quiero** ver la tasa de respuesta por brazo con su intervalo de confianza, **para** decidir sin exportar datos a mano | **Dado** un experimento con episodios cerrados, **cuando** abro el panel, **entonces** veo por brazo el número de episodios, la tasa de recuperación en 30 minutos, la mediana del tiempo hasta la acción y el intervalo al 95 % |
+
+**EP11 — Aviso en el canal que la gente usa**
+
+| ID | Título | Historia | Criterios de aceptación |
+| :-- | :-- | :-- | :-- |
+| US50 | Notificación *push* de alerta de demanda | **Como** responsable de un local, **quiero** recibir la alerta como notificación en el celular, **para** enterarme cuando ocurre y no cuando reviso el correo | **Dado** un dispositivo con la aplicación instalada y sesión iniciada, **cuando** se levanta una alerta, **entonces** llega una notificación con la severidad, el local y la demanda medida. **Y** al tocarla se abre el detalle del local |
+| US51 | Confirmación de acción sobre la alerta | **Como** responsable de un local, **quiero** confirmar que ya reduje carga, **para** que el sistema sepa que atendí el aviso | **Dado** una alerta abierta, **cuando** pulso «ya reduje carga», **entonces** se registra la confirmación con su instante y se asocia al episodio |
+| US52 | Preferencia de canal de aviso | **Como** usuario, **quiero** elegir por dónde recibir los avisos, **para** no duplicar notificaciones ni perderlas | **Dado** mi perfil, **cuando** elijo correo, *push* o ambos, **entonces** los avisos posteriores respetan la elección. **Y** el valor por defecto es ambos |
+| US53 | Informe mensual de ahorro verificado | **Como** responsable de operaciones, **quiero** un informe que contraste el cargo por potencia del mes con el del mes anterior, **para** sustentar la herramienta ante mi gerencia | **Dado** un local con dos periodos cerrados, **cuando** abro el informe, **entonces** veo la demanda máxima de cada periodo, el exceso facturado y el costo evitado en soles. **Y** el informe se puede descargar |
+
+Las cuatro historias de EP11 no salen de una lluvia de ideas: US50 y US52 responden al hallazgo 2
+del apartado 8.1.1, que seis de seis entrevistados piden el celular; US53 responde al hallazgo 3,
+que la adopción exige ahorro demostrado y no prometido; y US51 existe porque sin confirmación
+explícita la medición de Q1 depende solo de inferir la acción desde las lecturas.
+
+### 8.3.2. To-Be Product Backlog
+
+El orden no es por tamaño ni por gusto: cada historia está donde está porque desbloquea a la
+siguiente o porque responde antes la pregunta más cara de equivocar. Los puntos siguen la escala
+Fibonacci usada en los *sprints* anteriores (sección 5.2.1).
+
+| # | Épica | ID | Historia | Puntos | Desbloquea | Justificación del orden |
+| --: | :-- | :-- | :-- | --: | :-- | :-- |
+| 1 | EP10 | US45 | Episodio de demanda como entidad | 8 | US46, US47, US49 | Sin unidad de análisis no hay experimento posible. Es la pieza de la que cuelga todo el capítulo |
+| 2 | EP10 | US46 | Registro de eventos de producto | 8 | US49, todas las métricas de 8.2.7 | Hoy no se mide nada del comportamiento; es la deuda que impide responder cualquier pregunta |
+| 3 | EP10 | US47 | Asignación aleatoria de episodios | 5 | E1, E2 | Es lo que convierte el piloto en experimento en vez de en anécdota |
+| 4 | EP10 | US48 | Variante accionable del mensaje | 5 | E2 | Barata y aprovecha el mismo piloto; sin ella E2 no existe |
+| 5 | EP11 | US51 | Confirmación de acción sobre la alerta | 3 | Medición de Q1 | Cierra el ciclo de medición sin depender solo de la inferencia desde lecturas |
+| 6 | EP10 | US49 | Panel de resultados del experimento | 5 | Decisión de E1 | Se puede vivir sin él leyendo la base a mano, por eso va después de lo que sí bloquea |
+| 7 | EP11 | US50 | Notificación *push* | 13 | E3 (Q2) | El más caro: exige cerrar DT06, distribuir la aplicación móvil y montar el servicio de notificaciones |
+| 8 | EP11 | US52 | Preferencia de canal | 3 | — | Solo tiene sentido una vez que hay más de un canal |
+| 9 | EP11 | US53 | Informe mensual de ahorro verificado | 8 | Adquisición | No bloquea ningún experimento, pero es la condición que tres entrevistados ponen para pagar |
+
+**Lo que este backlog significa para el próximo *sprint*.** Las cuatro primeras historias suman 26
+puntos y son la condición para ejecutar E1 y E2. Hasta que estén, el capítulo VIII es un diseño
+sobre el papel: el producto funciona y está probado, pero no sabe mirarse a sí mismo. La diferencia
+entre esta entrega y la siguiente es exactamente esa: pasar de **demostrar que el software hace lo
+que dice** —que es lo que prueban los capítulos VI y VII— a **demostrar que sirve para lo que fue
+hecho**, que es lo único que el cliente va a pagar.
+
 # Conclusiones, Bibliografía y Anexos
 
 ## Conclusiones
