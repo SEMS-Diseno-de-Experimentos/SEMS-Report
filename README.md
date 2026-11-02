@@ -2467,11 +2467,11 @@ producto quede documentado con honestidad y sea verificable en la siguiente entr
 | DT02 | El formulario de alta de dispositivo no envía `siteId`, que la API exige como obligatorio | Aplicación web | El alta de dispositivos falla contra la API actual | Sprint 2 |
 | DT03 | La aplicación web muestra la interfaz en español por defecto | Aplicación web | Incumple la restricción de idioma por defecto en inglés | Sprint 2 |
 | DT04 | No existe suite de pruebas automatizadas en la aplicación web | Aplicación web | Sin red de seguridad ante regresiones | Sprint 2 |
-| DT05 | No existe pipeline de integración continua | Los tres repositorios | Las pruebas del backend se ejecutan a mano | Sprint 2 |
-| DT06 | La aplicación móvil no está iniciada | SEMS-Mobile-App | Alcance pendiente | `<Sprint>` |
+| DT05 | ~~No existe pipeline de integración continua~~ **Resuelta parcialmente.** El *backend* tiene el *workflow* `Backend CI` desde el 7 de octubre (PR 7); la aplicación web y la móvil siguen sin pipeline | SEMS-Web-Application, SEMS-Mobile-App | El `npm run lint` y el `npm run build` de la web se ejecutan a mano | Sprint 2 |
+| DT06 | La aplicación móvil está iniciada (48 archivos Dart, ~5 800 líneas) pero no tiene *pipeline* de integración ni de distribución, y sus pruebas no se ejecutan de forma automatizada | SEMS-Mobile-App | `flutter analyze` y `flutter test` se ejecutan a mano, si se ejecutan | Sprint 2 |
 
 
-### Capítulo VI: Product Verification & Validation
+# Capítulo VI: Product Verification & Validation
 
 ## 6.1. Testing Suites & Validation
 
@@ -2496,11 +2496,21 @@ Todas las suites se ejecutan con un único comando desde la raíz del repositori
 dotnet test SemsBackend.sln --logger "trx" --collect:"XPlat Code Coverage" --results-directory ./TestResults
 ```
 
-En la ejecución documentada en este capítulo (5 de octubre de 2026, .NET SDK 8.0.425) se ejecutaron
-**424 pruebas: 424 aprobadas, 0 fallidas y 0 omitidas**. La cobertura de
-líneas del ensamblado `Sems.Api`, combinando las cuatro suites y excluyendo las migraciones de
-*Entity Framework Core*, es de **67.3%**, con 58.3% de cobertura de ramas. Las cifras de
-las figuras se obtienen directamente de los archivos `.trx` y `coverage.cobertura.xml` de esa ejecución.
+En la ejecución documentada en este capítulo (2 de noviembre de 2026, .NET SDK 8.0.426) se ejecutaron
+**582 pruebas: 582 aprobadas, 0 fallidas y 0 omitidas**, repartidas en 51 clases de prueba y resueltas
+en 42.8 segundos de reloj. La cobertura de líneas del ensamblado `Sems.Api`, combinando las cuatro
+suites y excluyendo las migraciones de *Entity Framework Core*, es de **70.5%** (4 724 de 6 696 líneas),
+con **62.3%** de cobertura de ramas (846 de 1 357) y 69.1% de cobertura de métodos (1 380 de 1 995)
+sobre 226 clases en 90 archivos. Las cifras de las figuras se obtienen directamente de los archivos
+`.trx` y `coverage.cobertura.xml` de esa ejecución:
+
+| Suite | Clases | Pruebas | Aprobadas | Fallidas | Duración |
+| :-- | --: | --: | --: | --: | --: |
+| Core Entities Unit Tests | 27 | 385 | 385 | 0 | 3.31 s |
+| Core Integration Tests | 14 | 137 | 137 | 0 | 41.63 s |
+| Core Behavior-Driven Development | 6 | 54 | 54 | 0 | 25.54 s |
+| Core System Tests | 4 | 6 | 6 | 0 | 11.00 s |
+| **Total** | **51** | **582** | **582** | **0** | **42.8 s** |
 
 *Figura 32 (Resumen general de resultados de las cuatro suites)*
 <img src="assets/images/figures/32-test-results-summary.png" alt="Resumen general de resultados" style="width: 100vw;">
@@ -2518,13 +2528,17 @@ las figuras se obtienen directamente de los archivos `.trx` y `coverage.cobertur
 > Cobertura de líneas y de ramas de cada uno de los ocho módulos, del núcleo compartido y de `Program`,
 > con el desglose por capa (Domain, Application, Infrastructure, Interfaces).
 
-La cobertura es menor en Payments (49.9%) porque las operaciones que llaman a la API de Stripe
+La cobertura es menor en Payments (50.7%) porque las operaciones que llaman a la API de Stripe
 (intención de pago, sesión de *checkout*, métodos de pago) no se ejecutan contra el proveedor real; el
-*webhook*, que es la parte que decide si un cobro se contabiliza, sí está cubierto. En IAM, la capa
-Application queda en un valor más bajo porque la siembra de datos de demostración se desactiva durante
-las pruebas.
+*webhook*, que es la parte que decide si un cobro se contabiliza, sí está cubierto. Device Management
+(51.4%) es el otro módulo por debajo del promedio: sus comandos de telemetría cruda y el adaptador de
+ingesta por lotes no se ejercitan en esta entrega. En IAM, la capa Application queda en un valor más
+bajo (61.8%) porque la siembra de datos de demostración se desactiva durante las pruebas y porque el
+verificador real de Google (`GoogleTokenInfoVerifier`) se sustituye por un doble: lo que se prueba es la
+decisión de `AuthenticationService` ante cada respuesta posible del verificador, no la llamada HTTP a
+`oauth2.googleapis.com`.
 
-**Defectos encontrados durante la construcción de las suites.** Las pruebas detectaron nueve defectos del
+**Defectos encontrados durante la construcción de las suites.** Las pruebas detectaron doce defectos del
 *backend*. Cada uno se corrigió en el código de producción, sin ajustar la prueba que lo reveló:
 
 | # | Módulo | Defecto | Prueba que lo reveló |
@@ -2538,6 +2552,9 @@ las pruebas.
 | 7 | Device Management | `GET /api/v1/device-management/devices` seguía listando los dispositivos dados de baja | `DeviceEndpointsTests.RemoveDevice_DeviceNoLongerAppearsInTheGeneralListing` |
 | 8 | Alerts | Las alertas de demanda (`WARNING`, `CRITICAL`) no publicaban `AlertTriggered`, por lo que nunca se notificaban por correo | `DemandAlertEndpointsTests.EvaluateDemand_RaisedAlert_IsListedForTheUserAndNotifiedByEmail` |
 | 9 | Organizations | Volver a dar acceso a una persona cuyo vínculo fue revocado respondía `500`, por el índice único (organización, usuario) | `OrganizationEndpointsTests.GrantMembership_AgainAfterRevoking_Returns201` |
+| 10 | Subscriptions | Toda cuenta nueva quedaba suscrita al plan de pago `Básico` porque el manejador lo buscaba por nombre; el plan de entrada debe ser el más barato de los cargados, que es sobre el que se miden los cupos de locales y medidores | `SubscriptionEndpointsTests.Register_NewAccount_IsSubscribedToTheEntryPlan` junto con los escenarios `@US42` de `OrganizationsAndSites.feature` |
+| 11 | Alerts | La demanda solo se evaluaba cuando alguien llamaba al *endpoint* de evaluación: una lectura que superaba el umbral no levantaba nada por sí sola, en contra de US29, porque el pico que fija el cargo del mes dura minutos | `DemandChargePreventionFlowTests.DemandChargePrevention_DemandClimbsPastTheContractedPower_WarnsThenRaisesCriticalAndBillsTheExcess` |
+| 12 | Plataforma | La siembra de datos de demostración estaba activa salvo que se la apagara explícitamente, de modo que un despliegue nuevo nacía con cuentas y locales de ejemplo; ahora exige `SEED_DEMO_DATA=true` | `SubscriptionEndpointsTests` y los escenarios de cupos, que contaban los locales de demostración como propios |
 
 ### 6.1.1. Core Entities Unit Tests.
 
@@ -2581,6 +2598,30 @@ publicador de eventos simulados:
 - Resumen BCrypt → empieza con `$2`, lleva *salt* distinto en cada emisión y verifica la contraseña
 - Resumen BCrypt mal formado → la comparación devuelve `false` en lugar de lanzar una excepción
 - Token JWT → lleva el identificador del usuario en `sub`, el correo, el rol y la expiración configurada
+
+**`tests/Sems.Api.Tests/Iam/GoogleSignInTests.cs`** Prueba `AuthenticationService.SignInWithGoogleAsync`
+con el puerto `IGoogleTokenVerifier` simulado, de modo que se verifica la decisión del servicio ante cada
+respuesta posible de Google y no la llamada HTTP a `oauth2.googleapis.com`:
+
+- Primera entrada con Google → crea la cuenta con el nombre que devuelve Google y la deja activa
+- Correo que ya tiene cuenta → inicia sesión en esa cuenta, no crea una segunda
+- Cuenta en estado `PENDING` → Google responde por el correo y la cuenta queda verificada
+- Token emitido para otra aplicación (`aud` distinto del `GOOGLE_CLIENT_ID`) → rechazado
+- Correo sin verificar en Google (`email_verified = false`) → rechazado
+- Token que Google no reconoce → rechazado
+- Servidor sin `GOOGLE_CLIENT_ID` configurado → responde que la opción no está habilitada, en lugar de dejar entrar a cualquiera
+- Petición sin token → `VALIDATION_ERROR`
+
+**`tests/Sems.Api.Tests/Iam/UserProfileServiceTests.cs`** Prueba `UserProfileService`, que guarda el
+nombre y el segmento de establecimiento del titular de la cuenta:
+
+- Nombre y segmento → se guardan sin espacios sobrantes
+- Segmento escrito como `RETAIL_CHAIN`, `retail-chain` o ` Independent ` → se interpreta igual en los tres casos
+- Segmento inexistente → `VALIDATION_ERROR` que enumera los valores válidos
+- Nombre en blanco → queda vacío, no se guardan espacios
+- Nombre más largo que la columna → `VALIDATION_ERROR` en lugar de un error de base de datos
+- Petición sin segmento → lo deja sin asignar, sin fallar
+- Usuario inexistente → `NOT_FOUND`
 
 **Organizations**
 
@@ -2673,6 +2714,21 @@ y el adaptador simulado del proveedor de tarifas:
 **`tests/Sems.Api.Tests/Energy/EnergyContractTests.cs`** Verifica el contrato JSON en *snake_case* de
 lecturas, consumos y factura estimada.
 
+**`tests/Sems.Api.Tests/Energy/ConsumptionBreakdownServiceTests.cs`** Prueba
+`ConsumptionBreakdownService`, que responde las tres preguntas de desglose de consumo (US24, US26, US39):
+
+- Local inexistente → `NOT_FOUND`
+- Local con dos zonas → reparte el consumo y los porcentajes suman 100
+- Medidor sin zona → su consumo se reporta aparte, como no asignado, en lugar de perderse
+- Zona sin lecturas → aparece en cero, no se omite
+- Lecturas en punta y fuera de punta → cada banda se valoriza con su propio precio
+- Local sin medidores → desglose vacío, sin fallar
+- Ventana pedida de 0, −5, 7 o 5000 días → se ajusta a 30, 30, 7 y 365 respectivamente
+- Locales de distinto tamaño → se comparan por consumo por kW contratado, no por consumo absoluto
+- Organización sin locales → comparación vacía
+- Consumo actual → suma la última potencia de cada medidor e informa cuántos reportaron
+- Medidor que nunca reportó → se cuenta en el total de medidores pero no aporta potencia
+
 **Analytics**
 
 **`tests/Sems.Api.Tests/Analytics/AnalyticsServiceTests.cs`** Prueba el servicio `AnalyticsService` con
@@ -2688,6 +2744,37 @@ el puerto `IBillCalculator` simulado, y su implementación `EnergyBillCalculator
 
 - Desviación de una anomalía → relativa al consumo esperado (`50 %`, `-50 %`); sin consumo esperado → `0`
 - Aplicar dos veces una recomendación → conserva la primera fecha
+
+**`tests/Sems.Api.Tests/Analytics/InsightEngineTests.cs`** Prueba `InsightEngine`, el motor que produce
+anomalías, recomendaciones y proyecciones a partir del consumo medido (US35, US37, US38). Usa el puerto
+`IEnergyUsage` simulado, de modo que el motor se prueba sin base de datos:
+
+- Sin consumo medido → no encuentra nada y no guarda nada
+- Solo el día en curso medido → lo ignora, porque el día aún no cierra
+- Pico con historia suficiente (al menos siete días) → levanta una anomalía de consumo
+- Pico sin historia suficiente → se queda callado
+- Desviación pequeña en un medidor pequeño → se queda callado, por los mínimos de 25 % y 5 kWh
+- Pico ya reportado hoy → no lo repite
+- Una zona concentra más del 40 % del local → recomienda revisar esa zona
+- Más del 25 % del consumo en la ventana de punta → recomienda desplazar carga
+- Poco consumo en punta → no recomienda desplazar carga
+- Demanda máxima por encima del 85 % de la potencia contratada → recomienda escalonar arranques
+- Demanda máxima muy por debajo → se queda callado
+- Recomendación ya emitida hoy → no la repite
+- Consumo sin local asociado → no produce recomendaciones
+- Consumo medido → proyecta la factura mensual del local
+- Pocos días medidos → declara un margen de error más amplio
+- Local ya proyectado hoy → no lo proyecta de nuevo
+
+**`tests/Sems.Api.Tests/Analytics/InsightRecomputeQueueTests.cs`** Prueba `InsightRecomputeQueue`, la
+cola con espera de cinco segundos que agrupa los recálculos pedidos por los eventos de lectura:
+
+- Nada pedido → no devuelve a nadie
+- Antes de que venza la espera → no devuelve a nadie
+- Vencida la espera → devuelve al usuario y vacía la cola
+- Varias peticiones del mismo usuario → se recalcula una sola vez
+- Peticiones de usuarios distintos → cada uno se recalcula
+- Usuario en blanco → se ignora
 
 **Alerts**
 
@@ -2749,11 +2836,11 @@ petición en *snake_case* y respuesta en *PascalCase*.
 *Figura 35 (Resultados de las pruebas unitarias por clase)*
 <img src="assets/images/figures/35-unit-tests-by-class.png" alt="Pruebas unitarias por clase" style="width: 100vw;">
 
-> 22 clases de prueba agrupadas por módulo, todas aprobadas.
+> 27 clases de prueba agrupadas por módulo, todas aprobadas.
 
-| Suite | Archivos | Pruebas | Passed | Failed |
+| Suite | Clases | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Entities Unit Tests | 22 | 263 | 263 | 0 |
+| Core Entities Unit Tests | 27 | 385 | 385 | 0 |
 
 ### 6.1.2. Core Integration Tests.
 
@@ -2789,6 +2876,16 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 - `POST /api/v1/auth/logout` → responde `204 No Content` y el token revocado ya no refresca
 - `GET /api/v1/users/me` sin token o con un token mal formado → responde `401 Unauthorized`
 
+**IAM (perfil)** — `tests/Sems.Api.IntegrationTests/Iam/UserProfileEndpointsTests.cs`
+
+- `POST /api/v1/auth/register` con nombre y segmento → la sesión devuelta ya los trae
+- `POST /api/v1/auth/register` sin nombre ni segmento → sigue funcionando, el perfil queda vacío
+- `POST /api/v1/auth/register` con un segmento inexistente → `400 Bad Request` enumerando los válidos
+- `POST /api/v1/auth/login` después de registrarse → devuelve el perfil guardado
+- `GET /api/v1/users/me` después de actualizar el perfil → devuelve los valores nuevos
+- `PUT /api/v1/users/me` con un segmento inexistente → `400 Bad Request`; sin token → `401 Unauthorized`
+- `PUT /api/v1/users/me` → solo modifica al titular del token, no a otras cuentas
+
 **Organizations** — `tests/Sems.Api.IntegrationTests/Organizations/OrganizationEndpointsTests.cs`
 
 - `POST /api/v1/organizations` con RUC válido → responde `201 Created` y el creador queda como `ORG_ADMIN`
@@ -2820,13 +2917,32 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 - Demanda igual a la contratada → `has_power_excess = false`
 - Mismo consumo con un pico mayor → solo crece `power_cost`
 - Categoría `XYZ`, consumo negativo o potencia contratada `0` → `400 Bad Request`; sin token → `401 Unauthorized`
-- `GET /api/v1/energy/tariffs/MT2` → `200 OK` con `peak_hours = "18:00-23:00 every day"`
+- `GET /api/v1/energy/tariffs/MT2` → `200 OK` con `peak_hours = "18:00-23:00"` y `peak_every_day = true`
 - `POST /api/v1/energy-meters` con número de serie repetido → `409 Conflict`
 - `POST /api/v1/energy-readings` válida → `201 Created`; con 70 Hz → `400 Bad Request`
+
+**Energy Monitoring (desglose de consumo)** — `tests/Sems.Api.IntegrationTests/Energy/ConsumptionBreakdownEndpointsTests.cs`
+
+- `GET /api/v1/sites/{siteId}/zone-consumption` en un local con dos zonas → `200 OK` con los porcentajes en *snake_case*
+- Medidor sin zona → su consumo se reporta aparte, no se mezcla con el de las zonas
+- Local inexistente → `404 Not Found`; sin token → `401 Unauthorized`
+- `GET /api/v1/organizations/{organizationId}/site-consumption` con dos locales → los compara por kW contratado
+- Organización sin lecturas → devuelve todos sus locales en cero
+- `GET /api/v1/sites/{siteId}/consumption/current` → suma la última potencia de cada medidor
+- Local que nunca reportó → responde cero, sin fallar
 
 **Analytics** — `tests/Sems.Api.IntegrationTests/Analytics/BillForecastEndpointsTests.cs`
 
 - `POST /api/v1/analytics/bill-predictions/forecast` → `201 Created` con el mismo total que `bill-estimate`, a través del puerto `IBillCalculator`
+
+**Analytics (motor de hallazgos)** — `tests/Sems.Api.IntegrationTests/Analytics/InsightEndpointsTests.cs`
+
+- `POST /api/v1/analytics/insights/recompute` sin consumo medido → `200 OK` informando que no se encontró nada
+- Consumo concentrado en una zona y en horario punta → produce consejos de ahorro
+- Consumo medido → proyecta la factura del local
+- Recálculo dos veces el mismo día → no duplica los hallazgos
+- Pico en el último día cerrado → levanta una anomalía
+- Sin token → `401 Unauthorized`
 
 **Alerts** — `tests/Sems.Api.IntegrationTests/Alerts/DemandAlertEndpointsTests.cs`
 
@@ -2859,11 +2975,11 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 *Figura 36 (Resultados de las pruebas de integración por clase)*
 <img src="assets/images/figures/36-integration-tests-by-class.png" alt="Pruebas de integración por clase" style="width: 100vw;">
 
-> 11 clases de prueba en 10 archivos, todas aprobadas contra la API completa.
+> 14 clases de prueba en 13 archivos, todas aprobadas contra la API completa.
 
-| Suite | Archivos | Pruebas | Passed | Failed |
+| Suite | Clases | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Integration Tests | 10 | 103 | 103 | 0 |
+| Core Integration Tests | 14 | 137 | 137 | 0 |
 
 ### 6.1.3. Core Behavior-Driven Development
 
@@ -2877,7 +2993,7 @@ con una tabla *Examples*.
 *Figura 37 (Escenarios BDD agrupados por feature)*
 <img src="assets/images/figures/37-bdd-scenarios-by-feature.png" alt="Escenarios BDD por feature" style="width: 100vw;">
 
-> 30 escenarios en seis *features*; cada fila de *Examples* es una ejecución, lo que da 52 ejecuciones.
+> 32 escenarios en seis *features*; cada fila de *Examples* es una ejecución, lo que da 54 ejecuciones.
 
 **BDD Feature File: IAM (Registro e inicio de sesión)**
 
@@ -2943,7 +3059,7 @@ Feature: Account registration and sign-in
 
 **BDD Feature File: Organizations (Organización, locales y zonas)**
 
-User Stories cubiertas: US12, US13, US14, US16, US18 y TS03.
+User Stories cubiertas: US12, US13, US14, US16, US18, US42 y TS03.
 
 ```gherkin
 @EP03
@@ -3030,6 +3146,22 @@ Feature: Organization, site and zone registration
       | name        | type         | off_hours |
       | Cold rooms  | COLD_STORAGE | yes       |
       | Sales floor | SALES_FLOOR  | no        |
+
+  @US42
+  Scenario: The entry plan's site limit stops the second site
+    Given the administrator has registered an organization
+    When the administrator registers the site "T-001" with 120 kW contracted under the tariff "MT2"
+    Then the site is registered in the organization
+    When the administrator registers the site "T-002" with 90 kW contracted under the tariff "BT3"
+    Then the request is rejected as a conflict
+    And the rejection message is "the Básico plan includes 1 site(s); change the plan to register another one"
+
+  @US42
+  Scenario: Changing the plan lifts the site limit
+    Given the administrator has registered an organization
+    And the organization has the site "T-001"
+    When the administrator registers the site "T-002" with 90 kW contracted under the tariff "BT3"
+    Then the site is registered in the organization
 ```
 
 *Figura 39 (Ejecución de la feature de organización, locales y zonas)*
@@ -3131,7 +3263,8 @@ Feature: Peak hours of the commercial tariff
   Scenario: The published tariff states peak hours for every day
     Given a signed-in user
     When the user consults the "MT2" tariff
-    Then the peak hours are "18:00-23:00 every day"
+    Then the peak hours are "18:00-23:00"
+    And the tariff applies them every day
 ```
 
 *Figura 41 (Ejecución de la feature de horario de punta)*
@@ -3253,7 +3386,7 @@ Feature: Submeter registration and removal
 
 | Suite | Archivos | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Behavior-Driven Development | 6 | 52 | 52 | 0 |
+| Core Behavior-Driven Development | 6 | 54 | 54 | 0 |
 
 ### 6.1.4. Core System Tests.
 
@@ -3305,12 +3438,19 @@ Archivo: **`tests/Sems.Api.SystemTests/OnboardingFlowTests.cs`**
 | US36 | Peso del cargo por potencia | Como responsable, deseo ver qué proporción de mi factura corresponde al cargo por potencia, para decidir si conviene actuar sobre el pico o sobre el consumo. |
 | TS05 | API de evaluación de demanda | Como developer, deseo un endpoint que evalúe una demanda medida contra las reglas del local, para generar las alertas correspondientes. |
 
-Pasos: local de 120 kW en `MT2` → regla de demanda al 85 % (102 kW) → medidor del local → cuatro lecturas
-de 90, 104, 118 y 132 kW, cada una registrada y evaluada → resultado `ninguna`, `WARNING`, `WARNING` y
-`CRITICAL` → la última lectura es la consulta de consumo actual → tres alertas listadas y tres correos
-enviados al responsable → la factura estimada con demanda máxima de 132 kW muestra 12 kW de exceso y
-un costo de potencia de `120 × 58.40 + 12 × 87.60` → la proyección de Analytics da el mismo total. Una
-segunda prueba verifica que una demanda que no pasa de 101.9 kW no genera alertas, correos ni exceso.
+Pasos: local de 120 kW en `MT2` → regla de demanda al 85 % (102 kW) → medidor y submedidor del local →
+cuatro lecturas de 90, 104, 118 y 132 kW, registradas una tras otra. No hace falta pedir la evaluación:
+el sistema evalúa cada lectura contra la regla del local en cuanto llega, que es lo que exige US29,
+porque el pico que fija el cargo del mes dura minutos y nadie está pulsando un botón cuando ocurre.
+Resultado: dos alertas, no cuatro. La de 104 kW avisa (`WARNING`), la de 118 kW se calla por ser el
+mismo nivel dentro de la media hora de silencio de la regla, y la de 132 kW vuelve a avisar
+(`CRITICAL`) porque empeorar siempre es noticia nueva; sin ese freno un medidor que reporta cada minuto
+levantaría una alerta por lectura. Evaluar a mano justo después devuelve `ninguna`, por el mismo
+silencio. Luego: la última lectura es la consulta de consumo actual (132 000 W) → dos alertas listadas
+y dos correos enviados al responsable, uno de ellos con el texto `12 kW above the 120 kW contracted` →
+la factura estimada con demanda máxima de 132 kW muestra 12 kW de exceso y un costo de potencia de
+`120 × 58.40 + 12 × 87.60` → la proyección de Analytics da el mismo total. Una segunda prueba verifica
+que una demanda que no pasa de 101.9 kW no genera alertas, correos ni exceso.
 
 Archivo: **`tests/Sems.Api.SystemTests/DemandChargePreventionFlowTests.cs`**
 
@@ -3358,15 +3498,158 @@ Archivo: **`tests/Sems.Api.SystemTests/AccountRecoveryFlowTests.cs`**
 
 **Resumen de las suites**
 
-| Suite | Archivos | Pruebas | Passed | Failed |
+| Suite | Clases | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Entities Unit Tests | 22 | 263 | 263 | 0 |
-| Core Integration Tests | 10 | 103 | 103 | 0 |
-| Core Behavior-Driven Development | 6 | 52 | 52 | 0 |
+| Core Entities Unit Tests | 27 | 385 | 385 | 0 |
+| Core Integration Tests | 14 | 137 | 137 | 0 |
+| Core Behavior-Driven Development | 6 | 54 | 54 | 0 |
 | Core System Tests | 4 | 6 | 6 | 0 |
-| **Total** | **42** | **424** | **424** | **0** |
+| **Total** | **51** | **582** | **582** | **0** |
 
-## 7.1 Continuous Integration
+## 6.2. Static Testing & Verification
+
+Mientras que la sección 6.1 ejecuta el producto, esta sección lo revisa sin ejecutarlo: el compilador
+y los analizadores leen el código, las convenciones se verifican sobre el repositorio y las personas
+revisan los cambios antes de que entren a `develop`. Las tres actividades se hacen sobre el mismo
+estado del repositorio documentado en 6.1 (`develop`, commit `9f3e31e`, 2 de noviembre de 2026).
+
+### 6.2.1. Static Code Analysis
+
+#### 6.2.1.1. Coding standard & Code conventions
+
+El estándar de cada producto es el del propio lenguaje, no uno inventado por el equipo. Lo que el
+equipo definió es dónde vive cada cosa y cómo se nombra, y está registrado en la sección 5.1.3
+(*Source Code Style Guide & Conventions*). Aquí se verifica que el código cumpla ese estándar.
+
+| Producto | Estándar | Herramienta que lo verifica | Cómo se ejecuta |
+| :-- | :-- | :-- | :-- |
+| Backend (C#) | *Framework Design Guidelines* de .NET: `PascalCase` en tipos y miembros públicos, `_camelCase` en campos privados, `camelCase` en locales y parámetros | Compilador de C# 12 con `Nullable` e `ImplicitUsings` activados y analizadores del SDK de .NET 8 | `dotnet build SemsBackend.sln -c Release` |
+| Aplicación web (Vue 3) | *Vue Style Guide* y las reglas recomendadas de JavaScript | ESLint 9 con `@eslint/js` recomendado y `eslint-plugin-vue` en configuración `flat/recommended` | `npm run lint` |
+| Aplicación móvil (Flutter) | *Effective Dart* | `flutter_lints`, incluido desde `analysis_options.yaml` | `flutter analyze`, hoy a mano: el producto móvil no tiene *pipeline* (DT06) |
+
+**Reglas propias del backend que el compilador no puede verificar.** Tres convenciones del proyecto
+no tienen regla automática y se verifican en la revisión por pares descrita en 6.2.2:
+
+- Un archivo por agregado o por conjunto cohesionado de tipos del mismo módulo.
+- Los tipos del dominio no llevan anotaciones de persistencia ni de serialización: el mapeo vive en
+  la capa de infraestructura y el contrato JSON en la de interfaces. Esta es la convención que
+  sostiene la separación por capas de cada módulo, y es también la que más fácilmente se rompe por
+  comodidad.
+- El estilo de nomenclatura del JSON es distinto por módulo (sección 5.1.3) y cada módulo debe
+  conservar el suyo. El riesgo real es que un contrato cambie de estilo sin querer y rompa a un
+  cliente existente, por eso hay pruebas de contrato dedicadas (`EnergyContractTests`,
+  `SubscriptionContractTests`) que lo fijan desde 6.1.
+
+**Decisión registrada: una sola regla de excepción al estándar.** El proyecto activa
+`GenerateDocumentationFile` porque la documentación XML es la fuente del documento OpenAPI
+(sección 5.2.6), pero silencia el aviso `CS1591` (*missing XML comment for publicly visible type or
+member*) con `<NoWarn>$(NoWarn);1591</NoWarn>`. Exigir comentario en los 226 tipos del ensamblado
+habría producido comentarios vacíos escritos para callar al compilador, que es exactamente el tipo
+de documentación que después miente. La documentación XML se exige donde se publica: en las acciones
+de los controladores.
+
+#### 6.2.1.2. Code quality & Code security
+
+**Verificación con el compilador.** La compilación en `Release` de la solución completa (6 proyectos:
+`Sems.Api` y los cinco de prueba) termina con **0 errores y 4 avisos**, todos en `Sems.Api` y todos
+registrados aquí en lugar de ocultarse:
+
+| Aviso | Archivo | Qué dice | Estado |
+| :-- | :-- | :-- | :-- |
+| `CS8604` | `Modules/Iam/Application/AuthenticationService.cs:222` | Posible referencia nula al pasar `dc.DeviceName` a `RankingItem` | Abierto. Está en la ruta de siembra de datos de demostración, que desde esta entrega solo se ejecuta con `SEED_DEMO_DATA=true` (defecto 12 de 6.1); el arreglo es dar un nombre por defecto al dispositivo sin nombre |
+| `CS1573` ×3 | `Modules/Iam/Domain/Services/IGoogleTokenVerifier.cs:21-22` | Los parámetros `Email`, `EmailVerified` y `Name` del *record* `GoogleIdentity` no tienen etiqueta `param` | Abierto. Es documentación incompleta de un tipo interno, no un defecto de comportamiento |
+
+Que sean cuatro y no cero no es casualidad ni descuido: el proyecto tiene `Nullable` activado en los
+seis proyectos, de modo que el compilador obliga a declarar qué puede ser nulo y verifica cada uso.
+Los avisos que quedan son el residuo visible de esa verificación, y se documentan antes que
+silenciarse. La solución **no** usa `TreatWarningsAsErrors`; convertirlos en error es la mejora
+natural una vez cerrados estos cuatro.
+
+**Verificación de la aplicación web.** `npm run lint` recorre los **82 archivos** de
+`src/` y termina con **0 errores y 0 avisos**. La configuración (`eslint.config.js`) desactiva
+una sola regla, `vue/multi-word-component-names`, con su motivo escrito en el propio archivo: las
+vistas se llaman igual que su ruta y terminan en `View`, y exigir dos palabras obligaría a
+renombrarlas sin ganar legibilidad.
+
+**Verificación de seguridad.** La revisión de seguridad no se delegó a una herramienta: se hizo como
+lista de comprobación sobre las decisiones que un análisis estático genérico no sabe juzgar, y cada
+punto quedó respaldado por una prueba de 6.1, que es lo que impide que la propiedad se pierda en un
+cambio posterior.
+
+| Propiedad verificada | Dónde está implementada | Prueba que la sostiene |
+| :-- | :-- | :-- |
+| Las contraseñas nunca se guardan en claro (BCrypt con *salt* por emisión) | `Modules/Iam/Infrastructure` | `IdentityDomainTests`, `AuthenticationEndpointsTests` |
+| Los tokens de refresco se guardan como resumen SHA-256, nunca en claro | `Modules/Iam/Application/AuthTokenService` | `AuthTokenServiceTests`, `AuthenticationEndpointsTests` |
+| Un token de refresco solo sirve una vez | `AuthTokenService` | `AuthenticationEndpointsTests` |
+| `forgot-password` responde idéntico exista o no la cuenta | `AccountRecoveryService` | `AuthenticationEndpointsTests.ForgotPassword_ExistingEmail_SendsResetLinkOnlyToThatAccount` |
+| El inicio de sesión fallido no distingue entre contraseña incorrecta y correo inexistente | `AuthenticationService` | `AuthenticationEndpointsTests`, `Authentication.feature` |
+| Toda ruta exige autenticación salvo las declaradas públicas | Política de autorización global en `Program.cs` | `CorsPolicyTests`, `HealthEndpointsTests` y los casos `401` de cada suite de *endpoints* |
+| CORS acepta solo los orígenes configurados, nunca `*` junto con credenciales | `Program.cs` | `CorsPolicyTests` (5 pruebas: 3 orígenes registrados, 2 no registrados) |
+| El *webhook* de pagos se autentica por la firma del cuerpo, no por JWT, y descarta reenvíos | `Modules/Payments` | `StripeWebhookEndpointTests`, `SubscriptionPaymentFlowTests` |
+| El token de Google se valida contra el `GOOGLE_CLIENT_ID` del servidor y exige correo verificado | `AuthenticationService.SignInWithGoogleAsync` | `GoogleSignInTests` (8 pruebas, cuatro de ellas de rechazo) |
+| Sin `GOOGLE_CLIENT_ID` configurado la opción se declara deshabilitada en lugar de aceptar cualquier token | `AuthenticationService` | `GoogleSignInTests.SignInWithGoogleAsync_WithoutAClientIdConfigured_SaysSoInsteadOfLettingAnyoneIn` |
+| Un despliegue nuevo no nace con cuentas de demostración | `SystemDataSeeder` | Defecto 12 de 6.1 |
+| Los datos de tarjeta nunca llegan al servidor | Pasarela alojada de Stripe | Verificado por diseño: la API solo recibe un identificador del medio de pago |
+
+**Lo que no se verifica automáticamente y se asume como deuda.** No hay análisis de dependencias
+vulnerables (`dotnet list package --vulnerable`, `npm audit`) ni escaneo de secretos integrado al
+*pipeline*. Las dos cosas son un paso de GitHub Actions cada una y están registradas como mejora del
+capítulo VII; mientras tanto, el repositorio excluye `.env` por `.gitignore` y publica `.env.example`
+con los nombres de las variables y sin sus valores.
+
+### 6.2.2. Reviews
+
+**Cómo se revisa.** Ningún cambio llega a `develop` por *push* directo: cada uno viaja en una rama
+`feat/…`, `fix/…` o `ci/…` y entra por *pull request*. Un *pull request* tiene que pasar dos puertas
+antes de integrarse:
+
+1. **La puerta automática.** El *workflow* `Backend CI` (sección 7.1) se dispara en cada `pull_request`
+   contra `develop` y `main`, y ejecuta `dotnet restore`, `dotnet build -c Release` y
+   `dotnet test`. Un *pull request* con la compilación rota o con una prueba en rojo no se integra.
+2. **La puerta humana.** La revisión por pares se concentra en lo que la puerta automática no ve: las
+   tres convenciones de 6.2.1.1 sin regla automática, el reparto por capas dentro de cada módulo, y
+   si la prueba que acompaña al cambio prueba la regla de negocio o solo que el código se ejecuta.
+
+**Registro de las revisiones.** El repositorio del *backend* acumula 11 *pull requests*; los cinco
+del periodo documentado en este capítulo son los siguientes. Las columnas de archivos y líneas vienen
+de la API de GitHub.
+
+| PR | Título | Rama | Archivos | Líneas | CI | Resultado |
+| --: | :-- | :-- | --: | :-- | :-- | :-- |
+| 7 | `ci: add backend build and test workflow` | `eliocerdan-patch-1` | 1 | +33 | Verde | Integrado el 7 de octubre |
+| 8 | Agrega las claves foráneas que faltaban dentro de cada módulo | `feat/claves-foraneas-intramodulo` | 9 | +2 177 | Verde | Integrado el 29 de octubre |
+| 9 | Medidores por local, cupo del plan, desglose de consumo y producción de hallazgos | `feat/locales-y-hallazgos` | 58 | +6 873 / −81 | Verde | **Cerrado sin integrar** |
+| 10 | Medidores por local, cupo del plan, desglose de consumo, demanda automática y producción de hallazgos | `feat/modelo-comercial-y-hallazgos` | 68 | +7 164 / −105 | Verde | Integrado el 29 de octubre |
+| 11 | Cupo de medidores por local, datos de la alerta de demanda y entrada con Google | `feat/cierre-del-back` | 24 | +2 672 / −41 | Verde | Integrado el 29 de octubre |
+
+**Hallazgos de la revisión.** Cuatro resultados concretos salieron de estas revisiones, y conviene
+dejarlos escritos porque son la justificación de que la puerta humana exista:
+
+- **PR 8 — claves foráneas intramódulo.** La revisión del modelo de datos encontró que varias
+  relaciones dentro de un mismo módulo estaban declaradas solo como propiedades de navegación, sin
+  restricción en la base. El *pull request* añade las claves foráneas faltantes y su migración. Es
+  justamente el tipo de hallazgo que ninguna prueba de 6.1 habría dado, porque el código funcionaba:
+  lo que faltaba era la garantía de que seguiría funcionando con datos escritos por otra vía.
+- **PR 9 cerrado y sustituido por el PR 10.** La revisión del PR 9 concluyó que el cambio estaba
+  incompleto: la evaluación de demanda seguía dependiendo de que alguien llamara al *endpoint*
+  (defecto 11 de 6.1). En lugar de integrarlo y corregirlo después, se cerró y se rehízo en el
+  PR 10, que incorpora la evaluación automática al recibir cada lectura. El historial conserva
+  los dos para que la decisión quede trazable.
+- **PR 10 — plan de entrada.** Al revisar el cupo de locales se vio que toda cuenta nueva quedaba
+  suscrita al plan de pago `Básico` porque el manejador lo buscaba por nombre (defecto 10 de 6.1).
+  El arreglo fue elegir el plan más barato de los cargados, no cambiar la prueba que lo reveló.
+- **PR 11 — contrato de la alerta.** La revisión de la entrada con Google señaló que la alerta de
+  demanda entregaba el detalle solo dentro del mensaje en inglés, de modo que un cliente no podía
+  traducirlo ni mostrar el número por separado. Se añadieron los campos estructurados
+  (`measured_kw`, `contracted_kw`, `site_id`) al cuerpo de la respuesta.
+
+**Limitación honesta del registro.** La revisión automática de GitHub Copilot quedó registrada como
+`COMMENTED` sin contenido en los tres *pull requests* donde se solicitó, porque la cuota de la cuenta
+estaba agotada. La revisión efectiva fue la humana, y el registro en GitHub lo refleja así.
+
+# Capítulo VII: DevOps Practices
+
+## 7.1. Continuous Integration
 
 ### 7.1.1. Tools and Practices
 
@@ -3458,7 +3741,23 @@ jobs:
         
         
 ```
-La ejecución del pipeline fue satisfactoria, oseagitHub Actions registró correctamente las ejecuciones realizadas durante la creación del Pull Request y luego de integrar el cambio a la rama develop.
+La ejecución del *pipeline* fue satisfactoria: GitHub Actions registró correctamente las ejecuciones
+realizadas durante la creación del *pull request* y luego de integrar el cambio a la rama `develop`.
+
+Al cierre de este capítulo el *workflow* acumula **12 ejecuciones, las 12 con resultado `success`**:
+ocho disparadas por `pull_request` y cuatro por `push` a `develop`. Ninguna rama entró a `develop`
+con la compilación rota ni con una prueba en rojo.
+
+| # | Evento | Rama | Resultado | Fecha |
+| --: | :-- | :-- | :-- | :-- |
+| 1-2 | `pull_request` | `eliocerdan-patch-1` | `success` | 7 de octubre |
+| 3 | `push` | `develop` | `success` | 7 de octubre |
+| 4 | `pull_request` | `feat/claves-foraneas-intramodulo` | `success` | 24 de octubre |
+| 5-6 | `pull_request` | `feat/locales-y-hallazgos` | `success` | 28 de octubre |
+| 7, 9 | `pull_request` | `feat/modelo-comercial-y-hallazgos` | `success` | 28-29 de octubre |
+| 8, 10 | `push` | `develop` | `success` | 29 de octubre |
+| 11 | `pull_request` | `feat/cierre-del-back` | `success` | 29 de octubre |
+| 12 | `push` | `develop` | `success` | 29 de octubre |
 
 ![Backend CI Workflow Runs](assets/chapter7/backend-ci-workflow-runs.png)
 
@@ -3531,6 +3830,41 @@ El flujo general del Backend es:
 
 `Backend Source Code → Build and Deployment → Application Startup → Production Service Live`
 
+**El artefacto que se entrega.** Lo que Render ejecuta no es el repositorio: es la imagen que
+describe el `Dockerfile` del *backend*, construida en dos etapas. La distinción importa porque es la
+que hace que lo que se prueba y lo que corre en producción sean la misma cosa.
+
+```dockerfile
+# ------------------------------------------------------------ etapa de build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY src/Sems.Api/Sems.Api.csproj src/Sems.Api/
+RUN dotnet restore src/Sems.Api/Sems.Api.csproj
+COPY . .
+RUN dotnet publish src/Sems.Api/Sems.Api.csproj -c Release -o /app --no-restore
+
+# ---------------------------------------------------------- etapa de runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+RUN adduser --disabled-password --gecos "" --uid 1001 sems
+USER sems
+COPY --from=build --chown=sems:sems /app ./
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Sems.Api.dll"]
+```
+
+Tres decisiones del archivo que no son cosméticas:
+
+- **La imagen final lleva solo el *runtime*, no el SDK ni el código fuente.** Pasa de unos 800 MB a
+  unos 220 MB. Menos peso es menos tiempo de despliegue, pero sobre todo es menos superficie: el
+  compilador y las fuentes no tienen por qué estar en producción.
+- **Los `.csproj` se copian antes que el resto del código.** Mientras no cambien las dependencias,
+  Docker reutiliza la capa del `restore` y la construcción tarda segundos en vez de minutos. Es la
+  diferencia entre poder desplegar varias veces al día y no hacerlo.
+- **El proceso corre como `sems` (uid 1001), no como `root`.** Si alguien consiguiera ejecutar código
+  dentro del contenedor, no lo haría con privilegios de administrador.
+
 De esta manera, los principales componentes de SEMS utilizan pipelines y plataformas de deployment independientes pero complementarias. La Landing Page se publica mediante GitHub Actions y GitHub Pages, la Web Application mediante Vercel y el Backend mediante Render. Esto permite mantener cada componente desplegado en un entorno acorde con su tecnología y características.
 
 ## 7.3. Continuous deployment
@@ -3565,6 +3899,50 @@ Para el proceso de Continuous Deployment de SEMS se utilizan diferentes herramie
 - **Deployment verification:** luego de realizar un despliegue se verifica que el servicio quede disponible y operativo en el entorno de producción.
 
 Estas prácticas permiten que los componentes principales de SEMS puedan ser desplegados de manera controlada, manteniendo separación entre desarrollo, validación y producción.
+
+**Qué es hoy *deployment* automático y qué no.** Conviene separar las dos cosas que 7.2 y 7.3
+describen, porque no todos los componentes están en el mismo punto. *Continuous Delivery* es que el
+artefacto quede siempre listo para publicarse; *Continuous Deployment* es que se publique solo, sin
+que nadie apriete nada. Este es el estado real:
+
+| Componente | ¿Se publica solo al integrar? | Disparador | Qué falta para que sea *deployment* completo |
+| :-- | :-- | :-- | :-- |
+| Landing Page | Sí | `push` a `main` → *workflow* de GitHub Actions → GitHub Pages | Nada |
+| Web Application | Sí | `push` a la rama conectada → construcción de Vercel → producción | Una puerta de calidad previa: hoy Vercel publica aunque `npm run lint` no se haya ejecutado, porque no hay *workflow* de CI en ese repositorio (DT05) |
+| Backend | Sí | `push` a `main` → construcción de la imagen → Render | Nada en el disparo; sí falta aplicar las migraciones de forma automática (ver abajo) |
+| Mobile Application | No | — | Todo: no hay *pipeline* de construcción ni de distribución a tienda (DT06) |
+
+**Configuración del entorno de producción.** Ninguna credencial vive en el repositorio. El *backend*
+lee toda su configuración de variables de entorno, que se cargan en el panel de Render; el
+repositorio solo publica `.env.example` con los **nombres** y sin los valores, y `.env` está en
+`.gitignore`. Estas son las variables que el código lee:
+
+| Grupo | Variables | Nota |
+| :-- | :-- | :-- |
+| Base de datos | `DATABASE_URL` | Cadena de conexión de Npgsql, con usuario y contraseña dentro. Con Supabase hay que usar el *Session pooler* (5432): el *Transaction pooler* (6543) no soporta *prepared statements* y EF Core los usa |
+| Servidor | `PORT` | La inyecta el proveedor de hosting; el `Dockerfile` usa 8080 por defecto |
+| CORS | `ALLOWED_ORIGINS` | Si falta un origen, esa aplicación falla con error de CORS y parece que el *backend* está caído |
+| Seguridad | `JWT_SECRET`, `JWT_EXPIRATION_MINUTES`, `JWT_REFRESH_EXPIRATION_DAYS`, `REQUIRE_VERIFICATION`, `FRONTEND_URL` | `JWT_SECRET` necesita al menos 32 caracteres, que es lo que exige HS256, y debe generarse al azar |
+| Entrada con Google | `GOOGLE_CLIENT_ID` | Sin ella, el servidor declara la opción deshabilitada en lugar de aceptar cualquier token (sección 6.2.1.2) |
+| Correo | `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_FROM`, `MAIL_ENABLED` | `MAIL_PASSWORD` es una contraseña de aplicación, no la del correo personal |
+| Pagos | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_CURRENCY`, `STRIPE_PRICE_BASICO`, `STRIPE_PRICE_PRO_PLAN`, `STRIPE_PRICE_ENTERPRISE` | La clave `sk_live_` solo existe en el panel del hosting. Ninguna de estas puede llevar el prefijo `VITE_`: Vite incrusta esas variables en el paquete que descarga el navegador |
+| Demostración | `SEED_DEMO_DATA` | Apagada salvo que valga `true`, para que un despliegue nuevo no nazca con cuentas de ejemplo (defecto 12 de la sección 6.1) |
+
+La aplicación web usa el mismo criterio al revés: sus variables sí llevan el prefijo `VITE_` porque
+son públicas por definición —la URL de la API, el `GOOGLE_CLIENT_ID`, la clave publicable de
+Stripe—, y por eso ninguna clave secreta puede pasar por ahí.
+
+**Esquema de la base de datos.** Las migraciones de *Entity Framework Core* no se aplican solas
+durante el despliegue: se ejecutan a mano con `dotnet ef database update` contra la base de
+producción antes de publicar la versión que las necesita. Es una decisión consciente —una migración
+automática que falla a mitad deja la base en un estado peor que no haberla corrido—, pero obliga a
+recordar el paso y está anotada como riesgo del proceso.
+
+**Vuelta atrás.** Las tres plataformas conservan los despliegues anteriores, de modo que revertir no
+exige volver a construir: en Vercel se promueve un *deployment* previo a producción, en Render se
+hace *rollback* a una imagen anterior y en GitHub Pages basta con revertir el *commit* y dejar que
+el *workflow* vuelva a publicar. Lo que no vuelve atrás sola es la base de datos: una migración ya
+aplicada se deshace con su propia migración inversa, no con el *rollback* de la plataforma.
 
 ### 7.3.2. Production Deployment Pipeline Components
 
@@ -3664,6 +4042,8 @@ Para el monitoreo continuo de SEMS se utilizan herramientas que permiten revisar
 | GitHub Actions | Pipeline Monitoring | Herramienta utilizada para ejecutar y supervisar workflows automatizados del proyecto. | Identificar errores durante los procesos de build y testing y verificar el estado de cada ejecución. |
 | GitHub Pages | Landing Page Hosting | Plataforma utilizada para publicar la Landing Page. | Verificar que el sitio permanezca disponible después de cada deployment. |
 | Swagger / OpenAPI | API Verification | Interfaz utilizada para visualizar y comprobar la estructura de los endpoints del Backend. | Facilitar la verificación funcional de los recursos expuestos por la API. |
+| ASP.NET Core Health Checks | Service Probes | Sondas `/health` y `/health/ready` publicadas por el propio Backend. | Distinguir «el proceso está vivo» de «el servicio puede atender peticiones», que es lo que decide si se le envía tráfico. |
+| prometheus-net | Metrics | Biblioteca que instrumenta las peticiones HTTP del Backend y publica `/metrics` en formato Prometheus. | Disponer de métricas de peticiones, latencias y códigos de respuesta por ruta, listas para ser recolectadas. |
 
 #### Practices
 
@@ -3691,9 +4071,27 @@ En la **Landing Page**, GitHub Actions permite revisar la ejecución del workflo
 
 GitHub Actions también permite supervisar el proceso de integración continua del Backend. Cada ejecución muestra el estado de las diferentes etapas del workflow, incluyendo la restauración de dependencias, compilación y ejecución de pruebas.
 
+**Instrumentación propia del Backend.** Además de lo que ofrecen las plataformas, el *backend*
+expone tres recursos pensados para que una herramienta externa lo supervise sin intervención humana.
+Los tres están cubiertos por `HealthEndpointsTests` (sección 6.1.2), de modo que un cambio no puede
+dejarlos sin responder sin que una prueba se ponga en rojo.
+
+| Recurso | Qué responde | Uso previsto |
+| :-- | :-- | :-- |
+| `GET /health` | `200 OK` mientras el proceso esté vivo, sin consultar la base de datos | Sonda de vitalidad de la plataforma (*liveness*): responde incluso con la base caída, para que la plataforma no reinicie un proceso sano por un problema que está fuera de él |
+| `GET /health/ready` | `200 OK` con la base disponible y `503 Service Unavailable` cuando no lo está | Sonda de disponibilidad (*readiness*): indica si el servicio puede atender peticiones, que es la pregunta que decide si se le envía tráfico |
+| `GET /metrics` | Métricas en formato Prometheus, generadas por `prometheus-net.AspNetCore` con `UseHttpMetrics()` | Serie temporal de peticiones, latencias y códigos de respuesta por ruta, lista para que un Prometheus la recolecte |
+
+La separación entre `/health` y `/health/ready` no es decorativa: es la que evita el caso en que la
+aplicación arranca bien, el *health check* responde `Healthy`, y después toda consulta falla porque
+la base de datos nunca estuvo accesible. Hoy las tres rutas se consultan a mano o desde la propia
+plataforma; conectar un Prometheus que recolecte `/metrics` de forma periódica es la mejora
+pendiente del monitoreo, y es lo único que falta para pasar de supervisión por inspección a
+supervisión por serie temporal.
+
 El flujo general de monitoreo puede representarse de la siguiente manera:
 
-`Deployment → Service Execution → Logs / Pipeline Status → Verification → Error Detection`
+`Deployment → Service Execution → Logs / Metrics / Health Probes → Verification → Error Detection`
 
 De esta manera, SEMS mantiene diferentes mecanismos de supervisión según el componente de la plataforma, permitiendo verificar tanto el estado de los servicios desplegados como la correcta ejecución de los procesos automatizados.
 
@@ -3721,6 +4119,27 @@ El flujo general de alertas puede representarse de la siguiente manera:
 `Error Detected → Pipeline or Service Status → Failure Identification → Developer Review → Correction`
 
 Este proceso permite que el equipo pueda identificar rápidamente problemas relacionados con la integración, construcción o disponibilidad de los componentes de SEMS.
+
+**Dos sistemas de alertas que no hay que confundir.** SEMS tiene alertas en dos planos distintos, y
+conviene dejarlo explícito porque comparten el nombre:
+
+| | Alertas del producto | Alertas de operación |
+| :-- | :-- | :-- |
+| Qué vigilan | La demanda eléctrica del local del cliente | La salud del propio sistema |
+| Quién las recibe | El responsable del establecimiento | El equipo de desarrollo |
+| Cómo llegan | Correo disparado por el evento de dominio `AlertTriggered`, más el listado en la aplicación | Estado rojo del *workflow* en GitHub Actions, estado del *deployment* en Vercel y Render, y los correos que esas plataformas envían a quien integró el cambio |
+| Qué las sostiene | 582 pruebas, entre ellas `DemandAlertEndpointsTests` y `DemandChargePreventionFlowTests` | La revisión manual del equipo |
+
+Las primeras son una funcionalidad del producto, especificada en US29 y US30 y verificada en el
+capítulo VI. Las segundas son el objeto de esta sección.
+
+**Límite actual del plano de operación.** Hoy la alerta de operación es *de atracción*: alguien
+tiene que mirar GitHub, Render o Vercel para enterarse. No hay nada que avise *de empuje* cuando el
+servicio se cae fuera de un despliegue —una caída de la base de datos un domingo no le llega a
+nadie—, porque las sondas `/health/ready` y `/metrics` descritas en 7.4.2 no están conectadas a
+ningún recolector. Cerrar esa brecha no requiere reescribir nada: es apuntar un comprobador externo
+a `/health/ready` y un Prometheus a `/metrics`, y es la mejora prioritaria del monitoreo para el
+siguiente *sprint*.
 
 ### 7.4.4. Notification Pipeline Components
 
