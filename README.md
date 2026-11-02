@@ -3900,6 +3900,50 @@ Para el proceso de Continuous Deployment de SEMS se utilizan diferentes herramie
 
 Estas prácticas permiten que los componentes principales de SEMS puedan ser desplegados de manera controlada, manteniendo separación entre desarrollo, validación y producción.
 
+**Qué es hoy *deployment* automático y qué no.** Conviene separar las dos cosas que 7.2 y 7.3
+describen, porque no todos los componentes están en el mismo punto. *Continuous Delivery* es que el
+artefacto quede siempre listo para publicarse; *Continuous Deployment* es que se publique solo, sin
+que nadie apriete nada. Este es el estado real:
+
+| Componente | ¿Se publica solo al integrar? | Disparador | Qué falta para que sea *deployment* completo |
+| :-- | :-- | :-- | :-- |
+| Landing Page | Sí | `push` a `main` → *workflow* de GitHub Actions → GitHub Pages | Nada |
+| Web Application | Sí | `push` a la rama conectada → construcción de Vercel → producción | Una puerta de calidad previa: hoy Vercel publica aunque `npm run lint` no se haya ejecutado, porque no hay *workflow* de CI en ese repositorio (DT05) |
+| Backend | Sí | `push` a `main` → construcción de la imagen → Render | Nada en el disparo; sí falta aplicar las migraciones de forma automática (ver abajo) |
+| Mobile Application | No | — | Todo: no hay *pipeline* de construcción ni de distribución a tienda (DT06) |
+
+**Configuración del entorno de producción.** Ninguna credencial vive en el repositorio. El *backend*
+lee toda su configuración de variables de entorno, que se cargan en el panel de Render; el
+repositorio solo publica `.env.example` con los **nombres** y sin los valores, y `.env` está en
+`.gitignore`. Estas son las variables que el código lee:
+
+| Grupo | Variables | Nota |
+| :-- | :-- | :-- |
+| Base de datos | `DATABASE_URL` | Cadena de conexión de Npgsql, con usuario y contraseña dentro. Con Supabase hay que usar el *Session pooler* (5432): el *Transaction pooler* (6543) no soporta *prepared statements* y EF Core los usa |
+| Servidor | `PORT` | La inyecta el proveedor de hosting; el `Dockerfile` usa 8080 por defecto |
+| CORS | `ALLOWED_ORIGINS` | Si falta un origen, esa aplicación falla con error de CORS y parece que el *backend* está caído |
+| Seguridad | `JWT_SECRET`, `JWT_EXPIRATION_MINUTES`, `JWT_REFRESH_EXPIRATION_DAYS`, `REQUIRE_VERIFICATION`, `FRONTEND_URL` | `JWT_SECRET` necesita al menos 32 caracteres, que es lo que exige HS256, y debe generarse al azar |
+| Entrada con Google | `GOOGLE_CLIENT_ID` | Sin ella, el servidor declara la opción deshabilitada en lugar de aceptar cualquier token (sección 6.2.1.2) |
+| Correo | `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_FROM`, `MAIL_ENABLED` | `MAIL_PASSWORD` es una contraseña de aplicación, no la del correo personal |
+| Pagos | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_CURRENCY`, `STRIPE_PRICE_BASICO`, `STRIPE_PRICE_PRO_PLAN`, `STRIPE_PRICE_ENTERPRISE` | La clave `sk_live_` solo existe en el panel del hosting. Ninguna de estas puede llevar el prefijo `VITE_`: Vite incrusta esas variables en el paquete que descarga el navegador |
+| Demostración | `SEED_DEMO_DATA` | Apagada salvo que valga `true`, para que un despliegue nuevo no nazca con cuentas de ejemplo (defecto 12 de la sección 6.1) |
+
+La aplicación web usa el mismo criterio al revés: sus variables sí llevan el prefijo `VITE_` porque
+son públicas por definición —la URL de la API, el `GOOGLE_CLIENT_ID`, la clave publicable de
+Stripe—, y por eso ninguna clave secreta puede pasar por ahí.
+
+**Esquema de la base de datos.** Las migraciones de *Entity Framework Core* no se aplican solas
+durante el despliegue: se ejecutan a mano con `dotnet ef database update` contra la base de
+producción antes de publicar la versión que las necesita. Es una decisión consciente —una migración
+automática que falla a mitad deja la base en un estado peor que no haberla corrido—, pero obliga a
+recordar el paso y está anotada como riesgo del proceso.
+
+**Vuelta atrás.** Las tres plataformas conservan los despliegues anteriores, de modo que revertir no
+exige volver a construir: en Vercel se promueve un *deployment* previo a producción, en Render se
+hace *rollback* a una imagen anterior y en GitHub Pages basta con revertir el *commit* y dejar que
+el *workflow* vuelva a publicar. Lo que no vuelve atrás sola es la base de datos: una migración ya
+aplicada se deshace con su propia migración inversa, no con el *rollback* de la plataforma.
+
 ### 7.3.2. Production Deployment Pipeline Components
 
 El proceso de Continuous Deployment de SEMS permite publicar los principales componentes del sistema en entornos de producción utilizando diferentes plataformas según la tecnología de cada aplicación.
