@@ -2496,11 +2496,21 @@ Todas las suites se ejecutan con un único comando desde la raíz del repositori
 dotnet test SemsBackend.sln --logger "trx" --collect:"XPlat Code Coverage" --results-directory ./TestResults
 ```
 
-En la ejecución documentada en este capítulo (5 de octubre de 2026, .NET SDK 8.0.425) se ejecutaron
-**424 pruebas: 424 aprobadas, 0 fallidas y 0 omitidas**. La cobertura de
-líneas del ensamblado `Sems.Api`, combinando las cuatro suites y excluyendo las migraciones de
-*Entity Framework Core*, es de **67.3%**, con 58.3% de cobertura de ramas. Las cifras de
-las figuras se obtienen directamente de los archivos `.trx` y `coverage.cobertura.xml` de esa ejecución.
+En la ejecución documentada en este capítulo (2 de noviembre de 2026, .NET SDK 8.0.426) se ejecutaron
+**582 pruebas: 582 aprobadas, 0 fallidas y 0 omitidas**, repartidas en 51 clases de prueba y resueltas
+en 42.8 segundos de reloj. La cobertura de líneas del ensamblado `Sems.Api`, combinando las cuatro
+suites y excluyendo las migraciones de *Entity Framework Core*, es de **70.5%** (4 724 de 6 696 líneas),
+con **62.3%** de cobertura de ramas (846 de 1 357) y 69.1% de cobertura de métodos (1 380 de 1 995)
+sobre 226 clases en 90 archivos. Las cifras de las figuras se obtienen directamente de los archivos
+`.trx` y `coverage.cobertura.xml` de esa ejecución:
+
+| Suite | Clases | Pruebas | Aprobadas | Fallidas | Duración |
+| :-- | --: | --: | --: | --: | --: |
+| Core Entities Unit Tests | 27 | 385 | 385 | 0 | 3.31 s |
+| Core Integration Tests | 14 | 137 | 137 | 0 | 41.63 s |
+| Core Behavior-Driven Development | 6 | 54 | 54 | 0 | 25.54 s |
+| Core System Tests | 4 | 6 | 6 | 0 | 11.00 s |
+| **Total** | **51** | **582** | **582** | **0** | **42.8 s** |
 
 *Figura 32 (Resumen general de resultados de las cuatro suites)*
 <img src="assets/images/figures/32-test-results-summary.png" alt="Resumen general de resultados" style="width: 100vw;">
@@ -2518,11 +2528,15 @@ las figuras se obtienen directamente de los archivos `.trx` y `coverage.cobertur
 > Cobertura de líneas y de ramas de cada uno de los ocho módulos, del núcleo compartido y de `Program`,
 > con el desglose por capa (Domain, Application, Infrastructure, Interfaces).
 
-La cobertura es menor en Payments (49.9%) porque las operaciones que llaman a la API de Stripe
+La cobertura es menor en Payments (50.7%) porque las operaciones que llaman a la API de Stripe
 (intención de pago, sesión de *checkout*, métodos de pago) no se ejecutan contra el proveedor real; el
-*webhook*, que es la parte que decide si un cobro se contabiliza, sí está cubierto. En IAM, la capa
-Application queda en un valor más bajo porque la siembra de datos de demostración se desactiva durante
-las pruebas.
+*webhook*, que es la parte que decide si un cobro se contabiliza, sí está cubierto. Device Management
+(51.4%) es el otro módulo por debajo del promedio: sus comandos de telemetría cruda y el adaptador de
+ingesta por lotes no se ejercitan en esta entrega. En IAM, la capa Application queda en un valor más
+bajo (61.8%) porque la siembra de datos de demostración se desactiva durante las pruebas y porque el
+verificador real de Google (`GoogleTokenInfoVerifier`) se sustituye por un doble: lo que se prueba es la
+decisión de `AuthenticationService` ante cada respuesta posible del verificador, no la llamada HTTP a
+`oauth2.googleapis.com`.
 
 **Defectos encontrados durante la construcción de las suites.** Las pruebas detectaron nueve defectos del
 *backend*. Cada uno se corrigió en el código de producción, sin ajustar la prueba que lo reveló:
@@ -2749,11 +2763,11 @@ petición en *snake_case* y respuesta en *PascalCase*.
 *Figura 35 (Resultados de las pruebas unitarias por clase)*
 <img src="assets/images/figures/35-unit-tests-by-class.png" alt="Pruebas unitarias por clase" style="width: 100vw;">
 
-> 22 clases de prueba agrupadas por módulo, todas aprobadas.
+> 27 clases de prueba agrupadas por módulo, todas aprobadas.
 
-| Suite | Archivos | Pruebas | Passed | Failed |
+| Suite | Clases | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Entities Unit Tests | 22 | 263 | 263 | 0 |
+| Core Entities Unit Tests | 27 | 385 | 385 | 0 |
 
 ### 6.1.2. Core Integration Tests.
 
@@ -2859,11 +2873,11 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 *Figura 36 (Resultados de las pruebas de integración por clase)*
 <img src="assets/images/figures/36-integration-tests-by-class.png" alt="Pruebas de integración por clase" style="width: 100vw;">
 
-> 11 clases de prueba en 10 archivos, todas aprobadas contra la API completa.
+> 14 clases de prueba en 13 archivos, todas aprobadas contra la API completa.
 
-| Suite | Archivos | Pruebas | Passed | Failed |
+| Suite | Clases | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Integration Tests | 10 | 103 | 103 | 0 |
+| Core Integration Tests | 14 | 137 | 137 | 0 |
 
 ### 6.1.3. Core Behavior-Driven Development
 
@@ -2877,7 +2891,7 @@ con una tabla *Examples*.
 *Figura 37 (Escenarios BDD agrupados por feature)*
 <img src="assets/images/figures/37-bdd-scenarios-by-feature.png" alt="Escenarios BDD por feature" style="width: 100vw;">
 
-> 30 escenarios en seis *features*; cada fila de *Examples* es una ejecución, lo que da 52 ejecuciones.
+> 32 escenarios en seis *features*; cada fila de *Examples* es una ejecución, lo que da 54 ejecuciones.
 
 **BDD Feature File: IAM (Registro e inicio de sesión)**
 
@@ -3253,7 +3267,7 @@ Feature: Submeter registration and removal
 
 | Suite | Archivos | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Behavior-Driven Development | 6 | 52 | 52 | 0 |
+| Core Behavior-Driven Development | 6 | 54 | 54 | 0 |
 
 ### 6.1.4. Core System Tests.
 
@@ -3358,13 +3372,13 @@ Archivo: **`tests/Sems.Api.SystemTests/AccountRecoveryFlowTests.cs`**
 
 **Resumen de las suites**
 
-| Suite | Archivos | Pruebas | Passed | Failed |
+| Suite | Clases | Pruebas | Passed | Failed |
 | :-- | --: | --: | --: | --: |
-| Core Entities Unit Tests | 22 | 263 | 263 | 0 |
-| Core Integration Tests | 10 | 103 | 103 | 0 |
-| Core Behavior-Driven Development | 6 | 52 | 52 | 0 |
+| Core Entities Unit Tests | 27 | 385 | 385 | 0 |
+| Core Integration Tests | 14 | 137 | 137 | 0 |
+| Core Behavior-Driven Development | 6 | 54 | 54 | 0 |
 | Core System Tests | 4 | 6 | 6 | 0 |
-| **Total** | **42** | **424** | **424** | **0** |
+| **Total** | **51** | **582** | **582** | **0** |
 
 ## 7.1 Continuous Integration
 
