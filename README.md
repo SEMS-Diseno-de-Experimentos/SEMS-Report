@@ -3799,6 +3799,78 @@ En el detalle de la ejecución se observa que cada una de las etapas del pipelin
 
 De esta manera, el pipeline permite detectar automáticamente errores de compilación o fallos en las pruebas antes de que los cambios sean incorporados a las ramas principales del proyecto.
 
+#### Los pipelines que faltan
+
+El *workflow* anterior cubre un producto de los cuatro. Dejar escrito qué falta, y con qué
+exactitud, es parte de la entrega: así la deuda DT05 y DT06 tiene un alcance medible y no es una
+intención.
+
+**Web Application.** Hoy Vercel construye y publica sin que nadie haya corrido el *linter*. El
+repositorio ya tiene `eslint.config.js` y el script `npm run lint`, de modo que lo único que falta
+es el disparador. El *workflow* necesario cabe en un archivo:
+
+```yml
+name: Web CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: semswebapp/package-lock.json
+      - run: npm ci
+        working-directory: semswebapp
+      - run: npm run lint
+        working-directory: semswebapp
+      - run: npm run build
+        working-directory: semswebapp
+```
+
+Dos pasos y una puerta: ningún cambio llegaría a producción con un error de ESLint o con la
+construcción rota, que es exactamente lo que hoy sí puede pasar.
+
+**Mobile Application.** El proyecto Flutter ya incluye `analysis_options.yaml` con `flutter_lints`,
+así que la pieza que falta es la misma: quién lo ejecuta.
+
+```yml
+name: Mobile CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+```
+
+**Landing Page.** No necesita integración continua: es HTML, CSS y JavaScript sin compilación ni
+pruebas, y su *workflow* de publicación (sección 7.2.2) ya hace de verificación mínima, porque una
+publicación fallida se ve en el historial de GitHub Actions.
+
+Las dos piezas que faltan son un archivo de veinte líneas cada una, en repositorios que ya tienen la
+herramienta configurada. Lo que las bloquea no es trabajo, es que nadie las ha escrito todavía.
+
 ## 7.2. Continuous Delivery
 
 ### 7.2.1. Tools and Practices
@@ -3833,6 +3905,53 @@ El workflow se ejecuta mediante un evento `push` y realiza las siguientes etapas
 La ejecución del pipeline finalizó correctamente, mostrando todas sus etapas en estado exitoso.
 
 ![Landing Page Deployment Pipeline](assets/chapter7/landing-page-deployment-pipeline.png)
+
+El *workflow* que lo define es el siguiente:
+
+```yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+Tres detalles del archivo valen la pena. `permissions` concede solo lo que el trabajo necesita
+—leer el repositorio, escribir en Pages y pedir el token de identidad— en vez de dejar los permisos
+por defecto. El bloque `concurrency` impide que dos publicaciones corran a la vez y, con
+`cancel-in-progress: false`, hace que una nueva espere en lugar de cancelar a la anterior: cancelar
+a mitad de camino puede dejar el sitio servido a medias. Y `workflow_dispatch` permite republicar a
+mano sin tener que inventar un *commit*, que es lo que se necesita cuando hay que volver a publicar
+una versión que ya estaba bien.
 
 #### Web Application
 
