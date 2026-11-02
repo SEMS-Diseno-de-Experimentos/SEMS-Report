@@ -4120,6 +4120,27 @@ El flujo general de alertas puede representarse de la siguiente manera:
 
 Este proceso permite que el equipo pueda identificar rápidamente problemas relacionados con la integración, construcción o disponibilidad de los componentes de SEMS.
 
+**Dos sistemas de alertas que no hay que confundir.** SEMS tiene alertas en dos planos distintos, y
+conviene dejarlo explícito porque comparten el nombre:
+
+| | Alertas del producto | Alertas de operación |
+| :-- | :-- | :-- |
+| Qué vigilan | La demanda eléctrica del local del cliente | La salud del propio sistema |
+| Quién las recibe | El responsable del establecimiento | El equipo de desarrollo |
+| Cómo llegan | Correo disparado por el evento de dominio `AlertTriggered`, más el listado en la aplicación | Estado rojo del *workflow* en GitHub Actions, estado del *deployment* en Vercel y Render, y los correos que esas plataformas envían a quien integró el cambio |
+| Qué las sostiene | 582 pruebas, entre ellas `DemandAlertEndpointsTests` y `DemandChargePreventionFlowTests` | La revisión manual del equipo |
+
+Las primeras son una funcionalidad del producto, especificada en US29 y US30 y verificada en el
+capítulo VI. Las segundas son el objeto de esta sección.
+
+**Límite actual del plano de operación.** Hoy la alerta de operación es *de atracción*: alguien
+tiene que mirar GitHub, Render o Vercel para enterarse. No hay nada que avise *de empuje* cuando el
+servicio se cae fuera de un despliegue —una caída de la base de datos un domingo no le llega a
+nadie—, porque las sondas `/health/ready` y `/metrics` descritas en 7.4.2 no están conectadas a
+ningún recolector. Cerrar esa brecha no requiere reescribir nada: es apuntar un comprobador externo
+a `/health/ready` y un Prometheus a `/metrics`, y es la mejora prioritaria del monitoreo para el
+siguiente *sprint*.
+
 ### 7.4.4. Notification Pipeline Components
 
 El pipeline de notificaciones de SEMS permite comunicar al equipo el resultado de los diferentes procesos automatizados y facilitar la identificación de problemas durante el desarrollo y despliegue del sistema.
