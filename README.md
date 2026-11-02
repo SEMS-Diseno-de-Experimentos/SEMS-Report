@@ -2538,7 +2538,7 @@ verificador real de Google (`GoogleTokenInfoVerifier`) se sustituye por un doble
 decisión de `AuthenticationService` ante cada respuesta posible del verificador, no la llamada HTTP a
 `oauth2.googleapis.com`.
 
-**Defectos encontrados durante la construcción de las suites.** Las pruebas detectaron nueve defectos del
+**Defectos encontrados durante la construcción de las suites.** Las pruebas detectaron doce defectos del
 *backend*. Cada uno se corrigió en el código de producción, sin ajustar la prueba que lo reveló:
 
 | # | Módulo | Defecto | Prueba que lo reveló |
@@ -2552,6 +2552,9 @@ decisión de `AuthenticationService` ante cada respuesta posible del verificador
 | 7 | Device Management | `GET /api/v1/device-management/devices` seguía listando los dispositivos dados de baja | `DeviceEndpointsTests.RemoveDevice_DeviceNoLongerAppearsInTheGeneralListing` |
 | 8 | Alerts | Las alertas de demanda (`WARNING`, `CRITICAL`) no publicaban `AlertTriggered`, por lo que nunca se notificaban por correo | `DemandAlertEndpointsTests.EvaluateDemand_RaisedAlert_IsListedForTheUserAndNotifiedByEmail` |
 | 9 | Organizations | Volver a dar acceso a una persona cuyo vínculo fue revocado respondía `500`, por el índice único (organización, usuario) | `OrganizationEndpointsTests.GrantMembership_AgainAfterRevoking_Returns201` |
+| 10 | Subscriptions | Toda cuenta nueva quedaba suscrita al plan de pago `Básico` porque el manejador lo buscaba por nombre; el plan de entrada debe ser el más barato de los cargados, que es sobre el que se miden los cupos de locales y medidores | `SubscriptionEndpointsTests.Register_NewAccount_IsSubscribedToTheEntryPlan` junto con los escenarios `@US42` de `OrganizationsAndSites.feature` |
+| 11 | Alerts | La demanda solo se evaluaba cuando alguien llamaba al *endpoint* de evaluación: una lectura que superaba el umbral no levantaba nada por sí sola, en contra de US29, porque el pico que fija el cargo del mes dura minutos | `DemandChargePreventionFlowTests.DemandChargePrevention_DemandClimbsPastTheContractedPower_WarnsThenRaisesCriticalAndBillsTheExcess` |
+| 12 | Plataforma | La siembra de datos de demostración estaba activa salvo que se la apagara explícitamente, de modo que un despliegue nuevo nacía con cuentas y locales de ejemplo; ahora exige `SEED_DEMO_DATA=true` | `SubscriptionEndpointsTests` y los escenarios de cupos, que contaban los locales de demostración como propios |
 
 ### 6.1.1. Core Entities Unit Tests.
 
@@ -3502,6 +3505,147 @@ Archivo: **`tests/Sems.Api.SystemTests/AccountRecoveryFlowTests.cs`**
 | Core Behavior-Driven Development | 6 | 54 | 54 | 0 |
 | Core System Tests | 4 | 6 | 6 | 0 |
 | **Total** | **51** | **582** | **582** | **0** |
+
+## 6.2. Static Testing & Verification
+
+Mientras que la sección 6.1 ejecuta el producto, esta sección lo revisa sin ejecutarlo: el compilador
+y los analizadores leen el código, las convenciones se verifican sobre el repositorio y las personas
+revisan los cambios antes de que entren a `develop`. Las tres actividades se hacen sobre el mismo
+estado del repositorio documentado en 6.1 (`develop`, commit `9f3e31e`, 2 de noviembre de 2026).
+
+### 6.2.1. Static Code Analysis
+
+#### 6.2.1.1. Coding standard & Code conventions
+
+El estándar de cada producto es el del propio lenguaje, no uno inventado por el equipo. Lo que el
+equipo definió es dónde vive cada cosa y cómo se nombra, y está registrado en la sección 5.1.3
+(*Source Code Style Guide & Conventions*). Aquí se verifica que el código cumpla ese estándar.
+
+| Producto | Estándar | Herramienta que lo verifica | Cómo se ejecuta |
+| :-- | :-- | :-- | :-- |
+| Backend (C#) | *Framework Design Guidelines* de .NET: `PascalCase` en tipos y miembros públicos, `_camelCase` en campos privados, `camelCase` en locales y parámetros | Compilador de C# 12 con `Nullable` e `ImplicitUsings` activados y analizadores del SDK de .NET 8 | `dotnet build SemsBackend.sln -c Release` |
+| Aplicación web (Vue 3) | *Vue Style Guide* y las reglas recomendadas de JavaScript | ESLint 9 con `@eslint/js` recomendado y `eslint-plugin-vue` en configuración `flat/recommended` | `npm run lint` |
+| Aplicación móvil (Flutter) | *Effective Dart* | `flutter_lints`, incluido desde `analysis_options.yaml` | `flutter analyze`, hoy a mano: el producto móvil no tiene *pipeline* (DT06) |
+
+**Reglas propias del backend que el compilador no puede verificar.** Tres convenciones del proyecto
+no tienen regla automática y se verifican en la revisión por pares descrita en 6.2.2:
+
+- Un archivo por agregado o por conjunto cohesionado de tipos del mismo módulo.
+- Los tipos del dominio no llevan anotaciones de persistencia ni de serialización: el mapeo vive en
+  la capa de infraestructura y el contrato JSON en la de interfaces. Esta es la convención que
+  sostiene la separación por capas de cada módulo, y es también la que más fácilmente se rompe por
+  comodidad.
+- El estilo de nomenclatura del JSON es distinto por módulo (sección 5.1.3) y cada módulo debe
+  conservar el suyo. El riesgo real es que un contrato cambie de estilo sin querer y rompa a un
+  cliente existente, por eso hay pruebas de contrato dedicadas (`EnergyContractTests`,
+  `SubscriptionContractTests`) que lo fijan desde 6.1.
+
+**Decisión registrada: una sola regla de excepción al estándar.** El proyecto activa
+`GenerateDocumentationFile` porque la documentación XML es la fuente del documento OpenAPI
+(sección 5.2.6), pero silencia el aviso `CS1591` (*missing XML comment for publicly visible type or
+member*) con `<NoWarn>$(NoWarn);1591</NoWarn>`. Exigir comentario en los 226 tipos del ensamblado
+habría producido comentarios vacíos escritos para callar al compilador, que es exactamente el tipo
+de documentación que después miente. La documentación XML se exige donde se publica: en las acciones
+de los controladores.
+
+#### 6.2.1.2. Code quality & Code security
+
+**Verificación con el compilador.** La compilación en `Release` de la solución completa (6 proyectos:
+`Sems.Api` y los cinco de prueba) termina con **0 errores y 4 avisos**, todos en `Sems.Api` y todos
+registrados aquí en lugar de ocultarse:
+
+| Aviso | Archivo | Qué dice | Estado |
+| :-- | :-- | :-- | :-- |
+| `CS8604` | `Modules/Iam/Application/AuthenticationService.cs:222` | Posible referencia nula al pasar `dc.DeviceName` a `RankingItem` | Abierto. Está en la ruta de siembra de datos de demostración, que desde esta entrega solo se ejecuta con `SEED_DEMO_DATA=true` (defecto 12 de 6.1); el arreglo es dar un nombre por defecto al dispositivo sin nombre |
+| `CS1573` ×3 | `Modules/Iam/Domain/Services/IGoogleTokenVerifier.cs:21-22` | Los parámetros `Email`, `EmailVerified` y `Name` del *record* `GoogleIdentity` no tienen etiqueta `param` | Abierto. Es documentación incompleta de un tipo interno, no un defecto de comportamiento |
+
+Que sean cuatro y no cero no es casualidad ni descuido: el proyecto tiene `Nullable` activado en los
+seis proyectos, de modo que el compilador obliga a declarar qué puede ser nulo y verifica cada uso.
+Los avisos que quedan son el residuo visible de esa verificación, y se documentan antes que
+silenciarse. La solución **no** usa `TreatWarningsAsErrors`; convertirlos en error es la mejora
+natural una vez cerrados estos cuatro.
+
+**Verificación de la aplicación web.** `npm run lint` recorre los **82 archivos** de
+`src/` y termina con **0 errores y 0 avisos**. La configuración (`eslint.config.js`) desactiva
+una sola regla, `vue/multi-word-component-names`, con su motivo escrito en el propio archivo: las
+vistas se llaman igual que su ruta y terminan en `View`, y exigir dos palabras obligaría a
+renombrarlas sin ganar legibilidad.
+
+**Verificación de seguridad.** La revisión de seguridad no se delegó a una herramienta: se hizo como
+lista de comprobación sobre las decisiones que un análisis estático genérico no sabe juzgar, y cada
+punto quedó respaldado por una prueba de 6.1, que es lo que impide que la propiedad se pierda en un
+cambio posterior.
+
+| Propiedad verificada | Dónde está implementada | Prueba que la sostiene |
+| :-- | :-- | :-- |
+| Las contraseñas nunca se guardan en claro (BCrypt con *salt* por emisión) | `Modules/Iam/Infrastructure` | `IdentityDomainTests`, `AuthenticationEndpointsTests` |
+| Los tokens de refresco se guardan como resumen SHA-256, nunca en claro | `Modules/Iam/Application/AuthTokenService` | `AuthTokenServiceTests`, `AuthenticationEndpointsTests` |
+| Un token de refresco solo sirve una vez | `AuthTokenService` | `AuthenticationEndpointsTests` |
+| `forgot-password` responde idéntico exista o no la cuenta | `AccountRecoveryService` | `AuthenticationEndpointsTests.ForgotPassword_ExistingEmail_SendsResetLinkOnlyToThatAccount` |
+| El inicio de sesión fallido no distingue entre contraseña incorrecta y correo inexistente | `AuthenticationService` | `AuthenticationEndpointsTests`, `Authentication.feature` |
+| Toda ruta exige autenticación salvo las declaradas públicas | Política de autorización global en `Program.cs` | `CorsPolicyTests`, `HealthEndpointsTests` y los casos `401` de cada suite de *endpoints* |
+| CORS acepta solo los orígenes configurados, nunca `*` junto con credenciales | `Program.cs` | `CorsPolicyTests` (5 pruebas: 3 orígenes registrados, 2 no registrados) |
+| El *webhook* de pagos se autentica por la firma del cuerpo, no por JWT, y descarta reenvíos | `Modules/Payments` | `StripeWebhookEndpointTests`, `SubscriptionPaymentFlowTests` |
+| El token de Google se valida contra el `GOOGLE_CLIENT_ID` del servidor y exige correo verificado | `AuthenticationService.SignInWithGoogleAsync` | `GoogleSignInTests` (8 pruebas, cuatro de ellas de rechazo) |
+| Sin `GOOGLE_CLIENT_ID` configurado la opción se declara deshabilitada en lugar de aceptar cualquier token | `AuthenticationService` | `GoogleSignInTests.SignInWithGoogleAsync_WithoutAClientIdConfigured_SaysSoInsteadOfLettingAnyoneIn` |
+| Un despliegue nuevo no nace con cuentas de demostración | `SystemDataSeeder` | Defecto 12 de 6.1 |
+| Los datos de tarjeta nunca llegan al servidor | Pasarela alojada de Stripe | Verificado por diseño: la API solo recibe un identificador del medio de pago |
+
+**Lo que no se verifica automáticamente y se asume como deuda.** No hay análisis de dependencias
+vulnerables (`dotnet list package --vulnerable`, `npm audit`) ni escaneo de secretos integrado al
+*pipeline*. Las dos cosas son un paso de GitHub Actions cada una y están registradas como mejora del
+capítulo VII; mientras tanto, el repositorio excluye `.env` por `.gitignore` y publica `.env.example`
+con los nombres de las variables y sin sus valores.
+
+### 6.2.2. Reviews
+
+**Cómo se revisa.** Ningún cambio llega a `develop` por *push* directo: cada uno viaja en una rama
+`feat/…`, `fix/…` o `ci/…` y entra por *pull request*. Un *pull request* tiene que pasar dos puertas
+antes de integrarse:
+
+1. **La puerta automática.** El *workflow* `Backend CI` (sección 7.1) se dispara en cada `pull_request`
+   contra `develop` y `main`, y ejecuta `dotnet restore`, `dotnet build -c Release` y
+   `dotnet test`. Un *pull request* con la compilación rota o con una prueba en rojo no se integra.
+2. **La puerta humana.** La revisión por pares se concentra en lo que la puerta automática no ve: las
+   tres convenciones de 6.2.1.1 sin regla automática, el reparto por capas dentro de cada módulo, y
+   si la prueba que acompaña al cambio prueba la regla de negocio o solo que el código se ejecuta.
+
+**Registro de las revisiones.** El repositorio del *backend* acumula 11 *pull requests*; los cinco
+del periodo documentado en este capítulo son los siguientes. Las columnas de archivos y líneas vienen
+de la API de GitHub.
+
+| PR | Título | Rama | Archivos | Líneas | CI | Resultado |
+| --: | :-- | :-- | --: | :-- | :-- | :-- |
+| 7 | `ci: add backend build and test workflow` | `eliocerdan-patch-1` | 1 | +33 | Verde | Integrado el 7 de octubre |
+| 8 | Agrega las claves foráneas que faltaban dentro de cada módulo | `feat/claves-foraneas-intramodulo` | 9 | +2 177 | Verde | Integrado el 29 de octubre |
+| 9 | Medidores por local, cupo del plan, desglose de consumo y producción de hallazgos | `feat/locales-y-hallazgos` | 58 | +6 873 / −81 | Verde | **Cerrado sin integrar** |
+| 10 | Medidores por local, cupo del plan, desglose de consumo, demanda automática y producción de hallazgos | `feat/modelo-comercial-y-hallazgos` | 68 | +7 164 / −105 | Verde | Integrado el 29 de octubre |
+| 11 | Cupo de medidores por local, datos de la alerta de demanda y entrada con Google | `feat/cierre-del-back` | 24 | +2 672 / −41 | Verde | Integrado el 29 de octubre |
+
+**Hallazgos de la revisión.** Cuatro resultados concretos salieron de estas revisiones, y conviene
+dejarlos escritos porque son la justificación de que la puerta humana exista:
+
+- **PR 8 — claves foráneas intramódulo.** La revisión del modelo de datos encontró que varias
+  relaciones dentro de un mismo módulo estaban declaradas solo como propiedades de navegación, sin
+  restricción en la base. El *pull request* añade las claves foráneas faltantes y su migración. Es
+  justamente el tipo de hallazgo que ninguna prueba de 6.1 habría dado, porque el código funcionaba:
+  lo que faltaba era la garantía de que seguiría funcionando con datos escritos por otra vía.
+- **PR 9 cerrado y sustituido por el PR 10.** La revisión del PR 9 concluyó que el cambio estaba
+  incompleto: la evaluación de demanda seguía dependiendo de que alguien llamara al *endpoint*
+  (defecto 11 de 6.1). En lugar de integrarlo y corregirlo después, se cerró y se rehízo en el
+  PR 10, que incorpora la evaluación automática al recibir cada lectura. El historial conserva
+  los dos para que la decisión quede trazable.
+- **PR 10 — plan de entrada.** Al revisar el cupo de locales se vio que toda cuenta nueva quedaba
+  suscrita al plan de pago `Básico` porque el manejador lo buscaba por nombre (defecto 10 de 6.1).
+  El arreglo fue elegir el plan más barato de los cargados, no cambiar la prueba que lo reveló.
+- **PR 11 — contrato de la alerta.** La revisión de la entrada con Google señaló que la alerta de
+  demanda entregaba el detalle solo dentro del mensaje en inglés, de modo que un cliente no podía
+  traducirlo ni mostrar el número por separado. Se añadieron los campos estructurados
+  (`measured_kw`, `contracted_kw`, `site_id`) al cuerpo de la respuesta.
+
+**Limitación honesta del registro.** La revisión automática de GitHub Copilot quedó registrada como
+`COMMENTED` sin contenido en los tres *pull requests* donde se solicitó, porque la cuota de la cuenta
+estaba agotada. La revisión efectiva fue la humana, y el registro en GitHub lo refleja así.
 
 ## 7.1 Continuous Integration
 
