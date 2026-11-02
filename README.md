@@ -3649,6 +3649,22 @@ estaba agotada. La revisión efectiva fue la humana, y el registro en GitHub lo 
 
 # Capítulo VII: DevOps Practices
 
+SEMS son cuatro productos en cuatro repositorios, y no están en el mismo punto de madurez DevOps.
+Este cuadro es el mapa del capítulo: dice de cada producto qué tiene automatizado hoy y qué no, para
+que las secciones siguientes se lean sabiendo dónde hay evidencia y dónde hay un hueco declarado.
+
+| Producto | Repositorio | Integración continua | Entrega y despliegue | Monitoreo |
+| :-- | :-- | :-- | :-- | :-- |
+| Backend (ASP.NET Core 8) | SEMS-Backend | `Backend CI` en GitHub Actions: *restore*, *build* en Release y 582 pruebas en cada `pull_request` y `push` a `develop` y `main` | Imagen Docker en dos etapas, desplegada sola en Render desde `main` | Logs de Render, más `/health`, `/health/ready` y `/metrics` publicados por la propia API |
+| Landing Page (HTML/CSS/JS) | SEMS-Landing-Page | Sin pipeline: el sitio no se compila ni tiene pruebas | `Deploy to GitHub Pages`: publica solo en cada `push` a `main` | Historial del *workflow* y disponibilidad de la URL |
+| Web Application (Vue 3 + Vite) | SEMS-Web-Application | **Ninguna.** `npm run lint` y `npm run build` se ejecutan a mano (DT05) | Vercel construye y publica solo desde la rama conectada | Estado `Ready` del *deployment* en Vercel |
+| Mobile Application (Flutter) | SEMS-Mobile-App | **Ninguna.** `flutter analyze` y `flutter test` se ejecutan a mano (DT06) | **Ninguno.** No hay construcción ni distribución a tienda | Ninguno |
+
+Dos de los cuatro productos no tienen integración continua y uno no tiene despliegue de ningún tipo.
+Está escrito aquí y no al final del capítulo porque es la parte honesta del estado actual: la
+automatización del *backend* está completa y es la que sostiene la evidencia de las secciones 7.1 a
+7.4; la de los otros tres está a medias o no existe.
+
 ## 7.1. Continuous Integration
 
 ### 7.1.1. Tools and Practices
@@ -3687,6 +3703,22 @@ Para el proceso de Continuous Integration de SEMS se emplean diferentes herramie
 
 - **Static Code Analysis:** la Web Application utiliza ESLint y la Mobile Application utiliza Flutter Lints para detectar problemas en el código antes de su integración.
 
+#### Verificación de las prácticas declaradas
+
+Declarar una práctica es barato; lo que vale es si el repositorio la refleja. Se midió cada una
+sobre el historial real de los cinco repositorios, contando solo *commits* que no son de mezcla.
+
+| Práctica | Cómo se verificó | Resultado |
+| :-- | :-- | :-- |
+| GitFlow y *feature branching* | Ramas remotas de cada repositorio | Solo el *backend* la aplica de verdad: tiene `main`, `develop` y ramas `feat/…` que entran por *pull request*. Los otros cuatro repositorios trabajan con una sola rama `main` |
+| *Pull requests* | *Pull requests* abiertos en SEMS-Backend | 11 en total, con la puerta de CI obligatoria; ninguna integración a `develop` por *push* directo |
+| *Conventional Commits* | Prefijo `feat`/`fix`/`docs`/`test`/`refactor`/`chore`/`ci` en el asunto | Backend 48 de 52 (92 %), Landing Page 2 de 2 (100 %), Web Application 3 de 5 (60 %), Reporte 51 de 89 (57 %), Mobile Application 0 de 3 (0 %) |
+| *Semantic Versioning* | Etiquetas del repositorio | Una sola: `v2.0.0` en SEMS-Backend, por la migración de Java a ASP.NET Core. El resto de repositorios no etiqueta versiones |
+
+La conclusión que se saca de la tabla es la que conviene registrar: la disciplina está donde está el
+*pipeline*. El *backend*, que es el único repositorio donde una máquina revisa cada cambio, es
+también el que cumple las convenciones; donde nadie verifica, el cumplimiento cae a la mitad o a
+cero. No es casualidad y es el argumento más fuerte a favor de cerrar DT05 y DT06.
 
 ### 7.1.2. Build & Test Suite Pipeline Components
 
