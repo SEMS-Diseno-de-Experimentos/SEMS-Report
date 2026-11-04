@@ -4353,14 +4353,34 @@ importante que necesitamos aprender primero», y es lo que este capítulo convie
 
 | Dimensión | Estado |
 | :-- | :-- |
-| Backend | ASP.NET Core 8, monolito modular de ocho contextos, desplegado en Render. 582 pruebas verdes, 70.5 % de cobertura de líneas |
-| Aplicación web | Vue 3 + Vite en Vercel. Registro, organización, locales, zonas, medidores, reglas de demanda, factura estimada, consumo por zona y comparación entre locales |
+| Backend | **Construido:** ASP.NET Core 8, monolito modular de ocho contextos, 582 pruebas verdes, 70.5 % de cobertura de líneas, en la rama `develop`. **Desplegado:** Render sirve `main`, que quedó en el 6 de octubre y va 39 commits por detrás de `develop` |
+| Aplicación web | **Construido:** Vue 3 + Vite con registro, organización, locales, zonas, medidores, reglas de demanda, factura estimada, consumo por zona y comparación entre locales. **Desplegado:** Vercel sirve la versión residencial anterior, sin locales, zonas ni control de demanda |
 | Aplicación móvil | Iniciada (48 archivos Dart) y sin distribución |
 | Landing Page | Publicada en GitHub Pages |
 | Historias de usuario | 44 implementadas (US01–US44) sobre nueve épicas (EP01–EP09) |
 | Canal de aviso | **Correo electrónico**, disparado por el evento de dominio `AlertTriggered` |
 | Instrumentación de producto | **Ninguna.** El sistema expone `/metrics` de Prometheus con latencias y códigos HTTP, que son métricas de infraestructura, no de comportamiento |
 | Usuarios en producción | **Ninguno.** No hay cuentas reales, solo las de demostración |
+
+**Construido no es desplegado.** Las dos primeras filas van partidas en dos porque el producto
+está terminado y verificado, pero la rama de *release* no se ha integrado: `main` del *backend*
+quedó en el 6 de octubre, `develop` va 39 commits por delante y Render despliega desde `main`.
+Todo lo que sigue se comprobó contra el servicio en línea el 4 de noviembre de 2026, que es la
+fecha de corte de esta sección. El Swagger desplegado no publica
+`/api/v1/sites/{siteId}/consumption/current`, `/sites/{siteId}/zone-consumption`,
+`/organizations/{organizationId}/site-consumption`, `/analytics/insights/recompute`, `/auth/google`
+ni el campo `peak_every_day` de la tarifa. El CORS desplegado, en cambio, ya está corregido: una
+petición de comprobación previa desde un origen no registrado no recibe cabecera de origen
+permitido, y desde <https://sems-web-application-fyld.vercel.app> recibe
+`access-control-allow-origin` con ese origen y ningún otro. El defecto 3 del capítulo VI queda
+cerrado también en el despliegue, y no sólo en `CorsPolicyTests`. La base de datos de producción
+sigue sin estar accesible: `/health` responde `Healthy` mientras `/health/ready`
+responde `503`, y un registro real devuelve `INTERNAL_ERROR`.
+Es exactamente el caso que la sección 7.4.2 usa para justificar la separación entre la sonda de
+vitalidad y la de disponibilidad, ocurriendo aquí en el entorno real. La aplicación web desplegada
+en <https://sems-web-application-fyld.vercel.app/> es la versión residencial anterior. Las cifras
+de pruebas y cobertura se miden sobre el código y no cambian por esto; lo que cambia es que hoy no
+hay un entorno en línea sobre el que correr los experimentos de este capítulo.
 
 **Qué sabemos y cómo lo sabemos.** La base de evidencia son seis entrevistas de *needfinding*
 (sección 2.2), tres por segmento. De ellas salen cinco constantes que se repiten en todas o casi
