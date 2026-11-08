@@ -1423,8 +1423,9 @@ pantallas menores de 860 px la barra se colapsa en un botón que despliega el me
 `aria-expanded` reflejando el estado. Los enlaces del pie repiten la navegación y añaden la
 sección legal.
 
-**Aplicación web.** Barra lateral persistente con las nueve vistas del producto, más una barra
-superior con el título de la vista activa, el conmutador de idioma y el menú de la cuenta.
+**Aplicación web.** Barra lateral persistente con las ocho vistas del producto, más una barra
+superior con el título de la vista activa, el conmutador de idioma y el menú de la cuenta, desde el
+que se llega a Configuración.
 
 | Ruta | Vista | Acceso |
 | :-- | :-- | :-- |
@@ -1437,15 +1438,18 @@ superior con el título de la vista activa, el conmutador de idioma y el menú d
 | `/alerts` | Alertas | Autenticada |
 | `/reports` | Reportes | Autenticada |
 | `/subscription` | Suscripción y pagos | Autenticada |
+| `/sites` | Mis locales | Autenticada |
 | `/settings` | Configuración | Autenticada |
+| `/establishment`, `/household` | Redirecciones a `/sites` | Autenticada |
 | `/:pathMatch(.*)*` | No encontrado | Pública |
 
 Un guardián de ruta comprueba la sesión antes de cada navegación y redirige a `/login` cuando no
 hay token válido.
 
-> **Deuda identificada.** La aplicación web conserva una vista `/household` («Mi hogar») heredada
-> del segmento anterior de viviendas. No corresponde al dominio comercial y debe sustituirse por
-> una vista de organización y locales. Queda registrada como deuda técnica en el capítulo V.
+> **Deuda cerrada.** La vista `/household` («Mi hogar»), heredada del segmento anterior de
+> viviendas, ya no existe: la sustituye `/sites`, que lista la organización, sus locales y las zonas
+> de cada uno. La ruta antigua se conserva como redirección para que un enlace guardado en el
+> navegador no termine en un 404. Se registra como DT01 cerrada en el capítulo V.
 
 ## 4.3. Landing Page UI Design
 
@@ -1529,7 +1533,7 @@ Wireflow:
 <br> Nota: Diagrama de Wireflow para el registro de nuevos dispositivos </p>
 
 Descripción del flujo:
-El usuario ingresa a la sección de "Mis Dispositivos" desde el menú lateral, selecciona la opción para agregar un nuevo equipo ("Vincular Dispositivo") y utiliza la cámara para escanear el código QR del medidor inteligente. Una vez detectado, asigna el tipo de dispositivo y la zona. Al confirmar, el dispositivo queda activo y vinculado a su red para comenzar la transmisión de datos.
+El usuario ingresa a la sección de "Mis Dispositivos" desde el menú lateral, selecciona la opción para agregar un nuevo equipo ("Vincular Dispositivo") y utiliza la cámara para escanear el código QR del medidor inteligente. Una vez detectado, asigna el tipo de dispositivo y la zona. Al confirmar, el medidor queda registrado y asociado al local y a la zona indicados. Lo que no ocurre a partir de ahí es la transmisión: el escaneo da de alta el número de serie, y las lecturas entran por `POST /api/v1/energy-readings`, que hoy nadie llama de forma automática.
 
 * User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
 
@@ -2062,14 +2066,14 @@ prefijo de tabla: cada módulo solo escribe sobre las suyas, y las relaciones en
 guardan como identificadores sin restricción de clave foránea cruzada, para que la frontera sea
 real y no solo una convención.
 
-**33 tablas**, distribuidas así:
+**34 tablas**, distribuidas así:
 
 | Prefijo | Tablas |
 | :-- | :-- |
 | `iam_` (3) | `iam_users`, `iam_refresh_tokens`, `iam_user_auth_tokens` |
 | `og_` (4) | `og_organizations`, `og_sites`, `og_zones`, `og_memberships` |
 | `dm_` (4) | `dm_devices`, `dm_device_bindings`, `dm_device_configurations`, `dm_device_events` |
-| `em_` (4) | `em_energy_meters`, `em_energy_readings`, `em_device_consumptions`, `em_consumption_alerts` |
+| `em_` (5) | `em_energy_meters`, `em_energy_readings`, `em_device_consumptions`, `em_consumption_alerts`, `em_user_goals` |
 | `an_` (5) | `an_bill_predictions`, `an_recommendations`, `an_anomalies`, `an_device_identifications`, `an_consumption_rankings` |
 | `al_` (6) | `al_alerts`, `al_thresholds`, `al_demand_rules`, `al_inactivity_rules`, `al_notification_preferences`, `al_notification_logs` |
 | `sb_` (3) | `sb_subscription_plans`, `sb_plan_features`, `sb_subscriptions` |
@@ -2198,6 +2202,11 @@ El proyecto usa **GitFlow**.
 
 Nunca se hace *push* directo a `main` ni a `develop`: todo entra por *Pull Request*.
 
+> **Estado real a la fecha de corte.** La tabla describe el modelo adoptado, no lo que hay hoy en
+> los repositorios. En el *backend*, `main` se reintegró en `develop` en el PR 14 y después se
+> borró: `develop` es la rama por defecto y no existe rama de producción. Los otros cuatro
+> repositorios nunca llegaron a usar `develop` como rama de integración y trabajan sobre `main`.
+
 **Repositorios de la organización**
 
 | Repositorio | Contenido |
@@ -2271,7 +2280,7 @@ al usuario.
 | :-- | :-- | :-- |
 | Landing Page | GitHub Pages | Publicación del repositorio tal cual, sin compilación, al hacer *push* a `main` |
 | Aplicación web | Vercel | Compilación con Vite y publicación automática por rama |
-| API REST | Render | Servicio web con despliegue automático desde `main` |
+| API REST | Render | Servicio web con despliegue automático. Se configuró contra `main`, rama que ya no existe tras el PR 14; la rama de origen está pendiente de revisar en el panel de Render |
 | Base de datos | PostgreSQL gestionado | Instancia única con migraciones aplicadas al arrancar |
 
 **Configuración del backend en el proveedor**
@@ -2487,8 +2496,8 @@ producto quede documentado con honestidad y sea verificable en la siguiente entr
 
 | # | Deuda | Dónde | Impacto | Prevista para |
 | :-- | :-- | :-- | :-- | :-- |
-| DT01 | La aplicación web conserva la vista `/household` («Mi hogar») del segmento anterior de viviendas | Aplicación web | Incoherencia con el dominio comercial | Sprint 2 |
-| DT02 | El formulario de alta de dispositivo no envía `siteId`, que la API exige como obligatorio | Aplicación web | El alta de dispositivos falla contra la API actual | Sprint 2 |
+| DT01 | ~~La aplicación web conserva la vista `/household` («Mi hogar») del segmento anterior de viviendas~~ **Resuelta.** La vista desapareció con el *release* del modelo comercial; `/sites` ocupa su lugar y la ruta antigua queda como redirección | Aplicación web | — | Cerrada |
+| DT02 | ~~El formulario de alta de dispositivo no envía `siteId`, que la API exige como obligatorio~~ **Resuelta.** El formulario elige local y zona, y envía ambos; la zona viaja como nula cuando no se asigna | Aplicación web | — | Cerrada |
 | DT03 | La aplicación web muestra la interfaz en español por defecto | Aplicación web | Incumple la restricción de idioma por defecto en inglés | Sprint 2 |
 | DT04 | No existe suite de pruebas automatizadas en la aplicación web | Aplicación web | Sin red de seguridad ante regresiones | Sprint 2 |
 | DT05 | ~~No existe pipeline de integración continua~~ **Resuelta parcialmente.** El *backend* tiene el *workflow* `Backend CI` desde el 7 de octubre (PR 7); la aplicación web y la móvil siguen sin pipeline | SEMS-Web-Application, SEMS-Mobile-App | El `npm run lint` y el `npm run build` de la web se ejecutan a mano | Sprint 2 |
@@ -3679,7 +3688,7 @@ que las secciones siguientes se lean sabiendo dónde hay evidencia y dónde hay 
 
 | Producto | Repositorio | Integración continua | Entrega y despliegue | Monitoreo |
 | :-- | :-- | :-- | :-- | :-- |
-| Backend (ASP.NET Core 8) | SEMS-Backend | `Backend CI` en GitHub Actions: *restore*, *build* en Release y 582 pruebas en cada `pull_request` y `push` a `develop` y `main` | Imagen Docker en dos etapas, desplegada sola en Render desde `main` | Logs de Render, más `/health`, `/health/ready` y `/metrics` publicados por la propia API |
+| Backend (ASP.NET Core 8) | SEMS-Backend | `Backend CI` en GitHub Actions: *restore*, *build* en Release y 582 pruebas en cada `pull_request` y `push` a `develop` y `main` | Imagen Docker en dos etapas, desplegada sola en Render | Logs de Render, más `/health`, `/health/ready` y `/metrics` publicados por la propia API |
 | Landing Page (HTML/CSS/JS) | SEMS-Landing-Page | Sin pipeline: el sitio no se compila ni tiene pruebas | `Deploy to GitHub Pages`: publica solo en cada `push` a `main` | Historial del *workflow* y disponibilidad de la URL |
 | Web Application (Vue 3 + Vite) | SEMS-Web-Application | **Ninguna.** `npm run lint` y `npm run build` se ejecutan a mano (DT05) | Vercel construye y publica solo desde la rama conectada | Estado `Ready` del *deployment* en Vercel |
 | Mobile Application (Flutter) | SEMS-Mobile-App | **Ninguna.** `flutter analyze` y `flutter test` se ejecutan a mano (DT06) | **Ninguno.** No hay construcción ni distribución a tienda | Ninguno |
@@ -3734,7 +3743,7 @@ sobre el historial real de los cinco repositorios, contando solo *commits* que n
 
 | Práctica | Cómo se verificó | Resultado |
 | :-- | :-- | :-- |
-| GitFlow y *feature branching* | Ramas remotas de cada repositorio | Solo el *backend* la aplica de verdad: tiene `main`, `develop` y ramas `feat/…` que entran por *pull request*. Los otros cuatro repositorios trabajan con una sola rama `main` |
+| GitFlow y *feature branching* | Ramas remotas de cada repositorio | Solo el *backend* la aplica de verdad: trabaja sobre `develop` con ramas `feat/…` que entran por *pull request*. Su rama `main` se reintegró en `develop` en el PR 14 y se borró, de modo que `develop` es hoy la rama por defecto. Los otros cuatro repositorios trabajan con una sola rama `main` |
 | *Pull requests* | *Pull requests* abiertos en SEMS-Backend | 11 en total, con la puerta de CI obligatoria; ninguna integración a `develop` por *push* directo |
 | *Conventional Commits* | Prefijo `feat`/`fix`/`docs`/`test`/`refactor`/`chore`/`ci` en el asunto | Backend 48 de 52 (92 %), Landing Page 2 de 2 (100 %), Web Application 3 de 5 (60 %), Reporte 51 de 89 (57 %), Mobile Application 0 de 3 (0 %) |
 | *Semantic Versioning* | Etiquetas del repositorio | Una sola: `v2.0.0` en SEMS-Backend, por la migración de Java a ASP.NET Core. El resto de repositorios no etiqueta versiones |
@@ -4084,7 +4093,7 @@ que nadie apriete nada. Este es el estado real:
 | :-- | :-- | :-- | :-- |
 | Landing Page | Sí | `push` a `main` → *workflow* de GitHub Actions → GitHub Pages | Nada |
 | Web Application | Sí | `push` a la rama conectada → construcción de Vercel → producción | Una puerta de calidad previa: hoy Vercel publica aunque `npm run lint` no se haya ejecutado, porque no hay *workflow* de CI en ese repositorio (DT05) |
-| Backend | Sí | `push` a `main` → construcción de la imagen → Render | Nada en el disparo; sí falta aplicar las migraciones de forma automática (ver abajo) |
+| Backend | Sí | `push` a la rama de despliegue → construcción de la imagen → Render. Se configuró sobre `main`, que ya no existe; la rama efectiva está pendiente de revisar en Render | Nada en el disparo; sí falta aplicar las migraciones de forma automática (ver abajo) |
 | Mobile Application | No | — | Todo: no hay *pipeline* de construcción ni de distribución a tienda (DT06) |
 
 **Configuración del entorno de producción.** Ninguna credencial vive en el repositorio. El *backend*
@@ -4353,8 +4362,8 @@ importante que necesitamos aprender primero», y es lo que este capítulo convie
 
 | Dimensión | Estado |
 | :-- | :-- |
-| Backend | **Construido:** ASP.NET Core 8, monolito modular de ocho contextos, 582 pruebas verdes, 70.5 % de cobertura de líneas, en la rama `develop`. **Desplegado:** Render sirve `main`, que quedó en el 6 de octubre y va 39 commits por detrás de `develop` |
-| Aplicación web | **Construido:** Vue 3 + Vite con registro, organización, locales, zonas, medidores, reglas de demanda, factura estimada, consumo por zona y comparación entre locales. **Desplegado:** Vercel sirve la versión residencial anterior, sin locales, zonas ni control de demanda |
+| Backend | **Construido:** ASP.NET Core 8, monolito modular de ocho contextos, 582 pruebas verdes, 70.5 % de cobertura de líneas, en la rama `develop`. **Desplegado:** Render sirve el código del *release* —el Swagger en línea publica las rutas nuevas—, pero sin base de datos: `/health/ready` responde `503` |
+| Aplicación web | **Construido:** Vue 3 + Vite con registro, organización, locales, zonas, medidores, reglas de demanda, factura estimada, consumo por zona y comparación entre locales. **Desplegado:** Vercel sirve ya la versión comercial, pero en modo demostración: no llega a llamar al *backend* |
 | Aplicación móvil | Iniciada (48 archivos Dart) y sin distribución |
 | Landing Page | Publicada en GitHub Pages |
 | Historias de usuario | 44 implementadas (US01–US44) sobre nueve épicas (EP01–EP09) |
@@ -4362,25 +4371,36 @@ importante que necesitamos aprender primero», y es lo que este capítulo convie
 | Instrumentación de producto | **Ninguna.** El sistema expone `/metrics` de Prometheus con latencias y códigos HTTP, que son métricas de infraestructura, no de comportamiento |
 | Usuarios en producción | **Ninguno.** No hay cuentas reales, solo las de demostración |
 
-**Construido no es desplegado.** Las dos primeras filas van partidas en dos porque el producto
-está terminado y verificado, pero la rama de *release* no se ha integrado: `main` del *backend*
-quedó en el 6 de octubre, `develop` va 39 commits por delante y Render despliega desde `main`.
-Todo lo que sigue se comprobó contra el servicio en línea el 4 de noviembre de 2026, que es la
-fecha de corte de esta sección. El Swagger desplegado no publica
-`/api/v1/sites/{siteId}/consumption/current`, `/sites/{siteId}/zone-consumption`,
-`/organizations/{organizationId}/site-consumption`, `/analytics/insights/recompute`, `/auth/google`
-ni el campo `peak_every_day` de la tarifa. El CORS desplegado, en cambio, ya está corregido: una
-petición de comprobación previa desde un origen no registrado no recibe cabecera de origen
-permitido, y desde <https://sems-web-application-fyld.vercel.app> recibe
-`access-control-allow-origin` con ese origen y ningún otro. El defecto 3 del capítulo VI queda
-cerrado también en el despliegue, y no sólo en `CorsPolicyTests`. La base de datos de producción
-sigue sin estar accesible: `/health` responde `Healthy` mientras `/health/ready`
-responde `503`, y un registro real devuelve `INTERNAL_ERROR`.
-Es exactamente el caso que la sección 7.4.2 usa para justificar la separación entre la sonda de
-vitalidad y la de disponibilidad, ocurriendo aquí en el entorno real. La aplicación web desplegada
-en <https://sems-web-application-fyld.vercel.app/> es la versión residencial anterior. Las cifras
-de pruebas y cobertura se miden sobre el código y no cambian por esto; lo que cambia es que hoy no
-hay un entorno en línea sobre el que correr los experimentos de este capítulo.
+**Desplegado tampoco es en funcionamiento.** Las dos primeras filas van partidas en dos porque lo
+construido y lo que sirve en línea siguen sin coincidir, aunque ya no por la razón de la medición
+anterior. Todo lo que sigue se comprobó contra los servicios en línea el 8 de noviembre de 2026,
+que es la fecha de corte de esta sección, y corrige en tres puntos lo medido el 4 de noviembre.
+
+El primero: el *release* sí llegó a producción. El Swagger desplegado publica 106 rutas, entre
+ellas `/api/v1/sites/{siteId}/consumption/current`, `/sites/{siteId}/zone-consumption`,
+`/organizations/{organizationId}/site-consumption`, `/analytics/insights/recompute` y `/auth/google`,
+y la tarifa trae el campo `peak_every_day`. El segundo: la rama `main` del *backend* ya no existe
+en el repositorio —el PR 14 la reintegró en `develop` y se borró después—, de modo que la
+afirmación de que Render despliega desde `main`, que esta sección y el capítulo VII daban por
+buena, ha dejado de describir la realidad; queda por comprobar en el panel de Render desde qué
+rama construye hoy. El tercero: la aplicación web desplegada ya no es la residencial anterior,
+sino la del modelo comercial, con locales y zonas.
+
+Lo que no ha cambiado es lo que impide experimentar. La base de datos de producción sigue sin
+estar accesible: `/health` responde `Healthy` mientras `/health/ready` responde `503`, y un intento
+de inicio de sesión devuelve `INTERNAL_ERROR`. Es exactamente el caso que la sección 7.4.2 usa para
+justificar la separación entre la sonda de vitalidad y la de disponibilidad, ocurriendo aquí en el
+entorno real. Y la aplicación web desplegada ni siquiera llega hasta ahí: se sirve con el modo
+demostración activo, así que cualquier correo y contraseña abren sesión, ninguna petición sale
+hacia la API y todo lo que se ve en pantalla son datos inventados. Para que consuma el servicio
+real hay que declarar `VITE_DEMO_MODE=false` y `VITE_API_BASE_URL` en Vercel. El CORS desplegado,
+en cambio, está corregido y se comprobó de nuevo: una petición de comprobación previa desde un
+origen no registrado no recibe cabecera de origen permitido, y desde
+<https://sems-web-application-fyld.vercel.app> recibe `access-control-allow-origin` con ese origen
+y ningún otro, de modo que el defecto 3 del capítulo VI queda cerrado también en el despliegue y no
+sólo en `CorsPolicyTests`. Las cifras de pruebas y cobertura se miden sobre el código y no cambian
+por nada de esto; lo que cambia es que hoy sigue sin haber un entorno en línea sobre el que correr
+los experimentos de este capítulo.
 
 **Qué sabemos y cómo lo sabemos.** La base de evidencia son seis entrevistas de *needfinding*
 (sección 2.2), tres por segmento. De ellas salen cinco constantes que se repiten en todas o casi
