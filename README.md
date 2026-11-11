@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/images/others/01-upc-logo.png" alt="UPC Logo" width="150px">
+<strong>Figura 1</strong><br><img src="assets/images/others/01-upc-logo.png" alt="UPC Logo" width="150px">
 <br><br>
 
 Universidad Peruana de Ciencias Aplicadas
@@ -11,15 +11,15 @@ Universidad Peruana de Ciencias Aplicadas
 
 **Curso:** Diseño de Experimentos de Ingeniería de Software 
 
-**NRC:** 17821
+**NRC:** 9112
 
 **Profesor:** Lennin Percy Cenas Vasquez
 
-**Informe del Trabajo Final**
+**Informe del Trabajo Final — SEMS**
 
 **Startup:** Energix
 
-**Startup:** SEMS
+**Producto:** SEMS
 
 **Integrantes**
 
@@ -96,7 +96,7 @@ A continuación, se detallan las actividades realizadas en cada entrega, la part
 
 **AV1**
 
-<img src="assets/images/others/02-docs-insights-av1.png" alt="Docs Insight AV1" style="width: 100vw;">
+<strong>Figura 2</strong><br><img src="assets/images/others/02-docs-insights-av1.png" alt="Docs Insight AV1" style="width: 100vw;">
 
 # Tabla de contenidos
 
@@ -306,18 +306,18 @@ capaz de acompañar tanto a un local independiente como a una cadena con decenas
 **Logo de la Startup**
 
 <div align="center">
-  <img src="assets/images/others/03-energix-logo.jpg" alt="Startup Logo" width="200">
+  <strong>Figura 3</strong><br><img src="assets/images/others/03-energix-logo.jpg" alt="Startup Logo" width="200">
 </div>
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
 | Foto | Integrante | Código | Carrera | Perfil |
 | :--: | :-- | :-- | :-- | :-- |
-|<img src="assets/images/team-photos/01-profile-alexis.png" alt="Profile Picture" width="100"> | Encalada Salazar, Alexis **(Team Leader)** | U20211G491 | Ingeniería de Software | Estudiante de ingeniería de software, poseo conocimientos en diferentes lenguajes de programación, manejo de bases de datos y edición de videos |
-| <img src="assets/images/team-photos/02-profile-winnie.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
-| <img src="assets/images/team-photos/03-profile-nestor.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
-| <img src="assets/images/team-photos/04-profile-jean.jpeg" alt="Profile Picture" width="100"> | Noriega Collado, Jean Fabio | U202310342 | Ingeniería de Software | Estudio ingenieria de software. Me gusta liderar equipos de trabajo y mantener ambientes ordenados en la medida de lo posible. Entre mis habilidades, podria decir que soy suficiente y eficiente, de manera que cubro los aspectos necesarios para la realizacion de proyectos largos y complejos. Siguiendo los principios por los cuales estudio la carrera. |
-| <img src="assets/images/team-photos/05-profile-elias.jpeg" alt="Profile Picture" width="100"> | Ramos Cerdan, Elias Daniel | U20201A277 | Ingeniería de Software |  Estoy en el séptimo ciclo de la carrera de Ingeniería de Software. Me adapto con facilidad a entornos nuevos y siempre busco maneras de mejorar mi ejecución de cada avance en los trabajos. El desarrollo de software es un área de gran interés para mí, tengo conocimientos en C++, python, html, css, y javascript y disfruto abordando problemas que exigen tanto razonamiento lógico como creatividad. |
+|<strong>Figura 4</strong><br><img src="assets/images/team-photos/01-profile-alexis.png" alt="Profile Picture" width="100"> | Encalada Salazar, Alexis **(Team Leader)** | U20211G491 | Ingeniería de Software | Estudiante de ingeniería de software, poseo conocimientos en diferentes lenguajes de programación, manejo de bases de datos y edición de videos |
+| <strong>Figura 5</strong><br><img src="assets/images/team-photos/02-profile-winnie.jpg" alt="Profile Picture" width="100"> | Merino Ordinola, Winnie Lisbeth | U20231E504 | Ingeniería de Software | Estudiante de la carrera de Ingeniería de Software. Mis principales destrezas son las habilidades para trabajar en equipo, la creatividad y la investigación. Mi mayor interés es tanto proponer ideas innovadoras que solucionen problemas cercanos en nuestra realidad, como llevarlas a cabo a través del software. |
+| <strong>Figura 6</strong><br><img src="assets/images/team-photos/03-profile-nestor.png" alt="Profile Picture" width="100"> | Rojas Tello, Nestor Alonso | U202317099 | Ingeniería de Software | Estudiante de Ingeniería de Software. Tengo conocimientos en C++, Python, JavaScript y CSS. Me considero una persona colaborativa, responsable y con disposición para resolver dudas y proponer soluciones ante cualquier desafío. |
+| <strong>Figura 7</strong><br><img src="assets/images/team-photos/04-profile-jean.jpeg" alt="Profile Picture" width="100"> | Noriega Collado, Jean Fabio | U202310342 | Ingeniería de Software | Estudio ingenieria de software. Me gusta liderar equipos de trabajo y mantener ambientes ordenados en la medida de lo posible. Entre mis habilidades, podria decir que soy suficiente y eficiente, de manera que cubro los aspectos necesarios para la realizacion de proyectos largos y complejos. Siguiendo los principios por los cuales estudio la carrera. |
+| <strong>Figura 8</strong><br><img src="assets/images/team-photos/05-profile-elias.jpeg" alt="Profile Picture" width="100"> | Ramos Cerdan, Elias Daniel | U20201A277 | Ingeniería de Software |  Estoy en el séptimo ciclo de la carrera de Ingeniería de Software. Me adapto con facilidad a entornos nuevos y siempre busco maneras de mejorar mi ejecución de cada avance en los trabajos. El desarrollo de software es un área de gran interés para mí, tengo conocimientos en C++, python, html, css, y javascript y disfruto abordando problemas que exigen tanto razonamiento lógico como creatividad. |
 
 ## 1.2. Solution Profile
 
@@ -521,7 +521,7 @@ suministro en categoría tarifaria con cargo por potencia.
 
 #### 1.2.2.4. Lean UX Canvas
 
-*Figura 1 (Lean Product Canvas)*  
+*Figura 9 (Lean Product Canvas)*  
 <img src="assets/images/figures/01-uxcanva.png" alt="uxCanva" style="width: 100vw;">
 
 | Cuadrante | Contenido |
@@ -633,7 +633,7 @@ origina el sobrecosto comercial.
 
 ### 2.1.1. Análisis competitivo
 
-<table width="100%"><tr><th colspan="2">Competitive Analysis Landscape</th><th width="18%"><strong>Energix — SEMS</strong><br><img src="assets/images/others/03-energix-logo.jpg" alt="Energix Logo" width="80"></th><th width="18%"><strong>Schneider Electric</strong><br><img src="assets/images/others/04-schneider-logo.png" alt="Schneider Electric Logo" width="80"></th><th width="17%"><strong>Portal de la distribuidora</strong><br><img src="assets/images/others/05-luzdelsur-logo.jpg" alt="Distribuidora Logo" width="80"></th><th width="17%"><strong>Medidores tipo Refoss / Shelly</strong><br><img src="assets/images/others/06-refoss-logo.jpg" alt="Refoss Logo" width="80"></th></tr><tr><td colspan="2"><strong>¿Por qué llevar a cabo este análisis?</strong></td><td colspan="4">Determinar qué necesidad del segmento de establecimientos comerciales no está siendo atendida por la oferta actual, y sobre qué base construir la ventaja competitiva de SEMS.</td></tr><tr><td rowspan="2"><strong>Perfil</strong></td><td>Overview</td><td>Plataforma web de gestión energética para establecimientos comerciales. Mide por local y por zona, calcula con la tarifa comercial peruana y avisa antes de superar la potencia contratada.</td><td>Suite empresarial de gestión de energía y automatización para industria y edificios corporativos.</td><td>Portal de consulta de consumo y facturación que la distribuidora ofrece a sus clientes.</td><td>Dispositivos de medición de consumo con aplicación móvil, orientados al mercado doméstico.</td></tr><tr><td>Ventaja competitiva</td><td>Modela la estructura tarifaria comercial peruana completa (punta, fuera de punta y demanda máxima) y alerta con margen antes del exceso.</td><td>Profundidad técnica, calidad de energía, integración con control industrial y respaldo de marca global.</td><td>El dato proviene de la misma empresa que emite la factura.</td><td>Precio bajo e instalación sencilla.</td></tr><tr><td rowspan="2"><strong>Perfil de Marketing</strong></td><td>Mercado objetivo</td><td>Establecimientos comerciales de 200 a 2.000 m² y cadenas de retail pequeñas y medianas.</td><td>Industria, minería, edificios corporativos y grandes superficies.</td><td>Todos los clientes de la concesionaria.</td><td>Consumidor doméstico y pequeño negocio.</td></tr><tr><td>Estrategias de marketing</td><td>Venta directa a cadenas, alianzas con gremios de comerciantes y prueba piloto gratuita en un local.</td><td>Red de integradores certificados y venta consultiva de alto ticket.</td><td>Canal propio incluido en el servicio.</td><td>Comercio electrónico y retail de tecnología.</td></tr><tr><td rowspan="3"><strong>Perfil de Producto</strong></td><td>Productos y servicios</td><td>Landing page, aplicación web, API RESTful y aplicación móvil. Alertas de demanda, factura estimada desglosada, consumo por zona y comparación entre locales.</td><td>Medidores, software de supervisión, servicios de ingeniería y analítica avanzada.</td><td>Consulta de recibos, histórico de consumo y demanda facturada.</td><td>Medidor con aplicación de consumo y automatizaciones básicas.</td></tr><tr><td>Precios y costos</td><td>Suscripción mensual escalonada por número de locales. Plan de entrada gratuito para un local.</td><td>Licenciamiento e implementación de alto costo, con proyecto de integración.</td><td>Sin costo adicional, incluido en el servicio eléctrico.</td><td>Pago único por dispositivo.</td></tr><tr><td>Canales de distribución</td><td>Web y móvil.</td><td>Integradores y fuerza de ventas directa.</td><td>Web y aplicación de la distribuidora.</td><td>Comercio electrónico.</td></tr><tr><td rowspan="4"><strong>Análisis SWOT</strong></td><td>Fortalezas</td><td>Modela la tarifa comercial peruana; alerta preventiva de demanda; desglose por zona; equipo con conocimiento del contexto regulatorio local.</td><td>Marca consolidada, robustez técnica, catálogo completo de hardware y software.</td><td>Acceso directo al dato oficial de facturación.</td><td>Costo bajo, gran base instalada y facilidad de uso.</td></tr><tr><td>Debilidades</td><td>Startup sin trayectoria ni base instalada; depende de hardware de medición de terceros; sin histórico de casos de éxito.</td><td>Costo y complejidad desproporcionados para el segmento; ciclo de venta largo.</td><td>Dato diferido y agregado; sin desglose por zona; sin capacidad de alerta preventiva.</td><td>No modela franja horaria ni demanda máxima; orientado al hogar; sin gestión multi-local.</td></tr><tr><td>Oportunidades</td><td>Segmento desatendido entre el medidor doméstico y la suite industrial; presión creciente sobre los costos operativos del retail.</td><td>Expansión hacia edificios comerciales medianos.</td><td>Ampliar los servicios digitales al cliente comercial.</td><td>Adaptar su producto al segmento comercial.</td></tr><tr><td>Amenazas</td><td>Que la distribuidora o un fabricante de medidores incorporen alertas de demanda en su propia oferta.</td><td>Competidores especializados más ágiles en nichos concretos.</td><td>Regulación y competencia en la comercialización eléctrica.</td><td>Saturación del mercado y competencia por precio.</td></tr></table>
+<table width="100%"><tr><th colspan="2">Competitive Analysis Landscape</th><th width="18%"><strong>Energix — SEMS</strong><br><strong>Figura 10</strong><br><img src="assets/images/others/03-energix-logo.jpg" alt="Energix Logo" width="80"></th><th width="18%"><strong>Schneider Electric</strong><br><strong>Figura 11</strong><br><img src="assets/images/others/04-schneider-logo.png" alt="Schneider Electric Logo" width="80"></th><th width="17%"><strong>Portal de la distribuidora</strong><br><strong>Figura 12</strong><br><img src="assets/images/others/05-luzdelsur-logo.jpg" alt="Distribuidora Logo" width="80"></th><th width="17%"><strong>Medidores tipo Refoss / Shelly</strong><br><strong>Figura 13</strong><br><img src="assets/images/others/06-refoss-logo.jpg" alt="Refoss Logo" width="80"></th></tr><tr><td colspan="2"><strong>¿Por qué llevar a cabo este análisis?</strong></td><td colspan="4">Determinar qué necesidad del segmento de establecimientos comerciales no está siendo atendida por la oferta actual, y sobre qué base construir la ventaja competitiva de SEMS.</td></tr><tr><td rowspan="2"><strong>Perfil</strong></td><td>Overview</td><td>Plataforma web de gestión energética para establecimientos comerciales. Mide por local y por zona, calcula con la tarifa comercial peruana y avisa antes de superar la potencia contratada.</td><td>Suite empresarial de gestión de energía y automatización para industria y edificios corporativos.</td><td>Portal de consulta de consumo y facturación que la distribuidora ofrece a sus clientes.</td><td>Dispositivos de medición de consumo con aplicación móvil, orientados al mercado doméstico.</td></tr><tr><td>Ventaja competitiva</td><td>Modela la estructura tarifaria comercial peruana completa (punta, fuera de punta y demanda máxima) y alerta con margen antes del exceso.</td><td>Profundidad técnica, calidad de energía, integración con control industrial y respaldo de marca global.</td><td>El dato proviene de la misma empresa que emite la factura.</td><td>Precio bajo e instalación sencilla.</td></tr><tr><td rowspan="2"><strong>Perfil de Marketing</strong></td><td>Mercado objetivo</td><td>Establecimientos comerciales de 200 a 2.000 m² y cadenas de retail pequeñas y medianas.</td><td>Industria, minería, edificios corporativos y grandes superficies.</td><td>Todos los clientes de la concesionaria.</td><td>Consumidor doméstico y pequeño negocio.</td></tr><tr><td>Estrategias de marketing</td><td>Venta directa a cadenas, alianzas con gremios de comerciantes y prueba piloto gratuita en un local.</td><td>Red de integradores certificados y venta consultiva de alto ticket.</td><td>Canal propio incluido en el servicio.</td><td>Comercio electrónico y retail de tecnología.</td></tr><tr><td rowspan="3"><strong>Perfil de Producto</strong></td><td>Productos y servicios</td><td>Landing page, aplicación web, API RESTful y aplicación móvil. Alertas de demanda, factura estimada desglosada, consumo por zona y comparación entre locales.</td><td>Medidores, software de supervisión, servicios de ingeniería y analítica avanzada.</td><td>Consulta de recibos, histórico de consumo y demanda facturada.</td><td>Medidor con aplicación de consumo y automatizaciones básicas.</td></tr><tr><td>Precios y costos</td><td>Suscripción mensual escalonada por número de locales. Plan de entrada gratuito para un local.</td><td>Licenciamiento e implementación de alto costo, con proyecto de integración.</td><td>Sin costo adicional, incluido en el servicio eléctrico.</td><td>Pago único por dispositivo.</td></tr><tr><td>Canales de distribución</td><td>Web y móvil.</td><td>Integradores y fuerza de ventas directa.</td><td>Web y aplicación de la distribuidora.</td><td>Comercio electrónico.</td></tr><tr><td rowspan="4"><strong>Análisis SWOT</strong></td><td>Fortalezas</td><td>Modela la tarifa comercial peruana; alerta preventiva de demanda; desglose por zona; equipo con conocimiento del contexto regulatorio local.</td><td>Marca consolidada, robustez técnica, catálogo completo de hardware y software.</td><td>Acceso directo al dato oficial de facturación.</td><td>Costo bajo, gran base instalada y facilidad de uso.</td></tr><tr><td>Debilidades</td><td>Startup sin trayectoria ni base instalada; depende de hardware de medición de terceros; sin histórico de casos de éxito.</td><td>Costo y complejidad desproporcionados para el segmento; ciclo de venta largo.</td><td>Dato diferido y agregado; sin desglose por zona; sin capacidad de alerta preventiva.</td><td>No modela franja horaria ni demanda máxima; orientado al hogar; sin gestión multi-local.</td></tr><tr><td>Oportunidades</td><td>Segmento desatendido entre el medidor doméstico y la suite industrial; presión creciente sobre los costos operativos del retail.</td><td>Expansión hacia edificios comerciales medianos.</td><td>Ampliar los servicios digitales al cliente comercial.</td><td>Adaptar su producto al segmento comercial.</td></tr><tr><td>Amenazas</td><td>Que la distribuidora o un fabricante de medidores incorporen alertas de demanda en su propia oferta.</td><td>Competidores especializados más ágiles en nichos concretos.</td><td>Regulación y competencia en la comercialización eléctrica.</td><td>Saturación del mercado y competencia por precio.</td></tr></table>
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
@@ -781,7 +781,7 @@ Esta sección se completa con las entrevistas reales. Por cada entrevista se deb
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQB5nwCliWL5S6uU__Jhf6JZAWlwk4Z6HWyNSsf2NyK_DOo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OrbLbV) |
 | Timing de inicio | 00:00 |
 | Duración | 08:11 |
-| Screenshot | <img src="assets/images/interviews/needfinding/01-entrevista-responsable01.png" alt="Captura Entrevista Fabrizzio" width="250"> |
+| Screenshot | <strong>Figura 14</strong><br><img src="assets/images/interviews/needfinding/01-entrevista-responsable01.png" alt="Captura Entrevista Fabrizzio" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -800,7 +800,7 @@ Fabrizzio es coordinador de operaciones de una cadena de 3 minimarkets. Gestiona
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQBdjAxIlyqkT78044_Vx_txAfngwLSWD0A7ALENK_-wqJY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=B0zEPB) |
 | Timing de inicio | 00:00 |
 | Duración | 08:46 |
-| Screenshot | <img src="assets/images/interviews/needfinding/02-entrevista-responsable02.png" alt="Captura Entrevista Jasmin" width="250"> |
+| Screenshot | <strong>Figura 15</strong><br><img src="assets/images/interviews/needfinding/02-entrevista-responsable02.png" alt="Captura Entrevista Jasmin" width="250"> |
 
 
 **Resumen de la entrevista**
@@ -819,7 +819,7 @@ El entrevistado se desempeña como responsable de operaciones de una cadena de t
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQBnE-dDCR2BT5hCn-bTX-xVAeEfOK53nj_MWunOS8d1fo8?e=3MiCCI&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
 | Timing de inicio | 00:25 |
 | Duración | 06:36 |
-| Screenshot | <img src="assets/images/interviews/needfinding/03-entrevista-responsable03.png" alt="Captura Entrevista Valia" width="250"> |
+| Screenshot | <strong>Figura 16</strong><br><img src="assets/images/interviews/needfinding/03-entrevista-responsable03.png" alt="Captura Entrevista Valia" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -837,7 +837,7 @@ La entrevistada coordina la operación de 7 locales Plaza Vea en la zona norte d
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
 | Timing de inicio | 00:00 |
 | Duración | 08:08 |
-| Screenshot | <img src="assets/images/interviews/needfinding/04-entrevista-propetario01.png" alt="Captura Entrevista Jasmin" width="250"> |
+| Screenshot | <strong>Figura 17</strong><br><img src="assets/images/interviews/needfinding/04-entrevista-propetario01.png" alt="Captura Entrevista Jasmin" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -855,7 +855,7 @@ El entrevistado es propietario y administrador de una cafetería de especialidad
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQA8ZsGrwfiRT50MqC85e4-CATbOrSmrbNmF9zogQw8q3Go?e=wtdMMt)|
 | Timing de inicio | 00:13 |
 | Duración | 16:00 |
-| Screenshot | <img src="assets/images/interviews/needfinding/05-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
+| Screenshot | <strong>Figura 18</strong><br><img src="assets/images/interviews/needfinding/05-entrevista-propetario02.png" alt="Captura Entrevista Yuli" width="250"> |
 
 **Resumen de la entrevista**
 La entrevistada administra un local de eventos de 170 m² con un equipo de 8 personas. La luz y el agua representan sus mayores gastos fijos, pero solo revisa el monto total de los recibos y desconoce cuánto consume cada equipo. La refrigeradora permanece encendida las 24 horas y los demás aparatos se desenchufan al cierre. Estaría dispuesta a invertir en una herramienta que demuestre un ahorro del 30% al 50%, comparando los últimos tres meses. Prefiere recibir alertas inmediatas por WhatsApp o llamada para detectar consumos anómalos y posibles conexiones clandestinas. Considera indispensable optimizar el consumo energético para afrontar los gastos del negocio y el pago del personal.
@@ -872,7 +872,7 @@ La entrevistada administra un local de eventos de 170 m² con un equipo de 8 per
 | URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQBN_4MF1dKfRKsYAjbOYnNMAa0O1zn8FhGtaWp70uTfs64?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=LFmOPL) |
 | Timing de inicio | 00:00 |
 | Duración | 10:29 |
-| Screenshot | <img src="assets/images/interviews/needfinding/06-entrevista-propietario03.png" alt="Captura Entrevista Angel" width="250"> |
+| Screenshot | <strong>Figura 19</strong><br><img src="assets/images/interviews/needfinding/06-entrevista-propietario03.png" alt="Captura Entrevista Angel" width="250"> |
 
 **Resumen de la entrevista**
 
@@ -928,14 +928,14 @@ influencias, canales digitales y dispositivos, **todos derivados del análisis d
 
 **User Persona — Segmento #1: Responsables de operaciones y mantenimiento de cadenas de retail**
 
-*Figura 2 (User Persona 1)*  
+*Figura 20 (User Persona 1)*  
 <img src="assets/images/figures/02-user-persona-1.png" alt="User Persona Renzo" style="width: 100vw;">
 
 > El arquetipo de Renzo Varela se construyó a partir de la entrevista a Fabrizzio, coordinador de tres minimarkets. Se caracteriza por priorizar el control, la prevención de sobrecostos y la reacción rápida ante incidencias, a partir de su necesidad de anticipar excesos de consumo, recibir alertas móviles y conocer el consumo por local o zona.
 
 **User Persona — Segmento #2: Propietarios y administradores de establecimientos independientes**
 
-*Figura 3 (User Persona 2)*  
+*Figura 21 (User Persona 2)*  
 <img src="assets/images/figures/03-user-persona-2.png" alt="User Persona Valeria" style="width: 100vw;">
 
 > El arquetipo de Valeria Mendoza se construyó a partir de la entrevista a Jasmin, propietaria y administradora de una cafetería de especialidad. Se caracteriza por priorizar el ahorro, la simplicidad y la toma rápida de decisiones, a partir de su necesidad de identificar qué equipos consumen más energía, evitar picos de consumo y recibir alertas claras desde su smartphone.
@@ -946,12 +946,12 @@ Matriz de tareas por User Persona, indicando frecuencia e importancia de cada ta
 
 **Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-*Figura 4 (User Task Matrix 1)*
+*Figura 22 (User Task Matrix 1)*
 <img src="assets/images/figures/04-u-task-matrix-1.png" alt="User Task Matrix 1" style="width: 100vw;">
 
 **Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-*Figura 5 (User Task Matrix 2)*
+*Figura 23 (User Task Matrix 2)*
 <img src="assets/images/figures/05-u-task-matrix-2.png" alt="User Task Matrix 2" style="width: 100vw;">
 
 **Análisis de la Matriz de Tareas (User Task Matrix)**
@@ -967,12 +967,12 @@ qué el problema persiste.
 
 **Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-*Figura 6 (User Journey Map 1)*
+*Figura 24 (User Journey Map 1)*
 <img src="assets/images/figures/06-u-journey-map-1.png" alt="User Journey Map 1" style="width: 100vw;">
 
 **Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-*Figura 7 (User Journey Map 2)*
+*Figura 25 (User Journey Map 2)*
 <img src="assets/images/figures/07-u-journey-map-2.png" alt="User Journey Map 2" style="width: 100vw;">
 
 ### 2.3.4. Empathy Mapping
@@ -982,12 +982,12 @@ Elaborados en **UXPressia**, uno por User Persona, con los cuadrantes *Thinks an
 
 **Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-*Figura 8 (Empathy Map 1)*
+*Figura 26 (Empathy Map 1)*
 <img src="assets/images/figures/08-empathy-map-1.png" alt="Empathy Map 1" style="width: 100vw;">
 
 **Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-*Figura 9 (Empathy Map 2)*
+*Figura 27 (Empathy Map 2)*
 <img src="assets/images/figures/09-empathy-map-2.png" alt="Empathy Map 2" style="width: 100vw;">
 
 ### 2.3.5. As-is Scenario Mapping
@@ -998,14 +998,14 @@ de su establecimiento **sin** la solución.
 
 **Primer Segmento Objetivo (Responsables de operaciones y mantenimiento de cadenas de retail)**
 
-*Figura 10 (As-Is Scenario Map 1)*
+*Figura 28 (As-Is Scenario Map 1)*
 <img src="assets/images/figures/10-as-is-scenario-map-1.png" alt="As Is Scenario Map 1" style="width: 100vw;">
 
 > **Nota.** El mapa ilustra la falta de información antes de la llegada del recibo y la frustración que esto genera en el usuario durante el cierre del mes (**pain points**), así como la confianza que siente al delegar las tareas operativas (**happy moments**). También se identifican áreas por descubrir (**blank areas**), como la distribución exacta del consumo de las distintas áreas sin medidores. Elaboración propia en Lucidchart.
 
 **Segundo Segmento Objetivo (Propietarios y administradores de establecimientos independientes)**
 
-*Figura 11 (As-Is Scenario Map 2)*
+*Figura 29 (As-Is Scenario Map 2)*
 <img src="assets/images/figures/11-as-is-scenario-map-2.png" alt="As Is Scenario Map 2" style="width: 100vw;">
 
 > **Nota.** El mapa muestra la angustia del propietario al momento de la llegada del recibo mensual (**pain points**) y las acciones reactivas que toma sin conocimiento técnico. También destaca los momentos positivos derivados de la afluencia de clientes en las horas punta (**happy moments**) y áreas sobre las que no se tiene información (**blank areas**), como identificar qué equipos exactos son los que más consumen. Elaboración propia en Lucidchart.
@@ -1052,12 +1052,12 @@ Stories, el Impact Mapping y el Product Backlog priorizado.
 
 **To-Be Scenario Map — User Persona #1: Responsable de operaciones de cadena**
 
-*Figura 12 (To-Be Scenario Map 1)*
+*Figura 30 (To-Be Scenario Map 1)*
 <img src="assets/images/figures/12-to-be-scenario-map-1.png" alt="To Be Scenario Map 1" style="width: 100vw;">
 
 **To-Be Scenario Map — User Persona #2: Propietario de establecimiento independiente**
 
-*Figura 13 (To-Be Scenario Map 2)*
+*Figura 31 (To-Be Scenario Map 2)*
 <img src="assets/images/figures/13-to-be-scenario-map-2.png" alt="To Be Scenario Map 2" style="width: 100vw;">
 
 Energix cumple un rol distinto según el tipo de usuario; para el administrador independiente es una herramienta de autocontrol y prevención personal, mientras que para el responsable de cadena es una herramienta de supervisión y alerta temprana sobre múltiples puntos de operación. En ambos casos, el hilo conductor es que el monitoreo constante reduce la incertidumbre y genera confianza al llegar el recibo final, porque el monto ya era esperado gracias al seguimiento hecho durante el mes.
@@ -1159,7 +1159,7 @@ producto— se priorizan por delante de la analítica avanzada y de los pagos.
 **Herramienta:** Jira
 **URL pública del Product Backlog:** [Ver Product Backlog en Jira](https://upc-team-m57tll9j.atlassian.net/jira/software/projects/HU/list/?filter=allissues&jql=project%20%3D%20%22HU%22%20ORDER%20BY%20created%20DESC)
 
-*Figura 14 (SEMS Jira)*
+*Figura 32 (SEMS Jira)*
 <img src="assets/images/figures/14-SEMS-jira.jpeg" alt="SEMS Jira" style="width: 100vw;">
 
 | # Orden | User Story Id | Título | Descripción | Story Points |
@@ -1222,7 +1222,7 @@ producto— se priorizan por delante de la analítica avanzada y de los pagos.
 
 El Impact Mapping relaciona los objetivos de SEMS con sus usuarios, los cambios esperados en sus hábitos de consumo energético y las funcionalidades que permiten lograrlos. Ayuda a priorizar las soluciones que contribuyen al ahorro energético y a las necesidades identificadas en las entrevistas.
 
-*Figura 15 (Impact Map)*
+*Figura 33 (Impact Map)*
 <img src="assets/images/figures/15-impact-map.png" alt="SEMS Jira" style="width: 100vw;">
 
 > **Nota metodológica.** El Impact Mapping se elabora en **UXPressia** tomando como base las fichas de los User Personas de la sección 2.3.1.
@@ -1269,7 +1269,7 @@ La jerarquía tipográfica sigue la escala estándar del sistema Material 3:
 *   **Body (Texto corrido):** `1rem` con interlineado de `1.55`, peso Regular (400).
 *   **Label (Etiqueta):** `0.8125rem`, peso Medium (500). Fundamental para micro-interacciones, badges de estado y ejes de gráficos.
 
-*Figura 16 (Sistema tipográfico de SEMS)*
+*Figura 34 (Sistema tipográfico de SEMS)*
 <img src="assets/images/figures/16-typography.png" alt="Sistema tipográfico de SEMS" style="width: 100vw;">
 
 > **Nota.** Sistema tipográfico utilizado en la identidad visual de SEMS.
@@ -1286,7 +1286,7 @@ Para la gestión energética, SEMS implementa colores semánticos con significad
 
 La plataforma respeta el criterio WCAG 2.1 nivel AA: cada rol de color incluye su variante `on-*` (ej. texto blanco `#FFFFFF` sobre Primary Blue `#0B57D0`) asegurando ratios de contraste superiores al mínimo de 4.5:1.
 
-*Figura 17 (Paleta de colores de SEMS)*
+*Figura 35 (Paleta de colores de SEMS)*
 <img src="assets/images/figures/17-colors.png" alt="Paleta de colores de SEMS" style="width: 100vw;">
 
 > **Nota.** Sistema de color basado en Material Design 3 utilizado en SEMS.
@@ -1302,7 +1302,7 @@ Las características técnicas de la iconografía son:
 
 Se ha diseñado un conjunto primario de representaciones para acciones repetitivas, como *Dashboard*, *Medidores*, *Reportes*, *Alertas* y *Configuración*, reduciendo la dependencia exclusiva de texto y acelerando la navegación.
 
-*Figura 18 (Sistema de iconografía de SEMS)*
+*Figura 36 (Sistema de iconografía de SEMS)*
 <img src="assets/images/figures/18-iconography.png" alt="Sistema de iconografía de SEMS" style="width: 100vw;">
 
 > **Nota.** Sistema de iconografía empleado en la interfaz de SEMS.
@@ -1344,7 +1344,7 @@ La navegación principal abandona las barras laterales y adopta un **Bottom Tab 
 
 Asimismo, las pantallas secundarias y de filtros emplean ventanas modales arrastrables (*Sheets*) emergentes desde el borde inferior, y el encabezado superior mantiene la navegación clásica de iPhone (Botón `< Atrás` alineado a la izquierda con el título de la vista centrado).
 
-*Figura 19 (iOS Mobile Style Guidelines)*
+*Figura 37 (iOS Mobile Style Guidelines)*
 <img src="assets/images/figures/19-ios_styles.png" alt="iOS Mobile Style Guidelines" style="width: 100vw;">
 
 > **Nota.** Patrones de adaptación visual de SEMS para la plataforma iOS.
@@ -1357,7 +1357,7 @@ El sistema de navegación inferior, o **Bottom Navigation**, implementa el carac
 
 Acciones rápidas como la creación de nuevos locales o el reporte de incidencias se delegan a un **Floating Action Button (FAB)**, el cual utiliza la escala de radio 16px. El encabezado, o **Top App Bar**, integra menú hamburguesa, búsqueda e información contextual alineada a la izquierda sobre un fondo Surface sólido, completando la familiaridad requerida por usuarios de Android.
 
-*Figura 20 (Android Mobile Style Guidelines)*
+*Figura 38 (Android Mobile Style Guidelines)*
 <img src="assets/images/figures/20-android_styles.png" alt="Android Mobile Style Guidelines" style="width: 100vw;">
 
 > **Nota.** Implementación de los lineamientos de Material Design 3 en la app Android de SEMS.
@@ -1469,7 +1469,7 @@ hay token válido.
 
 ### 4.3.1. Landing Page Wireframe
 
-*Figura 21 (Landing Page Wireframe)*
+*Figura 39 (Landing Page Wireframe)*
 <img src="assets/images/figures/21-landing-wireframe.png" alt="Landing Page Wireframe" style="width: 100vw;">
 
 Estructura de bloques, de arriba abajo:
@@ -1490,7 +1490,7 @@ En navegador móvil las columnas colapsan a una sola y la navegación pasa al me
 
 ### 4.3.2. Landing Page Mock-up
 
-*Figura 22 (Landing Page Mock-up)*
+*Figura 40 (Landing Page Mock-up)*
 <img src="assets/images/figures/22-landing-mockup.png" alt="Landing Page Mock-up" style="width: 100vw;">
 
 ## 4.4. Mobile Applications UX/UI Design
@@ -1503,31 +1503,31 @@ El diseño está enfocado en facilitar el monitoreo de energía y la gestión de
 
 En esta sección se presentan los wireframes de fidelidad media para la aplicación móvil de SEMS, diseñada específicamente para los roles de Administrador de cadena (Segmento 1) y Propietario independiente (Segmento 2). La propuesta visual y funcional responde directamente a estándares de usabilidad móvil, estructuración de datos y accesibilidad.
 
-*Figura 23 (Wireframe de Inicio de Sesión)*
+*Figura 41 (Wireframe de Inicio de Sesión)*
 <img src="assets/images/figures/23-wireframe-inicio-sesion.png" alt="Wireframe de Inicio de Sesión" style="width: 100vw;">
 
-*Figura 24 (Wireframe de Recuperación y Registro)*
+*Figura 42 (Wireframe de Recuperación y Registro)*
 <img src="assets/images/figures/24-wireframe-recuperacion.png" alt="Wireframe de Recuperación y Registro" style="width: 100vw;">
 
-*Figura 25 (Wireframe del Dashboard y Mis Dispositivos)*
+*Figura 43 (Wireframe del Dashboard y Mis Dispositivos)*
 <img src="assets/images/figures/25-wireframe-dashboard-dispositivos.png" alt="Wireframe del Dashboard y Mis Dispositivos" style="width: 100vw;">
 
-*Figura 26 (Wireframe de Monitoreo y Escaneo de Medidores)*
+*Figura 44 (Wireframe de Monitoreo y Escaneo de Medidores)*
 <img src="assets/images/figures/26-wireframe-monitoreo-medidores.png" alt="Wireframe de Monitoreo y Escaneo de Medidores" style="width: 100vw;">
 
-*Figura 27 (Wireframe de Analíticas y Recomendaciones)*
+*Figura 45 (Wireframe de Analíticas y Recomendaciones)*
 <img src="assets/images/figures/27-wireframe-analiticas-recomendaciones.png" alt="Wireframe de Analíticas y Recomendaciones" style="width: 100vw;">
 
-*Figura 28 (Wireframe de Reportes, Suscripción y Organización)*
+*Figura 46 (Wireframe de Reportes, Suscripción y Organización)*
 <img src="assets/images/figures/28-wireframe-reportes-suscripcion.png" alt="Wireframe de Reportes, Suscripción y Organización" style="width: 100vw;">
 
-*Figura 29 (Wireframe de Configuración y Perfil)*
+*Figura 47 (Wireframe de Configuración y Perfil)*
 <img src="assets/images/figures/29-wireframe-configuracion-perfil.png" alt="Wireframe de Configuración y Perfil" style="width: 100vw;">
 
-*Figura 30 (Wireframe de Detalle de Consumos)*
+*Figura 48 (Wireframe de Detalle de Consumos)*
 <img src="assets/images/figures/30-wireframe-detalle-consumos.png" alt="Wireframe de Detalle de Consumos" style="width: 100vw;">
 
-*Figura 31 (Wireframe de menús modales)*
+*Figura 49 (Wireframe de menús modales)*
 <img src="assets/images/figures/31-wireframe-menu-modales.png" alt="Wireframe de menús modales" style="width: 100vw;">
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
@@ -1538,12 +1538,12 @@ En esta sección se presentan los wireframes de fidelidad media para la aplicaci
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/taskflow.png" width="300">
+<strong>Figura 50</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow para vincular nuevos medidores </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/wireflow.png" width="700"> 
+<strong>Figura 51</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow para el registro de nuevos dispositivos </p>
 
 Descripción del flujo:
@@ -1553,12 +1553,12 @@ El usuario ingresa a la sección de "Mis Dispositivos" desde el menú lateral, s
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/taskflow.png" width="300">
+<strong>Figura 52</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow para atención de alertas de consumo </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/wireflow.png" width="700"> 
+<strong>Figura 53</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow de resolución de alertas </p>
 
 Descripción del flujo:
@@ -1568,12 +1568,12 @@ Desde el dashboard, el usuario visualiza notificaciones pendientes y navega a la
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/taskflow.png" width="300">
+<strong>Figura 54</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow para configuración de tarifas y metas </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/wireflow.png" width="700"> 
+<strong>Figura 55</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow de actualización de metas y tarifas </p>
 
 Descripción del flujo:
@@ -1583,12 +1583,12 @@ El usuario ingresa a "Mi Organización", donde visualiza los parámetros actuale
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/taskflow.png" width="300">
+<strong>Figura 56</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow para generación de reportes </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/wireflow.png" width="700"> 
+<strong>Figura 57</strong><br><img src="assets/chapter4/wireflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow de exportación de reportes PDF </p>
 
 Descripción del flujo:
@@ -1601,12 +1601,12 @@ El usuario se dirige a la sección de "Reportes PDF". Selecciona el rango de tie
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/taskflow.png" width="300">
+<strong>Figura 58</strong><br><img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow de inicio de sesión y recuperación </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/wireflow.png" width="700"> 
+<strong>Figura 59</strong><br><img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow de autenticación de usuario </p>
 
 Descripción del flujo:
@@ -1616,12 +1616,12 @@ El propietario abre la app e intenta iniciar sesión, pero al fallar las credenc
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/taskflow.png" width="300">
+<strong>Figura 60</strong><br><img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow de revisión de consumo diario </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/wireflow.png" width="700"> 
+<strong>Figura 61</strong><br><img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow de consulta rápida de resumen </p>
 
 Descripción del flujo:
@@ -1631,12 +1631,12 @@ Al iniciar sesión, el usuario aterriza directamente en el Dashboard Principal. 
 
 Task Flow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/taskflow.png" width="300">
+<strong>Figura 62</strong><br><img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/taskflow.png" width="300">
 <br> Nota: Diagrama de Task Flow para aplicación de recomendaciones de ahorro </p>
 
 Wireflow:
 <p align="center"> 
-<img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/wireflow.png" width="700"> 
+<strong>Figura 63</strong><br><img src="assets/chapter4/wireflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/wireflow.png" width="700"> 
 <br> Nota: Diagrama de Wireflow de implementación de sugerencias de IA </p>
 
 Descripción del flujo:
@@ -1648,39 +1648,39 @@ El usuario ingresa a "Analíticas" y revisa la sección "Recomendaciones de IA".
 Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación móvil de SEMS, diseñada para ofrecer una experiencia fluida e intuitiva tanto para los administradores corporativos como para los dueños de locales independientes. El diseño aplica la identidad visual completa del proyecto: modo oscuro predeterminado por eficiencia energética (OLED), paleta con acentos azules, e indicadores claros en verde/rojo para estados financieros y de alerta.
 
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_1.png" alt="mockup 1" width="500"><br>
+  <strong>Figura 64</strong><br><img src="assets/chapter4/mockups/Screenshot_1.png" alt="mockup 1" width="500"><br>
   Nota: Mockup de Inicio de Sesión
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_2.png" alt="mockup 2" width="500"><br>
+  <strong>Figura 65</strong><br><img src="assets/chapter4/mockups/Screenshot_2.png" alt="mockup 2" width="500"><br>
   Nota: Mockup de Recuperación y Registro
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_3.png" alt="mockup 3" width="900"><br>
+  <strong>Figura 66</strong><br><img src="assets/chapter4/mockups/Screenshot_3.png" alt="mockup 3" width="900"><br>
   Nota: Mockup del Dashboard y Mis Dispositivos
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_4.png" alt="mockup 4" width="900"><br>
+  <strong>Figura 67</strong><br><img src="assets/chapter4/mockups/Screenshot_4.png" alt="mockup 4" width="900"><br>
   Nota: Mockup de Monitoreo y Escaneo de Medidores
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_5.png" alt="mockup 5" width="900"><br>
+  <strong>Figura 68</strong><br><img src="assets/chapter4/mockups/Screenshot_5.png" alt="mockup 5" width="900"><br>
   Nota: Mockup de Analíticas y Recomendaciones
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_6.png" alt="mockup 6" width="900"><br>
+  <strong>Figura 69</strong><br><img src="assets/chapter4/mockups/Screenshot_6.png" alt="mockup 6" width="900"><br>
   Nota: Mockup de Reportes, Suscripción y Organización
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_7.png" alt="mockup 7" width="500"><br>
+  <strong>Figura 70</strong><br><img src="assets/chapter4/mockups/Screenshot_7.png" alt="mockup 7" width="500"><br>
   Nota: Mockup de Configuración y Perfil
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_8.png" alt="mockup 8" width="500"><br>
+  <strong>Figura 71</strong><br><img src="assets/chapter4/mockups/Screenshot_8.png" alt="mockup 8" width="500"><br>
   Nota: Mockup de detalle de consumos
 </p>
 <p align="center">
-  <img src="assets/chapter4/mockups/Screenshot_9.png" alt="mockup 9" width="300"><br>
+  <strong>Figura 72</strong><br><img src="assets/chapter4/mockups/Screenshot_9.png" alt="mockup 9" width="300"><br>
   Nota: Mockup de menús modales
 </p>
 
@@ -1692,28 +1692,28 @@ Esta sección reúne la interfaz gráfica de alta fidelidad para la aplicación 
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/userflow.png" width="700"> 
+<strong>Figura 73</strong><br><img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Administrar%20y%20vincular%20nuevos%20medidores%20inteligentes/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow para el registro de nuevos dispositivos en alta fidelidad </p>
 
 * User Goal: Como coordinador de cadena, quiero atender una alerta de exceso de consumo en hora punta, para reconocerla a tiempo y evitar cargos extras en la facturación eléctrica.
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/userflow.png" width="700"> 
+<strong>Figura 74</strong><br><img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Atender%20y%20resolver%20alertas%20de%20exceso%20de%20consumo/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de resolución de alertas en alta fidelidad </p>
 
 * User Goal: Como coordinador de cadena, quiero configurar el costo por kWh y la meta global de consumo, para que el sistema me notifique si estoy por exceder el presupuesto del mes.
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/userflow.png" width="700"> 
+<strong>Figura 75</strong><br><img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Configurar%20metas%20corporativas%20y%20tarifas%20el%C3%A9ctricas/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de actualización de metas y tarifas en alta fidelidad </p>
 
 * User Goal: Como coordinador de cadena, quiero generar un reporte energético mensual descargable, para presentarlo a gerencia y justificar los gastos de electricidad.
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/userflow.png" width="700"> 
+<strong>Figura 76</strong><br><img src="assets/chapter4/userflows/segmento%201/User%20goal-%20Generar%20y%20exportar%20un%20reporte%20energ%C3%A9tico%20para%20gerencia/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de exportación de reportes PDF en alta fidelidad </p>
 
 
@@ -1723,21 +1723,21 @@ User Flow:
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/userflow.png" width="700"> 
+<strong>Figura 77</strong><br><img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Autenticaci%C3%B3n%20y%20recuperaci%C3%B3n%20segura%20en%20la%20plataforma/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de autenticación de usuario en alta fidelidad </p>
 
 * User Goal: Como dueño de local, quiero revisar el resumen rápido de mi consumo actual, para saber de un vistazo cuánto he gastado hasta el momento en el mes.
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/userflow.png" width="700"> 
+<strong>Figura 78</strong><br><img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Revisar%20el%20resumen%20r%C3%A1pido%20de%20consumo%20diario/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de consulta rápida de resumen en alta fidelidad </p>
 
 * User Goal: Como dueño de local, quiero aplicar sugerencias automáticas de la IA, para reducir mi factura de luz sin tener que analizar gráficos complejos.
 
 User Flow:
 <p align="center"> 
-<img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/userflow.png" width="700"> 
+<strong>Figura 79</strong><br><img src="assets/chapter4/userflows/segmento%202/User%20goal-%20Aplicar%20recomendaciones%20de%20IA%20para%20reducir%20la%20factura/userflow.png" width="700"> 
 <br> Nota: Diagrama de User Flow de implementación de sugerencias de IA en alta fidelidad </p>
 
 ## 4.5. Mobile Applications Prototyping
@@ -1754,48 +1754,63 @@ User Flow:
 
 ### 4.6.1. Web Applications Wireframes
 
+**Figura 80**  
 ![Login](assets/WireLogin.png)
 
 
+**Figura 81**  
 ![Login](assets/WireCreate.png)
 
 
+**Figura 82**  
 ![Login](assets/WireRestore.png)
 
 
+**Figura 83**  
 ![Login](assets/WireChange.png)
 
 
+**Figura 84**  
 ![Login](assets/WireVerify.png)
 
 
+**Figura 85**  
 ![Login](assets/WireDashboard.png)
 
 
+**Figura 86**  
 ![Login](assets/WireDevices.png)
 
 
+**Figura 87**  
 ![Login](assets/WireMonitor.png)
 
 
+**Figura 88**  
 ![Login](assets/WireAnalytics.png)
 
 
+**Figura 89**  
 ![Login](assets/WireAlerts.png)
 
 
+**Figura 90**  
 ![Login](assets/WreReports.png)
 
 
+**Figura 91**  
 ![Login](assets/WireSubs.png)
 
 
+**Figura 92**  
 ![Login](assets/WireLocals.png)
 
 
+**Figura 93**  
 ![Login](assets/WireConfig.png)
 
 
+**Figura 94**  
 ![Login](assets/WireNotFound.png)
 
 Distribución común a todas las vistas autenticadas: barra lateral fija a la izquierda con la
@@ -1804,14 +1819,19 @@ contenido con una rejilla de tarjetas.
 
 ### 4.6.2. Web Applications Wireflow Diagrams
 
+**Figura 95**  
 ![WireFlow1](assets/Wireflow1.png)
 
+**Figura 96**  
 ![WireFlow2](assets/Wireflow2.png)
 
+**Figura 97**  
 ![WireFlow3](assets/Wireflow3.png)
 
+**Figura 98**  
 ![WireFlow4](assets/Wireflow4.png)
 
+**Figura 99**  
 ![WireFlow5](assets/Wireflow5.png)
 
 
@@ -1824,61 +1844,80 @@ Flujos que deben representarse:
 
 ### 4.6.3. Web Applications Mock-ups
 
+**Figura 100**  
 ![MockWeb](assets/MockLogin.png)
 
 
+**Figura 101**  
 ![MockWeb](assets/MockCreate.png)
 
 
+**Figura 102**  
 ![MockWeb](assets/MockRestore.png)
 
 
+**Figura 103**  
 ![MockWeb](assets/MockChange.png)
 
 
+**Figura 104**  
 ![MockWeb](assets/MockVerify.png)
 
 
+**Figura 105**  
 ![MockWeb](assets/MockDashboard.png)
 
 
+**Figura 106**  
 ![MockWeb](assets/MockDevices.png)
 
 
+**Figura 107**  
 ![MockWeb](assets/MockMonitor.png)
 
 
+**Figura 108**  
 ![MockWeb](assets/MockAnalytics.png)
 
 
+**Figura 109**  
 ![MockWeb](assets/MockAlerts.png)
 
 
+**Figura 110**  
 ![MockWeb](assets/MockReports.png)
 
 
+**Figura 111**  
 ![MockWeb](assets/MockSubs.png)
 
 
+**Figura 112**  
 ![MockWeb](assets/MockLocals.png)
 
 
+**Figura 113**  
 ![MockWeb](assets/MockConfig.png)
 
 
+**Figura 114**  
 ![MockWeb](assets/MockNotFound.png)
 
 ### 4.6.4. Web Applications User Flow Diagrams
 
+**Figura 115**  
 ![UserFlows](assets/UserFlow1.png)
 
 
+**Figura 116**  
 ![UserFlows](assets/UserFlow2.png)
 
 
+**Figura 117**  
 ![UserFlows](assets/UserFlow3.png)
 
 
+**Figura 118**  
 ![UserFlows](assets/UserFlow4.png)
 
 ## 4.7. Web Applications Prototyping
@@ -1893,6 +1932,7 @@ prefijadas, comunicándose entre sí por puertos explícitos y por eventos de do
 
 ### 4.8.1. Software Architecture Context Diagram
 
+**Figura 119**  
 ![Context](assets/Context.png)
 
 | Elemento | Tipo | Descripción |
@@ -1907,6 +1947,7 @@ prefijadas, comunicándose entre sí por puertos explícitos y por eventos de do
 
 ### 4.8.2. Software Architecture Container Diagrams
 
+**Figura 120**  
 ![Container](assets/Container.png)
 
 | Contenedor | Tecnología | Responsabilidad |
@@ -1918,6 +1959,7 @@ prefijadas, comunicándose entre sí por puertos explícitos y por eventos de do
 
 ### 4.8.3. Software Architecture Components Diagrams
 
+**Figura 121**  
 ![Components](assets/Components.png)
 
 Los ocho módulos del monolito y su prefijo de tablas:
@@ -1955,30 +1997,37 @@ existen se resuelven por interfaces declaradas en el dominio del consumidor:
 
 #Alerts
 
+**Figura 122**  
 ![alerts](assets/alertsCL.png)
 
 #Analytics
 
+**Figura 123**  
 ![analytics](assets/analyticsCL.png)
 
 #Energy
 
+**Figura 124**  
 ![energy](assets/energyCL.png)
 
 #iam
 
+**Figura 125**  
 ![iam](assets/iamCL.png)
 
 #organizatoins
 
+**Figura 126**  
 ![organizations](assets/organizationsCL.png)
 
 #payments
 
+**Figura 127**  
 ![payments](assets/paymentsCL.png)
 
 #subscriptions
 
+**Figura 128**  
 ![subscriptions](assets/subscriptionsCL.png)
 
 ### 4.9.2. Class Dictionary
@@ -2094,34 +2143,42 @@ real y no solo una convención.
 | `pm_` (4) | `pm_payments`, `pm_payment_methods`, `pm_invoices`, `pm_webhook_events` |
 
 **IAM
+**Figura 129**  
 ![IAM](assets/iam.png)
 
 
 **Organizations
+**Figura 130**  
 ![ORG](assets/organizations.png)
 
 
 **Devices
+**Figura 131**  
 ![Devices](assets/devices.png)
 
 
 **Energy
+**Figura 132**  
 ![Energy](assets/energy.png)
 
 
 **Analytics
+**Figura 133**  
 ![Analytics](assets/analytics.png)
 
 
 **Alerts
+**Figura 134**  
 ![Alerts](assets/alerts.png)
 
 
 **Subscriptions
+**Figura 135**  
 ![Subscriptions](assets/subscriptions.png)
 
 
 **Payments
+**Figura 136**  
 ![Payments](assets/payments.png)
 **Restricciones de unicidad relevantes**
 
@@ -2361,7 +2418,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 > Se amplía con un cuadro por sprint en cada entrega.
 
 *Figura ** (Sprint 1)*
-<img src="assets/images/figures/xx-sprint-1.png" alt="Sprint 1" style="width: 100vw;">
+<strong>Figura 137</strong><br><img src="assets/images/figures/xx-sprint-1.png" alt="Sprint 1" style="width: 100vw;">
 
 > Se amplía con un cuadro por sprint en cada entrega.
 
@@ -2384,6 +2441,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 - Llamados a la acción por segmento que redirigen a las vistas correspondientes de la aplicación web.
 - Sección de Términos y Condiciones con la política de privacidad y el acuerdo de nivel de servicio.
 
+**Figura 138**  
 ![landingDeploy](assets/landingDeploy.PNG)
 
 ### 5.2.3. Implemented Frontend-Web Application Evidence
@@ -2394,6 +2452,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 | Desplegado en | <https://sems-web-application-fyld.vercel.app/> |
 | Tecnología | Vue 3, Vite, PrimeVue con *preset* Material, Pinia, TanStack Query |
 
+**Figura 139**  
 ![WebDeploy](assets/webDeploy.PNG)
 
 
@@ -2440,6 +2499,7 @@ Separarlas evita el fallo más común de esta clase de despliegues: un servicio 
 - Los datos de la tarjeta nunca llegan al servidor: se introducen en la página de la pasarela y la
   aplicación solo recibe un identificador del medio de pago.
 
+**Figura 140**  
 ![BackDeploy](assets/backDeploy.PNG)
 
 ### 5.2.6. RESTful API Documentation
@@ -2494,6 +2554,7 @@ Content-Type: application/json
 | Flujo de trabajo | GitFlow |
 | Convención de commits | Conventional Commits |
 
+**Figura 141**  
 ![Commits](assets/Commits.PNG)
 
 ## 5.3. Video About-the-Product
@@ -2559,17 +2620,17 @@ sobre 226 clases en 90 archivos. Las cifras de las figuras se obtienen directame
 | Core System Tests | 4 | 6 | 6 | 0 | 11.00 s |
 | **Total** | **51** | **582** | **582** | **0** | **42.8 s** |
 
-*Figura 32 (Resumen general de resultados de las cuatro suites)*
+*Figura 142 (Resumen general de resultados de las cuatro suites)*
 <img src="assets/images/figures/32-test-results-summary.png" alt="Resumen general de resultados" style="width: 100vw;">
 
 > Total de pruebas, aprobadas, fallidas y omitidas por suite, generado a partir de los cuatro archivos `.trx`.
 
-*Figura 33 (Resumen de cobertura de código)*
+*Figura 143 (Resumen de cobertura de código)*
 <img src="assets/images/figures/33-coverage-summary.png" alt="Resumen de cobertura" style="width: 100vw;">
 
 > Reporte de *ReportGenerator* sobre la combinación de los cuatro archivos de cobertura.
 
-*Figura 34 (Cobertura de código por módulo)*
+*Figura 144 (Cobertura de código por módulo)*
 <img src="assets/images/figures/34-coverage-by-module.png" alt="Cobertura por módulo" style="width: 100vw;">
 
 > Cobertura de líneas y de ramas de cada uno de los ocho módulos, del núcleo compartido y de `Program`,
@@ -2880,7 +2941,7 @@ petición en *snake_case* y respuesta en *PascalCase*.
 - S/ 29.90 → `2990` céntimos para Stripe
 - Pago → nace pendiente; solo al procesarse registra la fecha de cobro
 
-*Figura 35 (Resultados de las pruebas unitarias por clase)*
+*Figura 145 (Resultados de las pruebas unitarias por clase)*
 <img src="assets/images/figures/35-unit-tests-by-class.png" alt="Pruebas unitarias por clase" style="width: 100vw;">
 
 > 27 clases de prueba agrupadas por módulo, todas aprobadas.
@@ -3019,7 +3080,7 @@ Archivo de la fábrica: **`tests/Sems.Api.TestSupport/SemsApiFactory.cs`**.
 - `GET /swagger/v1/swagger.json` → `200 OK` con los *endpoints* de todos los módulos
 - Petición de comprobación previa desde `http://localhost:5173` → incluye `Access-Control-Allow-Origin`; desde un origen no registrado → no la incluye
 
-*Figura 36 (Resultados de las pruebas de integración por clase)*
+*Figura 146 (Resultados de las pruebas de integración por clase)*
 <img src="assets/images/figures/36-integration-tests-by-class.png" alt="Pruebas de integración por clase" style="width: 100vw;">
 
 > 14 clases de prueba en 13 archivos, todas aprobadas contra la API completa.
@@ -3037,7 +3098,7 @@ llaman a la API real levantada con `WebApplicationFactory`; cada *feature* tiene
 su propia base de datos. Donde una misma regla se valida con varios valores se usa *Scenario Outline*
 con una tabla *Examples*.
 
-*Figura 37 (Escenarios BDD agrupados por feature)*
+*Figura 147 (Escenarios BDD agrupados por feature)*
 <img src="assets/images/figures/37-bdd-scenarios-by-feature.png" alt="Escenarios BDD por feature" style="width: 100vw;">
 
 > 32 escenarios en seis *features*; cada fila de *Examples* es una ejecución, lo que da 54 ejecuciones.
@@ -3099,7 +3160,7 @@ Feature: Account registration and sign-in
     Then the access is rejected as unauthorized
 ```
 
-*Figura 38 (Ejecución de la feature de registro e inicio de sesión)*
+*Figura 148 (Ejecución de la feature de registro e inicio de sesión)*
 <img src="assets/images/figures/38-bdd-feature-authentication.png" alt="Ejecución BDD de autenticación" style="width: 100vw;">
 
 > Cada escenario muestra los pasos ejecutados y el método que los implementa.
@@ -3211,7 +3272,7 @@ Feature: Organization, site and zone registration
     Then the site is registered in the organization
 ```
 
-*Figura 39 (Ejecución de la feature de organización, locales y zonas)*
+*Figura 149 (Ejecución de la feature de organización, locales y zonas)*
 <img src="assets/images/figures/39-bdd-feature-organizations-and-sites.png" alt="Ejecución BDD de organizaciones" style="width: 100vw;">
 
 > Los tres RUC mal formados y las tres categorías tarifarias se ejecutan como filas de *Examples*.
@@ -3271,7 +3332,7 @@ Feature: Estimated commercial bill
     Then the request is rejected as invalid
 ```
 
-*Figura 40 (Ejecución de la feature de factura estimada)*
+*Figura 150 (Ejecución de la feature de factura estimada)*
 <img src="assets/images/figures/40-bdd-feature-bill-estimate.png" alt="Ejecución BDD de factura estimada" style="width: 100vw;">
 
 > El exceso se cobra solo con demanda mayor que la contratada: 100 kW y 120 kW no generan exceso, 150 kW sí.
@@ -3314,7 +3375,7 @@ Feature: Peak hours of the commercial tariff
     And the tariff applies them every day
 ```
 
-*Figura 41 (Ejecución de la feature de horario de punta)*
+*Figura 151 (Ejecución de la feature de horario de punta)*
 <img src="assets/images/figures/41-bdd-feature-peak-hours.png" alt="Ejecución BDD de horario de punta" style="width: 100vw;">
 
 > Bordes 17:59, 18:00, 22:59 y 23:00, y domingo con y sin exclusión.
@@ -3380,7 +3441,7 @@ Feature: Demand alerts before the contracted power is exceeded
     And the manager receives the alert by email
 ```
 
-*Figura 42 (Ejecución de la feature de alertas de demanda)*
+*Figura 152 (Ejecución de la feature de alertas de demanda)*
 <img src="assets/images/figures/42-bdd-feature-demand-alerts.png" alt="Ejecución BDD de alertas de demanda" style="width: 100vw;">
 
 > El umbral exacto (102 kW) y la potencia contratada exacta (120 kW) generan `WARNING`; 120.1 kW genera `CRITICAL`.
@@ -3426,7 +3487,7 @@ Feature: Submeter registration and removal
     And the submeter "SM-0005" is kept with the status "REMOVED"
 ```
 
-*Figura 43 (Ejecución de la feature de alta y baja de medidores)*
+*Figura 153 (Ejecución de la feature de alta y baja de medidores)*
 <img src="assets/images/figures/43-bdd-feature-submeters.png" alt="Ejecución BDD de medidores" style="width: 100vw;">
 
 > El medidor dado de baja deja el listado del local y se conserva con estado `REMOVED`.
@@ -3442,7 +3503,7 @@ varios módulos en una misma prueba y verificando el resultado en cada paso, inc
 eventos de dominio entre módulos (correos enviados por `AlertTriggered`, `PasswordResetRequested` y
 `PaymentProcessed`).
 
-*Figura 44 (Resultados de las pruebas de sistema por flujo)*
+*Figura 154 (Resultados de las pruebas de sistema por flujo)*
 <img src="assets/images/figures/44-system-tests-by-class.png" alt="Pruebas de sistema por flujo" style="width: 100vw;">
 
 > Cuatro flujos, seis pruebas, todas aprobadas.
@@ -3469,7 +3530,7 @@ rechaza y no aparece en el listado.
 
 Archivo: **`tests/Sems.Api.SystemTests/OnboardingFlowTests.cs`**
 
-*Figura 45 (Ejecución del flujo de alta de un establecimiento)*
+*Figura 155 (Ejecución del flujo de alta de un establecimiento)*
 <img src="assets/images/figures/45-system-flow-onboarding.png" alt="Flujo de alta" style="width: 100vw;">
 
 **Flujo 2: Prevención del cargo por potencia**
@@ -3501,7 +3562,7 @@ que una demanda que no pasa de 101.9 kW no genera alertas, correos ni exceso.
 
 Archivo: **`tests/Sems.Api.SystemTests/DemandChargePreventionFlowTests.cs`**
 
-*Figura 46 (Ejecución del flujo de prevención del cargo por potencia)*
+*Figura 156 (Ejecución del flujo de prevención del cargo por potencia)*
 <img src="assets/images/figures/46-system-flow-demand-charge-prevention.png" alt="Flujo de prevención del cargo por potencia" style="width: 100vw;">
 
 **Flujo 3: Contratación y pago de un plan**
@@ -3519,7 +3580,7 @@ comprobante y un único correo de comprobante.
 
 Archivo: **`tests/Sems.Api.SystemTests/SubscriptionPaymentFlowTests.cs`**
 
-*Figura 47 (Ejecución del flujo de contratación y pago)*
+*Figura 157 (Ejecución del flujo de contratación y pago)*
 <img src="assets/images/figures/47-system-flow-subscription-payment.png" alt="Flujo de contratación y pago" style="width: 100vw;">
 
 **Flujo 4: Recuperación de la cuenta**
@@ -3536,7 +3597,7 @@ nueva contraseña permite iniciar sesión.
 
 Archivo: **`tests/Sems.Api.SystemTests/AccountRecoveryFlowTests.cs`**
 
-*Figura 48 (Ejecución del flujo de recuperación de la cuenta)*
+*Figura 158 (Ejecución del flujo de recuperación de la cuenta)*
 <img src="assets/images/figures/48-system-flow-account-recovery.png" alt="Flujo de recuperación de la cuenta" style="width: 100vw;">
 
 | Suite | Archivos | Pruebas | Passed | Failed |
@@ -3833,14 +3894,12 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
 En la vista mejorada, el registro guiado de materiales tiene el botón "Confirmar movimiento en datos de ensayo", el registro rápido de asistencia tiene "Guardar asistencia de ensayo" y la guía de Proyectos invita a "Registrar un material en entorno de ensayo". Estos textos hacen creer al usuario que trabaja en un entorno de prueba, pero las acciones se guardan en los datos reales de la obra: al confirmar un uso de 1 kg de cemento aparece el mensaje "Movimiento de ensayo registrado. Se actualizará el stock." y el stock del inventario baja de 450 kg a 449 kg. Además, los registros se guardan con notas internas como "EC01 - escenario controlado" y "EC02 - jornada de ensayo", que luego aparecen en el historial de la obra. Un supervisor podría "probar" la función y alterar sin querer el inventario o la asistencia.
 
-**Figura 6.4.1-1**  
+**Figura 159**  
 _Movimiento "de ensayo" que descuenta el stock real del inventario_
 
 <p align="center">
-  <img src="assets/auditary/01-ensayo-modifica-datos.png" width="900" alt="Panel de vista mejorada con el mensaje Movimiento de ensayo registrado y la tabla de inventario con el stock de Cemento reducido a 449">
+  <img src="assets/auditory/arquitech/01-ensayo-modifica-datos.png" width="900" alt="Panel de vista mejorada con el mensaje Movimiento de ensayo registrado y la tabla de inventario con el stock de Cemento reducido a 449">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3855,14 +3914,12 @@ Quitar la palabra "ensayo" de los botones y mensajes si la acción guarda datos 
 
 La variante B del experimento EC10 tiene sus textos nuevos escritos directamente en español ("Menos tiempo registrando, más tiempo supervisando.", "Soy supervisor", "Solicitar demostración"), pero el resto del Landing Page sigue el idioma activo, que por defecto es inglés. El resultado es una misma pantalla con el menú, la tarjeta "From the site to the office" y las secciones "Our proposal" o "Benefits" en inglés, junto a titulares y botones en español. El selector de idioma no corrige el problema, porque los textos de la variante B no están traducidos.
 
-**Figura 6.4.1-2**  
+**Figura 160**  
 _Variante B del Landing Page con titulares en español y el resto en inglés_
 
 <p align="center">
-  <img src="assets/auditary/02-ec10-idiomas-mezclados.png" width="900" alt="Hero de la variante B con el titular en español, el menú en inglés y la etiqueta ARQUITECH - EC10 / VARIANTE B">
+  <img src="assets/auditory/arquitech/02-ec10-idiomas-mezclados.png" width="900" alt="Hero de la variante B con el titular en español, el menú en inglés y la etiqueta ARQUITECH - EC10 / VARIANTE B">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3877,14 +3934,12 @@ Pasar los textos de la variante B a los archivos de traducción (`i18n`) con su 
 
 Al ingresar a Asistencia, la lista se filtra automáticamente por la fecha de hoy (desde y hasta) y el botón "Filtrar" muestra un contador "2". Si todavía no se ha registrado asistencia en el día, la pantalla muestra "No hay resultados para tu búsqueda. Prueba con otras palabras o limpia los filtros", aunque el usuario no escribió ninguna búsqueda. El supervisor puede pensar que la obra no tiene registros de asistencia, cuando el historial existe y solo está oculto por un filtro que él no aplicó. El problema se mantiene en la vista mejorada, donde el mensaje aparece debajo del panel de registro rápido.
 
-**Figura 6.4.1-3**  
+**Figura 161**  
 _Pantalla de Asistencia vacía con dos filtros activos por defecto_
 
 <p align="center">
-  <img src="assets/auditary/03-asistencia-sin-resultados.png" width="900" alt="Pantalla Asistencia con el botón Filtrar marcando 2 filtros y el mensaje No hay resultados para tu búsqueda">
+  <img src="assets/auditory/arquitech/03-asistencia-sin-resultados.png" width="900" alt="Pantalla Asistencia con el botón Filtrar marcando 2 filtros y el mensaje No hay resultados para tu búsqueda">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3899,14 +3954,12 @@ Mostrar el filtro activo sobre la lista (por ejemplo, un chip "Hoy" con opción 
 
 El supervisor de obra trabaja principalmente en campo, desde el celular. En la vista móvil, las tablas (Materiales, Tareas, Trabajadores, Incidentes) conservan todas sus columnas dentro de una tarjeta con desplazamiento horizontal. En Materiales, la tabla mide 908 px dentro de una pantalla de 390 px: solo se ven Material, Cantidad y Stock, y el precio, la unidad, el proveedor y el menú de acciones (⋮), que sirve para editar o registrar movimientos, quedan fuera de la pantalla sin ninguna indicación de que se puede deslizar.
 
-**Figura 6.4.1-4**  
+**Figura 162**  
 _Tabla de Materiales en vista móvil con columnas recortadas_
 
 <p align="center">
-  <img src="assets/auditary/04-materiales-movil.png" width="320" alt="Vista móvil de Materiales donde la tabla muestra solo tres columnas y la cuarta aparece cortada en el borde derecho">
+  <img src="assets/auditory/arquitech/04-materiales-movil.png" width="320" alt="Vista móvil de Materiales donde la tabla muestra solo tres columnas y la cuarta aparece cortada en el borde derecho">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3921,14 +3974,12 @@ En pantallas angostas, mostrar cada registro como una tarjeta (nombre, stock con
 
 Al hacer clic en "¿Olvidaste tu contraseña?", la aplicación muestra: "Por seguridad, el restablecimiento lo realiza el equipo de soporte de ArquiTech. Escríbenos desde el correo registrado en tu cuenta". No indica a qué correo escribir, y el texto "¿Necesitas ayuda? Contacta a soporte" no es un enlace. Un usuario que olvidó su contraseña no tiene forma de recuperar el acceso desde la aplicación; el correo de contacto (contacto@arquitech.com) solo aparece en el pie del Landing Page.
 
-**Figura 6.4.1-5**  
+**Figura 163**  
 _Mensaje de recuperación de contraseña sin medio de contacto_
 
 <p align="center">
-  <img src="assets/auditary/05-recuperar-contrasena.png" width="700" alt="Pantalla de inicio de sesión con el mensaje de recuperación de contraseña y el texto Contacta a soporte sin enlace">
+  <img src="assets/auditory/arquitech/05-recuperar-contrasena.png" width="700" alt="Pantalla de inicio de sesión con el mensaje de recuperación de contraseña y el texto Contacta a soporte sin enlace">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3941,16 +3992,14 @@ Incluir el correo de soporte como enlace `mailto:` con el asunto ya escrito ("Re
 
 **Problema:**
 
-Varias pantallas muestran al usuario el vocabulario interno del equipo. La página de mejoras se titula "Laboratorio experimental" y cada tarjeta lleva un código como "EC06 · Variante B" o "EC01 · Variante B". En el Landing Page, la variante B muestra sobre el titular la etiqueta "ARQUITECH - EC10 / VARIANTE B" (Figura 6.4.1-2), y el formulario de demostración termina con "Prototipo experimental. No guarda correos en un servidor ni confirma conversiones comerciales" (Figura 6.4.1-14). Para un supervisor o un posible cliente estos términos no tienen significado y transmiten que el producto no está terminado.
+Varias pantallas muestran al usuario el vocabulario interno del equipo. La página de mejoras se titula "Laboratorio experimental" y cada tarjeta lleva un código como "EC06 · Variante B" o "EC01 · Variante B". En el Landing Page, la variante B muestra sobre el titular la etiqueta "ARQUITECH - EC10 / VARIANTE B" (Figura 160), y el formulario de demostración termina con "Prototipo experimental. No guarda correos en un servidor ni confirma conversiones comerciales" (Figura 172). Para un supervisor o un posible cliente estos términos no tienen significado y transmiten que el producto no está terminado.
 
-**Figura 6.4.1-6**  
+**Figura 164**  
 _Página "Laboratorio experimental" con los códigos de cada experimento_
 
 <p align="center">
-  <img src="assets/auditary/06-laboratorio-experimental.png" width="900" alt="Página Laboratorio experimental con tarjetas rotuladas EC06 · Variante B, EC07 · Variante B y otras">
+  <img src="assets/auditory/arquitech/06-laboratorio-experimental.png" width="900" alt="Página Laboratorio experimental con tarjetas rotuladas EC06 · Variante B, EC07 · Variante B y otras">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3965,23 +4014,19 @@ Reservar los códigos de experimento para el registro interno de métricas y mos
 
 Los paneles de la vista mejorada muestran algunos valores tal como los envía el Backend. En "Alertas priorizadas de obra" el tipo de incidente aparece como "MATERIAL_SHORTAGE", mientras que la tabla de abajo dice "Falta de material", y el contador dice "1 alertas críticas". En el "Reporte asistido" del supervisor y en el panel del contratante el estado de la obra aparece como "ACTIVE", aunque el resto de la aplicación usa "Activo". El reporte asistido también resume los movimientos como "Entradas y usos: 1 y 3", un formato difícil de leer.
 
-**Figura 6.4.1-7**  
+**Figura 165**  
 _Alerta crítica con el tipo de incidente "MATERIAL_SHORTAGE"_
 
 <p align="center">
-  <img src="assets/auditary/07-alertas-valor-tecnico.png" width="900" alt="Panel Alertas priorizadas de obra con el texto 1 alertas críticas y la alerta MATERIAL_SHORTAGE">
+  <img src="assets/auditory/arquitech/07-alertas-valor-tecnico.png" width="900" alt="Panel Alertas priorizadas de obra con el texto 1 alertas críticas y la alerta MATERIAL_SHORTAGE">
 </p>
 
-_Nota._ Elaboración propia.
-
-**Figura 6.4.1-8**  
+**Figura 166**  
 _Reporte asistido con el estado "ACTIVE" y el resumen "Entradas y usos: 1 y 3"_
 
 <p align="center">
-  <img src="assets/auditary/08-reporte-asistido.png" width="900" alt="Panel Reporte asistido con la lista de datos del proyecto, Estado ACTIVE y el botón Generar PDF con datos consolidados">
+  <img src="assets/auditory/arquitech/08-reporte-asistido.png" width="900" alt="Panel Reporte asistido con la lista de datos del proyecto, Estado ACTIVE y el botón Generar PDF con datos consolidados">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -3996,14 +4041,12 @@ Reutilizar en los paneles las mismas traducciones de estados y tipos que ya usan
 
 Cada panel de la vista mejorada se inserta encima del contenido del módulo y en varios casos repite lo que ya está en la página. En Movimientos de materiales, el "Historial con trazabilidad" muestra los mismos movimientos que la tabla de abajo, por lo que el usuario ve dos veces el historial completo. En Tareas, el panel vuelve a listar las cinco tareas de la tabla. En el Reporte semanal del contratante, el panel repite avance, tareas e incidencias y ofrece un botón "Abrir reporte semanal" estando ya en esa página; en el del supervisor conviven "Descargar PDF" y "Generar PDF con datos consolidados" sin explicar la diferencia. En Materiales, el registro guiado duplica los botones "Registrar entrada" y "Registrar salida". Como consecuencia, en una pantalla de 1366 × 800 px la tabla principal de Materiales o de Movimientos empieza por debajo del primer pantallazo.
 
-**Figura 6.4.1-9**  
+**Figura 167**  
 _Movimientos de materiales con el historial mostrado dos veces_
 
 <p align="center">
-  <img src="assets/auditary/09-historial-duplicado.png" width="700" alt="Página Movimientos de materiales con el panel Historial con trazabilidad y, debajo, la tabla de movimientos con los mismos registros">
+  <img src="assets/auditory/arquitech/09-historial-duplicado.png" width="700" alt="Página Movimientos de materiales con el panel Historial con trazabilidad y, debajo, la tabla de movimientos con los mismos registros">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4018,14 +4061,12 @@ Integrar cada mejora en el componente que ya existe en lugar de agregar un bloqu
 
 Cuando el panel y la tabla muestran los mismos datos, no coinciden. En Tareas, "Vaciado de losa del piso 7" figura como "Pendiente" en el panel y como "En progreso" en la tabla, y la etiqueta de vencida aparece como "VENCIDA" en el panel y "Vencida" en la tabla. En Movimientos, el panel usa "Uso" y "Entrada de material" mientras que la tabla usa "Salida" y "Entrada". Las fechas también cambian de formato: el panel muestra "10/11/2026 09:00" y la tabla "10 Nov 2026, 09:00", y las cantidades aparecen como "1000 unidad" en el panel y "+1,000 unidad" en la tabla.
 
-**Figura 6.4.1-10**  
+**Figura 168**  
 _Misma tarea con estado "Pendiente" en el panel y "En progreso" en la tabla_
 
 <p align="center">
-  <img src="assets/auditary/10-tareas-panel-tabla.png" width="900" alt="Página Tareas con el panel Tareas vencidas y próximas a vencer y la tabla de tareas debajo, con estados distintos para Vaciado de losa del piso 7">
+  <img src="assets/auditory/arquitech/10-tareas-panel-tabla.png" width="900" alt="Página Tareas con el panel Tareas vencidas y próximas a vencer y la tabla de tareas debajo, con estados distintos para Vaciado de losa del piso 7">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4040,14 +4081,12 @@ Usar en los paneles los mismos componentes de etiqueta de estado, los mismos té
 
 El panel "Registro rápido por jornada" lista a los 12 trabajadores de la obra, cada uno con un desplegable "Seleccionar", y el botón "Guardar asistencia de ensayo" se mantiene deshabilitado hasta que se elige el estado de todos. No hay opción para marcar a todos como presentes y luego cambiar solo las excepciones, ni para guardar los que ya se completaron. En una obra real con decenas de trabajadores, el registro "rápido" exige tantas selecciones como personas.
 
-**Figura 6.4.1-11**  
+**Figura 169**  
 _Registro rápido con un desplegable por trabajador y el botón de guardar deshabilitado_
 
 <p align="center">
-  <img src="assets/auditary/11-asistencia-rapida.png" width="700" alt="Panel Registro rápido por jornada con doce trabajadores y un desplegable Seleccionar para cada uno">
+  <img src="assets/auditory/arquitech/11-asistencia-rapida.png" width="700" alt="Panel Registro rápido por jornada con doce trabajadores y un desplegable Seleccionar para cada uno">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4062,14 +4101,12 @@ Agregar la acción "Marcar todos como presentes" y dejar como presente el valor 
 
 En la pantalla de Proyectos, la vista mejorada muestra la guía "Primeros pasos para supervisor" con botones "Explorar" para revisar tareas, registrar un material y revisar alertas. Esos botones abren el módulo del primer proyecto que aparece en la tabla, pero la guía no dice qué proyecto es. Si el usuario ordena, filtra o cambia de página, el destino cambia sin aviso, y puede terminar registrando un material en una obra distinta de la que pensaba.
 
-**Figura 6.4.1-12**  
+**Figura 170**  
 _Guía "Primeros pasos" en la lista de proyectos, sin indicar la obra de destino_
 
 <p align="center">
-  <img src="assets/auditary/12-guia-primeros-pasos.png" width="900" alt="Pantalla Proyectos con la guía Primeros pasos para supervisor y tres botones Explorar">
+  <img src="assets/auditory/arquitech/12-guia-primeros-pasos.png" width="900" alt="Pantalla Proyectos con la guía Primeros pasos para supervisor y tres botones Explorar">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4084,14 +4121,12 @@ Mostrar la guía dentro de un proyecto ya seleccionado o pedir que el usuario el
 
 El nuevo botón "Vista original / Vista mejorada" ocupa espacio en la barra superior. En una pantalla de 390 px de ancho, el avatar que abre el menú de usuario (perfil y cierre de sesión) queda cortado en el borde derecho y la página entera se puede desplazar hacia los lados: mide 412 px con la vista original y 421 px con la vista mejorada. En la vista mejorada, además, el botón "Confirmar movimiento en datos de ensayo" se sale de su tarjeta.
 
-**Figura 6.4.1-13**  
+**Figura 171**  
 _Barra superior en celular con el avatar cortado en el borde derecho_
 
 <p align="center">
-  <img src="assets/auditary/13-movil-vista-mejorada.png" width="320" alt="Vista móvil de Materiales con el botón Vista mejorada en la barra superior y el avatar del usuario cortado a la derecha">
+  <img src="assets/auditory/arquitech/13-movil-vista-mejorada.png" width="320" alt="Vista móvil de Materiales con el botón Vista mejorada en la barra superior y el avatar del usuario cortado a la derecha">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4106,14 +4141,12 @@ En pantallas angostas, mostrar el selector de vista solo con su ícono o moverlo
 
 En la variante B, el formulario "Solicitar demostración" pide la organización y el correo, pero el botón "Preparar solicitud de demostración" no envía nada: abre un correo prellenado en la aplicación de correo del dispositivo. Muchas personas usan el correo desde el navegador (Gmail u Outlook web) y no tienen una aplicación de correo configurada; en ese caso el clic no produce ningún resultado visible. El formulario no avisa antes de esta dependencia y la nota al pie habla de "prototipo experimental".
 
-**Figura 6.4.1-14**  
+**Figura 172**  
 _Formulario de solicitud de demostración de la variante B_
 
 <p align="center">
-  <img src="assets/auditary/14-ec10-solicitud-demo.png" width="900" alt="Formulario Solicitar demostración con los campos Organización y Correo de contacto y la nota Prototipo experimental">
+  <img src="assets/auditory/arquitech/14-ec10-solicitud-demo.png" width="900" alt="Formulario Solicitar demostración con los campos Organización y Correo de contacto y la nota Prototipo experimental">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4128,14 +4161,12 @@ Enviar la solicitud a un servicio propio o de formularios y confirmar en pantall
 
 El segmento objetivo son supervisores de obra y contratantes de empresas en Lima, pero el Landing Page carga siempre en inglés ("Your site, organized. Your decisions, clear."), aunque el navegador esté configurado en español. El visitante tiene que encontrar el selector de idioma para leer la propuesta en su idioma. La aplicación web, en cambio, sí respeta el idioma del navegador, por lo que el paso del Landing Page a la aplicación se siente inconsistente.
 
-**Figura 6.4.1-15**  
+**Figura 173**  
 _Landing Page cargado en inglés con el navegador configurado en español_
 
 <p align="center">
-  <img src="assets/auditary/15-landing-idioma-cta.png" width="900" alt="Hero del Landing Page en inglés con el selector de idioma EN y el botón ArquiTech en la esquina superior derecha">
+  <img src="assets/auditory/arquitech/15-landing-idioma-cta.png" width="900" alt="Hero del Landing Page en inglés con el selector de idioma EN y el botón ArquiTech en la esquina superior derecha">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4148,7 +4179,7 @@ Usar el español como idioma por defecto, o detectar el idioma del navegador en 
 
 **Problema:**
 
-En el encabezado del Landing Page (Figura 6.4.1-15), el botón que lleva a la aplicación web tiene como texto solo "ArquiTech →", igual que el logo de al lado. Un visitante no sabe si ese botón inicia sesión, abre una demo o vuelve al inicio de la página, y un usuario que ya tiene cuenta no encuentra una opción explícita de "Iniciar sesión".
+En el encabezado del Landing Page (Figura 173), el botón que lleva a la aplicación web tiene como texto solo "ArquiTech →", igual que el logo de al lado. Un visitante no sabe si ese botón inicia sesión, abre una demo o vuelve al inicio de la página, y un usuario que ya tiene cuenta no encuentra una opción explícita de "Iniciar sesión".
 
 **Recomendación:**
 
@@ -4163,14 +4194,12 @@ Cambiar el texto a la acción que realiza, por ejemplo "Iniciar sesión" o "Ingr
 
 En un ancho de 390 px, el bloque del video del equipo y la tarjeta de Misión y Visión miden más que la pantalla (522 px). Toda la página puede desplazarse hacia los lados y los textos de Misión y Visión quedan cortados en el borde derecho. Ocurre tanto en la versión pública como en las dos variantes del experimento EC10.
 
-**Figura 6.4.1-16**  
+**Figura 174**  
 _Sección Nosotros en vista móvil con el texto cortado a la derecha_
 
 <p align="center">
-  <img src="assets/auditary/16-landing-movil-desborde.png" width="320" alt="Vista móvil del Landing Page donde los textos de Mission y Vision se cortan en el borde derecho">
+  <img src="assets/auditory/arquitech/16-landing-movil-desborde.png" width="320" alt="Vista móvil del Landing Page donde los textos de Mission y Vision se cortan en el borde derecho">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4185,23 +4214,19 @@ Apilar el video y la tarjeta en una sola columna con `width: 100%` y `min-width:
 
 En los formularios de registro, como "Registrar material" o "Registrar proyecto", ningún campo indica si es obligatorio u opcional. El usuario lo descubre al presionar el botón de guardar, cuando aparecen varios mensajes "Este campo es obligatorio" a la vez (en Registrar material: Material, Unidad de medida, Proveedor y RUC del proveedor).
 
-**Figura 6.4.1-17**  
+**Figura 175**  
 _Formulario Registrar material antes de enviar, sin marcas de campos obligatorios_
 
 <p align="center">
-  <img src="assets/auditary/17-registrar-material.png" width="900" alt="Diálogo Registrar material con todos los campos sin indicación de obligatorio">
+  <img src="assets/auditory/arquitech/17-registrar-material.png" width="900" alt="Diálogo Registrar material con todos los campos sin indicación de obligatorio">
 </p>
 
-_Nota._ Elaboración propia.
-
-**Figura 6.4.1-18**  
+**Figura 176**  
 _El mismo formulario después de intentar guardarlo vacío_
 
 <p align="center">
-  <img src="assets/auditary/18-registrar-material-errores.png" width="900" alt="Diálogo Registrar material con cuatro campos marcados en rojo con el mensaje Este campo es obligatorio">
+  <img src="assets/auditory/arquitech/18-registrar-material-errores.png" width="900" alt="Diálogo Registrar material con cuatro campos marcados en rojo con el mensaje Este campo es obligatorio">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4214,7 +4239,7 @@ Marcar los campos obligatorios con un asterisco y una leyenda "* Campo obligator
 
 **Problema:**
 
-En "Registrar material" (Figura 6.4.1-17), la unidad de medida se escribe a mano, sin opciones ni ejemplo. Esto permite registrar el mismo material con unidades escritas de formas distintas ("kg", "Kg", "kilos"; "unidad", "und") y dificulta comparar cantidades y leer los reportes. En el inventario evaluado ya conviven abreviaturas y palabras completas: "kg", "m³", "varilla", "unidad" y "litro".
+En "Registrar material" (Figura 175), la unidad de medida se escribe a mano, sin opciones ni ejemplo. Esto permite registrar el mismo material con unidades escritas de formas distintas ("kg", "Kg", "kilos"; "unidad", "und") y dificulta comparar cantidades y leer los reportes. En el inventario evaluado ya conviven abreviaturas y palabras completas: "kg", "m³", "varilla", "unidad" y "litro".
 
 **Recomendación:**
 
@@ -4227,7 +4252,7 @@ Reemplazar el campo por una lista desplegable con las unidades más usadas en ob
 
 **Problema:**
 
-El campo de contraseña del inicio de sesión muestra "••••••••" como placeholder (Figura 6.4.1-5), por lo que parece que ya tiene una contraseña guardada. En "Registrar material" (Figura 6.4.1-17), el placeholder del RUC del proveedor es "20100124567", un RUC completo de 11 dígitos con un color muy parecido al de un valor ingresado. En ambos casos el usuario puede creer que el campo ya está lleno.
+El campo de contraseña del inicio de sesión muestra "••••••••" como placeholder (Figura 163), por lo que parece que ya tiene una contraseña guardada. En "Registrar material" (Figura 175), el placeholder del RUC del proveedor es "20100124567", un RUC completo de 11 dígitos con un color muy parecido al de un valor ingresado. En ambos casos el usuario puede creer que el campo ya está lleno.
 
 **Recomendación:**
 
@@ -4242,14 +4267,12 @@ Dejar vacío el placeholder de la contraseña y, para el RUC, usar una indicaci�
 
 La tabla de Materiales muestra dos columnas numéricas, "Cantidad" y "Stock" (por ejemplo, Cemento: 500 y 450), sin explicar que "Cantidad" es el total ingresado y "Stock" lo disponible. "Cantidad" se muestra en negrita, por lo que destaca más que el stock disponible, que es el dato que el supervisor necesita para decidir si debe reabastecer. La columna "Fecha" tampoco aclara a qué se refiere: el cemento ingresó el 01 Oct 2026, pero la tabla muestra 10 Nov 2026, la fecha de su último movimiento.
 
-**Figura 6.4.1-19**  
+**Figura 177**  
 _Tabla de inventario con las columnas Cantidad, Stock y Fecha_
 
 <p align="center">
-  <img src="assets/auditary/19-materiales-cantidad-stock.png" width="900" alt="Tabla de materiales con Cantidad en negrita y Stock en texto normal">
+  <img src="assets/auditory/arquitech/19-materiales-cantidad-stock.png" width="900" alt="Tabla de materiales con Cantidad en negrita y Stock en texto normal">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4264,14 +4287,12 @@ Renombrar las columnas como "Ingresado", "Disponible" y "Último movimiento" (o 
 
 En la sección "Nosotros", junto a la Misión y la Visión, aparece un bloque oscuro con un ícono de reproducción y el texto "Space for the team video" ("Espacio para el video del equipo" en español). El ícono parece un botón, pero no reproduce nada, y el bloque ocupa más de la mitad del ancho de la sección. Transmite la idea de que el sitio no está terminado.
 
-**Figura 6.4.1-20**  
+**Figura 178**  
 _Bloque provisional del video del equipo en la sección Nosotros_
 
 <p align="center">
-  <img src="assets/auditary/20-landing-video.png" width="900" alt="Sección About us con un recuadro oscuro que dice Space for the team video">
+  <img src="assets/auditory/arquitech/20-landing-video.png" width="900" alt="Sección About us con un recuadro oscuro que dice Space for the team video">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4286,14 +4307,12 @@ Incrustar el video About-the-Team cuando esté publicado o, mientras tanto, ocul
 
 En el pie del Landing Page, los íconos de Facebook, Instagram y X enlazan a `https://www.facebook.com/`, `https://www.instagram.com/` y `https://x.com/`, no a perfiles de ArquiTech. Un posible cliente que quiera conocer más de la empresa termina en la página de inicio de la red social, lo que le resta credibilidad al producto. Además, el ícono de X todavía es el pájaro de Twitter.
 
-**Figura 6.4.1-21**  
+**Figura 179**  
 _Pie del Landing Page con los íconos de redes sociales_
 
 <p align="center">
-  <img src="assets/auditary/21-landing-redes.png" width="900" alt="Pie del Landing Page con datos de contacto e íconos de Facebook, Instagram y Twitter">
+  <img src="assets/auditory/arquitech/21-landing-redes.png" width="900" alt="Pie del Landing Page con datos de contacto e íconos de Facebook, Instagram y Twitter">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4308,14 +4327,12 @@ Enlazar los perfiles reales de ArquiTech o retirar los íconos de las redes en l
 
 En el Reporte semanal aparecen textos como "1 entradas · 3 salidas" y "1 material(es) por debajo del stock mínimo", y en las alertas "1 alertas críticas", que no adaptan el plural a la cantidad. Además, el menú y el módulo se llaman "Incidentes", pero el reporte usa "Incidencias registradas" y "2 sin resolver en la obra", y dentro de la misma tabla del reporte vuelve a aparecer "Tipo de incidente".
 
-**Figura 6.4.1-22**  
+**Figura 180**  
 _Reporte semanal con plurales sin resolver y el término "Incidencias"_
 
 <p align="center">
-  <img src="assets/auditary/22-reporte-plurales.png" width="900" alt="Reporte semanal con los textos 1 entradas · 3 salidas, 1 material(es) e Incidencias registradas">
+  <img src="assets/auditory/arquitech/22-reporte-plurales.png" width="900" alt="Reporte semanal con los textos 1 entradas · 3 salidas, 1 material(es) e Incidencias registradas">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4328,7 +4345,7 @@ Usar la pluralización de ngx-translate (formato ICU) para mostrar "1 entrada" y
 
 **Problema:**
 
-En toda la aplicación la acción principal se muestra con un botón naranja rojizo ("Añadir material", "Nuevo proyecto", "Iniciar sesión" y los botones de la vista mejorada). En los diálogos de registro, en cambio, el botón de confirmar es verde (Figura 6.4.1-17). Ese verde no se usa en ningún otro botón de acción, así que la misma jerarquía de acción se ve distinta según la pantalla.
+En toda la aplicación la acción principal se muestra con un botón naranja rojizo ("Añadir material", "Nuevo proyecto", "Iniciar sesión" y los botones de la vista mejorada). En los diálogos de registro, en cambio, el botón de confirmar es verde (Figura 175). Ese verde no se usa en ningún otro botón de acción, así que la misma jerarquía de acción se ve distinta según la pantalla.
 
 **Recomendación:**
 
@@ -4343,14 +4360,12 @@ Usar el mismo estilo de botón primario en las páginas y en los diálogos, y re
 
 Al iniciar sesión, la barra lateral muestra Materiales, Trabajadores, Asistencia y los demás módulos en gris, sin poder abrirlos. La explicación ("Selecciona un proyecto para ver sus módulos") aparece en letra pequeña al pie del menú, lejos de los elementos deshabilitados, y la forma de entrar a un proyecto es el enlace "Ver detalles". Un usuario nuevo puede pensar que no tiene permisos para esos módulos.
 
-**Figura 6.4.1-23**  
+**Figura 181**  
 _Lista de proyectos con los módulos del menú atenuados_
 
 <p align="center">
-  <img src="assets/auditary/23-proyectos-menu-atenuado.png" width="900" alt="Pantalla Proyectos con los módulos del menú lateral en gris y el texto Selecciona un proyecto para ver sus módulos al pie">
+  <img src="assets/auditory/arquitech/23-proyectos-menu-atenuado.png" width="900" alt="Pantalla Proyectos con los módulos del menú lateral en gris y el texto Selecciona un proyecto para ver sus módulos al pie">
 </p>
-
-_Nota._ Elaboración propia.
 
 **Recomendación:**
 
@@ -4363,7 +4378,7 @@ Ubicar el mensaje justo debajo de "Proyectos", en el lugar de los módulos, o mo
 
 **Problema:**
 
-En Materiales, la pestaña que no está seleccionada ("Movimientos" cuando se está en Inventario, e "Inventario" cuando se está en Movimientos) usa texto gris #746f6a sobre fondo #f1ede8, con una relación de contraste de 4,26:1. Es menor que el mínimo de 4,5:1 que exige WCAG 2.1 AA para texto de ese tamaño (13 px), por lo que puede leerse con dificultad en pantallas con mucho brillo, como en obra, o por personas con baja visión (Figura 6.4.1-19).
+En Materiales, la pestaña que no está seleccionada ("Movimientos" cuando se está en Inventario, e "Inventario" cuando se está en Movimientos) usa texto gris #746f6a sobre fondo #f1ede8, con una relación de contraste de 4,26:1. Es menor que el mínimo de 4,5:1 que exige WCAG 2.1 AA para texto de ese tamaño (13 px), por lo que puede leerse con dificultad en pantallas con mucho brillo, como en obra, o por personas con baja visión (Figura 177).
 
 **Recomendación:**
 
@@ -4373,19 +4388,445 @@ Oscurecer el texto de las pestañas inactivas (por ejemplo, a #5f5a55) hasta alc
 
 #### 6.4.2.1. Información del grupo auditor
 
-> Pendiente de completar.
+La auditoría recibida evalúa la Landing Page y la aplicación web de **SEMS (Smart Energy Management System)**, producto de la startup **Energix**.
+
+| Dato | Información |
+| :-- | :-- |
+| Grupo auditado | Grupo 4 — Energix |
+| Producto | SEMS (Smart Energy Management System) |
+| Integrantes | Alexis Encalada Salazar, Nestor Alonso Rojas Tello, Winnie Lisbeth Merino Ordinola, Jean Fabio Noriega Collado y Elias Daniel Ramos Cerdan |
+| Carrera | Ingeniería de Software |
+| Curso | Diseño de Experimentos de Ingeniería de Software |
+| NRC | 9112 |
+| Profesor | Lennin Percy Cenas Vasquez |
+| Grupo auditor | Foundex |
+| Landing Page | <https://sems-diseno-de-experimentos.github.io/SEMS-Landing-Page/> |
+| Aplicación web | <https://sems-web-application-fyld.vercel.app/login> |
 
 #### 6.4.2.2. Cronograma de auditoría recibida
 
-> Pendiente de completar.
+La revisión de SEMS se realizó el **10 de noviembre de 2026**.
+
+| Fecha | Actividad | Alcance o evidencia |
+| :-- | :-- | :-- |
+| 10/11/2026 | Identificación del producto y sus componentes | Landing Page y aplicación web de SEMS. Cuenta de demostración utilizada para el testeo: `demo@energix.pe` / `demo1234`. |
+| 10/11/2026 | Revisión de las tareas del usuario | Acceso y verificación de cuenta; registro de locales y dispositivos; gestión de alertas, preferencias, suscripciones y medios de pago. |
+| 10/11/2026 | Revisión de accesibilidad y adaptación a distintas pantallas | Estructura de los diálogos, etiquetas de formularios e interruptores, manejo del teclado y presentación de formularios largos. |
+| 10/11/2026 | Registro y clasificación de hallazgos | Documentación de 16 problemas de usabilidad, diseño inclusivo y arquitectura de información, con su severidad, recomendación y figura correspondiente. |
 
 #### 6.4.2.3. Contenido de auditoría recibida
 
-> Pendiente de completar.
+**UX Heuristics & Principles Evaluation**  
+Usability – Inclusive Design – Information Architecture
+
+La evaluación identificó **16 hallazgos**: **5 de severidad 3** (problemas mayores) y **11 de severidad 2** (problemas menores). Las recomendaciones siguientes corresponden a SEMS, producto de Energix.
+
+##### Site o App a evaluar
+
+**SEMS** (startup Energix): Landing Page y Frontend Web Application.
+
+- Landing Page: <https://sems-diseno-de-experimentos.github.io/SEMS-Landing-Page/>.
+- Frontend Web Application: <https://sems-web-application-fyld.vercel.app/login>.
+
+Para el testeo se utilizó la cuenta **`demo@energix.pe`**, con contraseña **`demo1234`**.
+
+<!-- Versiones de los clones revisados: Frontend Web 499be44af808eb08da8cdcec3fd86e1a00c2cbcb; Landing Page 1f06ee4c519b2b6226f9744faff2f6402c05ea86. -->
+
+##### Tareas a evaluar
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
+
+1. Conocer la propuesta de SEMS en el Landing Page y acceder a la aplicación.
+2. Registrarse, iniciar sesión y verificar la cuenta.
+3. Registrar locales y configurar sus opciones.
+4. Registrar, editar y eliminar dispositivos.
+5. Consultar el tipo, la ubicación y el perfil de consumo de los dispositivos.
+6. Resolver alertas, crear umbrales y configurar las notificaciones.
+7. Consultar la suscripción y administrar medios de pago de prueba.
+8. Revisar la confirmación del pago al volver de la pasarela.
+9. Actualizar el segmento y las preferencias de la cuenta.
+10. Vincular un medidor mediante su código QR.
+11. Utilizar los formularios y diálogos con teclado y en pantallas pequeñas.
+
+No están incluidas en esta evaluación las siguientes tareas:
+
+1. Uso de la aplicación móvil nativa.
+2. Comprobación de mediciones físicas de los medidores.
+3. Realización de cobros con tarjetas reales.
+4. Revisión del funcionamiento interno del backend.
+
+##### Escala de severidad
+
+Los problemas se clasifican con la misma escala utilizada en la auditoría realizada.
+
+| Nivel | Descripción |
+| --- | --- |
+| 1 | Problema superficial: puede ser fácilmente superado por el usuario u ocurre con muy poca frecuencia. No necesita ser arreglado a no ser que exista disponibilidad de tiempo. |
+| 2 | Problema menor: puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debería asignar una prioridad baja resolverlo de cara al siguiente release. |
+| 3 | Problema mayor: ocurre frecuentemente o los usuarios no son capaces de resolverlos. Es importante que sean corregidos y se les debe asignar una prioridad alta. |
+| 4 | Problema muy grave: un error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento. |
+
+##### Tabla resumen
+
+| # | Problema | Escala de severidad | Heurística/Principio violada(o) |
+| :--: | :-- | :--: | :-- |
+| 1 | El guardado y la eliminación de dispositivos no muestran el motivo del fallo | 3 | Usability – Visibilidad del estado del sistema |
+| 2 | Los fallos al resolver alertas o guardar sus preferencias quedan sin explicación | 3 | Usability – Visibilidad del estado del sistema |
+| 3 | La pantalla confirma un pago a partir del parámetro de la URL | 3 | Usability – Prevención de errores |
+| 4 | Los interruptores no tienen nombre accesible y omiten el texto recibido | 3 | Inclusive Design – Proporciona experiencias comparables |
+| 5 | Los diálogos no gestionan el foco del teclado ni su nombre accesible | 3 | Inclusive Design – Proporciona experiencias comparables |
+| 6 | El formulario largo de dispositivo no limita su altura en pantallas pequeñas | 2 | Inclusive Design – Considera la situación |
+| 7 | El acceso y el registro presentan el mismo error para causas diferentes | 2 | Usability – Ayuda a los usuarios a reconocer, diagnosticar y recuperarse de los errores |
+| 8 | La eliminación de tarjetas no solicita confirmación | 2 | Usability – Control y libertad del usuario |
+| 9 | La verificación fallida no ofrece solicitar otro enlace | 2 | Usability – Ayuda y documentación |
+| 10 | Las tarjetas muestran el código interno del tipo de dispositivo | 2 | Usability – Coincidencia entre el sistema y el mundo real |
+| 11 | Los perfiles de consumo permanecen en español al cambiar a inglés | 2 | Usability – Consistencia y estándares |
+| 12 | La ubicación y el perfil se guardan solo en el navegador sin advertirlo | 2 | Usability – Visibilidad del estado del sistema |
+| 13 | El cambio de segmento se guarda desde otra tarjeta | 2 | Usability – Consistencia y estándares |
+| 14 | El enlace Acerca de Energix lleva a la sección del problema | 2 | Information Architecture – Is it findable? |
+| 15 | El lector QR no permite reintentar desde su estado de error | 2 | Usability – Ayuda a los usuarios a reconocer, diagnosticar y recuperarse de los errores |
+| 16 | Los formularios no identifican visualmente todos los campos obligatorios | 2 | Usability – Prevención de errores |
+
+##### Descripción de problemas
+
+###### PROBLEMA #1: El guardado y la eliminación de dispositivos no muestran el motivo del fallo
+
+**Severidad:** 3  
+**Heurística violada:** Usability – Visibilidad del estado del sistema
+
+**Problema:**
+
+Las operaciones de crear, editar y eliminar dispositivos solo definen qué ocurre cuando tienen éxito. La vista no presenta el error de estas operaciones: el formulario puede permanecer abierto después de pulsar Guardar, o el dispositivo puede seguir en la lista tras confirmar su eliminación, sin explicar si hubo un problema de conexión, validación o permisos. El mensaje de error de carga inicial no cubre estos fallos de guardado.
+
+**Figura 182**  
+_Formulario de dispositivo después de un intento de guardado fallido, sin explicación visible_
+
+<p align="center">
+  <img src="assets/auditory/energix/01-dispositivo-error-sin-mensaje.png" width="900" alt="Formulario de dispositivo después de un intento de guardado fallido, sin explicación visible">
+</p>
+
+**Recomendación:**
+
+Mostrar un mensaje junto al formulario o la tarjeta, conservar los datos ingresados y ofrecer Reintentar. Diferenciar los errores de validación de los fallos de conexión y anunciar el resultado a las tecnologías de asistencia.
+
+###### PROBLEMA #2: Los fallos al resolver alertas o guardar sus preferencias quedan sin explicación
+
+**Severidad:** 3  
+**Heurística violada:** Usability – Visibilidad del estado del sistema
+
+**Problema:**
+
+En Alertas, las acciones de marcar una alerta como resuelta, crear un umbral y cambiar una preferencia de notificación no muestran un error propio si la petición falla. La persona puede repetir la acción sin saber si se guardó o pensar que desactivó un aviso cuando el cambio no se confirmó.
+
+**Figura 183**  
+_Preferencia de notificación que no se guarda y no presenta un mensaje de error_
+
+<p align="center">
+  <img src="assets/auditory/energix/02-alertas-error-preferencia.png" width="900" alt="Preferencia de notificación que no se guarda y no presenta un mensaje de error">
+</p>
+
+**Recomendación:**
+
+Incorporar mensajes de éxito y error por acción. Mantener el estado anterior si falla el guardado, bloquear envíos duplicados mientras se procesa y permitir reintentar sin salir de la pantalla.
+
+###### PROBLEMA #3: La pantalla confirma un pago a partir del parámetro de la URL
+
+**Severidad:** 3  
+**Heurística violada:** Usability – Prevención de errores
+
+**Problema:**
+
+La vista de Suscripción muestra «¡Pago realizado! Tu comprobante llegará por correo.» al encontrar paid=1 en la dirección. Ese mensaje no espera una confirmación del estado del pago desde el servidor. Por ello, la interfaz puede anunciar un pago exitoso sin haberlo comprobado. 
+
+**Figura 184**  
+_Mensaje de pago realizado al abrir la ruta con paid=1 sin completar una compra_
+
+<p align="center">
+  <img src="assets/auditory/energix/03-pago-confirmado-por-url.png" width="900" alt="Mensaje de pago realizado al abrir la ruta con paid=1 sin completar una compra">
+</p>
+
+**Recomendación:**
+
+Mostrar «Estamos verificando tu pago» al regresar de la pasarela. Consultar el estado de la operación al servidor y anunciar el éxito únicamente cuando este confirme el pago. Si no se puede comprobar, ofrecer revisar el estado.
+
+###### PROBLEMA #4: Los interruptores no tienen nombre accesible y omiten el texto recibido
+
+**Severidad:** 3  
+**Heurística violada:** Inclusive Design – Proporciona experiencias comparables
+
+**Problema:**
+
+Los interruptores comunican si están activados o desactivados, pero no tienen un nombre accesible ni muestran el texto que se les asigna desde el formulario. En Notificaciones, el nombre del canal está en un elemento separado sin asociación con el botón. En Nuevo local no se muestra la etiqueta «Los domingos no cuentan como hora punta». El estado queda visible sin una etiqueta que explique con claridad qué se cambia.
+
+**Figura 185**  
+_Interruptor de exclusión de domingos sin su etiqueta en el formulario de local_
+
+<p align="center">
+  <img src="assets/auditory/energix/04-interruptor-sin-etiqueta.png" width="900" alt="Interruptor de exclusión de domingos sin su etiqueta en el formulario de local">
+</p>
+
+**Recomendación:**
+
+Asignar a cada interruptor un nombre mediante aria-label o aria-labelledby y mostrar su etiqueta. Mostrar la etiqueta junto al control y asociarla con este. Comprobar que el nombre y el estado se anuncien juntos.
+
+###### PROBLEMA #5: Los diálogos no gestionan el foco del teclado ni su nombre accesible
+
+**Severidad:** 3  
+**Heurística violada:** Inclusive Design – Proporciona experiencias comparables
+
+**Problema:**
+
+Los diálogos no relacionan su título con el nombre accesible, no llevan el foco al contenido al abrirse, no contienen el recorrido de Tab ni devuelven el foco al control de origen al cerrarse. Se contempla el cierre con Escape. Esto deja sin implementar la orientación y el recorrido necesarios para completar los formularios con teclado o lector de pantalla.
+
+**Figura 186**  
+_Recorrido de teclado del formulario de dispositivo con foco fuera del diálogo_
+
+<p align="center">
+  <img src="assets/auditory/energix/05-dialogo-foco-teclado.png" width="900" alt="Recorrido de teclado del formulario de dispositivo con foco fuera del diálogo">
+</p>
+
+**Recomendación:**
+
+Asociar el título con aria-labelledby, llevar el foco al primer control útil, contener Tab y Shift+Tab dentro del diálogo y devolver el foco al botón de origen al cerrar. Mantener el cierre con Escape.
+
+###### PROBLEMA #6: El formulario largo de dispositivo no limita su altura en pantallas pequeñas
+
+**Severidad:** 2  
+**Heurística violada:** Inclusive Design – Considera la situación
+
+**Problema:**
+
+El diálogo se centra en una capa fija, pero UiModal no define altura máxima ni desplazamiento vertical para su contenido. Agregar dispositivo contiene numerosos campos. Esta combinación presenta un riesgo de que el inicio o los botones del formulario queden fuera del área visible en un celular o con zoom. 
+
+**Figura 187**  
+_Comprobación de alcance de los controles de Agregar dispositivo en vista móvil_
+
+<p align="center">
+  <img src="assets/auditory/energix/06-dialogo-dispositivo-movil.png" width="900" alt="Comprobación de alcance de los controles de Agregar dispositivo en vista móvil">
+</p>
+
+**Recomendación:**
+
+Limitar el contenido a la altura disponible y habilitar desplazamiento vertical dentro del diálogo. Mantener accesibles el título, el cierre y las acciones principales, incluso al abrir el teclado del celular.
+
+###### PROBLEMA #7: El acceso y el registro presentan el mismo error para causas diferentes
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Ayuda a los usuarios a reconocer, diagnosticar y recuperarse de los errores
+
+**Problema:**
+
+Login muestra «Verifica tus credenciales» para cualquier excepción, incluida una falta de conexión. Registro responde «No se pudo crear la cuenta. Intenta nuevamente.» sin orientar sobre la causa ni el siguiente paso. Una persona puede cambiar una contraseña correcta o repetir un registro que no podrá completarse hasta que se restablezca el servicio.
+
+**Figura 188**  
+_Error de conexión presentado como un problema de credenciales en el inicio de sesión_
+
+<p align="center">
+  <img src="assets/auditory/energix/07-login-error-generico.png" width="900" alt="Error de conexión presentado como un problema de credenciales en el inicio de sesión">
+</p>
+
+**Recomendación:**
+
+Diferenciar problemas de conexión y disponibilidad de los errores de validación. Mantener una respuesta de autenticación que no revele si un correo existe, pero ofrecer instrucciones útiles y una opción de reintento cuando falla la red.
+
+###### PROBLEMA #8: La eliminación de tarjetas no solicita confirmación
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Control y libertad del usuario
+
+**Problema:**
+
+En Métodos de pago, el botón de papelera llama directamente a la eliminación de la tarjeta. No se presenta una confirmación con sus últimos dígitos ni una opción para deshacer. Un clic accidental puede obligar a volver a registrar el medio de pago. La mutación tampoco presenta un mensaje específico si la eliminación falla.
+
+**Figura 189**  
+_Eliminación directa de un medio de pago desde su botón de papelera_
+
+<p align="center">
+  <img src="assets/auditory/energix/08-tarjeta-sin-confirmacion.png" width="900" alt="Eliminación directa de un medio de pago desde su botón de papelera">
+</p>
+
+**Recomendación:**
+
+Pedir confirmación antes de retirar la tarjeta e identificarla por marca y últimos cuatro dígitos. Explicar el efecto sobre pagos futuros y mostrar el resultado de la operación, incluidos los errores.
+
+###### PROBLEMA #9: La verificación fallida no ofrece solicitar otro enlace
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Ayuda y documentación
+
+**Problema:**
+
+La pantalla de verificación utiliza el mismo estado de error cuando falta el enlace válido o la petición falla. En ese estado no ofrece un control para reenviar el correo de verificación. La persona no puede resolver desde esa pantalla la necesidad de un nuevo enlace.
+
+**Figura 190**  
+_Estado de error de verificación sin acción para reenviar el enlace_
+
+<p align="center">
+  <img src="assets/auditory/energix/09-verificacion-sin-reenvio.png" width="900" alt="Estado de error de verificación sin acción para reenviar el enlace">
+</p>
+
+**Recomendación:**
+
+Ofrecer «Solicitar otro correo de verificación» y una explicación en lenguaje sencillo. Separar los problemas de conexión de los enlaces vencidos y conservar una salida hacia el inicio de sesión.
+
+###### PROBLEMA #10: Las tarjetas muestran el código interno del tipo de dispositivo
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Coincidencia entre el sistema y el mundo real
+
+**Problema:**
+
+El formulario traduce los tipos de equipo, por ejemplo COLD_ROOM como «Cámara de frío», pero la tarjeta muestra directamente el código del tipo. Tras registrar el equipo, la persona puede ver COLD_ROOM o DISPLAY_FRIDGE en lugar del nombre que eligió. La misma entidad usa dos vocabularios distintos en el formulario y en su tarjeta.
+
+**Figura 191**  
+_Tarjeta de dispositivo con un tipo interno como COLD_ROOM o DISPLAY_FRIDGE_
+
+<p align="center">
+  <img src="assets/auditory/energix/10-dispositivo-tipo-interno.png" width="900" alt="Tarjeta de dispositivo con un tipo interno como COLD_ROOM o DISPLAY_FRIDGE">
+</p>
+
+**Recomendación:**
+
+Compartir el mismo diccionario de etiquetas entre formulario, tarjetas, filtros y reportes. Conservar los códigos únicamente en el intercambio con el backend.
+
+###### PROBLEMA #11: Los perfiles de consumo permanecen en español al cambiar a inglés
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Consistencia y estándares
+
+**Problema:**
+
+Los nombres de los perfiles de consumo están definidos solo en español. El selector del formulario y la tarjeta los muestran sin traducir, incluso cuando las etiquetas de alrededor están en inglés. Se produce una mezcla de idiomas en una misma tarea.
+
+**Figura 192**  
+_Formulario en inglés con perfiles como Cámara de frío o Sin perfil en español_
+
+<p align="center">
+  <img src="assets/auditory/energix/11-perfiles-sin-traducir.png" width="900" alt="Formulario en inglés con perfiles como Cámara de frío o Sin perfil en español">
+</p>
+
+**Recomendación:**
+
+Definir una clave de traducción por perfil y resolver su etiqueta según el idioma activo. Reutilizar esas traducciones en el selector y en la tarjeta del dispositivo.
+
+###### PROBLEMA #12: La ubicación y el perfil se guardan solo en el navegador sin advertirlo
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Visibilidad del estado del sistema
+
+**Problema:**
+
+Ubicación y Perfil de consumo aparecen en el mismo formulario que los datos enviados al servidor, pero se guardan por separado en localStorage. La interfaz no explica esa diferencia. Al entrar desde otro navegador, los valores pueden faltar aunque el dispositivo siga registrado, lo que parece una pérdida de datos para quien completó el formulario.
+
+**Figura 193**  
+_Comparación de un mismo dispositivo con y sin sus datos locales en dos navegadores_
+
+<p align="center">
+  <img src="assets/auditory/energix/12-datos-dispositivo-locales.png" width="900" alt="Comparación de un mismo dispositivo con y sin sus datos locales en dos navegadores">
+</p>
+
+**Recomendación:**
+
+Guardar esos campos en el servidor junto al dispositivo o identificarlos expresamente como preferencias locales. Diferenciar su confirmación de guardado y avisar de que no se sincronizan entre equipos mientras exista esa limitación.
+
+###### PROBLEMA #13: El cambio de segmento se guarda desde otra tarjeta
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Consistencia y estándares
+
+**Problema:**
+
+En Configuración, el segmento se selecciona en una tarjeta independiente que indica «Recuerda guardar los cambios arriba». El botón Guardar cambios pertenece visualmente a Datos de la cuenta. Idioma y tema, en cambio, se aplican al pulsarlos. La persona debe recordar qué preferencias se guardan inmediatamente y cuáles requieren volver a otra tarjeta.
+
+**Figura 194**  
+_Selección de segmento separada del botón que confirma su guardado_
+
+<p align="center">
+  <img src="assets/auditory/energix/13-segmento-guardado-separado.png" width="900" alt="Selección de segmento separada del botón que confirma su guardado">
+</p>
+
+**Recomendación:**
+
+Colocar una acción de guardado junto al segmento o unificar el formulario con una barra de acciones común y un indicador de cambios pendientes. Avisar antes de abandonar la pantalla si quedan cambios sin guardar.
+
+###### PROBLEMA #14: El enlace Acerca de Energix lleva a la sección del problema
+
+**Severidad:** 2  
+**Heurística violada:** Information Architecture – Is it findable?
+
+**Problema:**
+
+El enlace del pie de página rotulado About Energix, o su traducción al español, apunta a #problem. Su destino explica el problema energético en lugar de presentar a la empresa o al equipo. La etiqueta promete un contenido diferente del que la persona encuentra.
+
+**Figura 195**  
+_Destino del enlace Acerca de Energix en la sección del problema energético_
+
+<p align="center">
+  <img src="assets/auditory/energix/14-acerca-energix-destino.png" width="900" alt="Destino del enlace Acerca de Energix en la sección del problema energético">
+</p>
+
+**Recomendación:**
+
+Crear una sección sobre Energix y enlazarla desde el pie, o cambiar la etiqueta para describir el contenido de destino. Mantener coherencia entre nombre del enlace, encabezado y contenido.
+
+###### PROBLEMA #15: El lector QR no permite reintentar desde su estado de error
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Ayuda a los usuarios a reconocer, diagnosticar y recuperarse de los errores
+
+**Problema:**
+
+Cuando falla el inicio de la cámara, el lector QR muestra «No se pudo acceder a la cámara. Revisa los permisos.». No ofrece Reintentar ni instrucciones para recuperar el permiso desde ese mismo estado. La persona debe deducir que necesita cambiar los permisos y cerrar y volver a abrir el lector.
+
+**Figura 196**  
+_Lector QR con permiso de cámara denegado y sin acción de reintento_
+
+<p align="center">
+  <img src="assets/auditory/energix/15-qr-permiso-denegado.png" width="900" alt="Lector QR con permiso de cámara denegado y sin acción de reintento">
+</p>
+
+**Recomendación:**
+
+Añadir Reintentar y una indicación breve para habilitar la cámara. Ofrecer como alternativa la introducción manual del identificador y conservarla visible cuando no haya cámara disponible.
+
+###### PROBLEMA #16: Los formularios no identifican visualmente todos los campos obligatorios
+
+**Severidad:** 2  
+**Heurística violada:** Usability – Prevención de errores
+
+**Problema:**
+
+En Nuevo local y Agregar dispositivo, varios campos son obligatorios, pero sus etiquetas no incorporan una marca o leyenda que lo indique. Algunos campos sí se anuncian como opcionales, como Zona, mientras otros opcionales, como Ubicación, no lo indican. La persona descubre parte de los requisitos recién al intentar guardar.
+
+**Figura 197**  
+_Campos obligatorios y opcionales sin una identificación visual uniforme_
+
+<p align="center">
+  <img src="assets/auditory/energix/16-formulario-campos-obligatorios.png" width="900" alt="Campos obligatorios y opcionales sin una identificación visual uniforme">
+</p>
+
+**Recomendación:**
+
+Usar un criterio uniforme: marcar los obligatorios con una leyenda explicada o indicar todos los opcionales. Mostrar ayudas de formato antes del envío y asociar los errores a cada control.
 
 #### 6.4.2.4. Resumen de modificaciones para subsanar hallazgos
 
-> Pendiente de completar.
+A partir de los hallazgos se definieron las siguientes modificaciones para SEMS. Su implementación está pendiente.
+
+| Hallazgo(s) | Modificación propuesta | Prioridad | Estado | Evidencia de cierre requerida |
+| :-- | :-- | :-- | :-- | :-- |
+| 1–2 | Mostrar errores y confirmaciones por cada operación de dispositivos y alertas | Alta | Pendiente | Capturas del fallo y del reintento exitoso, con referencia al cambio |
+| 3 | Confirmar el estado del pago con el servidor antes de anunciar éxito | Alta | Pendiente | Resultado de pago pendiente, confirmado y no confirmado en entorno de pruebas |
+| 4–5 | Identificar interruptores y completar nombre y gestión de foco de los diálogos | Alta | Pendiente | Árbol de accesibilidad y registro del recorrido con teclado |
+| 6 | Ajustar altura y desplazamiento del formulario móvil si se confirma el recorte | Media | Por verificar | Captura a 390 × 844 px y comprobación de acceso a todos los controles |
+| 7 y 9 | Orientar la recuperación ante fallos de acceso, registro y verificación | Media | Pendiente | Mensajes por tipo de error y opción de solicitar otro enlace |
+| 8 | Confirmar la eliminación de medios de pago y comunicar su resultado | Media | Pendiente | Confirmación antes de retirar una tarjeta de prueba y resultado posterior |
+| 10–11 | Unificar etiquetas de tipos y traducir perfiles de consumo | Media | Pendiente | Formulario y tarjeta coherentes en español e inglés |
+| 12 | Sincronizar los datos adicionales del dispositivo o advertir que son locales | Media | Pendiente | Comparación entre navegadores o aviso explícito de almacenamiento local |
+| 13 | Acercar el guardado al selector de segmento y avisar de cambios pendientes | Media | Pendiente | Cambio de segmento y confirmación de persistencia |
+| 14 | Corregir el destino o la etiqueta del enlace sobre Energix | Media | Pendiente | Enlace y sección de destino con contenido coherente |
+| 15 | Incorporar recuperación ante permisos de cámara denegados | Media | Pendiente | Estado de error con reintento y alternativa manual |
+| 16 | Identificar de forma uniforme los campos obligatorios y opcionales | Media | Pendiente | Formulario antes de enviar y validación de campos |
 
 # Capítulo VII: DevOps Practices
 
@@ -4531,10 +4972,12 @@ con la compilación rota ni con una prueba en rojo.
 | 11 | `pull_request` | `feat/cierre-del-back` | `success` | 29 de octubre |
 | 12 | `push` | `develop` | `success` | 29 de octubre |
 
+**Figura 198**  
 ![Backend CI Workflow Runs](assets/chapter7/backend-ci-workflow-runs.png)
 
 En el detalle de la ejecución se observa que cada una de las etapas del pipeline fue completada correctamente. El proceso incluyó la preparación del entorno, restauración de dependencias, compilación de la solución y ejecución de las pruebas automatizadas.
 
+**Figura 199**  
 ![Backend CI Build and Test Details](assets/chapter7/backend-ci-build-and-test-details.png)
 
 De esta manera, el pipeline permite detectar automáticamente errores de compilación o fallos en las pruebas antes de que los cambios sean incorporados a las ramas principales del proyecto.
@@ -4644,6 +5087,7 @@ El workflow se ejecuta mediante un evento `push` y realiza las siguientes etapas
 
 La ejecución del pipeline finalizó correctamente, mostrando todas sus etapas en estado exitoso.
 
+**Figura 200**  
 ![Landing Page Deployment Pipeline](assets/chapter7/landing-page-deployment-pipeline.png)
 
 El *workflow* que lo define es el siguiente:
@@ -4701,6 +5145,7 @@ El despliegue se encuentra asociado a la rama `main` del repositorio. Vercel rec
 
 En la evidencia se observa que el deployment se encuentra en estado **Ready**, indicando que la versión fue construida y publicada correctamente.
 
+**Figura 201**  
 ![Web Application Production Deployment](assets/chapter7/web-application-vercel-deployment.jpeg)
 
 El flujo general de esta etapa es:
@@ -4715,6 +5160,7 @@ El servicio ejecuta la aplicación ASP.NET Core dentro del entorno de producció
 
 En los registros de ejecución se observa que la aplicación fue iniciada correctamente en el entorno `Production` y que el servicio quedó disponible públicamente.
 
+**Figura 202**  
 ![Backend Render Deployment](assets/chapter7/backend-render-deployment.jpeg)
 
 El flujo general del Backend es:
@@ -4853,6 +5299,7 @@ Las principales etapas del deployment son:
 4. **Deployment:** GitHub Pages publica la nueva versión del sitio.
 5. **Verificación:** se comprueba que el sitio quede disponible públicamente.
 
+**Figura 203**  
 ![Landing Page Deployment Pipeline](assets/chapter7/landing-page-deployment-pipeline.png)
 
 #### Web Application
@@ -4869,6 +5316,7 @@ Las principales etapas del deployment son:
 4. **Deployment:** Vercel publica la aplicación en el entorno de producción.
 5. **Verificación:** el deployment queda identificado con el estado `Ready`, confirmando que la aplicación se encuentra disponible.
 
+**Figura 204**  
 ![Web Application Production Deployment](assets/chapter7/web-application-vercel-deployment.jpeg)
 
 #### Backend
@@ -4887,18 +5335,23 @@ Las principales etapas del deployment del Backend son:
 
 En los registros de Render se observa que el servicio se ejecuta utilizando el entorno `Production` y que la aplicación inicia correctamente.
 
+**Figura 205**  
 ![Backend Render Deployment](assets/chapter7/backend-render-deployment.jpeg)
 
 Como parte de la verificación del Backend se utilizó Swagger/OpenAPI, permitiendo visualizar los diferentes endpoints disponibles en la API de SEMS.
 
 Las siguientes evidencias muestran la documentación interactiva del servicio:
 
+**Figura 206**  
 ![Swagger Evidence 1](assets/chapter7/swagger-01.png)
 
+**Figura 207**  
 ![Swagger Evidence 2](assets/chapter7/swagger-02.png)
 
+**Figura 208**  
 ![Swagger Evidence 3](assets/chapter7/swagger-03.png)
 
+**Figura 209**  
 ![Swagger Evidence 4](assets/chapter7/swagger-04.png)
 
 
