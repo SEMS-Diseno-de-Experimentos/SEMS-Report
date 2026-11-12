@@ -3865,10 +3865,44 @@ Tarea: Considere su experiencia completa utilizando SEMS.
 Pregunta: ¿Recomendaría SEMS a otro propietario de un establecimiento similar al suyo? ¿Por qué?
 
 
-
 ### 6.3.2. Registro de Entrevistas
 
-> Pendiente de completar.
+#### Segmento #1 — Entrevista 1
+
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Valia Mariajose Merino Cardenas |
+| Edad | 27 años |
+| Distrito | Lima |
+| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets) |
+| Número de locales a cargo | 1 local |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQBnE-dDCR2BT5hCn-bTX-xVAeEfOK53nj_MWunOS8d1fo8?e=3MiCCI&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| Timing de inicio | 00:25 |
+| Duración | 06:36 |
+| Screenshot | <img src="assets\images\interviews\needfinding\validation-interviews-2.png" alt="Captura Entrevista Valia" width="250"> |
+
+**Resumen de la entrevista**
+
+Valia percibió la plataforma SENS como un servicio serio, claro y amigable, destacando que su estructura comercial y los planes de pago (*Starter*, *Business* y *Enterprise*) son intuitivos y suficientes para la toma de decisiones al adaptarse lógicamente al tamaño de cada empresa y su número de locales. Consideró que la interfaz es intuitiva para registrar establecimientos y resaltó el alto valor operativo del sistema en entornos de gestión rigurosa, señalando que utilizaría los reportes de consumo total, históricos a 30 días y comparativas semanales para justificar estrategias de ahorro ante su equipo. Aunque sugirió optimizar la experiencia visual mediante gráficos de barras de rápida carga y notificaciones urgentes directo en dispositivos móviles, concluyó que las tarifas son accesibles y que la herramienta alivia de manera considerable la carga del trabajo operativo diario.
+
+#### Segmento #2 — Entrevista 1
+
+| Campo | Dato |
+| :-- | :-- |
+| Nombres y apellidos | Yuli Mersi Ordinola Chunga |
+| Edad | 55 años |
+| Distrito | Piura |
+| Cargo / tipo de establecimiento | Propietario y administrador (Salón de eventos/Recepciones) |
+| Número de locales a cargo | 1 local |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
+| Timing de inicio | 00:00 |
+| Duración | 08:08 |
+| Screenshot | <img src="assets\images\interviews\needfinding\validation-interviews-1.png" alt="Captura Entrevista Yuli" width="250"> |
+
+**Resumen de la entrevista**
+
+El entrevistado es propietario y administrador de una cafetería de especialidad de 80 m² y gestiona todas las operaciones diarias de manera empírica. El costo de energía representa una parte significativa de sus gastos fijos (20%). Sin embargo, no revisa el detalle de su recibo, ignorando conceptos técnicos como el cargo por potencia y la tarifa comercial. Suele encender los equipos de manera rutinaria, generando picos de consumo por las tardes (hora punta) al activar luces y aire acondicionado simultáneamente por la afluencia de clientes. Ante un recibo inexplicable en campaña pasada, su única acción fue apagar equipos al azar sin conocer realmente cuáles consumían más. Estaría dispuesto a pagar una herramienta mensual si se le demuestra un ahorro tangible en el recibo, y ve con gran interés recibir avisos de exceso de consumo en tiempo real mediante notificaciones *push* en su smartphone, el cual es su principal herramienta de gestión, junto con apps bancarias.
+
 
 ### 6.3.3. Evaluaciones según heurísticas
 
