@@ -3759,7 +3759,112 @@ estaba agotada. La revisión efectiva fue la humana, y el registro en GitHub lo 
 
 ### 6.3.1. Diseño de Entrevistas
 
-> Pendiente de completar.
+**Segmento 1**: Responsables de operaciones y mantenimiento de cadenas de retail
+Objetivo: Validar la supervisión de varios establecimientos, administración de medidores, gestión de alertas y generación de reportes energéticos.
+
+Landing Page
+
+1. Comprensión del servicio
+Tarea: Explore libremente la página principal de SEMS e identifique qué servicio ofrece la plataforma.
+Pregunta: ¿Cómo describiría el servicio de SEMS a otro responsable de operaciones?
+
+2. Planes de suscripción
+Tarea: Busque los planes de suscripción e identifique cuál podría utilizar una cadena con varios establecimientos.
+Pregunta: ¿Qué información utilizaría para decidir si contratar ese plan?
+
+Aplicación web y móvil
+
+3. Registro de establecimientos
+Tarea: Registre un establecimiento de prueba utilizando su categoría tarifaria y potencia contratada.
+Pregunta: ¿Qué dato o paso le resultó más difícil de completar?
+
+4. Comparación entre establecimientos 
+Tarea: Compare el consumo energético de tres establecimientos e identifique cuál presenta el peor desempeño.
+Pregunta: ¿Qué establecimiento considera prioritario revisar y por qué?
+
+5. Registro de medidores
+Tarea: Vincule un medidor inteligente de prueba a la zona de cámaras frigoríficas de un establecimiento.
+Pregunta: ¿Qué tan claro le resultó el proceso para asignar el medidor a la zona correspondiente?
+
+6. Alertas preventivas 
+Tarea: Revise una alerta que indica que un establecimiento ha alcanzado el 85 % de su potencia contratada.
+Pregunta: ¿Cuánto margen de potencia queda disponible antes de superar el límite contratado?
+
+7. Gestión de alertas
+Tarea: Busque una alerta pendiente, revísela, márquela como reconocida y posteriormente como resuelta.
+Pregunta: ¿Qué diferencia entendió entre reconocer y resolver una alerta?
+
+8. Configuración tarifaria
+Tarea: Revise la tarifa eléctrica de un establecimiento e identifique los conceptos correspondientes a hora punta, fuera de punta y potencia.
+Pregunta: ¿Qué diferencia identifica entre estos conceptos de facturación?
+
+9. Factura estimada 
+Tarea: Consulte la proyección mensual de la factura eléctrica y revise el desglose de costos.
+Pregunta: ¿Cuál es el concepto que representa el mayor costo en la factura mostrada?
+10. Generación de reportes
+Tarea: Genere un reporte mensual de consumo energético de un establecimiento para presentarlo a gerencia.
+Pregunta: ¿Qué información del reporte utilizaría para justificar una decisión de ahorro energético?
+
+Evaluación final
+
+11. Utilidad y mejoras
+Tarea: Recuerde las funcionalidades que acaba de utilizar.
+Pregunta: ¿Qué funcionalidad mejoraría primero para facilitar su trabajo como responsable de operaciones?
+
+**Segmento 2:** Propietarios y administradores de establecimientos independientes
+Objetivo: Validar si las personas pueden comprender el consumo y los costos eléctricos de su negocio, atender alertas y aprovechar recomendaciones de ahorro.
+
+Landing Page
+
+1. Comprensión del servicio
+Tarea: Explore la página principal de SEMS e identifique los beneficios que ofrece para un establecimiento comercial.
+Pregunta: ¿Qué beneficio de SEMS considera más relevante para su negocio?
+
+2. Suscripción y disposición a pagar
+Tarea: Revise los planes disponibles y seleccione el que considere adecuado para un establecimiento independiente.
+Pregunta: ¿Qué beneficio necesitaría obtener para justificar el pago de ese plan?
+
+Aplicación web y móvil
+
+3. Registro y acceso
+Tarea: Complete el registro de una cuenta de prueba e intente acceder a SEMS.
+Pregunta: ¿En qué parte del proceso necesitó ayuda o información adicional?
+
+4. Recuperación de contraseña
+Tarea: Imagine que olvidó su contraseña e intente iniciar el proceso para recuperar el acceso.
+Pregunta: ¿Qué tan claras le resultaron las instrucciones para recuperar su cuenta?
+
+5. Panel de consumo
+Tarea: Ingrese al panel principal e identifique el consumo energético y el gasto estimado del establecimiento.
+Pregunta: ¿Qué información del panel consultaría primero para controlar sus gastos?
+
+6. Consumo por zona 
+Tarea: Revise el consumo de las diferentes zonas del establecimiento e identifique la que presenta mayor consumo.
+Pregunta: ¿En qué zona comenzaría a investigar posibles oportunidades de ahorro?
+
+7. Factura estimada 
+Tarea: Revise el desglose de la factura estimada del establecimiento.
+Pregunta: ¿Qué concepto representa el mayor costo en la factura mostrada?
+
+8. Alerta preventiva 
+Tarea: Revise una alerta que indica que el establecimiento ha alcanzado el 85 % de su potencia contratada.
+Pregunta: ¿Qué acción tomaría para evitar superar la potencia contratada?
+
+9. Recomendaciones de ahorro 
+Tarea: Revise las recomendaciones de SEMS e identifique una relacionada con el consumo durante las horas punta.
+Pregunta: ¿Qué cambio en el funcionamiento de su negocio podría realizar a partir de esa recomendación?
+
+10. Facilidad de uso
+Tarea: Vuelva a navegar por las pantallas utilizadas durante la sesión.
+Pregunta: ¿Qué pantalla le resultó más difícil de comprender?
+
+Evaluación final
+
+11. Valor del producto
+Tarea: Considere su experiencia completa utilizando SEMS.
+Pregunta: ¿Recomendaría SEMS a otro propietario de un establecimiento similar al suyo? ¿Por qué?
+
+
 
 ### 6.3.2. Registro de Entrevistas
 
