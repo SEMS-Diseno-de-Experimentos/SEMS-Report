@@ -3901,7 +3901,7 @@ Valia percibió la plataforma SENS como un servicio serio, claro y amigable, des
 
 **Resumen de la entrevista**
 
-
+Yuli consideró que la plataforma mostraba la información de manera clara y directa, lo cual es oportuno para visualizar rápidamente información relevante para tomar decisiones de ahorro en su negocio. Consideró que la sección de métricas era la más complicada de usar por el hecho de tener conocimiento sobre potencia y energía elétrica, pero que consideraba importante que esta información esté allí para un entendimiento más completo del comportamiento de los equipos de su negocio. Ella está dispuesta recomendar la plataforma a otros dueños de otros locales comerciales por los beneficios económicos que pueden traer para ellos. Asimismo, comentó que los planes de pago son adecuados para clientes que comienzan a familiarizarse con la plataforma. 
 
 
 ### 6.3.3. Evaluaciones según heurísticas
