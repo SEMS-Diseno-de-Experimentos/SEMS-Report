@@ -3885,6 +3885,16 @@ Pregunta: ¿Recomendaría SEMS a otro propietario de un establecimiento similar 
 
 Valia percibió la plataforma SENS como un servicio serio, claro y amigable, destacando que su estructura comercial y los planes de pago (*Starter*, *Business* y *Enterprise*) son intuitivos y suficientes para la toma de decisiones al adaptarse lógicamente al tamaño de cada empresa y su número de locales. Consideró que la interfaz es intuitiva para registrar establecimientos y resaltó el alto valor operativo del sistema en entornos de gestión rigurosa, señalando que utilizaría los reportes de consumo total, históricos a 30 días y comparativas semanales para justificar estrategias de ahorro ante su equipo. Aunque sugirió optimizar la experiencia visual mediante gráficos de barras de rápida carga y notificaciones urgentes directo en dispositivos móviles, concluyó que las tarifas son accesibles y que la herramienta alivia de manera considerable la carga del trabajo operativo diario.
 
+**Resumen de Hallazgos Clave:**
+
+Percepción de Valor: Información inmediata y directa, ideal para la toma rápida de decisiones al instante en negocios de un solo local.
+
+Curva de Aprendizaje: La sección de métricas eléctricas avanzadas (diferencia entre potencia $kW$ y energía $kWh$) representó el mayor reto técnico por la complejidad de la jerga, requiriendo traducción a conceptos financieros directos y asistencia visual dentro de la plataforma.
+
+Modelo de Negocio: Considera que la estructura de planes de suscripción (Starter, Business y Enterprise) es clara, intuitiva y predecible desde el primer momento.
+
+Disposición a Recomendar: Alta disposición a recomendar la plataforma a otros administradores de locales independientes por la claridad visual y la capacidad de actuar de inmediato sobre el consumo.
+
 #### Segmento #2 — Entrevista 1
 
 | Campo | Dato |
@@ -3903,10 +3913,38 @@ Valia percibió la plataforma SENS como un servicio serio, claro y amigable, des
 
 Yuli consideró que la plataforma mostraba la información de manera clara y directa, lo cual es oportuno para visualizar rápidamente información relevante para tomar decisiones de ahorro en su negocio. Consideró que la sección de métricas era la más complicada de usar por el hecho de tener conocimiento sobre potencia y energía elétrica, pero que consideraba importante que esta información esté allí para un entendimiento más completo del comportamiento de los equipos de su negocio. Ella está dispuesta recomendar la plataforma a otros dueños de otros locales comerciales por los beneficios económicos que pueden traer para ellos. Asimismo, comentó que los planes de pago son adecuados para clientes que comienzan a familiarizarse con la plataforma. 
 
+**Resumen de Hallazgos Clave:**
+
+Percepción de Valor: Información clara y directa, ideal para la toma rápida de decisiones de ahorro económico en negocios independientes.
+
+Curva de Aprendizaje: La sección de métricas complejas (diferencia entre potencia y energía eléctrica) representó el mayor reto técnico por falta de conocimiento especializado, aunque valoró que los datos sigan presentes.
+
+Modelo de Negocio: Considera que los planes de suscripción y precios de entrada son adecuados para usuarios que recién se familiarizan con la herramienta.
+
+Disposición a Recomendar: Alta disposición a recomendar la plataforma a otros dueños de locales por el beneficio de reducción de costos.
+
 
 ### 6.3.3. Evaluaciones según heurísticas
 
-> Pendiente de completar.
+A partir del contraste de entrevistas a ambos segmentos, se realizó la evaluación basada en las Heurísticas de Jakob Nielsen:
+
+**Heurística #1:** Visibilidad del estado del sistema (Visibility of system status)
+Hallazgo: Valia valora los reportes a 30 días y comparativas semanales. Yuli destaca la inmediatez de la información para decidir al instante.Evaluación: El sistema comunica adecuadamente el estado actual del consumo, pero requiere notificaciones push móviles inmediatas ante picos inusuales.
+
+**Heurística #2:** Relación entre el sistema y el mundo real (Match between system and the real world)
+Hallazgo: Yuli experimentó dificultad para diferenciar potencia ($kW$) de energía ($kWh$).Evaluación: Es necesario traducir la jerga técnica a conceptos financieros directos ("Ahorro estimado en soles") e incluir tooltips explicativos sin eliminar la precisión del dato técnico.
+
+**Heurística #4:** Consistencia y estándares (Consistency and standards)
+Hallazgo: Ambos segmentos reconocen la estructura de planes (Starter, Business, Enterprise) como clara e intuitiva.Evaluación: El modelo comercial y los menús de navegación mantienen un estándar predecible y coherente en toda la solución.
+
+**Heurística #7:** Flexibilidad y eficiencia de uso (Flexibility and efficiency of use)
+Hallazgo: Valia (multilocal) requiere exportación corporativa y comparativas entre sedes, mientras que Yuli (1 local) prefiere un panel simplificado de vista rápida.Evaluación: La interfaz debe ofrecer vistas adaptables según el perfil del usuario (administrador de sede única vs. coordinador de cadena).
+
+**Heurística #8:** Diseño estético y minimalista (Aesthetic and minimalist design)
+Hallazgo: Valia sugiere optimizar la carga visual con gráficos de barras ligeros y rápidos. Yuli destaca que la información no está recargada.Evaluación: Se debe priorizar el rendimiento de renderizado de componentes gráficos para mantener una navegación fluida.
+
+**Heurística #10:** Ayuda y documentación (Help and documentation)
+Hallazgo: Yuli requiere asistencia visual para interpretar métricas eléctricas avanzadas.Evaluación: Se debe incorporar un micro-glosario interactivo y guías contextuales dentro de la vista de analítica.
 
 ## 6.4. Auditoría de Experiencias de Usuario
 
