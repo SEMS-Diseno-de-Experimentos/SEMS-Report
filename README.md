@@ -196,6 +196,8 @@ Student Outcome
 5.2.7. RESTful API documentation  
 5.2.8. Team Collaboration Insights  
 5.3. Video About-the-Product.  
+5.4. Video About-the-Web.  
+5.5. Deuda técnica identificada.  
 Part II: Verification, Validation & Pipeline
 Capítulo VI: Product Verification & Validation
 6.1. Testing Suites & Validation
@@ -2564,7 +2566,14 @@ Content-Type: application/json
 | Enlace | [About The Product.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQB_GbtfhMFRSJgYxSx3AkfbAQVnFQVNAjNmJV2Gocy7ZH4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uLhWV7) |
 | Duración | 30 segundos (00:30) |
 
-## 5.4. Deuda técnica identificada
+## 5.4. Video About-the-Web
+
+| Dato | Valor |
+| :-- | :-- |
+| Enlace | [About The Web.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQCiqj1V0NFNR6a36M-WqL9ZAdBirps-UGO2j2cbT-akfcM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=7s9ZfI) |
+| Duración | 8 minutos y 49 segundos (08:49) |
+
+## 5.5. Deuda técnica identificada
 
 Se registra de forma explícita lo que hoy no cumple con el diseño descrito, para que el estado del
 producto quede documentado con honestidad y sea verificable en la siguiente entrega.
@@ -6256,7 +6265,8 @@ aceptar un dato de circulación frecuente que resultó no coincidir con el anuar
 | Entrega | Video | URL | Duración |
 | :-- | :-- | :-- | :-- |
 | TB1 | Exposición | `<URL privado de Microsoft Stream>` | `<mm:ss>` |
-| TB1 | About-the-Product | `<URL>` | `<mm:ss>` |
+| TB1 | About-the-Product | [About The Product.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQB_GbtfhMFRSJgYxSx3AkfbAQVnFQVNAjNmJV2Gocy7ZH4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uLhWV7) | 00:30 |
+| TB1 | About-the-Web | [About The Web.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQCiqj1V0NFNR6a36M-WqL9ZAdBirps-UGO2j2cbT-akfcM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=7s9ZfI) | 08:49 |
 | TB1 | About-the-Team | `<URL>` | `<mm:ss>` |
 | TB1 | Evidencia de entrevistas | `<URL>` | `<mm:ss>` |
 
