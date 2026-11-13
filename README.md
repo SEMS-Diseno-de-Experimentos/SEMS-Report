@@ -3878,17 +3878,17 @@ Pregunta: ¿Recomendaría SEMS a otro propietario de un establecimiento similar 
 
 #### Segmento #1 — Entrevista 1
 
-| Campo | Dato |
-| :-- | :-- |
-| Nombres y apellidos | Valia Mariajose Merino Cardenas |
-| Edad | 27 años |
-| Distrito | Lima |
-| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets) |
-| Número de locales a cargo | 1 local |
-| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20231e504_upc_edu_pe/IQBnE-dDCR2BT5hCn-bTX-xVAeEfOK53nj_MWunOS8d1fo8?e=3MiCCI&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
-| Timing de inicio | 00:25 |
-| Duración | 13:50 |
-| Screenshot | <img src="assets\images\interviews\needfinding\validation-interviews-2.png" alt="Captura Entrevista Valia" width="250"> |
+| Campo | Dato                                                                                                                                                                       |
+| :-- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombres y apellidos | Valia Mariajose Merino Cardenas                                                                                                                                            |
+| Edad | 27 años                                                                                                                                                                    |
+| Distrito | Lima                                                                                                                                                                       |
+| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets)                                                                                                                         |
+| Número de locales a cargo | 1 local                                                                                                                                                                    |
+| URL del video | [Ver video en SharePoint](https://drive.google.com/drive/folders/1w_WQyLCHmkiup2mhkWzIvfTI0g4gWi6J?usp=sharing) |
+| Timing de inicio | 00:25                                                                                                                                                                      |
+| Duración | 13:50                                                                                                                                                                      |
+| Screenshot | <img src="assets\images\interviews\needfinding\validation-interviews-2.png" alt="Captura Entrevista Valia" width="250">                                                    |
 
 **Resumen de la entrevista**
 
@@ -3904,6 +3904,66 @@ Modelo de Negocio: Considera que la estructura de planes de suscripción (Starte
 
 Disposición a Recomendar: Alta disposición a recomendar la plataforma a otros administradores de locales independientes por la claridad visual y la capacidad de actuar de inmediato sobre el consumo.
 
+#### Segmento #1 — Entrevista 2
+
+| Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
+| :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombres y apellidos | Miguel Pomasonco                                                                                                                                                                                                                                                                                                                                        |
+| Edad | 53 años                                                                                                                                                                                                                                                                                                                                                 |
+| Distrito | Lima                                                                                                                                                                                                                                                                                                                                                    |
+| Cargo / tipo de establecimiento | Coordinador de tiendas de tamaño mediano de ventas                                                                                                                                                                                                                                                                                                      |
+| Número de locales a cargo | 3                                                                                                                                                                                                                                                                                                                                                       |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQAV2Urz5uSNQ5ihQ1maxaXSAaPE9ZNyun9sxzKaQkl59Q4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Igdd6N) |
+| Timing de inicio | 00:00                                                                                                                                                                                                                                                                                                                                                   |
+| Duración | 13:50                                                                                                                                                                                                                                                                                                                                                   |
+| Screenshot | <img src="assets/images/interviews/needfinding/validation-interviews-miguel pomasonco.png" alt="Captura Entrevista Miguel" width="250">                                                                                                                                                                                                                 |
+
+**Resumen de la entrevista**
+
+Durante la entrevista de validación, Miguel Poma Sonco evaluó las principales funcionalidades de SEMS desde la perspectiva de un responsable de operaciones de una cadena de establecimientos. En el guion de ejemplo, Miguel logró comprender el propósito de la plataforma y destacó la utilidad de monitorear el consumo energético de varios locales desde un mismo lugar. También revisó funciones como el registro de medidores, la comparación entre establecimientos, la gestión de alertas y la generación de reportes. Entre las dificultades planteadas, se identificó que algunos datos técnicos, como la potencia contratada, podrían necesitar explicaciones más claras. Además, se destacó la importancia de mejorar la comparación entre locales para identificar rápidamente cuáles requieren mayor atención.
+
+**Resumen de Hallazgos Clave:**
+
+Percepción de Valor: Información inmediata y directa, ideal para la toma rápida de decisiones al instante en negocios de un solo local.
+
+Curva de Aprendizaje: La sección de métricas eléctricas avanzadas (diferencia entre potencia $kW$ y energía $kWh$) representó el mayor reto técnico por la complejidad de la jerga, requiriendo traducción a conceptos financieros directos y asistencia visual dentro de la plataforma.
+
+Modelo de Negocio: Considera que la estructura de planes de suscripción (Starter, Business y Enterprise) es clara, intuitiva y predecible desde el primer momento.
+
+Disposición a Recomendar: Alta disposición a recomendar la plataforma a otros administradores de locales independientes por la claridad visual y la capacidad de actuar de inmediato sobre el consumo.
+
+#### Segmento #1 — Entrevista 3
+
+| Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
+| :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombres y apellidos | Fabrizzio Estefano Varela Tapia                                                                                                                                                                                                                                                                                                                         |
+| Edad | 24 años                                                                                                                                                                                                                                                                                                                                                 |
+| Distrito | Lima (Santa Paula 375, Lima)                                                                                                                                                                                                                                                                                                                            |
+| Cargo / tipo de establecimiento | Coordinador de operaciones de cadena (Minimarkets)                                                                                                                                                                                                                                                                                                      |
+| Número de locales a cargo | 3 locales                                                                                                                                                                                                                                                                                                                                               |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQATQCVhSE1GTY6xwxBHnN1tAU3QJpR2mV7eIusbS_tRVjE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=phh9Wt) |
+| Timing de inicio | 00:00                                                                                                                                                                                                                                                                                                                                                   |
+| Duración | 15:28                                                                                                                                                                                                                                                                                                                                                    |
+| Screenshot | <img src="assets/images/interviews/needfinding/validation-interviews-fabrizio.png" alt="Captura Entrevista Fabrizio" width="250">                                                                                                                                                                                                                 |
+
+**Resumen de la entrevista**
+
+Durante la entrevista de validación propuesta, el participante exploró las principales funcionalidades de SEMS relacionadas con el monitoreo y la administración del consumo energético de establecimientos comerciales. A través de las tareas planteadas, pudo consultar los indicadores de consumo, revisar el historial energético, comparar establecimientos e identificar alertas de demanda elevada. En las respuestas simuladas, destacó que la plataforma permite visualizar información importante desde un mismo lugar y facilita la identificación de posibles gastos innecesarios. Sin embargo, se plantearon algunas dificultades para interpretar conceptos técnicos, como la potencia contratada y los costos en horas punta y fuera de punta. También se mencionó que los gráficos podrían incluir explicaciones más sencillas para facilitar su comprensión. En general, el escenario mostró que SEMS podría ser una herramienta útil para mejorar el control energético, aunque sería conveniente simplificar algunos elementos de la interfaz.
+
+**Resumen de Hallazgos Clave:**
+
+Percepción de Valor: Se destacó la utilidad de contar con una plataforma que permita consultar el consumo eléctrico y los gastos estimados de manera centralizada, facilitando la supervisión de los establecimientos.
+
+Curva de Aprendizaje: Los indicadores relacionados con la potencia contratada, el consumo en kWh y las tarifas eléctricas representaron las principales dificultades, por lo que se propuso incorporar explicaciones más sencillas.
+
+Monitoreo Energético: La consulta del historial de consumo y la comparación entre establecimientos se consideraron funcionalidades importantes para identificar aumentos inesperados y posibles oportunidades de ahorro.
+
+Alertas Preventivas: Se valoró la posibilidad de recibir advertencias antes de superar la potencia contratada, ya que permitiría identificar situaciones que necesitan atención.
+
+Oportunidades de Mejora: Se planteó simplificar la presentación de los gráficos, mejorar las explicaciones de los indicadores y facilitar la identificación de los establecimientos con mayor consumo.
+
+Valoración General: La plataforma se consideró una solución potencialmente útil para controlar los gastos eléctricos y apoyar la toma de decisiones, especialmente si la información presentada resulta fácil de comprender.
+
 #### Segmento #2 — Entrevista 1
 
 | Campo | Dato |
@@ -3913,7 +3973,7 @@ Disposición a Recomendar: Alta disposición a recomendar la plataforma a otros 
 | Distrito | Piura |
 | Cargo / tipo de establecimiento | Propietario y administrador (Salón de eventos/Recepciones) |
 | Número de locales a cargo | 1 local |
-| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQAfFVq1XrLSRatizFEVTM9nAYfxtQ5KC_BEae9a9BF9UVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=uPpjgo) |
+| URL del video | [Ver video en SharePoint](https://drive.google.com/drive/folders/1w_WQyLCHmkiup2mhkWzIvfTI0g4gWi6J?usp=sharing) |
 | Timing de inicio | 00:00 |
 | Duración | 10:00 |
 | Screenshot | <img src="assets\images\interviews\needfinding\validation-interviews-1.png" alt="Captura Entrevista Yuli" width="250"> |
@@ -3932,6 +3992,67 @@ Modelo de Negocio: Considera que los planes de suscripción y precios de entrada
 
 Disposición a Recomendar: Alta disposición a recomendar la plataforma a otros dueños de locales por el beneficio de reducción de costos.
 
+#### Segmento #2 — Entrevista 2
+
+| Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
+| :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombres y apellidos | Angel Giuseppe Barrera Romero                                                                                                                                                                                                                                                                                                                           |
+| Edad | 30 años                                                                                                                                                                                                                                                                                                                                                 |
+| Distrito | San Isidro                                                                                                                                                                                                                                                                                                                                              |
+| Cargo / tipo de establecimiento | Propietario y administrador (Supermercado)                                                                                                                                                                                                                                                                                                              |
+| Número de locales a cargo | 1 local                                                                                                                                                                                                                                                                                                                                                 |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20201a277_upc_edu_pe/IQBcu7C_i46IS51ETrUuMmtzAYKIJef7de5blIcjo0abksA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ABQgXl) |
+| Timing de inicio | 00:00                                                                                                                                                                                                                                                                                                                                                   |
+| Duración | 10:57                                                                                                                                                                                                                                                                                                                                                    |
+| Screenshot | <img src="assets/images/interviews/needfinding/validation-interviews-angel barrera.png" alt="Captura Entrevista Miguel" width="250">                                                                                                                                                                                                                 |
+
+**Resumen de la entrevista**
+
+Durante la entrevista de validación propuesta para Ángel Giuseppe Barrera Romero, se evaluó SEMS desde la perspectiva de un propietario o administrador de un establecimiento independiente. En las respuestas simuladas, Ángel destacó la utilidad de consultar el consumo eléctrico, conocer el gasto estimado y recibir alertas cuando el consumo se acerca a los límites establecidos. También exploró las recomendaciones de ahorro energético y el monitoreo por zonas o dispositivos. Como posibles mejoras, se mencionó la necesidad de explicar algunos gráficos e indicadores de manera más sencilla, especialmente para personas sin conocimientos técnicos sobre electricidad. Finalmente, se consideró que SEMS podría ayudar a controlar mejor los gastos del negocio, aunque sería importante comprobar su efectividad en la reducción del consumo.
+
+**Resumen de Hallazgos Clave:**
+
+Percepción de Valor: Se destacó la posibilidad de consultar el consumo eléctrico y el gasto estimado del establecimiento de manera rápida, permitiendo tener un mayor control de los costos de electricidad del negocio.
+
+Curva de Aprendizaje: La sección de analíticas y algunos indicadores eléctricos representaron las principales dificultades de comprensión. Se consideró necesario utilizar explicaciones más sencillas para usuarios sin conocimientos técnicos.
+
+Modelo de Negocio: Los planes de suscripción se consideraron una opción interesante, siempre que el ahorro económico conseguido mediante SEMS justifique el costo mensual del servicio.
+
+Alertas y Recomendaciones: Las alertas preventivas y las recomendaciones de ahorro se identificaron como funcionalidades útiles para reconocer consumos elevados y tomar medidas que ayuden a reducir los gastos de electricidad.
+
+Disposición a Recomendar: Se expresó una disposición favorable a recomendar SEMS a otros propietarios de establecimientos independientes, aunque sería importante comprobar que la plataforma realmente permite conseguir ahorros económicos.
+
+#### Segmento #2 — Entrevista 3
+
+| Campo | Dato                                                                                                                                                                                                                                                                                                                                                    |
+| :-- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombres y apellidos | Jasmin Adriana Urrutia Peña                                                                                                                                                                                                                                                                                                                             |
+| Edad | 25 años                                                                                                                                                                                                                                                                                                                                                 |
+| Distrito | Santiago de Surco (Monterrico, Lima)                                                                                                                                                                                                                                                                                                                    |
+| Cargo / tipo de establecimiento | Propietario y administrador (Cafetería de especialidad)                                                                                                                                                                                                                                                                                                 |
+| Número de locales a cargo | 1 local                                                                                                                                                                                                                                                                                                                                                 |
+| URL del video | [Ver video en SharePoint](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202310342_upc_edu_pe/IQCCzZrmMHj8QLfYhIwPdf_yAfe1W5vIKjOOoqBx2VmCeH0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=9QcnFK) |
+| Timing de inicio | 00:00                                                                                                                                                                                                                                                                                                                                                   |
+| Duración | 14:09                                                                                                                                                                                                                                                                                                                                                    |
+| Screenshot | <img src="assets/images/interviews/needfinding/validation-interviews-jasmin.png" alt="Captura Entrevista Miguel" width="250">                                                                                                                                                                                                                    |
+
+**Resumen de la entrevista**
+
+Durante esta entrevista se evaluó la plataforma SEMS desde la perspectiva de un propietario o administrador de un establecimiento independiente. En el guion simulado, el participante exploró las principales funcionalidades, como la consulta del consumo eléctrico, la visualización del gasto estimado, las alertas preventivas y las recomendaciones de ahorro energético. Se destacó que la plataforma permite conocer rápidamente cuánto está consumiendo el negocio y detectar posibles gastos innecesarios. Sin embargo, se plantearon algunas dificultades para comprender ciertos gráficos e indicadores eléctricos, especialmente aquellos relacionados con la potencia contratada y las tarifas. En general, el participante consideró que SEMS podría ser una herramienta útil para controlar los gastos de electricidad, aunque recomendó simplificar algunas explicaciones para facilitar su uso.
+
+**Resumen de Hallazgos Clave:**
+
+Percepción de Valor: Se destacó la facilidad de consultar el consumo energético y los gastos estimados desde una sola plataforma, permitiendo que los propietarios tengan un mayor control de los costos eléctricos de su negocio.
+
+Curva de Aprendizaje: Algunos conceptos técnicos, como la potencia contratada y la diferencia entre consumo en kWh y demanda en kW, podrían generar dificultades para usuarios sin experiencia en gestión energética.
+
+Modelo de Negocio: En el escenario simulado, se consideró que los planes de suscripción podrían resultar atractivos para pequeños negocios, siempre que el ahorro obtenido justifique el pago mensual del servicio.
+
+Alertas y Recomendaciones: Las alertas de consumo elevado y las recomendaciones de ahorro se identificaron como herramientas útiles para detectar problemas y tomar medidas que permitan reducir los gastos de electricidad.
+
+Oportunidades de Mejora: Se propuso incorporar explicaciones más sencillas en los gráficos, mejorar la presentación de los indicadores y mostrar de manera más clara las recomendaciones de ahorro.
+
+Disposición a Recomendar: En la respuesta simulada, el participante manifestó interés en recomendar SEMS a otros propietarios de pequeños establecimientos, especialmente por su utilidad para controlar los gastos energéticos.
 
 ### 6.3.3. Evaluaciones según heurísticas
 
