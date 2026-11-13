@@ -2563,7 +2563,7 @@ Content-Type: application/json
 
 | Dato | Valor |
 | :-- | :-- |
-| Enlace | [About The Product.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQB_GbtfhMFRSJgYxSx3AkfbAQVnFQVNAjNmJV2Gocy7ZH4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uLhWV7) |
+| Enlace | [About The Product.mp4](https://drive.google.com/file/d/1SeW9uNyC9-8mRB1SelsoQhsQTjGhZHvT/view?usp=sharing) |
 | Duración | 30 segundos (00:30) |
 
 ## 5.4. Video About-the-Web
@@ -6265,7 +6265,7 @@ aceptar un dato de circulación frecuente que resultó no coincidir con el anuar
 | Entrega | Video | URL | Duración |
 | :-- | :-- | :-- | :-- |
 | TB1 | Exposición | `<URL privado de Microsoft Stream>` | `<mm:ss>` |
-| TB1 | About-the-Product | [About The Product.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQB_GbtfhMFRSJgYxSx3AkfbAQVnFQVNAjNmJV2Gocy7ZH4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uLhWV7) | 00:30 |
+| TB1 | About-the-Product | [About The Product.mp4](https://drive.google.com/file/d/1SeW9uNyC9-8mRB1SelsoQhsQTjGhZHvT/view?usp=sharing) | 00:30 |
 | TB1 | About-the-Web | [About The Web.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202317099_upc_edu_pe/IQCiqj1V0NFNR6a36M-WqL9ZAdBirps-UGO2j2cbT-akfcM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=7s9ZfI) | 08:49 |
 | TB1 | About-the-Team | `<URL>` | `<mm:ss>` |
 | TB1 | Evidencia de entrevistas | `<URL>` | `<mm:ss>` |
@@ -6285,6 +6285,7 @@ aceptar un dato de circulación frecuente que resultó no coincidir con el anuar
 | API desplegada | <https://sems-backend-diseno.onrender.com> |
 | Documentación de la API | <https://sems-backend-diseno.onrender.com/swagger/index.html> |
 | Tablero de gestión | <https://upc-team-m57tll9j.atlassian.net/jira/software/projects/HU/list/?filter=allissues&jql=project%20%3D%20%22HU%22%20ORDER%20BY%20created%20DESC> |
+|Video About the product| <https://drive.google.com/file/d/1SeW9uNyC9-8mRB1SelsoQhsQTjGhZHvT/view?usp=sharing> |
 
 
 
